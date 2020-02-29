@@ -14,6 +14,13 @@ import { NavLogoComponent } from './header/nav-logo/nav-logo.component';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavMobileComponent } from './nav-mobile/nav-mobile.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { SliderAreaComponent } from './homepage/slider-area/slider-area.component';
+import { TransferComponent } from './homepage/transfer/transfer.component';
+import { PopularScheduleComponent } from './homepage/popular-schedule/popular-schedule.component';
+import { PopularPlaceComponent } from './homepage/popular-place/popular-place.component';
+import { IntroServiceComponent } from './homepage/intro-service/intro-service.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +31,14 @@ import { NavMobileComponent } from './nav-mobile/nav-mobile.component';
     NavSocialComponent,
     NavLogoComponent,
     FooterComponent,
-    NavMobileComponent
+    NavMobileComponent,
+    HomepageComponent,
+    BlogsComponent,
+    SliderAreaComponent,
+    TransferComponent,
+    PopularScheduleComponent,
+    PopularPlaceComponent,
+    IntroServiceComponent
   ],
   imports: [
     BrowserModule,
