@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/theming";
+@include mat-core();
+
+$rvhl-spa-primary: mat-palette($mat-grey, 50);
+$rvhl-spa-accent: mat-palette($mat-orange, 100);
+$rvhl-spa-warn: mat-palette($mat-deep-orange);
+
+$rvhl-spa-theme: mat-light-theme($rvhl-spa-primary, $rvhl-spa-accent, $rvhl-spa-warn);
+
+@include angular-material-theme($rvhl-spa-theme);
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
