@@ -1,14 +1,19 @@
 <section>
-  <app-slider-area></app-slider-area>
+  <app-slider-area [sliderData]="sliderData"></app-slider-area>
 </section>
 <section>
   <app-transfer></app-transfer>
 </section>
 <section>
-  <app-popular-schedule></app-popular-schedule>
+  <app-popular-schedule
+    [popularScheduleData]="popularScheduleData"
+  ></app-popular-schedule>
 </section>
 <section>
   quote
+</section>
+<section>
+  <app-popular-place [popularPlaceData]="popularPlaceData"></app-popular-place>
 </section>
 <section>
   <app-intro-service></app-intro-service>

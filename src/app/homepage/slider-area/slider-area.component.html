@@ -1,14 +1,19 @@
-<div class="slider_active owl-carousel">
+<div
+  class="slider_active owl-carousel"
+  #carousel
+  *ngFor="let banner of sliderData.data"
+>
   <div
     class="single_slider  d-flex align-items-center slider_bg_1 overlay"
     fxLayout
     fxFlex
     fxLayoutAlign="center"
     style="height: 650px;"
+    [ngStyle]="{ 'background-image': 'url(' + banner.image + ')' }"
   >
     <div class="slider_text text-center">
-      <h3>Indonesia</h3>
-      <p>Pixel perfect design with awesome contents</p>
+      <h3>{{ banner.title }}</h3>
+      <p>{{ banner.description }}</p>
       <a href="#" class="boxed-btn3">Explore Now</a>
     </div>
   </div>
