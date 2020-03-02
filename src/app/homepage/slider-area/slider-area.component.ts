@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Input,
+  HostListener
+} from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -26,10 +32,16 @@ export class SliderAreaComponent implements OnInit {
     autoplaySpeed: 800,
     autoplayTimeout: 5000,
     navSpeed: 700,
-    navText: ['>', '<'],
     items: 1,
+    navText: ['>', '<'],
     nav: false
   };
+
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event) {
+  //   event.target.innerWidth;
+  //   console.log(event.target.innerWidth);
+  // }
 
   constructor() {}
 
@@ -45,5 +57,4 @@ export class SliderAreaComponent implements OnInit {
 
     console.log(this.sliderData);
   }
-
 }

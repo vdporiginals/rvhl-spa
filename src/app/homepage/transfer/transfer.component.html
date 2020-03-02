@@ -1,1 +1,30 @@
-<p>transfer works!</p>
+<div class="where_togo_area" fxLayout="row">
+  <div class="col-lg-3" fxFlex>
+    <div class="form_area" fxFlexOffset="15">
+      <h3>Đặt xe tiện chuyến</h3>
+    </div>
+  </div>
+  <div fxFlex="80">
+    <div class="search_wrap" >
+      <form class="search_form" action="#" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="10px">
+        <div class="input_field" fxFlex.gt-md="25" fxFlex.lt-md  fxFlexOffset="5">
+          <input type="text" placeholder="Số điện thoại" />
+        </div>
+        <div class="input_field" fxFlex.gt-md="25" fxFlex.lt-md fxFlexOffset="5">
+         <input type="time" name="time" placeholder="Chọn thời gian" id="timepick">
+         <span style="color: red;">Chọn thời gian</span>
+        </div>
+        <div class="input_field"  fxFlex.gt-md="25" fxFlex.lt-md  fxFlexOffset="5">
+          <select class="nice-select">
+            <option data-display="Travel type">Loại xe</option>
+            <option value="1">Xe 16 chỗ</option>
+            <option value="2">Xe 7 chỗ</option>
+          </select>
+        </div>
+        <div class="search_btn" fxFlex.gt-md="10" fxFlex.lt-md  fxFlexOffset="5">
+          <button class="boxed-btn4" type="submit">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

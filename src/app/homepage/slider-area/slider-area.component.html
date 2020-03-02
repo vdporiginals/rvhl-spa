@@ -24,22 +24,22 @@
   </div>
 </owl-carousel-o> -->
 
-<owl-carousel-o [options]="customOptions" #owlCar   (translated)="getPassedData($event)">
+<owl-carousel-o [options]="customOptions" #owlCar>
   <ng-container *ngFor="let slide of sliderData.data">
     <ng-template
       carouselSlide
       [id]="slide._id"
-    >
+     >
       <!-- <img [ngClass]="{'slider-img': true}" [src]="slide.image" [alt]="slide.title" [title]="slide.title"> -->
       <div
-        [ngStyle]="{'background-image': 'url(' + slide.image + ')', 'background-size': 'auto'}" [ngClass]="{slider_img: isFavorite}"
-
-        fxFlex fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center"
+       [ngClass]="{slider_img: isFavorite}"
+       [style.background]="'url(' + slide.image + ')'"
+        fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center"
       >
         <div [ngClass]="{ slider_text: isFavorite }">
           <h3>Indonesia</h3>
           <p>Pixel perfect design with awesome contents</p>
-        <a href="#" mat-raised-button><span>Explore Now</span></a>
+          <a href="#" mat-raised-button><span>Explore Now</span></a>
         </div>
       </div>
     </ng-template>
