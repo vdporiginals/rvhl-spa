@@ -1,11 +1,17 @@
 @import "~@angular/material/theming";
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 @include mat-core();
 
 $rvhl-spa-primary: mat-palette($mat-grey, 50);
 $rvhl-spa-accent: mat-palette($mat-orange, 100);
 $rvhl-spa-warn: mat-palette($mat-deep-orange);
 
-$rvhl-spa-theme: mat-light-theme($rvhl-spa-primary, $rvhl-spa-accent, $rvhl-spa-warn);
+$rvhl-spa-theme: mat-light-theme(
+  $rvhl-spa-primary,
+  $rvhl-spa-accent,
+  $rvhl-spa-warn
+);
 
 @include angular-material-theme($rvhl-spa-theme);
 

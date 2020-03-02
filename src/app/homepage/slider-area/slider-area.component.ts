@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 // import { Subcription } from 'rxjs';
 // import { HttpService, ApiConfig } from "../../shared/http.service";
 
@@ -9,8 +11,25 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
   styleUrls: ['./slider-area.component.scss']
 })
 export class SliderAreaComponent implements OnInit {
+  faAngleLeft = faAngleLeft;
+  faAngleRight = faAngleRight;
+  isFavorite = true;
+
   @Input() sliderData: any;
-  // private errorSub: Subcription;
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: false,
+    autoplay: true,
+    autoplaySpeed: 800,
+    autoplayTimeout: 5000,
+    navSpeed: 700,
+    navText: ['>', '<'],
+    items: 1,
+    nav: false
+  };
 
   constructor() {}
 
@@ -26,4 +45,5 @@ export class SliderAreaComponent implements OnInit {
 
     console.log(this.sliderData);
   }
+
 }

@@ -1,20 +1,47 @@
-<div
-  class="slider_active owl-carousel"
-  #carousel
-  *ngFor="let banner of sliderData.data"
->
+<!-- <owl-carousel-o [options]="customOptions">
   <div
-    class="single_slider  d-flex align-items-center slider_bg_1 overlay"
-    fxLayout
-    fxFlex
-    fxLayoutAlign="center"
-    style="height: 650px;"
-    [ngStyle]="{ 'background-image': 'url(' + banner.image + ')' }"
+    class="slider_active owl-carousel"
+    #carousel
+    *ngFor="let banner of sliderData.data"
   >
-    <div class="slider_text text-center">
-      <h3>{{ banner.title }}</h3>
-      <p>{{ banner.description }}</p>
-      <a href="#" class="boxed-btn3">Explore Now</a>
+  <ng-template carouselSlide [id]="banner.id">
+    <img [src]="banner.src" [alt]="banner.alt" [title]="banner.title">
+  </ng-template>
+    <div
+      class="single_slider  d-flex align-items-center slider_bg_1 overlay"
+      fxLayout
+      fxFlex
+      fxLayoutAlign="center"
+      style="height: 650px;"
+      [ngStyle]="{ 'background-image': 'url(' + banner.image + ')' }"
+    >
+      <div class="slider_text text-center">
+        <h3>{{ banner.title }}</h3>
+        <p>{{ banner.description }}</p>
+        <a href="#" class="boxed-btn3">Explore Now</a>
+      </div>
     </div>
   </div>
-</div>
+</owl-carousel-o> -->
+
+<owl-carousel-o [options]="customOptions" #owlCar   (translated)="getPassedData($event)">
+  <ng-container *ngFor="let slide of sliderData.data">
+    <ng-template
+      carouselSlide
+      [id]="slide._id"
+    >
+      <!-- <img [ngClass]="{'slider-img': true}" [src]="slide.image" [alt]="slide.title" [title]="slide.title"> -->
+      <div
+        [ngStyle]="{'background-image': 'url(' + slide.image + ')', 'background-size': 'auto'}" [ngClass]="{slider_img: isFavorite}"
+
+        fxFlex fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center"
+      >
+        <div [ngClass]="{ slider_text: isFavorite }">
+          <h3>Indonesia</h3>
+          <p>Pixel perfect design with awesome contents</p>
+        <a href="#" mat-raised-button><span>Explore Now</span></a>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>
+</owl-carousel-o>
