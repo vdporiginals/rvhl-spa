@@ -11,6 +11,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   sliderData: any = {};
   popularScheduleData: any = {};
   popularPlaceData: any = {};
+  popularRestaurant: any = {};
   isLoadingResults = true;
   private subcription: Subscription;
 
@@ -26,10 +27,10 @@ export class HomepageComponent implements OnInit, OnDestroy {
   getData() {
     this.subcription = this.api.getContentHomepage().subscribe(
       res => {
-        console.log(res[0]);
         this.sliderData = res[0];
         this.popularScheduleData = res[1];
         this.popularPlaceData = res[2];
+        this.popularRestaurant = res[3];
         this.isLoadingResults = false;
       },
       err => {

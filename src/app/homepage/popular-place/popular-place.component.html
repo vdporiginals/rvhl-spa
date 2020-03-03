@@ -3,25 +3,30 @@
   fxLayout="column"
   fxLayoutAlign="space-around center"
 >
-  <div class="col-lg-6">
+  <div>
     <div class="section_title text-center mb_70">
-      <h3>Popular Places</h3>
+      <h3>Bạn ăn gì, Bạn ở đâu</h3>
       <p>
-        Suffered alteration in some form, by injected humour or good day
-        randomised booth anim 8-bit hella wolf moon beard words.
+        Gợi ý cho du khách về ẩm thực và chỗ nghỉ nổi bật nhất.
       </p>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="space-around center" *ngFor="let place of popularPlaceData">
-    <div fxLayoutGap="10">
+  <div fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="center center">
+    <div
+      fxFlex="65%"
+      fxFlex.gt-sm="24%"
+      *ngFor="let place of popularPlaceData.data"
+    >
       <div class="single_place">
         <div class="thumb">
-          <img src="place.image" alt="place.title" />
+          <img [src]="place.image" [alt]="place.title" />
           <!-- <a href="#" class="prise">$500</a> -->
         </div>
         <div class="place_info">
-          <a href="destination_details.html"><h3>{{place.title}}</h3></a>
-          <p>{{place.address}}</p>
+          <a href="destination_details.html" fxLayoutAlign="start"
+            ><h3>{{ place.title }}</h3></a
+          >
+          <p fxLayoutAlign="start" fxLayoutAlign="start">{{ place.address }}</p>
           <div class="rating_days d-flex justify-content-between">
             <!-- <span class="d-flex justify-content-center align-items-center">
               <i class="fa fa-star"></i>
@@ -31,10 +36,45 @@
               <i class="fa fa-star"></i>
               <a href="#">(20 Review)</a>
             </span> -->
-            <div class="days">
+            <!-- <div class="days" fxLayoutAlign="start">
               <i class="fa fa-clock-o"></i>
               <a href="#">5 Days</a>
-            </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      fxFlex="65%"
+      fxFlex.gt-sm="24%"
+      *ngFor="let restaurant of popularRestaurant.data"
+    >
+      <div class="single_place">
+        <div class="thumb">
+          <img [src]="restaurant.image" [alt]="restaurant.title" />
+          <!-- <a href="#" class="prise">$500</a> -->
+        </div>
+        <div class="place_info">
+          <a href="destination_details.html" fxLayoutAlign="start"
+            ><h3>{{ restaurant.title }}</h3></a
+          >
+          <p fxLayoutAlign="start">{{ restaurant.address }}</p>
+          <div
+            class="rating_days d-flex justify-content-between"
+            fxLayoutAlign="start"
+          >
+            <!-- <span class="d-flex justify-content-center align-items-center">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <a href="#">(20 Review)</a>
+            </span> -->
+            <!-- <div class="days">
+              <i class="fa fa-clock-o"></i>
+              <a href="#">5 Days</a>
+            </div> -->
           </div>
         </div>
       </div>

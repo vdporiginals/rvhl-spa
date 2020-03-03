@@ -1,6 +1,4 @@
 @import "~@angular/material/theming";
-@import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
-@import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 @include mat-core();
 
 $rvhl-spa-primary: mat-palette($mat-grey, 50);

@@ -3,26 +3,30 @@
   fxLayout="column"
   fxLayoutAlign="space-around center"
 >
-  <div class="col-lg-6">
+  <div>
     <div class="section_title text-center mb_70" style="text-align: center;">
-      <h3>Popular Destination</h3>
+      <h3>Lịch trình nổi bật</h3>
       <p>
-        Suffered alteration in some form, by injected humour or good day
-        randomised booth anim 8-bit hella wolf moon beard words.
+        Review chia sẻ hành trình, khám phá và trải nghiệm từ du khách đến Hạ
+        Long
       </p>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="space-around center">
-    <div fxLayoutGap *ngFor="let schedule of popularScheduleData">
+  <div fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="center center">
+    <div
+      *ngFor="let schedule of popularScheduleData.data"
+      fxFlex="65%"
+      fxFlex.gt-sm="24%"
+    >
       <div class="single_destination">
         <div class="thumb">
-          <img src="schedule.image" alt="schedule.title" />
+          <img [src]="schedule.image" [alt]="schedule.title" />
         </div>
         <div class="content">
-          <p class="d-flex align-items-center">
+          <a>
             {{ schedule.title }}
-            <a href="travel_destination.html"> {{ schedule.address }}</a>
-          </p>
+            <!-- <a href="travel_destination.html"> {{ schedule.tags }}</a> -->
+          </a>
         </div>
       </div>
     </div>

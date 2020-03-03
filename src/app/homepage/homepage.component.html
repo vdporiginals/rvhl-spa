@@ -10,10 +10,36 @@
   ></app-popular-schedule>
 </section>
 <section>
-  quote
+  <div class="newletter_area overlay">
+    <div
+      class="col-lg-10"
+      fxLayout="row wrap"
+      fxLayoutGap="25px"
+      fxLayoutAlign="center center"
+    >
+      <div
+        class="row align-items-center"
+        fxFlex="80%"
+        fxLayoutAlign="center center"
+      >
+        <div class="col-lg-5">
+          <div class="newsletter_text">
+            <h4>Subscribe Our Newsletter</h4>
+            <p>
+              Subscribe newsletter to get offers and about new places to
+              discover.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section>
-  <app-popular-place [popularPlaceData]="popularPlaceData"></app-popular-place>
+  <app-popular-place
+    [popularPlaceData]="popularPlaceData"
+    [popularRestaurant]="popularRestaurant"
+  ></app-popular-place>
 </section>
 <section>
   <app-intro-service></app-intro-service>

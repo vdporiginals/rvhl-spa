@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PopularPlaceComponent implements OnInit {
   @Input() popularPlaceData: any;
+  @Input() popularRestaurant: any;
   constructor() {}
 
   ngOnInit(): void {}

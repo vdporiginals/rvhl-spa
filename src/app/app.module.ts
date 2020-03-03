@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
@@ -51,7 +51,7 @@ import { IntroServiceComponent } from './homepage/intro-service/intro-service.co
     FlexLayoutModule,
     FontAwesomeModule,
     HttpClientModule,
-    CarouselModule
+    MatCarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
