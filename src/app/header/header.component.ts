@@ -25,8 +25,8 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
+      document.body.scrollTop > 40 ||
+      document.documentElement.scrollTop > 40
     ) {
       document.getElementById('sticky-header').classList.add('sticky');
     } else {

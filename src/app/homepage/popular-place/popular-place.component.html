@@ -1,10 +1,12 @@
+<div fxFlex></div>
 <div
   class="popular_places_area"
   fxLayout="column"
   fxLayoutAlign="space-around center"
+  fxFlex="80"
 >
   <div>
-    <div class="section_title text-center mb_70">
+    <div class="section_title">
       <h3>Bạn ăn gì, Bạn ở đâu</h3>
       <p>
         Gợi ý cho du khách về ẩm thực và chỗ nghỉ nổi bật nhất.
@@ -15,6 +17,7 @@
     <div
       fxFlex="65%"
       fxFlex.gt-sm="24%"
+      fxFlex.md="40%"
       *ngFor="let place of popularPlaceData.data"
     >
       <div class="single_place">
@@ -27,25 +30,12 @@
             ><h3>{{ place.title }}</h3></a
           >
           <p fxLayoutAlign="start" fxLayoutAlign="start">{{ place.address }}</p>
-          <div class="rating_days d-flex justify-content-between">
-            <!-- <span class="d-flex justify-content-center align-items-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <a href="#">(20 Review)</a>
-            </span> -->
-            <!-- <div class="days" fxLayoutAlign="start">
-              <i class="fa fa-clock-o"></i>
-              <a href="#">5 Days</a>
-            </div> -->
-          </div>
         </div>
       </div>
     </div>
     <div
       fxFlex="65%"
+      fxFlex.md="40%"
       fxFlex.gt-sm="24%"
       *ngFor="let restaurant of popularRestaurant.data"
     >
@@ -59,25 +49,14 @@
             ><h3>{{ restaurant.title }}</h3></a
           >
           <p fxLayoutAlign="start">{{ restaurant.address }}</p>
-          <div
-            class="rating_days d-flex justify-content-between"
-            fxLayoutAlign="start"
-          >
-            <!-- <span class="d-flex justify-content-center align-items-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <a href="#">(20 Review)</a>
-            </span> -->
-            <!-- <div class="days">
-              <i class="fa fa-clock-o"></i>
-              <a href="#">5 Days</a>
-            </div> -->
-          </div>
         </div>
       </div>
     </div>
   </div>
+  <div fxFlex>
+    <div class="more_place_btn text-center">
+      <a class="boxed-btn4" href="#">More Places</a>
+    </div>
+  </div>
 </div>
+<div fxFlex></div>

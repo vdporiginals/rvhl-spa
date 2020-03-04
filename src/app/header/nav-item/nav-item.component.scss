@@ -1,6 +1,6 @@
-@import '../../scss/varriable';
-@import '../../scss/mixins';
-@import '../../scss/responsive';
+@import "../../scss/varriable";
+@import "../../scss/mixins";
+@import "../../scss/responsive";
 
 .main-menu {
   padding: 12px 0;
@@ -13,8 +13,8 @@
     top: 50%;
     @include transform(translateY(-50%));
     width: 1px;
-    background: #EAEAEA;
-    content: '';
+    background: #eaeaea;
+    content: "";
     left: 2%;
 
     @media #{$mid_device} {
@@ -40,7 +40,7 @@
       //     margin-right: 15px;
       // }
       a {
-        color: #040E27;
+        color: #040e27;
         font-size: 16px;
         text-transform: capitalize;
         font-weight: bold;
@@ -52,7 +52,7 @@
         text-decoration: none;
 
         &:hover {
-          color: #1EC6B6;
+          color: #1ec6b6;
         }
 
         @media #{$mid_device} {
@@ -74,7 +74,6 @@
 
           @media #{$tablet_device} {
             display: none !important;
-            ;
           }
         }
 
@@ -84,11 +83,23 @@
           /* permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff4a52+0,fd8e5e+100 */
           background: rgb(253, 174, 92);
           /* old browsers */
-          background: -moz-linear-gradient(top, rgba(253, 174, 92, 1) 0%, rgba(253, 142, 94, 1) 100%);
+          background: -moz-linear-gradient(
+            top,
+            rgba(253, 174, 92, 1) 0%,
+            rgba(253, 142, 94, 1) 100%
+          );
           /* ff3.6-15 */
-          background: -webkit-linear-gradient(top, rgba(253, 174, 92, 1) 0%, rgba(253, 142, 94, 1) 100%);
+          background: -webkit-linear-gradient(
+            top,
+            rgba(253, 174, 92, 1) 0%,
+            rgba(253, 142, 94, 1) 100%
+          );
           /* chrome10-25,safari5.1-6 */
-          background: linear-gradient(to bottom, rgba(253, 174, 92, 1) 0%, rgba(253, 142, 94, 1) 100%);
+          background: linear-gradient(
+            to bottom,
+            rgba(253, 174, 92, 1) 0%,
+            rgba(253, 142, 94, 1) 100%
+          );
           /* w3c, ie10+, ff16+, chrome26+, opera12+, safari7+ */
           filter: progid:dximagetransform.microsoft.gradient(startcolorstr='#ff4a52', endcolorstr='#fd8e5e', gradienttype=0);
           /* ie6-9 */
@@ -99,7 +110,7 @@
           left: 0;
           opacity: 0;
           transform: scalex(0);
-          @include transition(.3s);
+          @include transition(0.3s);
         }
 
         &:hover::before {
@@ -117,56 +128,6 @@
         &:hover {
           color: #e3b04b;
         }
-      }
-
-      .submenu {
-        position: absolute;
-        left: 0;
-        top: 160%;
-        background: #fff;
-        width: 200px;
-        z-index: 2;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .02);
-        opacity: 0;
-        visibility: hidden;
-        text-align: left;
-        @include transition(.6s);
-
-        li {
-          display: block;
-
-          a {
-            padding: 10px 15px;
-            position: inherit;
-            @include transition(.3s);
-            display: block;
-            color: #040E27;
-            font-size: 14px;
-
-            &::before {
-              display: none;
-            }
-          }
-
-          &:hover a {
-            color: #000;
-          }
-        }
-      }
-
-      &:hover>.submenu {
-        opacity: 1;
-        visibility: visible;
-        top: 225%;
-      }
-
-      &:hover>a::before {
-        opacity: 1;
-        transform: scaleX(1);
-      }
-
-      &:first-child a {
-        padding-left: 0;
       }
     }
   }

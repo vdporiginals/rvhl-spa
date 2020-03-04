@@ -3,10 +3,27 @@
 @import "../../scss/responsive";
 @import "../../scss/section_title";
 
+[fxFlex]:first-of-type {
+  @media #{$tab} {
+    margin-left: 0 !important;
+  }
+  margin-left: 25px !important;
+}
+[fxFlex]:last-of-type {
+  @media #{$tab} {
+    margin-right: 25px !important;
+  }
+}
+[fxFlex]:nth-of-type(4) {
+  @media #{$medium_device} {
+    margin-right: 0 !important;
+  }
+}
+
 .popular_places_area {
   padding-top: 142px;
   padding-bottom: 150px;
-  background: #f7fafd;
+  background: #fdf9f7;
   text-align: center;
   @media #{$mobile_device} {
     padding-top: 60px;
@@ -53,31 +70,6 @@
         margin-top: 2px;
         margin-bottom: 7px;
       }
-      .rating_days {
-        span {
-          i {
-            font-size: 12px;
-            color: #fdae5c;
-          }
-          a {
-            font-size: 14px;
-            color: #7a838b;
-            margin-left: 5px;
-          }
-        }
-        .days {
-          font-size: 14px;
-          font-weight: 400;
-          color: #7a838b;
-          i {
-            margin-right: 8px;
-          }
-          a {
-            font-size: 14px;
-            color: #7a838b;
-          }
-        }
-      }
     }
     &:hover {
       @include box-shadow(0 10px 20px rgba(0, 0, 0, 0.05));
@@ -98,115 +90,32 @@
   }
 }
 
-.filter_result_wrap {
-  h3 {
-    font-size: 16px;
-    font-weight: 500;
-    color: #001d38;
-    margin-bottom: 26px;
-  }
-  .filter_bordered {
-    border: 1px solid #dee2e7;
-    @include border-radius(5px);
-    padding: 25px;
-    @media #{$mobile_device} {
-      margin-bottom: 30px;
-    }
-    @media #{$tablet_device} {
-      margin-bottom: 30px;
-    }
-  }
-  .filter_inner {
-    display: block;
-    overflow: visible;
-    .nice-select {
-      width: 100%;
-      height: 50px;
-      line-height: 50px;
-      font-size: 16px;
-      color: #aab1b7;
-      font-weight: 300;
-      background: transparent;
-      border: 1px solid #dee2e7;
-      margin-bottom: 15px;
-      &::after {
-        content: "\f0d7 ";
-        right: 21px;
-        top: 5px;
-        font-family: "fontawesome";
-        color: #aab1b7;
-        font-size: 16px;
-      }
-      .option {
-        cursor: pointer;
-        font-weight: 400;
-        line-height: 40px;
-        list-style: none;
-        min-height: 40px;
-        outline: none;
-        padding-left: 18px;
-        padding-right: 29px;
-        text-align: left;
-        -webkit-transition: all 0.2s;
-        transition: all 0.2s;
-        color: #000;
-        font-weight: 400;
-      }
-      &.open .list {
-        width: 100%;
-      }
-    }
-  }
-  .range_slider_wrap {
-    span.range {
-      color: #040e27;
-      font-size: 16px;
-      font-weight: 400;
-      display: block;
-      margin-bottom: 15px;
-    }
-    p {
-      margin-top: 14px;
-      margin-bottom: 27px;
-      input {
-        background-color: transparent;
-      }
-    }
-    .ui-widget.ui-widget-content {
-      border: 0;
-      background: #ffd8da;
-    }
-    .ui-slider-horizontal {
-      height: 2px;
-    }
-    .ui-state-default,
-    .ui-widget-content .ui-state-default,
-    .ui-widget-header .ui-state-default,
-    .ui-button,
-    html .ui-button.ui-state-disabled:hover,
-    html .ui-button.ui-state-disabled:active {
-      border: 2px solid #e3b04b;
-      background: #fff;
-      font-weight: normal;
-      width: 14px;
-      height: 16px;
-      border-radius: 5px;
-    }
-    .ui-widget-header {
-      background: #ff4a52;
-    }
-    .ui-slider-horizontal .ui-slider-handle {
-      top: -7px;
-      margin-left: -0.6em;
-    }
-  }
-  .reset_btn {
-    button {
-      width: 100%;
-    }
-  }
-}
-
 a {
   text-decoration: none;
+}
+
+.boxed-btn4 {
+  background: #e3b04b;
+  color: #f8f8f8;
+  display: inline-block;
+  padding: 13px 39px;
+  font-family: $font1;
+  font-size: 16px;
+  font-weight: 500;
+  border: 0;
+  @include border-radius(5px);
+  text-align: center;
+  text-transform: capitalize;
+  @include transition(0.3s);
+  cursor: pointer;
+  &:hover {
+    background: #2b2b28;
+    color: #f8f8f8 !important;
+  }
+  &:focus {
+    outline: none;
+  }
+  &.large-width {
+    width: 220px;
+  }
 }

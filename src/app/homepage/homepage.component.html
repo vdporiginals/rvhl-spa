@@ -1,46 +1,39 @@
-<section>
-  <app-slider-area [sliderData]="sliderData"></app-slider-area>
-</section>
-<section>
-  <app-transfer></app-transfer>
-</section>
-<section>
+<app-slider-area [sliderData]="sliderData"></app-slider-area>
+<app-transfer></app-transfer>
+<section class="bg-schedule">
   <app-popular-schedule
     [popularScheduleData]="popularScheduleData"
   ></app-popular-schedule>
 </section>
-<section>
-  <div class="newletter_area overlay">
+<div class="newletter_area overlay">
+  <div
+    class="col-lg-10"
+    fxLayout="row wrap"
+    fxLayoutGap="25px"
+    fxLayoutAlign="center center"
+  >
     <div
-      class="col-lg-10"
-      fxLayout="row wrap"
-      fxLayoutGap="25px"
+      class="row align-items-center"
+      fxFlex="80%"
       fxLayoutAlign="center center"
     >
-      <div
-        class="row align-items-center"
-        fxFlex="80%"
-        fxLayoutAlign="center center"
-      >
-        <div class="col-lg-5">
-          <div class="newsletter_text">
-            <h4>Subscribe Our Newsletter</h4>
-            <p>
-              Subscribe newsletter to get offers and about new places to
-              discover.
-            </p>
-          </div>
+      <div class="col-lg-5">
+        <div class="newsletter_text">
+          <h4>Subscribe Our Newsletter</h4>
+          <p>
+            Subscribe newsletter to get offers and about new places to discover.
+          </p>
         </div>
       </div>
     </div>
   </div>
-</section>
-<section>
-  <app-popular-place
-    [popularPlaceData]="popularPlaceData"
-    [popularRestaurant]="popularRestaurant"
-  ></app-popular-place>
-</section>
-<section>
+</div>
+<app-popular-place
+  [popularPlaceData]="popularPlaceData"
+  [popularRestaurant]="popularRestaurant"
+></app-popular-place>
+<app-video-area></app-video-area>
+
+<div class="bg-schedule">
   <app-intro-service></app-intro-service>
-</section>
+</div>

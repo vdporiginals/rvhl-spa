@@ -24,6 +24,7 @@ import { TransferComponent } from './homepage/transfer/transfer.component';
 import { PopularScheduleComponent } from './homepage/popular-schedule/popular-schedule.component';
 import { PopularPlaceComponent } from './homepage/popular-place/popular-place.component';
 import { IntroServiceComponent } from './homepage/intro-service/intro-service.component';
+import { VideoAreaComponent } from './homepage/video-area/video-area.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { IntroServiceComponent } from './homepage/intro-service/intro-service.co
     TransferComponent,
     PopularScheduleComponent,
     PopularPlaceComponent,
-    IntroServiceComponent
+    IntroServiceComponent,
+    VideoAreaComponent
   ],
   imports: [
     BrowserModule,
