@@ -1,0 +1,52 @@
+@import "../../scss/varriable";
+@import "../../scss/mixins";
+@import "../../scss/responsive";
+@import "../../scss/section_title";
+
+.recent_trip_area {
+  padding-top: 150px;
+  padding-bottom: 120px;
+  .single_trip {
+    margin-bottom: 30px;
+    .thumb {
+      @include border-radius(5px);
+      overflow: hidden;
+      img {
+        width: 100%;
+        @include border-radius(5px);
+      }
+    }
+    .info {
+      padding-top: 16px;
+      text-align: center;
+      .date {
+        span {
+          font-size: 14px;
+          font-weight: 400;
+          color: #7a838b;
+          display: block;
+        }
+      }
+      a {
+        text-decoration: none;
+        h3 {
+          color: #040e27;
+          font-size: 22px;
+          font-weight: 400;
+          margin-bottom: 0;
+          margin-top: 10px;
+          @include transition(0.3s);
+        }
+      }
+    }
+    &:hover {
+      .info {
+        a {
+          h3 {
+            color: #e3b04b;
+          }
+        }
+      }
+    }
+  }
+}

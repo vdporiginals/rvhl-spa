@@ -25,6 +25,7 @@ import { PopularScheduleComponent } from './homepage/popular-schedule/popular-sc
 import { PopularPlaceComponent } from './homepage/popular-place/popular-place.component';
 import { IntroServiceComponent } from './homepage/intro-service/intro-service.component';
 import { VideoAreaComponent } from './homepage/video-area/video-area.component';
+import { RecentBlogsComponent } from './homepage/recent-blogs/recent-blogs.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { VideoAreaComponent } from './homepage/video-area/video-area.component';
     PopularScheduleComponent,
     PopularPlaceComponent,
     IntroServiceComponent,
-    VideoAreaComponent
+    VideoAreaComponent,
+    RecentBlogsComponent
   ],
   imports: [
     BrowserModule,

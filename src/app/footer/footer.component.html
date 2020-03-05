@@ -1,10 +1,6 @@
 <footer>
-  <div
-    class="row text-center"
-    fxLayout="row wrap"
-    fxLayoutAlign="center center"
-  >
-    <div fxFlex="80%">
+  <div fxLayout="row wrap" fxLayoutAlign="center center">
+    <div fxFlex>
       <div fxFlex="33%" fxLayoutAlign="center center">
         <div class="footer_logo">
           <a href="#">
@@ -17,11 +13,7 @@
           </a>
         </div>
       </div>
-      <div
-        class="col-md-6 col-sm-6 col-xs-12"
-        fxFlex="33%"
-        fxLayoutAlign="center center"
-      >
+      <div fxFlex="33%" fxLayoutAlign="center center">
         <ul class="list-inline">
           <li>
             <a href="#"><fa-icon [icon]="faFacebookMessenger"></fa-icon></a>
@@ -31,23 +23,21 @@
           </li>
         </ul>
       </div>
-      <div
-        class="col-md-6 col-sm-6 col-xs-12"
-        fxFlex="33%"
-        fxLayoutAlign="center center"
-      >
-        <ul class="menu list-inline" fxLayoutAlign="end">
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <ul
+          class="menu list-inline"
+          fxLayoutAlign="end"
+          fxLayout.lt-md="column"
+        >
           <li>
             <a href="#">Trang chủ</a>
           </li>
-
           <li>
             <a href="#">Lịch trình</a>
           </li>
           <li>
             <a href="#">Di Chuyển</a>
           </li>
-
           <li>
             <a href="#">Ăn gì</a>
           </li>
@@ -61,14 +51,14 @@
   <div class="copy-right_text" fxLayout="column">
     <div class="container" fxFlex="80" fxLayoutAlign="center center">
       <div class="footer_border"></div>
-      <div class="col-xl-12">
+      <div>
         <p class="copy_right text-center">
-          Copyright &copy;
+          Copyright &copy; Idea by <a href="https://colorlib.com">Colorlib</a>
           <script>
             document.write(new Date().getFullYear());
           </script>
           All rights reserved |
-          <i class="fa fa-heart-o" aria-hidden="true"></i> by
+          <i class="fa fa-heart-o" aria-hidden="true"></i>
           <a>Review Hạ Long Team</a>
         </p>
       </div>
