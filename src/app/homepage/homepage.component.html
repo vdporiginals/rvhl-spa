@@ -6,24 +6,13 @@
   ></app-popular-schedule>
 </section>
 <div class="newletter_area overlay">
-  <div
-    class="col-lg-10"
-    fxLayout="row wrap"
-    fxLayoutGap="25px"
-    fxLayoutAlign="center center"
-  >
-    <div
-      class="row align-items-center"
-      fxFlex="80%"
-      fxLayoutAlign="center center"
-    >
-      <div class="col-lg-5">
-        <div class="newsletter_text">
-          <h4>Subscribe Our Newsletter</h4>
-          <p>
-            Subscribe newsletter to get offers and about new places to discover.
-          </p>
-        </div>
+  <div fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="center center">
+    <div fxFlex="80%" fxLayoutAlign="center center">
+      <div class="newsletter_text">
+        <h4>Subscribe Our Newsletter</h4>
+        <p>
+          Subscribe newsletter to get offers and about new places to discover.
+        </p>
       </div>
     </div>
   </div>
@@ -37,4 +26,4 @@
   <app-intro-service></app-intro-service>
 </div>
 
-<app-recent-blogs></app-recent-blogs>
+<app-recent-blogs [recentBlogs]="recentBlogs"></app-recent-blogs>

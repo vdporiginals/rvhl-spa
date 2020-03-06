@@ -1,8 +1,9 @@
-<div fxFlex></div>
+<div fxFlex fxHide.lt-md></div>
 <div
   class="recent_trip_area"
   fxLayout="column"
   fxFlex="80"
+  fxFlex.lt-md
   fxLayoutAlign="center center"
 >
   <div fxFlex>
@@ -16,51 +17,21 @@
     fxLayoutGap="45px"
     fxLayout.lt-md="column"
   >
-    <div fxFlex="33">
+    <div fxFlex="33" *ngFor="let blog of recentBlogs.data">
       <div class="single_trip">
         <div class="thumb">
-          <img src="img/trip/1.png" alt="" />
+          <img [src]="blog.image" [alt]="blog.title" />
         </div>
         <div class="info">
           <div class="date">
             <span>Oct 12, 2019</span>
           </div>
           <a href="#">
-            <h3>Journeys Are Best Measured In New Friends</h3>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="33">
-      <div class="single_trip">
-        <div class="thumb">
-          <img src="img/trip/2.png" alt="" />
-        </div>
-        <div class="info">
-          <div class="date">
-            <span>Oct 12, 2019</span>
-          </div>
-          <a href="#">
-            <h3>Journeys Are Best Measured In New Friends</h3>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="33">
-      <div class="single_trip">
-        <div class="thumb">
-          <img src="img/trip/3.png" alt="" />
-        </div>
-        <div class="info">
-          <div class="date">
-            <span>Oct 12, 2019</span>
-          </div>
-          <a href="#">
-            <h3>Journeys Are Best Measured In New Friends</h3>
+            <h3>{{ blog.title }}</h3>
           </a>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div fxFlex></div>
+<div fxFlex fxHide.lt-md></div>

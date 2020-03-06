@@ -1,17 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ApiService } from '../shared/api.service';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { ApiService } from "../shared/api.service";
+import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  selector: "app-homepage",
+  templateUrl: "./homepage.component.html",
+  styleUrls: ["./homepage.component.scss"]
 })
 export class HomepageComponent implements OnInit, OnDestroy {
   sliderData: any = {};
   popularScheduleData: any = {};
   popularPlaceData: any = {};
   popularRestaurant: any = {};
+  recentBlogs: any = {};
   isLoadingResults = true;
   private subcription: Subscription;
 
@@ -31,6 +32,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
         this.popularScheduleData = res[1];
         this.popularPlaceData = res[2];
         this.popularRestaurant = res[3];
+        this.recentBlogs = res[3];
         this.isLoadingResults = false;
       },
       err => {

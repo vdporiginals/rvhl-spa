@@ -23,12 +23,15 @@ export class ApiService {
     const popularRestaurant = this.http.get(
       `${this.apiUrl}/blogs?select=title,description,image,seo,address&limit=3&tags=restaurant`
     );
-    // const response4 = this.http.get(apiUrl + '1940345/');
+    const recentBlogs = this.http.get(
+      `${this.apiUrl}/blogs?select=title,description,image,seo,address&limit=3`
+    );
     return forkJoin([
       sliderArea,
       popularSchedule,
       popularPlace,
-      popularRestaurant
+      popularRestaurant,
+      recentBlogs
     ]);
   }
 }
