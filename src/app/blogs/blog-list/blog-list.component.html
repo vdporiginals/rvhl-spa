@@ -2,11 +2,11 @@
   class="blog_left_sidebar"
   *ngFor="let blog of allBlogs.data; let i = index"
 >
-  <div class="blog_item">
+  <mat-card class="blog_item">
     <div class="blog_item_img">
       <img
+        mat-card-image
         class="card-img rounded-0"
-        fxFlex
         [src]="blog.image"
         [alt]="blog.title"
       />
@@ -15,24 +15,21 @@
         <p>Jan</p>
       </a>
     </div>
-
     <div class="blog_details">
       <a class="d-inline-block" [routerLink]="[blog._id, blog.seo]">
         <h2>{{ blog.title }}</h2>
       </a>
-      <p>
-        {{ blog.description }}
-      </p>
+      <p>{{ blog.description }}</p>
       <ul class="blog-info-link">
         <li>
-          <a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a>
+          <a href="#"><fa-icon [icon]="faUser"></fa-icon> Travel, Lifestyle</a>
         </li>
         <li>
-          <a href="#"><i class="fa fa-comments"></i> 03 Comments</a>
+          <a href="#"><fa-icon [icon]="faComment"></fa-icon> 03 Comments</a>
         </li>
       </ul>
     </div>
-  </div>
+  </mat-card>
 </div>
 <div class="blog-pagination justify-content-center">
   <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">

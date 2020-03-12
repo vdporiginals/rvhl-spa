@@ -1,6 +1,51 @@
 @import "../../scss/varriable";
 @import "../../scss/mixins";
 @import "../../scss/responsive";
+@import "../../scss/theme-default.scss";
+a {
+  display: flex;
+  color: $font_1 !important;
+  text-decoration: none;
+  @include transform_time(0.5s);
+  &:hover,
+  :hover {
+    background: -webkit-linear-gradient(131deg, $btn_bg 0%, $btn_bg 99%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    @include transform_time(0.5s);
+  }
+}
+.media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.media-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.text_overflow {
+  white-space: nowrap;
+  max-width: 228px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.single_sidebar_widget {
+  background: #fbf9ff;
+  padding: 30px;
+  margin-bottom: 30px;
+  .btn_1 {
+    margin-top: 0px;
+  }
+}
 .blog_right_sidebar {
   // border: 1px solid #eeeeee;
   // background: #fafaff;
@@ -15,15 +60,6 @@
       display: block;
       padding-top: 15px;
       border-bottom: 1px solid #f0e9ff;
-    }
-  }
-
-  .single_sidebar_widget {
-    background: #fbf9ff;
-    padding: 30px;
-    margin-bottom: 30px;
-    .btn_1 {
-      margin-top: 0px;
     }
   }
 
