@@ -1,11 +1,44 @@
 <div class="main-menu">
   <ul id="navigation">
-    <li><a class="active" href="index.html">Trang chủ</a></li>
-    <li><a href="about.html">Lịch trình</a></li>
-    <li><a class="" href="travel_destination.html">Di Chuyển</a></li>
     <li>
-      <a href="#">Ăn gì</a>
+      <a
+        [routerLink]="['']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Trang chủ</a
+      >
     </li>
-    <li><a href="contact.html">Ở đâu</a></li>
+    <li>
+      <a
+        [routerLink]="['blogs/lich-trinh']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Lịch trình</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['blogs/di-chuyen']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Di Chuyển</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['blogs/an-gi']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Ăn gì</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['blogs/cho-o']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Ở đâu</a
+      >
+    </li>
   </ul>
 </div>

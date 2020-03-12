@@ -1,0 +1,226 @@
+@import "../../scss/varriable";
+@import "../../scss/mixins";
+@import "../../scss/responsive";
+.blog_right_sidebar {
+  // border: 1px solid #eeeeee;
+  // background: #fafaff;
+  // padding: 30px;
+  .widget_title {
+    font-size: 20px;
+    margin-bottom: 40px;
+    // color: $title-color;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-top: 15px;
+      border-bottom: 1px solid #f0e9ff;
+    }
+  }
+
+  .single_sidebar_widget {
+    background: #fbf9ff;
+    padding: 30px;
+    margin-bottom: 30px;
+    .btn_1 {
+      margin-top: 0px;
+    }
+  }
+
+  .search_widget {
+    .form-control {
+      height: 50px;
+      border-color: #f0e9ff;
+      font-size: 13px;
+      color: #999999;
+      padding-left: 20px;
+      border-radius: 0;
+      border-right: 0;
+
+      &::placeholder {
+        color: #999999;
+      }
+
+      &:focus {
+        border-color: #f0e9ff;
+        outline: 0;
+        box-shadow: none;
+      }
+    }
+
+    .input-group {
+      button {
+        background: $white_color;
+        border-left: 0;
+        border: 1px solid #f0e9ff;
+        padding: 4px 15px;
+        border-left: 0;
+
+        i,
+        span {
+          font-size: 14px;
+          color: #999999;
+        }
+      }
+    }
+  }
+
+  .newsletter_widget {
+    .form-control {
+      height: 50px;
+      border-color: #f0e9ff;
+      font-size: 13px;
+      color: #999999;
+      padding-left: 20px;
+      border-radius: 0;
+      // border-right: 0;
+
+      &::placeholder {
+        color: #999999;
+      }
+
+      &:focus {
+        border-color: #f0e9ff;
+        outline: 0;
+        box-shadow: none;
+      }
+    }
+
+    .input-group {
+      button {
+        background: $white_color;
+        border-left: 0;
+        border: 1px solid #f0e9ff;
+        padding: 4px 15px;
+        border-left: 0;
+
+        i,
+        span {
+          font-size: 14px;
+          color: #999999;
+        }
+      }
+    }
+  }
+
+  .post_category_widget {
+    .cat-list {
+      li {
+        border-bottom: 1px solid #f0e9ff;
+        transition: all 0.3s ease 0s;
+        padding-bottom: 12px;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        a {
+          font-size: 14px;
+          line-height: 20px;
+          color: #888888;
+
+          p {
+            margin-bottom: 0px;
+          }
+        }
+
+        & + li {
+          padding-top: 15px;
+        }
+
+        &:hover {
+          // border-// color: $title-color;
+          a {
+            // // color: $baseColor;
+          }
+        }
+      }
+    }
+  }
+
+  .popular_post_widget {
+    .post_item {
+      .media-body {
+        justify-content: center;
+        align-self: center;
+        padding-left: 20px;
+
+        h3 {
+          font-size: 16px;
+          line-height: 20px;
+          margin-bottom: 6px;
+          transition: all 0.3s linear;
+        }
+
+        a {
+          // color: $title_color;
+          &:hover {
+            color: $white_color;
+          }
+        }
+
+        p {
+          font-size: 14px;
+          line-height: 21px;
+          margin-bottom: 0px;
+        }
+      }
+
+      & + .post_item {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .tag_cloud_widget {
+    ul {
+      li {
+        display: inline-block;
+
+        a {
+          display: inline-block;
+          border: 1px solid #eeeeee;
+          background: #fff;
+          padding: 4px 20px;
+          margin-bottom: 8px;
+          margin-right: 3px;
+          transition: all 0.3s ease 0s;
+          color: #888888;
+          font-size: 13px;
+
+          &:hover {
+            background: $btn_bg;
+            color: #fff !important;
+            -webkit-text-fill-color: #fff;
+            text-decoration: none;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+  }
+
+  .instagram_feeds {
+    .instagram_row {
+      display: flex;
+      margin-right: -6px;
+      margin-left: -6px;
+
+      li {
+        width: 33.33%;
+        float: left;
+        padding-right: 6px;
+        padding-left: 6px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .br {
+    width: 100%;
+    height: 1px;
+    background: rgb(238, 238, 238);
+    margin: 30px 0px;
+  }
+}

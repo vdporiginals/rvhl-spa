@@ -1,0 +1,16 @@
+<section banner>
+  <app-blog-banner></app-blog-banner>
+</section>
+<section fxLayout="row" class="section-padding">
+  <div fxFlex="10"></div>
+  <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+    <div fxFlex="66">
+      <app-blog-list *ngIf="router.url === '/blogs'"></app-blog-list>
+      <app-blog-detail *ngIf="router.url !== '/blogs'"></app-blog-detail>
+    </div>
+    <div fxFlex="33">
+      <app-blog-filter></app-blog-filter>
+    </div>
+  </div>
+  <div fxFlex="10"></div>
+</section>
