@@ -1,7 +1,12 @@
-<section class="blog_area single-post-area section-padding">
+<mat-card class="blog_area single-post-area section-padding">
   <div class="single-post">
     <div class="feature-img">
-      <img class="img-fluid" [src]="blogDetail.image" alt="blogDetail.title" />
+      <img
+        mat-card-image
+        class="img-fluid"
+        [src]="blogDetail.image"
+        alt="blogDetail.title"
+      />
     </div>
     <div class="blog_details">
       <h2>
@@ -15,8 +20,8 @@
           <a href="#"><i class="fa fa-comments"></i> 03 Comments</a>
         </li>
       </ul>
-      <div>
-        <p [innerHTML]="blogDetail.content"></p>
+      <div [innerHTML]="blogDetail.content">
+        <!-- <p ></p> -->
       </div>
     </div>
   </div>
@@ -97,4 +102,4 @@
       </div>
     </div>
   </div>
-</section>
+</mat-card>

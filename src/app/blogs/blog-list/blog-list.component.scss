@@ -6,6 +6,7 @@
 a {
   color: $font_1 !important;
   text-decoration: none;
+  cursor: pointer;
   @include transform_time(0.5s);
   &:hover,
   :hover {
@@ -15,6 +16,10 @@ a {
     text-decoration: none;
     @include transform_time(0.5s);
   }
+}
+a.disabled {
+  color: gray;
+  cursor: not-allowed;
 }
 
 .pagination {
@@ -150,6 +155,9 @@ a {
 .blog-pagination {
   justify-content: center !important;
   margin-top: 80px;
+  @media (min-width: 1700px) {
+    margin-right: 225px;
+  }
 }
 
 .blog-pagination .page-link {
@@ -168,7 +176,7 @@ a {
   border: 1px solid #f0e9ff;
   margin-right: 10px;
 
-  i,
+  fa-icon,
   span {
     font-size: 13px;
   }
@@ -189,4 +197,8 @@ a {
 
 .blog-pagination .page-item:last-child .page-link {
   margin-right: 0;
+}
+
+.current {
+  background: -webkit-linear-gradient(131deg, $btn_bg 0%, $btn_bg 99%);
 }

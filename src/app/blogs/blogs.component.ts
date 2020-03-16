@@ -15,25 +15,11 @@ export class BlogsComponent implements OnInit, OnDestroy {
   pageOfItems = [];
   private subcription: Subscription;
 
-  constructor(public router: Router, private api: ApiService) {
-    this.getData();
-  }
+  constructor(public router: Router, private api: ApiService) {}
 
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.subcription.unsubscribe();
-  }
-
-  getData() {
-    this.subcription = this.api.getBlogs().subscribe(
-      res => {
-        this.allBlogs = res[0];
-      },
-      err => {
-        console.log(err);
-        this.isLoadingResults = false;
-      }
-    );
   }
 }

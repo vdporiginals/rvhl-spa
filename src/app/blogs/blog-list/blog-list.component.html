@@ -1,53 +1,102 @@
-<div
-  class="blog_left_sidebar"
-  *ngFor="let blog of allBlogs.data; let i = index"
->
-  <mat-card class="blog_item">
-    <div class="blog_item_img">
-      <img
-        mat-card-image
-        class="card-img rounded-0"
-        [src]="blog.image"
-        [alt]="blog.title"
-      />
-      <a href="#" class="blog_item_date">
-        <h3>15</h3>
-        <p>Jan</p>
-      </a>
-    </div>
-    <div class="blog_details">
-      <a class="d-inline-block" [routerLink]="[blog._id, blog.seo]">
-        <h2>{{ blog.title }}</h2>
-      </a>
-      <p>{{ blog.description }}</p>
-      <ul class="blog-info-link">
-        <li>
-          <a href="#"><fa-icon [icon]="faUser"></fa-icon> Travel, Lifestyle</a>
+<div class="blog_left_sidebar">
+  <div
+    *ngFor="
+      let blog of allBlogs
+        | paginate
+          : {
+              itemsPerPage: limit,
+              currentPage: currentPage,
+              totalItems: count
+            }
+    "
+  >
+    <mat-card class="blog_item">
+      <div class="blog_item_img">
+        <img
+          mat-card-image
+          class="card-img rounded-0"
+          [src]="blog.image"
+          [alt]="blog.title"
+        />
+        <a href="#" class="blog_item_date">
+          <h3>15</h3>
+          <p>Jan</p>
+        </a>
+      </div>
+      <div class="blog_details">
+        <a class="d-inline-block" [routerLink]="[blog._id, blog.seo]">
+          <h2>{{ blog.title }}</h2>
+        </a>
+        <p>{{ blog.description }}</p>
+        <ul class="blog-info-link">
+          <li>
+            <a href="#"
+              ><fa-icon [icon]="faUser"></fa-icon> Travel, Lifestyle</a
+            >
+          </li>
+          <li>
+            <a href="#"><fa-icon [icon]="faComment"></fa-icon> 03 Comments</a>
+          </li>
+        </ul>
+      </div>
+    </mat-card>
+  </div>
+  <pagination-template
+    class="blog-pagination justify-content-center"
+    #p="paginationApi"
+    (pageChange)="pageChange.emit($event)"
+  >
+    <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
+      <div>
+        <li class="page-item">
+          <a
+            class="page-link"
+            aria-label="Previous"
+            (click)="getData(currentPage - 1)"
+            *ngIf="!isFirstPage"
+          >
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
+          <a
+            class="page-link disabled"
+            aria-label="Previous"
+            *ngIf="isFirstPage"
+          >
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
         </li>
-        <li>
-          <a href="#"><fa-icon [icon]="faComment"></fa-icon> 03 Comments</a>
+      </div>
+      <div
+        *ngFor="let page of p.pages"
+        [class.current]="p.getCurrent() === page.value"
+      >
+        <li class="page-item">
+          <a
+            class="page-link"
+            (click)="getData(page.value)"
+            *ngIf="p.getCurrent() !== page.value"
+            >{{ page.label }}</a
+          >
         </li>
-      </ul>
-    </div>
-  </mat-card>
-</div>
-<div class="blog-pagination justify-content-center">
-  <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
-    <li class="page-item">
-      <a href="#" class="page-link" aria-label="Previous">
-        <i class="ti-angle-left"></i>
-      </a>
-    </li>
-    <li class="page-item">
-      <a href="#" class="page-link">1</a>
-    </li>
-    <li class="page-item active">
-      <a href="#" class="page-link">2</a>
-    </li>
-    <li class="page-item">
-      <a href="#" class="page-link" aria-label="Next">
-        <i class="ti-angle-right"></i>
-      </a>
-    </li>
-  </ul>
+        <li class="page-item" *ngIf="p.getCurrent() === page.value">
+          <a class="page-link active">{{ page.label }}</a>
+        </li>
+      </div>
+      <div>
+        <li class="page-item">
+          <a
+            class="page-link"
+            aria-label="Next"
+            (click)="getData(currentPage + 1)"
+            *ngIf="!isLastPage"
+          >
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+          <a class="page-link disabled" aria-label="Next" *ngIf="isLastPage">
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+        </li>
+      </div>
+    </ul>
+  </pagination-template>
 </div>
