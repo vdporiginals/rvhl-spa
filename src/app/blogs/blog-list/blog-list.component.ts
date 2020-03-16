@@ -38,11 +38,11 @@ export class BlogListComponent implements OnInit, OnDestroy {
   isFirstPage = false;
   private subcription: Subscription;
 
-  constructor(public router: Router, private api: ApiService) {
+  constructor(public router: Router, private api: ApiService) {}
+
+  ngOnInit(): void {
     this.getData(1);
   }
-
-  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.subcription.unsubscribe();
