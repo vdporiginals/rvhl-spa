@@ -35,7 +35,7 @@
     border-radius: 5px;
     overflow: hidden;
     @include transition(0.3s);
-    // height: 261px !important;
+    height: 261px !important;
     &:before {
       background: -moz-linear-gradient(
         top,
@@ -63,8 +63,8 @@
     }
     .thumb {
       img {
-        min-height: 261px !important;
-        width: 100%;
+        min-height: 293px !important;
+        width: 113%;
         @include border-radius(5px);
       }
     }

@@ -1,8 +1,51 @@
 /*============ Start Blog Single Styles  =============*/
-@import "../../../scss/varriable";
-@import "../../../scss/mixins";
-@import "../../../scss/responsive";
-@import "../../../scss/theme-default.scss";
+@import "../../scss/varriable";
+@import "../../scss/mixins";
+@import "../../scss/responsive";
+@import "../../scss/theme-default.scss";
+
+.mat-card-image:first-child {
+  margin-top: -116px;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.blog_area {
+  a {
+    color: $font_1 !important;
+    text-decoration: none;
+    @include transform_time(0.5s);
+    &:hover,
+    :hover {
+      background: -webkit-linear-gradient(
+        131deg,
+        $btn_hover 0%,
+        $btn_hover 99%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      @include transform_time(0.5s);
+    }
+  }
+}
+
+.mb-4,
+.my-4 {
+  margin-bottom: 1.5rem !important;
+}
+.mt-3,
+.my-3 {
+  margin-top: 1rem !important;
+}
+
+.justify-content-between {
+  display: flex !important;
+  -webkit-box-pack: justify !important;
+  -ms-flex-pack: justify !important;
+  justify-content: space-between !important;
+  text-align: center;
+}
 
 .single-post-area {
   .blog_details {
@@ -93,7 +136,7 @@
     .like-info {
       font-size: 14px;
 
-      i,
+      fa-icon,
       span {
         font-size: 16px;
         margin-right: 5px;
@@ -103,7 +146,7 @@
     .comment-count {
       font-size: 14px;
 
-      i,
+      fa-icon,
       span {
         font-size: 16px;
         margin-right: 5px;
@@ -119,19 +162,53 @@
           margin: 0;
         }
 
-        i,
+        fa-icon,
         span {
           font-size: 14px;
           color: #999999;
         }
 
         &:hover {
-          i,
+          fa-icon,
           span {
-            // // color: $baseColor;
+            color: $btn_bg;
           }
         }
       }
+    }
+  }
+
+  .blog-info-link {
+    li {
+      float: left;
+      font-size: 14px;
+
+      a {
+        color: #999999;
+      }
+
+      i,
+      span {
+        font-size: 13px;
+        margin-right: 5px;
+      }
+
+      &::after {
+        content: "|";
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      &:last-child::after {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+      display: table;
     }
   }
 
@@ -159,8 +236,6 @@
 
     a {
       display: inline-block;
-
-      // color: $title-color;
       &:hover {
         color: $btn_bg;
       }
@@ -188,7 +263,6 @@
     h4 {
       font-size: 18px;
       line-height: 25px;
-      // color: $title-color;
     }
 
     .nav-left {
@@ -449,5 +523,3 @@
     color: #777;
   }
 }
-
-/*============ End Blog Single Styles  =============*/

@@ -9,7 +9,6 @@ import {
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/shared/api.service';
 import { Router } from '@angular/router';
-import { delay, map, tap } from 'rxjs/operators';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -53,7 +52,6 @@ export class BlogListComponent implements OnInit, OnDestroy {
       res => {
         this.allBlogs = res[0].data;
         this.count = res[0].count;
-        console.log(this.allBlogs);
         if (res[0].pagination.next === undefined) {
           this.isLastPage = true;
           this.currentPage = res[0].pagination.prev.page + 1;

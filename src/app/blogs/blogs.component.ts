@@ -1,25 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { ApiService } from '../shared/api.service';
-
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
   styleUrls: ['./blogs.component.scss']
 })
-export class BlogsComponent implements OnInit, OnDestroy {
-  allBlogs: any = {};
-  isLoadingResults = true;
-  pager = {};
-  pageOfItems = [];
-  private subcription: Subscription;
-
-  constructor(public router: Router, private api: ApiService) {}
+export class BlogsComponent implements OnInit {
+  constructor() {}
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {
-    this.subcription.unsubscribe();
-  }
 }

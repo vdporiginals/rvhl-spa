@@ -14,10 +14,10 @@
       </h2>
       <ul class="blog-info-link mt-3 mb-4">
         <li>
-          <a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a>
+          <a href="#"><fa-icon [icon]="faUser"></fa-icon> Travel, Lifestyle</a>
         </li>
         <li>
-          <a href="#"><i class="fa fa-comments"></i> 03 Comments</a>
+          <a href="#"><fa-icon [icon]="faComment"></fa-icon> 03 Comments</a>
         </li>
       </ul>
       <div [innerHTML]="blogDetail.content">
@@ -28,7 +28,7 @@
   <div class="navigation-top">
     <div class="d-sm-flex justify-content-between text-center">
       <p class="like-info">
-        <span class="align-middle"><i class="fa fa-heart"></i></span>
+        <span class="align-middle"><fa-icon [icon]="faHeart"></fa-icon></span>
         Lily and 4 people like this
       </p>
       <div class="col-sm-4 text-center my-2 my-sm-0">
@@ -36,21 +36,21 @@
       </div>
       <ul class="social-icons">
         <li>
-          <a href="#"><i class="fa fa-facebook-f"></i></a>
+          <a href="#"><fa-icon [icon]="faFacebook"></fa-icon></a>
         </li>
         <li>
-          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><fa-icon [icon]="faFacebookMessenger"></fa-icon></a>
         </li>
       </ul>
     </div>
-    <div class="navigation-area">
+    <!-- <div class="navigation-area">
       <div class="row">
         <div
           class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center"
         >
           <div class="thumb">
             <a href="#">
-              <img class="img-fluid" src="img/post/preview.png" alt="" />
+              <img class="img-fluid" src="img/post/preview.png" alt="img" />
             </a>
           </div>
           <div class="arrow">
@@ -81,16 +81,16 @@
           </div>
           <div class="thumb">
             <a href="#">
-              <img class="img-fluid" src="img/post/next.png" alt="" />
+              <img class="img-fluid" src="img/post/next.png" alt="img" />
             </a>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="blog-author">
     <div class="media align-items-center">
-      <img src="img/blog/author.png" alt="" />
+      <img src="img/blog/author.png" alt="user.avatar" />
       <div class="media-body">
         <a href="#">
           <h4>Harvard milan</h4>
@@ -102,4 +102,8 @@
       </div>
     </div>
   </div>
+</mat-card>
+
+<mat-card>
+  <app-blog-comment></app-blog-comment>
 </mat-card>

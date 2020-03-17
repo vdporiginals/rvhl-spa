@@ -18,9 +18,9 @@
     fxLayout.lt-md="column"
   >
     <div fxFlex="33" fxFlex.lt-md *ngFor="let blog of recentBlogs.data">
-      <div class="single_trip">
+      <mat-card class="single_trip">
         <div class="thumb">
-          <img [src]="blog.image" [alt]="blog.title" />
+          <img mat-card-image [src]="blog.image" [alt]="blog.title" />
         </div>
         <div class="info">
           <div class="date">
@@ -30,7 +30,7 @@
             <h3>{{ blog.title }}</h3>
           </a>
         </div>
-      </div>
+      </mat-card>
     </div>
   </div>
 </div>

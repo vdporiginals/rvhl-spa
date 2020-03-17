@@ -22,9 +22,9 @@
       fxFlex.gt-sm="24%"
       fxFlex.md="40%"
     >
-      <div class="single_destination">
+      <mat-card class="single_destination">
         <div class="thumb">
-          <img [src]="schedule.image" [alt]="schedule.title" />
+          <img mat-card-image [src]="schedule.image" [alt]="schedule.title" />
         </div>
         <div class="content" fxLayoutAlign="center center">
           <a>
@@ -32,7 +32,7 @@
             <!-- <a href="travel_destination.html"> {{ schedule.tags }}</a> -->
           </a>
         </div>
-      </div>
+      </mat-card>
     </div>
   </div>
   <div fxFlex>

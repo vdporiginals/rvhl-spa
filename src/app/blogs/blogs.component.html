@@ -5,8 +5,7 @@
   <div fxFlex="10"></div>
   <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
     <div fxFlex="66" fxFlex.lt-md>
-      <app-blog-list *ngIf="router.url === '/blogs'"></app-blog-list>
-      <app-blog-detail *ngIf="router.url !== '/blogs'"></app-blog-detail>
+      <router-outlet></router-outlet>
     </div>
     <div fxFlex="33" fxFlex.lt-md>
       <app-blog-filter></app-blog-filter>
