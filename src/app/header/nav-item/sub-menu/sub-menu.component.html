@@ -1,0 +1,12 @@
+<mat-menu
+  #matMenuComp
+  #childMenu="matMenu"
+  [overlapTrigger]="false"
+  [hasBackdrop]="false"
+>
+  <span (mouseenter)="mouseenter2.emit()" (mouseleave)="mouseleave2.emit()">
+    <span *ngFor="let item of subMenu">
+      <a mat-menu-item [routerLink]="[item.link]">{{ item.text }}</a>
+    </span>
+  </span>
+</mat-menu>

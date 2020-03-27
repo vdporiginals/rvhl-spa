@@ -1,44 +1,44 @@
 <div class="main-menu">
   <ul id="navigation">
-    <li>
-      <a
-        [routerLink]="['']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Trang chủ</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="['blogs']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Lịch trình</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="['blogs/di-chuyen']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Di Chuyển</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="['blogs/an-gi']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Ăn gì</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="['blogs/cho-o']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Ở đâu</a
-      >
-    </li>
+    <ng-container *ngFor="let item of navItems">
+      <ng-container *ngIf="item.subItems && item.subItems.length > 0">
+        <li>
+          <a
+            #button
+            [routerLink]="[item.link]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [matMenuTriggerFor]="menu.childMenu"
+            #menuTrigger="matMenuTrigger"
+            (mouseenter)="buttonEnter(menuTrigger)"
+            (mouseleave)="buttonLeave(menuTrigger, button)"
+            [queryParams]="item.queryParams"
+            style="z-index: 1050;"
+            >{{ item.text }}
+            <fa-icon
+              [icon]="faAngleDown"
+              *ngIf="item.subItems && item.subItems.length > 0"
+            ></fa-icon
+          ></a>
+        </li>
+        <app-sub-menu
+          #menu
+          (mouseenter2)="menuenter()"
+          (mouseleave2)="menuLeave(menuTrigger, button)"
+          [subMenu]="item.subItems"
+        >
+        </app-sub-menu>
+      </ng-container>
+      <ng-container *ngIf="!item.subItems || item.subItems.length === 0">
+        <li>
+          <a
+            [routerLink]="[item.link]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >{{ item.text }}</a
+          >
+        </li>
+      </ng-container>
+    </ng-container>
   </ul>
 </div>
