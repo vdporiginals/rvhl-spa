@@ -108,7 +108,7 @@ export class NavItemComponent implements OnInit {
     }, 100);
   }
 
-  menuenter() {
+  menuEnter() {
     this.isMatMenuOpen = true;
     if (this.isMatMenu2Open) {
       this.isMatMenu2Open = false;
