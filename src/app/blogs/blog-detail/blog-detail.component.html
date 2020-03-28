@@ -4,23 +4,25 @@
       <img
         mat-card-image
         class="img-fluid"
-        [src]="blogDetail.image"
-        alt="blogDetail.title"
+        [src]="blogDetail.data.images[0]"
+        [alt]="blogDetail.data.title"
       />
     </div>
     <div class="blog_details">
       <h2>
-        {{ blogDetail.title }}
+        {{ blogDetail.data.title }}
       </h2>
       <ul class="blog-info-link mt-3 mb-4">
         <li>
-          <a href="#"><fa-icon [icon]="faUser"></fa-icon> Travel, Lifestyle</a>
+          <a href="#"
+            ><fa-icon [icon]="faUser"></fa-icon> {{ blogDetail.user }}</a
+          >
         </li>
         <li>
           <a href="#"><fa-icon [icon]="faComment"></fa-icon> 03 Comments</a>
         </li>
       </ul>
-      <div [innerHTML]="blogDetail.content">
+      <div [innerHTML]="blogDetail.data.content">
         <!-- <p ></p> -->
       </div>
     </div>

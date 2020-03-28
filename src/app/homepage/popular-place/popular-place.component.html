@@ -23,7 +23,7 @@
     >
       <mat-card class="single_place">
         <div class="thumb">
-          <img mat-card-image [src]="place.image" [alt]="place.title" />
+          <img mat-card-image [src]="place.images[0]" [alt]="place.title" />
           <!-- <a href="#" class="prise">$500</a> -->
         </div>
         <div class="place_info">
@@ -44,7 +44,7 @@
         <div class="thumb">
           <img
             mat-card-image
-            [src]="restaurant.image"
+            [src]="restaurant.images[0]"
             [alt]="restaurant.title"
           />
           <!-- <a href="#" class="prise">$500</a> -->

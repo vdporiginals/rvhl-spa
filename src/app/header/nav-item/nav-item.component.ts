@@ -23,19 +23,20 @@ export class NavItemComponent implements OnInit {
     {
       text: 'Review',
       link: 'blogs',
+      queryParams: { category: 'bannerBlog' },
       subItems: [
         {
           text: 'Lịch Trình',
           link: 'blogs',
           queryParams: {
-            category: 'Schedule'
+            category: 'bannerSchedule'
           }
         },
         {
           text: 'Ăn Gì',
           link: 'blogs',
           queryParams: {
-            category: 'Food'
+            category: 'bannerFood'
           }
         }
       ]
@@ -43,6 +44,7 @@ export class NavItemComponent implements OnInit {
     {
       text: 'Hạ Long Tour',
       link: 'tour',
+      queryParams: { category: 'bannerTour' },
       subItems: [
         {
           text: 'Di Chuyển',

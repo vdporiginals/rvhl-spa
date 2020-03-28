@@ -12,33 +12,34 @@ export class ApiService {
     const sliderArea = this.http.get(`${environment.apiUrl}/advertises`, {
       params: {
         select: 'title,description,image',
-        limit: '3'
+        limit: '3',
+        category: 'slider'
       }
     });
     const popularSchedule = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'seo,title,image,createdAt',
+        select: 'seo,title,images,createdAt',
         limit: '6',
-        tags: 'schedule'
+        category: 'schedule'
       }
     });
     const popularPlace = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'title,description,image,seo,address',
+        select: 'title,description,images,seo,address',
         limit: '3',
-        tags: 'place'
+        category: 'food'
       }
     });
     const popularRestaurant = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'title,description,image,seo,address',
+        select: 'title,description,images,seo,address',
         limit: '3',
-        tags: 'restaurant'
+        category: 'other'
       }
     });
     const recentBlogs = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'title,description,image,seo,address',
+        select: 'title,description,images,seo,address',
         limit: '3'
       }
     });
@@ -54,12 +55,22 @@ export class ApiService {
   getBlogs(page, limit): Observable<any> {
     const allBlogs = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'title,description,image,seo,address,createdAt',
+        select: 'title,description,images,seo,address,createdAt',
         page,
         limit
       }
     });
     // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
     return forkJoin([allBlogs]);
+  }
+
+  getBannerPage(queryParams): Observable<any> {
+    const bannerPage = this.http.get(`${environment.apiUrl}/advertises`, {
+      params: {
+        category: queryParams,
+        limit: '1'
+      }
+    });
+    return bannerPage;
   }
 }

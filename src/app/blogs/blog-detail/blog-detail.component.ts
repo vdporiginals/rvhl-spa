@@ -33,7 +33,7 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
         }
       })
       .subscribe(data => {
-        this.blogDetail = data.data;
+        this.blogDetail = data;
       });
   }
 

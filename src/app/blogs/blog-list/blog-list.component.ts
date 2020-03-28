@@ -5,29 +5,31 @@ import {
   Output,
   Input,
   EventEmitter
-} from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ApiService } from 'src/app/shared/api.service';
-import { Router } from '@angular/router';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+} from "@angular/core";
+import { Subscription } from "rxjs";
+import { ApiService } from "src/app/shared/api.service";
+import { Router } from "@angular/router";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faComment } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'app-blog-list',
-  templateUrl: './blog-list.component.html',
-  styleUrls: ['./blog-list.component.scss']
+  selector: "app-blog-list",
+  templateUrl: "./blog-list.component.html",
+  styleUrls: ["./blog-list.component.scss"]
 })
 export class BlogListComponent implements OnInit, OnDestroy {
   @Input() id: string;
   @Input() maxSize: number;
   @Output() pageChange: EventEmitter<number>;
   @Output() pageBoundsCorrection: EventEmitter<number>;
+
   faUser = faUser;
   faComment = faComment;
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
+
   allBlogs: any[] = [];
   currentPage: number;
   isLoadingResults = true;

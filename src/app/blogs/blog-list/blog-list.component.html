@@ -15,12 +15,12 @@
         <img
           mat-card-image
           class="card-img rounded-0"
-          [src]="blog.image"
+          [src]="blog.images[0]"
           [alt]="blog.title"
         />
         <a href="#" class="blog_item_date">
-          <h3>15</h3>
-          <p>Jan</p>
+          <h3>{{ blog.createdAt | date: "dd" }}</h3>
+          <p>{{ blog.createdAt | date: "LLL" }}</p>
         </a>
       </div>
       <div class="blog_details">

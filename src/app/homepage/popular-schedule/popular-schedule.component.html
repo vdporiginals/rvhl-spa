@@ -24,7 +24,11 @@
     >
       <mat-card class="single_destination">
         <div class="thumb">
-          <img mat-card-image [src]="schedule.image" [alt]="schedule.title" />
+          <img
+            mat-card-image
+            [src]="schedule.images[0]"
+            [alt]="schedule.title"
+          />
         </div>
         <div class="content" fxLayoutAlign="center center">
           <a>

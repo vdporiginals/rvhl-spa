@@ -6,7 +6,13 @@
 >
   <span (mouseenter)="mouseenter2.emit()" (mouseleave)="mouseleave2.emit()">
     <span *ngFor="let item of subMenu">
-      <a mat-menu-item [routerLink]="[item.link]">{{ item.text }}</a>
+      <a
+        mat-menu-item
+        [routerLink]="[item.link]"
+        [queryParams]="item.queryParams"
+        abc="item.queryParams.category"
+        >{{ item.text }}</a
+      >
     </span>
   </span>
 </mat-menu>
