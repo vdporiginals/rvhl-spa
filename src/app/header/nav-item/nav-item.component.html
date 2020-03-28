@@ -7,7 +7,6 @@
             #button
             [routerLink]="[item.link]"
             routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
             [matMenuTriggerFor]="menu.childMenu"
             #menuTrigger="matMenuTrigger"
             (mouseenter)="buttonEnter(menuTrigger)"
