@@ -12,7 +12,7 @@ import { GestureConfig } from '@angular/material/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
-import { BlogsModule } from './blogs/blogs.module';
+// import { BlogsModule } from './blogs/blogs.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TourModule } from './tour/tour.module';
 
@@ -31,7 +31,6 @@ import { PopularPlaceComponent } from './homepage/popular-place/popular-place.co
 import { IntroServiceComponent } from './homepage/intro-service/intro-service.component';
 import { VideoAreaComponent } from './homepage/video-area/video-area.component';
 import { RecentBlogsComponent } from './homepage/recent-blogs/recent-blogs.component';
-import { BlogsComponent } from './blogs/blogs.component';
 import { SubMenuComponent } from './header/nav-item/sub-menu/sub-menu.component';
 
 @NgModule({
@@ -52,7 +51,6 @@ import { SubMenuComponent } from './header/nav-item/sub-menu/sub-menu.component'
     IntroServiceComponent,
     VideoAreaComponent,
     RecentBlogsComponent,
-    BlogsComponent,
     SubMenuComponent
   ],
   imports: [
@@ -65,11 +63,12 @@ import { SubMenuComponent } from './header/nav-item/sub-menu/sub-menu.component'
     HttpClientModule,
     HammerModule,
     MatCarouselModule.forRoot(),
-    BlogsModule,
+    // BlogsModule,
     TourModule
   ],
+
   // tslint:disable-next-line: deprecation
   providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

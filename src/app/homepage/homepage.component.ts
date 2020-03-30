@@ -19,7 +19,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   constructor(private api: ApiService) {
     this.getData();
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnDestroy(): void {
     this.subcription.unsubscribe();
@@ -28,11 +28,12 @@ export class HomepageComponent implements OnInit, OnDestroy {
   getData() {
     this.subcription = this.api.getContentHomepage().subscribe(
       res => {
+        console.log(res)
         this.sliderData = res[0];
         this.popularScheduleData = res[1];
         this.popularPlaceData = res[2];
         this.popularRestaurant = res[3];
-        this.recentBlogs = res[3];
+        this.recentBlogs = res[4];
         this.isLoadingResults = false;
       },
       err => {

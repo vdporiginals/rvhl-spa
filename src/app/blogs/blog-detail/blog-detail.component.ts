@@ -22,7 +22,7 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
   blogDetail: any = {};
   private subcription: Subscription;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params.id;

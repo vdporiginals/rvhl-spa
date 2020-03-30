@@ -31,7 +31,7 @@
           />
         </div>
         <div class="content" fxLayoutAlign="center center">
-          <a>
+          <a [routerLink]="['blogs', schedule._id, schedule.seo]">
             {{ schedule.title }}
             <!-- <a href="travel_destination.html"> {{ schedule.tags }}</a> -->
           </a>
@@ -41,7 +41,12 @@
   </div>
   <div fxFlex>
     <div class="more_place_btn text-center">
-      <a class="boxed-btn4" href="#">More Places</a>
+      <a
+        class="boxed-btn4"
+        [routerLink]="['blogs']"
+        [queryParams]="{ category: 'Schedule' }"
+        >More Places</a
+      >
     </div>
   </div>
 </div>

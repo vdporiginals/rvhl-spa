@@ -14,7 +14,7 @@ export class BlogBannerComponent implements OnInit, OnDestroy {
   banner: any = {};
   isLoadingResults = true;
   paramsBanner: string;
-  constructor(private route: ActivatedRoute, private api: ApiService) {}
+  constructor(private route: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit(): void {
     this.getBanner();

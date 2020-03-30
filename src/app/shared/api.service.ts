@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getContentHomepage(): Observable<any> {
     const sliderArea = this.http.get(`${environment.apiUrl}/advertises`, {
@@ -20,26 +20,26 @@ export class ApiService {
       params: {
         select: 'seo,title,images,createdAt',
         limit: '6',
-        category: 'schedule'
+        category: 'Schedule'
       }
     });
     const popularPlace = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'title,description,images,seo,address',
         limit: '3',
-        category: 'food'
+        category: 'Food'
       }
     });
     const popularRestaurant = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'title,description,images,seo,address',
         limit: '3',
-        category: 'other'
+        category: 'Other'
       }
     });
     const recentBlogs = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'title,description,images,seo,address',
+        select: 'title,description,images,seo,address,createdAt',
         limit: '3'
       }
     });

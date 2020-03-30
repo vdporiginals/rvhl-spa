@@ -1,42 +1,44 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BlogsRoutingModule } from './blogs-routing.module';
-import { MaterialModule } from '../material.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { BlogDetailComponent } from './blog-detail/blog-detail.component';
-import { BlogFilterComponent } from './blog-filter/blog-filter.component';
-import { BlogCommentComponent } from './blog-comment/blog-comment.component';
+import { BlogsComponent } from './blogs.component';
 import { BlogBannerComponent } from './blog-banner/blog-banner.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { BlogCommentComponent } from './blog-comment/blog-comment.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { BlogFilterComponent } from './blog-filter/blog-filter.component';
 
 @NgModule({
   imports: [
     BlogsRoutingModule,
     CommonModule,
-    MaterialModule,
-    FontAwesomeModule,
-    NgxPaginationModule
-  ],
-  declarations: [
-    BlogDetailComponent,
-    BlogFilterComponent,
-    BlogCommentComponent,
-    BlogBannerComponent,
-    BlogListComponent
-  ],
-  exports: [
-    MaterialModule,
+    MatButtonModule,
+    MatCardModule,
     FontAwesomeModule,
     NgxPaginationModule,
-    BlogDetailComponent,
-    BlogFilterComponent,
-    BlogCommentComponent,
+    FlexLayoutModule
+  ],
+  exports: [
+    NgxPaginationModule,
+    FontAwesomeModule,
+    MatCardModule,
+    MatButtonModule,
+    FlexLayoutModule
+  ],
+  declarations: [
+    BlogsComponent,
     BlogBannerComponent,
-    BlogListComponent
+    BlogListComponent,
+    BlogCommentComponent,
+    BlogDetailComponent,
+    BlogFilterComponent
   ],
   providers: []
 })
-export class BlogsModule {}
+export class BlogsModule { }

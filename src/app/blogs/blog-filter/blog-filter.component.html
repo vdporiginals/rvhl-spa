@@ -1,4 +1,4 @@
-<div class="blog_right_sidebar" fxFlex="33">
+<div class="blog_right_sidebar">
   <mat-card class="single_sidebar_widget search_widget">
     <form action="#">
       <div class="form-group">
@@ -8,11 +8,6 @@
             class="form-control"
             placeholder="Search Keyword"
           />
-          <div class="input-group-append">
-            <button class="btn" type="button">
-              <i class="ti-search"></i>
-            </button>
-          </div>
         </div>
       </div>
       <button
@@ -21,6 +16,7 @@
         type="submit"
         color="warn"
       >
+        <fa-icon [icon]="faSearch"></fa-icon>
         Search
       </button>
     </form>

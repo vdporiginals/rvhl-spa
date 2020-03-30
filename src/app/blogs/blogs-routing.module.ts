@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { BlogsComponent } from './blogs.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
@@ -7,7 +6,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 
 const routes: Routes = [
   {
-    path: 'blogs',
+    path: '',
     component: BlogsComponent,
     children: [
       {
@@ -24,8 +23,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
   providers: []
 })
-export class BlogsRoutingModule {}
+export class BlogsRoutingModule { }

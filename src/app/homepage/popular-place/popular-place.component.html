@@ -27,7 +27,9 @@
           <!-- <a href="#" class="prise">$500</a> -->
         </div>
         <div class="place_info">
-          <a href="destination_details.html" fxLayoutAlign="start"
+          <a
+            [routerLink]="['blogs', place._id, place.seo]"
+            fxLayoutAlign="start"
             ><h3>{{ place.title }}</h3></a
           >
           <p fxLayoutAlign="start" fxLayoutAlign="start">{{ place.address }}</p>
@@ -50,7 +52,9 @@
           <!-- <a href="#" class="prise">$500</a> -->
         </div>
         <div class="place_info">
-          <a href="destination_details.html" fxLayoutAlign="start"
+          <a
+            [routerLink]="['blogs', restaurant._id, restaurant.seo]"
+            fxLayoutAlign="start"
             ><h3>{{ restaurant.title }}</h3></a
           >
           <p fxLayoutAlign="start">{{ restaurant.address }}</p>
@@ -60,7 +64,12 @@
   </div>
   <div fxFlex>
     <div class="more_place_btn">
-      <a class="boxed-btn4" href="#">More Places</a>
+      <a
+        class="boxed-btn4"
+        [routerLink]="['blogs']"
+        [queryParams]="{ category: 'food' }"
+        >More Places</a
+      >
     </div>
   </div>
 </div>

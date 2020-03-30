@@ -1,9 +1,9 @@
-<div fxFlex fxHide.lt-md></div>
+<div fxFlex fxFlex.lt-md></div>
 <div
   class="recent_trip_area"
   fxLayout="column"
   fxFlex="80"
-  fxFlex.lt-md
+  fxFlex.lt-md="80"
   fxLayoutAlign="center center"
 >
   <div fxFlex>
@@ -24,9 +24,9 @@
         </div>
         <div class="info">
           <div class="date">
-            <span>Oct 12, 2019</span>
+            <span>{{ blog.createdAt | date }}</span>
           </div>
-          <a href="#">
+          <a [routerLink]="['blogs', blog._id, blog.seo]">
             <h3>{{ blog.title }}</h3>
           </a>
         </div>
@@ -34,4 +34,4 @@
     </div>
   </div>
 </div>
-<div fxFlex fxHide.lt-md></div>
+<div fxFlex fxFlex.lt-md></div>
