@@ -4,18 +4,21 @@ import {
   HammerModule
 } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
 import { GestureConfig } from '@angular/material/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { MatCarouselModule } from '@ngmodule/material-carousel';
-// import { BlogsModule } from './blogs/blogs.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { TourModule } from './tour/tour.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
 
+import { AppComponent } from './app.component';
+import { SubMenuComponent } from './header/nav-item/sub-menu/sub-menu.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { NavItemComponent } from './header/nav-item/nav-item.component';
@@ -23,15 +26,7 @@ import { NavSocialComponent } from './header/nav-social/nav-social.component';
 import { NavLogoComponent } from './header/nav-logo/nav-logo.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavMobileComponent } from './nav-mobile/nav-mobile.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { SliderAreaComponent } from './homepage/slider-area/slider-area.component';
-import { TransferComponent } from './homepage/transfer/transfer.component';
-import { PopularScheduleComponent } from './homepage/popular-schedule/popular-schedule.component';
-import { PopularPlaceComponent } from './homepage/popular-place/popular-place.component';
-import { IntroServiceComponent } from './homepage/intro-service/intro-service.component';
-import { VideoAreaComponent } from './homepage/video-area/video-area.component';
-import { RecentBlogsComponent } from './homepage/recent-blogs/recent-blogs.component';
-import { SubMenuComponent } from './header/nav-item/sub-menu/sub-menu.component';
+
 
 @NgModule({
   declarations: [
@@ -43,28 +38,22 @@ import { SubMenuComponent } from './header/nav-item/sub-menu/sub-menu.component'
     NavLogoComponent,
     FooterComponent,
     NavMobileComponent,
-    HomepageComponent,
-    SliderAreaComponent,
-    TransferComponent,
-    PopularScheduleComponent,
-    PopularPlaceComponent,
-    IntroServiceComponent,
-    VideoAreaComponent,
-    RecentBlogsComponent,
     SubMenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    FontAwesomeModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
     HammerModule,
-    MatCarouselModule.forRoot(),
-    // BlogsModule,
-    TourModule
+    TourModule,
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatMenuModule,
+    MatListModule
   ],
 
   // tslint:disable-next-line: deprecation

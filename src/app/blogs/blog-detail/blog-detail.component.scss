@@ -4,10 +4,15 @@
 @import "../../scss/responsive";
 @import "../../scss/theme-default.scss";
 
-.mat-card-image:first-child {
+.feature-img {
   margin-top: -116px;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
+}
+
+.blog_content {
+  img {
+  }
 }
 
 .blog_area {

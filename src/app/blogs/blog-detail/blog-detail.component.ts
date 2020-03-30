@@ -1,17 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
+import { map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-blog-detail',
   templateUrl: './blog-detail.component.html',
   styleUrls: ['./blog-detail.component.scss']
 })
+
 export class BlogDetailComponent implements OnInit, OnDestroy {
   faFacebookMessenger = faFacebookMessenger;
   faFacebook = faFacebook;
@@ -20,11 +22,21 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
   faUser = faUser;
   public blogId: string;
   blogDetail: any = {};
+  blogDetailImages = [];
   private subcription: Subscription;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  ngOnDestroy(): void {
+    this.subcription.unsubscribe();
+  }
+
+  getData() {
     const id = this.route.snapshot.params.id;
     this.subcription = this.http
       .get<any>(`${environment.apiUrl}/blogs/${id}`, {
@@ -34,10 +46,7 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
       })
       .subscribe(data => {
         this.blogDetail = data;
+        this.blogDetailImages = data.data.images;
       });
-  }
-
-  ngOnDestroy(): void {
-    this.subcription.unsubscribe();
   }
 }

@@ -1,28 +1,49 @@
 <mat-card class="blog_area single-post-area section-padding">
   <div class="single-post">
     <div class="feature-img">
-      <img
+      <mat-carousel
+        timings="400ms ease-in-out"
+        maxWidth="100%"
+        proportion="60"
+        [loop]="true"
+        [hideArrows]="false"
+        [hideIndicators]="false"
+        [useMouseWheel]="false"
+      >
+        <mat-carousel-slide
+          #matCarouselSlide
+          *ngFor="let slide of blogDetailImages; let i = index"
+          [image]="slide"
+          [hideOverlay]="false"
+        >
+        </mat-carousel-slide>
+      </mat-carousel>
+
+      <!-- <img
         mat-card-image
         class="img-fluid"
         [src]="blogDetail.data.images[0]"
         [alt]="blogDetail.data.title"
-      />
+      /> -->
     </div>
     <div class="blog_details">
       <h2>
-        {{ blogDetail.data.title }}
+        {{ blogDetail?.data?.title }}
       </h2>
       <ul class="blog-info-link mt-3 mb-4">
         <li>
           <a href="#"
-            ><fa-icon [icon]="faUser"></fa-icon> {{ blogDetail.user }}</a
+            ><fa-icon [icon]="faUser"></fa-icon> {{ blogDetail?.user?.name }}</a
           >
         </li>
         <li>
           <a href="#"><fa-icon [icon]="faComment"></fa-icon> 03 Comments</a>
         </li>
       </ul>
-      <div [innerHTML]="blogDetail.data.content">
+      <div
+        [innerHTML]="blogDetail?.data?.content | sanitizeHtml"
+        class="blog_content"
+      >
         <!-- <p ></p> -->
       </div>
     </div>
@@ -45,61 +66,16 @@
         </li>
       </ul>
     </div>
-    <!-- <div class="navigation-area">
-      <div class="row">
-        <div
-          class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center"
-        >
-          <div class="thumb">
-            <a href="#">
-              <img class="img-fluid" src="img/post/preview.png" alt="img" />
-            </a>
-          </div>
-          <div class="arrow">
-            <a href="#">
-              <span class="lnr text-white ti-arrow-left"></span>
-            </a>
-          </div>
-          <div class="detials">
-            <p>Prev Post</p>
-            <a href="#">
-              <h4>Space The Final Frontier</h4>
-            </a>
-          </div>
-        </div>
-        <div
-          class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center"
-        >
-          <div class="detials">
-            <p>Next Post</p>
-            <a href="#">
-              <h4>Telescopes 101</h4>
-            </a>
-          </div>
-          <div class="arrow">
-            <a href="#">
-              <span class="lnr text-white ti-arrow-right"></span>
-            </a>
-          </div>
-          <div class="thumb">
-            <a href="#">
-              <img class="img-fluid" src="img/post/next.png" alt="img" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
   <div class="blog-author">
     <div class="media align-items-center">
-      <img src="img/blog/author.png" alt="user.avatar" />
+      <img [src]="blogDetail?.user?.avatar" [alt]="blogDetail?.user?.avatar" />
       <div class="media-body">
         <a href="#">
-          <h4>Harvard milan</h4>
+          <h4>{{ blogDetail?.user?.name }}</h4>
         </a>
         <p>
-          Second divided from form fish beast made. Every of seas all gathered
-          use saying you're, he our dominion twon Second divided from
+          {{ blogDetail?.user?.description }}
         </p>
       </div>
     </div>
