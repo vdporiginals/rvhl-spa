@@ -48,7 +48,7 @@
   >
     <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
       <div>
-        <li class="page-item">
+        <li class="page-item" *ngIf="categoryParams === null">
           <a
             class="page-link"
             aria-label="Previous"
@@ -65,7 +65,26 @@
             <fa-icon [icon]="faAngleLeft"></fa-icon>
           </a>
         </li>
+
+        <li class="page-item" *ngIf="categoryParams !== null">
+          <a
+            class="page-link"
+            aria-label="Previous"
+            (click)="getDataByQuery(currentPage - 1)"
+            *ngIf="!isFirstPage"
+          >
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
+          <a
+            class="page-link disabled"
+            aria-label="Previous"
+            *ngIf="isFirstPage"
+          >
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
+        </li>
       </div>
+
       <div
         *ngFor="let page of p.pages"
         [class.current]="p.getCurrent() === page.value"
@@ -74,7 +93,13 @@
           <a
             class="page-link"
             (click)="getData(page.value)"
-            *ngIf="p.getCurrent() !== page.value"
+            *ngIf="p.getCurrent() !== page.value && categoryParams === null"
+            >{{ page.label }}</a
+          >
+          <a
+            class="page-link"
+            (click)="getDataByQuery(page.value)"
+            *ngIf="p.getCurrent() !== page.value && categoryParams !== null"
             >{{ page.label }}</a
           >
         </li>
@@ -83,11 +108,25 @@
         </li>
       </div>
       <div>
-        <li class="page-item">
+        <li class="page-item" *ngIf="categoryParams === null">
           <a
             class="page-link"
             aria-label="Next"
             (click)="getData(currentPage + 1)"
+            *ngIf="!isLastPage"
+          >
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+          <a class="page-link disabled" aria-label="Next" *ngIf="isLastPage">
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+        </li>
+
+        <li class="page-item" *ngIf="categoryParams !== null">
+          <a
+            class="page-link"
+            aria-label="Next"
+            (click)="getDataByQuery(currentPage + 1)"
             *ngIf="!isLastPage"
           >
             <fa-icon [icon]="faAngleRight"></fa-icon>

@@ -29,14 +29,14 @@ export class NavItemComponent implements OnInit {
           text: 'Lịch Trình',
           link: 'blogs',
           queryParams: {
-            category: 'bannerSchedule'
+            category: 'Schedule'
           }
         },
         {
           text: 'Ăn Gì',
           link: 'blogs',
           queryParams: {
-            category: 'bannerFood'
+            category: 'Food'
           }
         }
       ]
@@ -70,9 +70,9 @@ export class NavItemComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   menuItemClicked(child: {}) {
     this.menuItem.emit(child);

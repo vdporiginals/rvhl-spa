@@ -8,6 +8,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { SanitizeHtmlPipe } from '../shared/sanitize-html.pipe';
+import { TextOverflowPipe } from '../shared/text-overflow.pipe';
 
 import { BlogsComponent } from './blogs.component';
 import { BlogBannerComponent } from './blog-banner/blog-banner.component';
@@ -24,14 +25,16 @@ import { BlogFilterComponent } from './blog-filter/blog-filter.component';
     MatButtonModule,
     MatCardModule,
     FontAwesomeModule,
-    NgxPaginationModule, MatCarouselModule.forRoot(),
+    NgxPaginationModule,
+    MatCarouselModule.forRoot(),
   ],
   exports: [
     FlexLayoutModule,
     NgxPaginationModule,
     FontAwesomeModule,
     MatCardModule,
-    MatButtonModule, MatCarouselModule
+    MatButtonModule,
+    MatCarouselModule
   ],
   declarations: [
     BlogsComponent,
@@ -40,8 +43,9 @@ import { BlogFilterComponent } from './blog-filter/blog-filter.component';
     BlogCommentComponent,
     BlogDetailComponent,
     BlogFilterComponent,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    TextOverflowPipe
   ],
-  providers: [SanitizeHtmlPipe]
+  providers: [SanitizeHtmlPipe, TextOverflowPipe]
 })
 export class BlogsModule { }

@@ -64,6 +64,22 @@ export class ApiService {
     return forkJoin([allBlogs]);
   }
 
+  getFilter(): Observable<any> {
+    const recentBlogs = this.http.get<any>(`${environment.apiUrl}/blogs`, {
+      params: {
+        select: 'title,images,seo,createdAt',
+        limit: '5'
+      }
+    });
+    // const blogCategory = this.http.get<any>(`${environment.apiUrl}/blogs`, {
+    //   params: {
+    //     select: 'category'
+    //   }
+    // });
+    // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
+    return forkJoin([recentBlogs]);
+  }
+
   getBannerPage(queryParams): Observable<any> {
     const bannerPage = this.http.get(`${environment.apiUrl}/advertises`, {
       params: {

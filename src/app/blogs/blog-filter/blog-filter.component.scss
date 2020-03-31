@@ -219,6 +219,9 @@ a {
 
   .popular_post_widget {
     .post_item {
+      img {
+        height: 50px;
+      }
       .media-body {
         justify-content: center;
         align-self: center;

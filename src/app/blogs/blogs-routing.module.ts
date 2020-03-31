@@ -22,9 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-  providers: []
+  exports: [RouterModule]
 })
 export class BlogsRoutingModule { }
