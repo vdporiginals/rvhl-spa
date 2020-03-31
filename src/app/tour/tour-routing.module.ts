@@ -8,27 +8,27 @@ import { TourDetailComponent } from './tour-detail/tour-detail.component';
 
 const routes: Routes = [
   {
-    path: 'tour',
+    path: '',
     component: TourComponent,
     children: [{ path: ':id/:seo', component: TourDetailComponent }]
   },
   {
-    path: 'tour/di-chuyen',
+    path: 'di-chuyen',
     component: ListSingleTourComponent,
     data: { category: 'Transfer' }
   },
   {
-    path: 'tour/khach-san',
+    path: 'khach-san',
     component: ListSingleTourComponent,
     data: { category: 'Hotel' }
   },
   {
-    path: 'tour/ha-long-bay-tour',
+    path: 'ha-long-bay-tour',
     component: ListSingleTourComponent,
     data: { category: 'BayTour' }
   },
   {
-    path: 'tour/tron-goi',
+    path: 'tron-goi',
     component: ListSingleTourComponent,
     data: { category: 'AllInOne' }
   }
@@ -40,4 +40,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class TourRoutingModule {}
+export class TourRoutingModule { }

@@ -8,16 +8,26 @@
   z-index: 9;
 
   button {
+    // background-color: $theme-color2;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9;
+    color: #f8f8f8;
+    background: #e3b04b;
+    padding: 36px;
+    border: none;
+    cursor: pointer;
     @media #{$mobile_device} {
-      margin-right: 11px;
+      // margin-right: 11px;
     }
 
     @media #{$tablet_device} {
-      margin-right: 23px;
+      // margin-right: 23px;
     }
 
     @media #{$mid_device} {
-      margin-right: 23px;
+      // margin-right: 23px;
     }
   }
 }

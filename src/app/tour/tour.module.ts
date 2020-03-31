@@ -4,8 +4,8 @@ import { TourRoutingModule } from './tour-routing.module';
 import { MaterialModule } from '../material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { RouterModule } from '@angular/router';
 
+import { TourComponent } from './tour.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { AllTourComponent } from './all-tour/all-tour.component';
 import { ListSingleTourComponent } from './list-single-tour/list-single-tour.component';
@@ -19,6 +19,7 @@ import { ListSingleTourComponent } from './list-single-tour/list-single-tour.com
     NgxPaginationModule
   ],
   declarations: [
+    TourComponent,
     TourDetailComponent,
     AllTourComponent,
     ListSingleTourComponent
@@ -32,4 +33,4 @@ import { ListSingleTourComponent } from './list-single-tour/list-single-tour.com
     ListSingleTourComponent
   ]
 })
-export class TourModule {}
+export class TourModule { }

@@ -8,17 +8,11 @@
       fxHide.lt-lg
     ></app-nav-item>
   </div>
-  <app-nav-social fxLayoutAlign="end" fxHide.lt-lg></app-nav-social>
-  <div class="seach_icon">
-    <a
-      data-toggle="modal"
-      data-target="#exampleModalCenter"
-      style="cursor: pointer;"
-    >
-      <fa-icon [icon]="faSearch"></fa-icon>
-    </a>
-  </div>
-  <div class="mobile_menu" fxLayoutAlign="end" fxHide.gt-md>
+  <app-nav-social fxLayoutAlign="end" fxHide.lt-sm></app-nav-social>
+  <!-- <div class="seach_icon">
+    <a> Đăng ký </a>
+  </div> -->
+  <div fxFlex class="mobile_menu" fxLayoutAlign="end" fxHide.gt-md>
     <button mat-icon-button (click)="onToggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>

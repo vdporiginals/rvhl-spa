@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { TourModule } from './tour/tour.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,6 +25,7 @@ import { NavSocialComponent } from './header/nav-social/nav-social.component';
 import { NavLogoComponent } from './header/nav-logo/nav-logo.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavMobileComponent } from './nav-mobile/nav-mobile.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 @NgModule({
@@ -38,7 +38,8 @@ import { NavMobileComponent } from './nav-mobile/nav-mobile.component';
     NavLogoComponent,
     FooterComponent,
     NavMobileComponent,
-    SubMenuComponent
+    SubMenuComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,6 @@ import { NavMobileComponent } from './nav-mobile/nav-mobile.component';
     BrowserAnimationsModule,
     FontAwesomeModule,
     HammerModule,
-    TourModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatSidenavModule,

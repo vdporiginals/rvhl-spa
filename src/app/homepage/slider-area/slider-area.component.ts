@@ -26,9 +26,8 @@ export class SliderAreaComponent implements OnInit {
 
   @Input() sliderData: any;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
-    console.log(this.sliderData);
   }
 }
