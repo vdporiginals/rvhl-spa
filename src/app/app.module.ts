@@ -15,6 +15,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
 import { SubMenuComponent } from './header/nav-item/sub-menu/sub-menu.component';
@@ -26,6 +28,7 @@ import { NavLogoComponent } from './header/nav-logo/nav-logo.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavMobileComponent } from './nav-mobile/nav-mobile.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -39,7 +42,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     FooterComponent,
     NavMobileComponent,
     SubMenuComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,10 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     MatSidenavModule,
     MatIconModule,
     MatMenuModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatCardModule
+
   ],
 
   // tslint:disable-next-line: deprecation

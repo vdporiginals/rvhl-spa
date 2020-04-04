@@ -8,7 +8,7 @@ import {
   OnChanges
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ApiService } from 'src/app/shared/api.service';
+import { ApiService } from 'src/app/shared/services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';

@@ -3,7 +3,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { ApiService } from 'src/app/shared/api.service';
+import { ApiService } from 'src/app/shared/services/api.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

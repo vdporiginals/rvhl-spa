@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SanitizeHtmlPipe } from '../shared/sanitize-html.pipe';
+import { SanitizeHtmlPipe } from '../shared/pipe/sanitize-html.pipe';
 
 @Component({
   selector: 'app-blogs',

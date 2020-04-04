@@ -7,8 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
-import { SanitizeHtmlPipe } from '../shared/sanitize-html.pipe';
-import { TextOverflowPipe } from '../shared/text-overflow.pipe';
+import { SanitizeHtmlPipe } from '../shared/pipe/sanitize-html.pipe';
+import { TextOverflowPipe } from '../shared/pipe/text-overflow.pipe';
 
 import { BlogsComponent } from './blogs.component';
 import { BlogBannerComponent } from './blog-banner/blog-banner.component';

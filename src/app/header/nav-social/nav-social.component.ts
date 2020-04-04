@@ -11,7 +11,7 @@ export class NavSocialComponent implements OnInit {
   faFacebookMessenger = faFacebookMessenger;
   faEnvelope = faEnvelope;
   faFacebook = faFacebook;
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
