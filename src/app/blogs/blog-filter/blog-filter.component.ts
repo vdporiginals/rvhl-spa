@@ -20,27 +20,24 @@ export class BlogFilterComponent implements OnInit, OnDestroy {
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    this.getRecentPost();
+    this.getFilter();
   }
 
   ngOnDestroy() {
     this.subcription.unsubscribe();
   }
 
-  getRecentPost() {
+  getFilter() {
     this.subcription = this.api.getFilter()
       .subscribe(res => {
         this.recentPost = res[0];
+        this.blogCategory = res[1];
         // this.blogCategory = res[1];
         this.isLoadingResults = false;
       }, err => {
         console.log(err);
         this.isLoadingResults = false;
       });
-  }
-
-  getBlogCategory() {
-
   }
 
 }
