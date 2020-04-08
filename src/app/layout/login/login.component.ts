@@ -17,12 +17,12 @@ export class LoginComponent implements OnInit {
   data: DataLogin = {};
   faGoogle = faGoogle;
   faFacebook = faFacebook;
+
   constructor(private dialogRef: MatDialogRef<LoginComponent>) {
   }
+
   ngOnInit() {
   }
-
-
 
   public closeMe() {
     this.dialogRef.close();

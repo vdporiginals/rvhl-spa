@@ -6,6 +6,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { HomepageComponent } from './homepage.component';
 import { SliderAreaComponent } from './slider-area/slider-area.component';
@@ -21,15 +23,18 @@ import { RecentBlogsComponent } from './recent-blogs/recent-blogs.component';
     CommonModule,
     MatCardModule,
     FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatCarouselModule.forRoot(),
     FontAwesomeModule,
     MatButtonModule
   ],
   exports: [
     MatCardModule,
-    FlexLayoutModule,
     MatCarouselModule,
     FontAwesomeModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatButtonModule
   ],
   declarations: [

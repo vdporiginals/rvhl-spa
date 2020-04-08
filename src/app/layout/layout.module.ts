@@ -35,7 +35,8 @@ const routes: Routes = [
   exports: [
     FlexLayoutModule,
     MatFormFieldModule,
-    MatCardModule, FontAwesomeModule,
+    MatCardModule,
+    FontAwesomeModule,
     MatDialogModule,
     MatInputModule,
     MatButtonModule,

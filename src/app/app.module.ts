@@ -12,7 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from './layout/layout.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { HeaderModule } from './layout/header/header.module'
+import { HeaderModule } from './layout/header/header.module';
 // import { JwtModule } from '@auth0/angular-jwt';
 
 // export function tokenGetter() {

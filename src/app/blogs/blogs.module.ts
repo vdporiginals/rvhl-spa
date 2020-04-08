@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { SanitizeHtmlPipe } from '../shared/pipe/sanitize-html.pipe';
 import { TextOverflowPipe } from '../shared/pipe/text-overflow.pipe';
 
@@ -24,6 +26,7 @@ import { BlogFilterComponent } from './blog-filter/blog-filter.component';
     MatCardModule,
     FontAwesomeModule,
     NgxPaginationModule,
+    FlexLayoutModule,
     MatCarouselModule.forRoot(),
   ],
   exports: [
@@ -31,7 +34,8 @@ import { BlogFilterComponent } from './blog-filter/blog-filter.component';
     FontAwesomeModule,
     MatCardModule,
     MatButtonModule,
-    MatCarouselModule
+    MatCarouselModule,
+    FlexLayoutModule
   ],
   declarations: [
     BlogsComponent,

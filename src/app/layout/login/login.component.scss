@@ -95,6 +95,11 @@
   background-color: $theme-color !important;
 }
 
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: $theme-color;
+  padding: 2px;
+}
+
 a {
   cursor: pointer;
   margin: 0 20px 0 20px;

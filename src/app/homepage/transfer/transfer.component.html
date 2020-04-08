@@ -1,69 +1,37 @@
-<div
-  class="where_togo_area"
-  fxLayout="row wrap"
-  fxLayoutGap="25px"
-  fxLayoutAlign="center center"
->
-  <div fxFlex="80%">
-    <div>
-      <div class="form_area" fxFlexOffset="15">
-        <h3>Đặt xe tiện chuyến</h3>
-      </div>
-    </div>
-    <div fxFlex="80">
-      <div class="search_wrap">
-        <form
-          class="search_form"
-          action="#"
-          fxLayout="row"
-          fxLayout.lt-md="column"
-          fxLayoutGap="0"
+<div class="where_togo_area" fxLayout="row wrap">
+  <div fxFlex fxFlex.lt-sm="0"></div>
+  <div fxFlex="80" fxLayoutAlign="center center" fxLayout="row">
+    <div class="search_wrap" fxLayout="row">
+      <form
+        fxFlex
+        fxLayout="row"
+        fxLayout.lt-md="column"
+        class="search_form"
+        action="#"
+        fxFlexOffset="5"
+        fxLayoutGap="5"
+      >
+        <mat-form-field
+          fxFlex="80"
+          fxFlexOffset="5"
+          fxLayoutGap="5"
+          fxFlexOffset.lt-md="0"
+          class="input_field"
         >
-          <div
-            class="input_field"
-            fxFlex.gt-md="25"
-            fxFlex.lt-md
-            fxFlexOffset="5"
-          >
-            <input type="text" placeholder="Số điện thoại" />
-          </div>
-          <div
-            class="input_field"
-            fxFlex.gt-md="25"
-            fxFlex.lt-md
-            fxFlexOffset="5"
-          >
-            <input
-              type="time"
-              name="time"
-              placeholder="Chọn thời gian"
-              id="timepick"
-            />
-            <!-- <span style="color: red;">Chọn thời gian</span> -->
-          </div>
-          <div
-            class="input_field"
-            fxFlex.gt-md="25"
-            fxFlex.lt-md
-            fxFlexOffset="5"
-          >
-            <select class="nice-select">
-              <option data-display="Chọn Loại xe">Chọn Loại xe</option>
-              <option value="1">Xe 16 chỗ</option>
-              <option value="2">Xe 7 chỗ</option>
-            </select>
-          </div>
+          <input matInput type="text" placeholder="Tìm kiếm" />
+
           <div
             class="search_btn"
-            fxFlex.gt-md="10"
-            fxFlex.lt-md
             fxFlexOffset="5"
+            fxLayoutAlign="start"
             fxLayoutGap="5"
           >
             <button class="boxed-btn4" type="submit">Search</button>
           </div>
-        </form>
-      </div>
+        </mat-form-field>
+      </form>
+      <div fxFlex></div>
     </div>
   </div>
+  <div fxFlex fxFlex.lt-sm="0"></div>
 </div>
