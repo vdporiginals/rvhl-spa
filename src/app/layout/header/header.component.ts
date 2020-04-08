@@ -18,9 +18,9 @@ export class HeaderComponent implements OnInit {
 
   @Output() public sidenavToggle = new EventEmitter();
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

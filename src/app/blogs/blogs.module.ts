@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { BlogsRoutingModule } from './blogs-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -19,7 +18,6 @@ import { BlogFilterComponent } from './blog-filter/blog-filter.component';
 
 @NgModule({
   imports: [
-    FlexLayoutModule,
     BlogsRoutingModule,
     CommonModule,
     MatButtonModule,
@@ -29,7 +27,6 @@ import { BlogFilterComponent } from './blog-filter/blog-filter.component';
     MatCarouselModule.forRoot(),
   ],
   exports: [
-    FlexLayoutModule,
     NgxPaginationModule,
     FontAwesomeModule,
     MatCardModule,
