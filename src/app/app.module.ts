@@ -4,7 +4,6 @@ import {
   HammerModule
 } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { GestureConfig } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -67,8 +66,7 @@ import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.com
 
   ],
 
-  // tslint:disable-next-line: deprecation
-  providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

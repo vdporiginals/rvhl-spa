@@ -32,17 +32,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  exports: [
-    FlexLayoutModule,
-    MatFormFieldModule,
-    MatCardModule,
-    FontAwesomeModule,
-    MatDialogModule,
-    MatInputModule,
-    MatButtonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
   declarations: [
     LoginComponent,
   ],

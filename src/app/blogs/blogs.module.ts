@@ -29,14 +29,6 @@ import { BlogFilterComponent } from './blog-filter/blog-filter.component';
     FlexLayoutModule,
     MatCarouselModule.forRoot(),
   ],
-  exports: [
-    NgxPaginationModule,
-    FontAwesomeModule,
-    MatCardModule,
-    MatButtonModule,
-    MatCarouselModule,
-    FlexLayoutModule
-  ],
   declarations: [
     BlogsComponent,
     BlogBannerComponent,

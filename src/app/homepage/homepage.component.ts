@@ -28,7 +28,6 @@ export class HomepageComponent implements OnInit, OnDestroy {
   getData() {
     this.subcription = this.api.getContentHomepage().subscribe(
       res => {
-        console.log(res)
         this.sliderData = res[0];
         this.popularScheduleData = res[1];
         this.popularPlaceData = res[2];

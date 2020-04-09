@@ -29,14 +29,6 @@ import { RecentBlogsComponent } from './recent-blogs/recent-blogs.component';
     FontAwesomeModule,
     MatButtonModule
   ],
-  exports: [
-    MatCardModule,
-    MatCarouselModule,
-    FontAwesomeModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
-  ],
   declarations: [
     HomepageComponent,
     SliderAreaComponent,

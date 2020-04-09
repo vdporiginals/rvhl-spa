@@ -24,13 +24,5 @@ import { ListSingleTourComponent } from './list-single-tour/list-single-tour.com
     AllTourComponent,
     ListSingleTourComponent
   ],
-  exports: [
-    MaterialModule,
-    FontAwesomeModule,
-    NgxPaginationModule,
-    TourDetailComponent,
-    AllTourComponent,
-    ListSingleTourComponent
-  ]
 })
 export class TourModule { }

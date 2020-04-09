@@ -1,4 +1,5 @@
 @import "~@angular/material/theming";
+@import "app/scss/theme-default.scss";
 @include mat-core();
 
 $rvhl-spa-primary: mat-palette($mat-grey, 50);
