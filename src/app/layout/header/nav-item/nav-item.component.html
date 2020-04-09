@@ -1,12 +1,22 @@
 <div class="main-menu">
   <ul id="navigation">
     <ng-container *ngFor="let item of navItems">
+      <ng-container *ngIf="!item.subItems || item.subItems.length === 0">
+        <li>
+          <a
+            [routerLink]="[item.link]"
+            routerLinkActive="active_route"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >{{ item.text }}</a
+          >
+        </li>
+      </ng-container>
       <ng-container *ngIf="item.subItems && item.subItems.length > 0">
         <li>
           <a
             #button
             [routerLink]="[item.link]"
-            routerLinkActive="active"
+            routerLinkActive="active_route"
             [matMenuTriggerFor]="menu.childMenu"
             #menuTrigger="matMenuTrigger"
             (mouseenter)="buttonEnter(menuTrigger)"
@@ -26,16 +36,6 @@
           [subMenu]="item.subItems"
         >
         </app-sub-menu>
-      </ng-container>
-      <ng-container *ngIf="!item.subItems || item.subItems.length === 0">
-        <li>
-          <a
-            [routerLink]="[item.link]"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >{{ item.text }}</a
-          >
-        </li>
       </ng-container>
     </ng-container>
   </ul>

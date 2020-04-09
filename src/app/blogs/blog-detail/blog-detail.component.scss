@@ -1,18 +1,11 @@
-/*============ Start Blog Single Styles  =============*/
 @import "../../scss/varriable";
 @import "../../scss/mixins";
 @import "../../scss/responsive";
-@import "../../scss/theme-default.scss";
 
 .feature-img {
   margin-top: -116px;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
-}
-
-.blog_content {
-  img {
-  }
 }
 
 .blog_area {
@@ -34,7 +27,6 @@
     }
   }
 }
-
 .mb-4,
 .my-4 {
   margin-bottom: 1.5rem !important;
@@ -43,7 +35,6 @@
 .my-3 {
   margin-top: 1rem !important;
 }
-
 .justify-content-between {
   display: flex !important;
   -webkit-box-pack: justify !important;
@@ -70,10 +61,6 @@
         padding: 7px;
         font-size: 14px;
         transition: all 0.2s linear;
-
-        &:hover {
-          // color: $title-color;
-        }
       }
     }
   }
@@ -84,10 +71,6 @@
     p {
       margin-bottom: 20px;
       font-size: 15px;
-    }
-
-    h2 {
-      // color: $title-color;
     }
   }
 
@@ -102,25 +85,6 @@
 
     @media (min-width: 768px) {
       padding: 30px;
-    }
-  }
-
-  .quotes {
-    background: $white_color;
-    padding: 15px 15px 15px 20px;
-    border-left: 2px solid;
-
-    @media (min-width: 768px) {
-      padding: 25px 25px 25px 30px;
-    }
-  }
-
-  .arrow {
-    position: absolute;
-
-    .lnr {
-      font-size: 20px;
-      font-weight: 600;
     }
   }
 
@@ -341,190 +305,5 @@
     @media (max-width: 991px) {
       padding-bottom: 0px;
     }
-  }
-}
-
-.comments-area {
-  background: transparent;
-  // border: 1px solid #eee;
-  border-top: 1px solid #eee;
-  padding: 45px 0;
-  margin-top: 50px;
-
-  @media (max-width: 414px) {
-    padding: 50px 8px;
-  }
-
-  h4 {
-    // text-align: center;
-    margin-bottom: 35px;
-    // color: $title-color;
-    font-size: 18px;
-  }
-
-  h5 {
-    font-size: 16px;
-    margin-bottom: 0px;
-  }
-
-  a {
-    // color: $title-color;
-  }
-
-  .comment-list {
-    padding-bottom: 48px;
-
-    &:last-child {
-      padding-bottom: 0px;
-    }
-
-    &.left-padding {
-      padding-left: 25px;
-    }
-
-    @media (max-width: 413px) {
-      .single-comment {
-        h5 {
-          font-size: 12px;
-        }
-
-        .date {
-          font-size: 11px;
-        }
-
-        .comment {
-          font-size: 10px;
-        }
-      }
-    }
-  }
-
-  .thumb {
-    margin-right: 20px;
-
-    img {
-      width: 70px;
-      border-radius: 50%;
-    }
-  }
-
-  .date {
-    font-size: 14px;
-    color: #999999;
-    margin-bottom: 0;
-    margin-left: 20px;
-  }
-
-  .comment {
-    margin-bottom: 10px;
-    color: #777777;
-    font-size: 15px;
-  }
-
-  .btn-reply {
-    background-color: transparent;
-    color: #888888;
-    // border:1px solid #eee;
-    padding: 5px 18px;
-    font-size: 14px;
-    display: block;
-    font-weight: 400;
-    //  @include transform_time(.5s);
-    // &:hover {
-    //     background-// color: $title-color;
-    //     color: #fff;
-    //     font-weight: 700;
-    // }
-  }
-}
-
-.comment-form {
-  // background:#fafaff;
-  // text-align: center;
-  border-top: 1px solid #eee;
-  padding-top: 45px;
-  margin-top: 50px;
-  margin-bottom: 20px;
-
-  .form-group {
-    margin-bottom: 30px;
-  }
-
-  h4 {
-    // text-align: center;
-    margin-bottom: 40px;
-    font-size: 18px;
-    line-height: 22px;
-    // color: $title-color;
-  }
-
-  .name {
-    padding-left: 0px;
-
-    @media (max-width: 767px) {
-      padding-right: 0px;
-      margin-bottom: 1rem;
-    }
-  }
-
-  .email {
-    padding-right: 0px;
-
-    @media (max-width: 991px) {
-      padding-left: 0px;
-    }
-  }
-
-  .form-control {
-    border: 1px solid #f0e9ff;
-    border-radius: 5px;
-    height: 48px;
-    padding-left: 18px;
-    font-size: 13px;
-    background: transparent;
-
-    &:focus {
-      outline: 0;
-      box-shadow: none;
-    }
-
-    &::placeholder {
-      font-weight: 300;
-      color: #999999;
-    }
-
-    &::placeholder {
-      color: #777777;
-    }
-  }
-
-  textarea {
-    padding-top: 18px;
-    border-radius: 12px;
-    height: 100% !important;
-  }
-
-  ::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
-    font-size: 13px;
-    color: #777;
-  }
-
-  ::-moz-placeholder {
-    /* Firefox 19+ */
-    font-size: 13px;
-    color: #777;
-  }
-
-  :-ms-input-placeholder {
-    /* IE 10+ */
-    font-size: 13px;
-    color: #777;
-  }
-
-  :-moz-placeholder {
-    /* Firefox 18- */
-    font-size: 13px;
-    color: #777;
   }
 }

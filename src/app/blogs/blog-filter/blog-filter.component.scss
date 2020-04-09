@@ -1,7 +1,7 @@
 @import "../../scss/varriable";
 @import "../../scss/mixins";
 @import "../../scss/responsive";
-@import "../../scss/theme-default.scss";
+
 a {
   display: flex;
   color: $font_1 !important;
@@ -59,13 +59,6 @@ a {
   flex: 1;
 }
 
-.text_overflow {
-  white-space: nowrap;
-  max-width: 228px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .single_sidebar_widget {
   background: #fbf9ff;
   padding: 30px;
@@ -90,14 +83,9 @@ a {
 
 .blog_right_sidebar {
   margin-bottom: 1rem !important;
-  // border: 1px solid #eeeeee;
-  // background: #fafaff;
-  // padding: 30px;
   .widget_title {
     font-size: 20px;
     margin-bottom: 40px;
-    // color: $title-color;
-
     &::after {
       content: "";
       display: block;
@@ -115,44 +103,6 @@ a {
       padding-left: 20px;
       border-radius: 0;
       border-right: 0;
-
-      &::placeholder {
-        color: #999999;
-      }
-
-      &:focus {
-        border-color: #f0e9ff;
-        outline: 0;
-        box-shadow: none;
-      }
-    }
-
-    .input-group {
-      button {
-        background: $white_color;
-        border-left: 0;
-        border: 1px solid #f0e9ff;
-        padding: 4px 15px;
-        border-left: 0;
-
-        fa-icon,
-        span {
-          font-size: 14px;
-          color: #999999;
-        }
-      }
-    }
-  }
-
-  .newsletter_widget {
-    .form-control {
-      height: 50px;
-      border-color: #f0e9ff;
-      font-size: 13px;
-      color: #999999;
-      padding-left: 20px;
-      border-radius: 0;
-      // border-right: 0;
 
       &::placeholder {
         color: #999999;
@@ -205,13 +155,6 @@ a {
 
         & + li {
           padding-top: 15px;
-        }
-
-        &:hover {
-          // border-// color: $title-color;
-          a {
-            // // color: $baseColor;
-          }
         }
       }
     }
@@ -279,22 +222,6 @@ a {
             transition: 0.5s;
           }
         }
-      }
-    }
-  }
-
-  .instagram_feeds {
-    .instagram_row {
-      display: flex;
-      margin-right: -6px;
-      margin-left: -6px;
-
-      li {
-        width: 33.33%;
-        float: left;
-        padding-right: 6px;
-        padding-left: 6px;
-        margin-bottom: 15px;
       }
     }
   }

@@ -6,26 +6,6 @@
   padding: 12px 0;
   position: relative;
 
-  &::before {
-    position: absolute;
-    left: 0;
-    height: 35px;
-    top: 50%;
-    @include transform(translateY(-50%));
-    width: 1px;
-    background: #eaeaea;
-    content: "";
-    left: 2%;
-
-    @media #{$mid_device} {
-      display: none;
-    }
-
-    @media #{$large_device} {
-      display: none;
-    }
-  }
-
   ul {
     li {
       display: inline-block;
@@ -118,7 +98,7 @@
           transform: scalex(1);
         }
 
-        &.active {
+        &.active_route {
           &::before {
             opacity: 1;
             transform: scalex(1);

@@ -12,6 +12,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from './layout/layout.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderModule } from './layout/header/header.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HomepageModule } from './homepage/homepage.module'
 // import { JwtModule } from '@auth0/angular-jwt';
 
 // export function tokenGetter() {
@@ -46,7 +48,7 @@ import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.com
     SubMenuComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -55,7 +57,9 @@ import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.com
     MatMenuModule,
     MatSidenavModule,
     LayoutModule,
-    HeaderModule
+    HeaderModule,
+    HomepageModule,
+    FlexLayoutModule.withConfig({ ssrObserveBreakpoints: ['xs', 'lt-md'] })
     // JwtModule.forRoot({
     //   config: {
     //     tokenGetter,

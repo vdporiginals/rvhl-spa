@@ -1,7 +1,6 @@
 @import "../../scss/varriable";
 @import "../../scss/mixins";
 @import "../../scss/responsive";
-@import "../../scss/theme-default.scss";
 
 a {
   color: $font_1 !important;
@@ -37,8 +36,6 @@ a.disabled {
   -ms-flex-pack: center !important;
   justify-content: center !important;
 }
-// .blog_left_sidebar {
-// }
 .blog_item {
   margin-bottom: 50px;
   max-width: 750px;
@@ -166,7 +163,6 @@ a.disabled {
   display: block;
   padding: 0;
   text-align: center;
-  // padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 45px;
   width: 45px;
@@ -179,11 +175,6 @@ a.disabled {
   fa-icon,
   span {
     font-size: 13px;
-  }
-
-  &:hover {
-    // background-color: $baseColor;
-    // color: $white_color;
   }
 }
 

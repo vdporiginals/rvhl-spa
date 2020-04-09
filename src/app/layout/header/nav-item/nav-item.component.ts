@@ -18,7 +18,7 @@ export class NavItemComponent implements OnInit {
   navItems: NavItem[] = [
     {
       text: 'Trang chủ',
-      link: ''
+      link: 'home'
     },
     {
       text: 'Review',
