@@ -3,14 +3,13 @@ import {
   OnInit,
   OnDestroy,
   Input,
-  HostListener
+  HostListener,
+  Inject,
+  PLATFORM_ID
 } from '@angular/core';
-import {
-  MatCarouselSlide,
-  MatCarouselSlideComponent
-} from '@ngmodule/material-carousel';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { isPlatformBrowser } from '@angular/common';
 // import { Subcription } from 'rxjs';
 // import { HttpService, ApiConfig } from "../../shared/http.service";
 
@@ -23,11 +22,15 @@ export class SliderAreaComponent implements OnInit {
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
   isFavorite = true;
+  isBrowser: boolean;
 
   @Input() sliderData: any;
 
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit(): void {
   }
+
 }

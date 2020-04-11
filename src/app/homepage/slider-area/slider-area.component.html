@@ -1,6 +1,7 @@
 <mat-carousel
   timings="400ms ease-in-out"
   [autoplay]="true"
+  *ngIf="isBrowser"
   interval="4000"
   maxWidth="100%"
   proportion="35"

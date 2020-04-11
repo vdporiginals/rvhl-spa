@@ -1,4 +1,8 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component, OnInit, OnDestroy, ViewChild, ElementRef,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
@@ -7,6 +11,7 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
 import { map, catchError } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-blog-detail',
@@ -20,14 +25,15 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
   faHeart = faHeart;
   faComment = faComment;
   faUser = faUser;
+  isBrowser: boolean;
   public blogId: string;
   blogDetail: any = {};
   blogDetailImages = [];
   private subcription: Subscription;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
   }
-
   ngOnInit(): void {
     this.getData();
   }

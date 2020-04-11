@@ -5,6 +5,9 @@
         timings="400ms ease-in-out"
         maxWidth="100%"
         proportion="60"
+        [autoplay]="true"
+        interval="5000"
+        *ngIf="isBrowser"
         [loop]="true"
         [hideArrows]="false"
         [hideIndicators]="false"
@@ -18,13 +21,6 @@
         >
         </mat-carousel-slide>
       </mat-carousel>
-
-      <!-- <img
-        mat-card-image
-        class="img-fluid"
-        [src]="blogDetail.data.images[0]"
-        [alt]="blogDetail.data.title"
-      /> -->
     </div>
     <div class="blog_details">
       <h2>
@@ -43,9 +39,7 @@
       <div
         [innerHTML]="blogDetail?.data?.content | sanitizeHtml"
         class="blog_content"
-      >
-        <!-- <p ></p> -->
-      </div>
+      ></div>
     </div>
   </div>
   <div class="navigation-top">

@@ -77,7 +77,6 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
           this.isLastPage = false;
           this.currentPage = res[0].pagination.next.page - 1;
         }
-
         if (res[0].pagination.prev === undefined) {
           this.isFirstPage = true;
         } else {
@@ -104,17 +103,19 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
       .subscribe(data => {
         this.allBlogs = data.data;
         this.count = data.count;
-        if (data.pagination.next === undefined) {
-          this.isLastPage = true;
-          this.currentPage = data.pagination.prev.page + 1;
-        } else {
-          this.isLastPage = false;
-          this.currentPage = data.pagination.next.page - 1;
-        }
-        if (data.pagination.prev === undefined) {
-          this.isFirstPage = true;
-        } else {
-          this.isFirstPage = false;
+        if (data.pagination.next !== undefined || data.pagination.prev !== undefined) {
+          if (data.pagination.next === undefined) {
+            this.isLastPage = true;
+            this.currentPage = data.pagination.prev.page + 1;
+          } else {
+            this.isLastPage = false;
+            this.currentPage = data.pagination.next.page - 1;
+          }
+          if (data.pagination.prev === undefined) {
+            this.isFirstPage = true;
+          } else {
+            this.isFirstPage = false;
+          }
         }
       });
   }

@@ -48,7 +48,7 @@
   >
     <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
       <div>
-        <li class="page-item" *ngIf="categoryParams === null">
+        <li class="page-item" *ngIf="categoryParams === undefined">
           <a
             class="page-link"
             aria-label="Previous"
@@ -66,7 +66,7 @@
           </a>
         </li>
 
-        <li class="page-item" *ngIf="categoryParams !== null">
+        <li class="page-item" *ngIf="categoryParams !== undefined">
           <a
             class="page-link"
             aria-label="Previous"
@@ -93,13 +93,17 @@
           <a
             class="page-link"
             (click)="getData(page.value)"
-            *ngIf="p.getCurrent() !== page.value && categoryParams === null"
+            *ngIf="
+              p.getCurrent() !== page.value && categoryParams === undefined
+            "
             >{{ page.label }}</a
           >
           <a
             class="page-link"
             (click)="getDataByQuery(page.value)"
-            *ngIf="p.getCurrent() !== page.value && categoryParams !== null"
+            *ngIf="
+              p.getCurrent() !== page.value && categoryParams !== undefined
+            "
             >{{ page.label }}</a
           >
         </li>
@@ -108,7 +112,7 @@
         </li>
       </div>
       <div>
-        <li class="page-item" *ngIf="categoryParams === null">
+        <li class="page-item" *ngIf="categoryParams === undefined">
           <a
             class="page-link"
             aria-label="Next"
@@ -122,7 +126,7 @@
           </a>
         </li>
 
-        <li class="page-item" *ngIf="categoryParams !== null">
+        <li class="page-item" *ngIf="categoryParams !== undefined">
           <a
             class="page-link"
             aria-label="Next"
