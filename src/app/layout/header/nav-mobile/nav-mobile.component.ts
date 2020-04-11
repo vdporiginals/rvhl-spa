@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavItem } from 'src/app/shared/nav-item.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../../login/login.component';
 
 @Component({
   selector: 'app-nav-mobile',
@@ -6,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-mobile.component.scss']
 })
 export class NavMobileComponent implements OnInit {
-  constructor() { }
+  navItems = NavItem;
+  constructor(private dialog: MatDialog) { }
+  ngOnInit(): void {
+  }
 
-  ngOnInit(): void { }
+  loginDialog() {
+    this.dialog.open(LoginComponent);
+  }
+
+  registerDialog() { }
+
 }

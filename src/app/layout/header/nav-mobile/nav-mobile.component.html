@@ -7,38 +7,54 @@
   /></a>
 </div>
 <div class="main-menu" fxLayout="row" fxLayoutAlign="start">
-  <ul id="navigation">
-    <li>
+  <mat-accordion displayMode="flat">
+    <mat-nav-list [disableRipple]="true">
       <a
-        [routerLink]="['']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Trang chủ</a
+        class="mat-expansion-panel-header prime-item hide_gtxs"
+        (click)="loginDialog()"
+        >Đăng Nhập</a
       >
-    </li>
-    <li>
       <a
-        [routerLink]="['blogs']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Review</a
+        class="mat-expansion-panel-header prime-item hide_gtxs"
+        (click)="registerDialog()"
+        >Đăng Ký</a
       >
-    </li>
-    <li>
-      <a
-        [routerLink]="['tour']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Hạ Long Tour</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="['contact-us']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Liên hệ</a
-      >
-    </li>
-  </ul>
+      <ng-container *ngFor="let navItem of navItems">
+        <a
+          class="mat-expansion-panel-header prime-item"
+          [routerLink]="navItem.link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="active"
+          *ngIf="navItem.subItems === undefined"
+        >
+          {{ navItem.text }}
+        </a>
+
+        <mat-expansion-panel
+          class="mat-elevation-z0"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          #rla="routerLinkActive"
+          [expanded]="rla.isActive"
+        >
+          <mat-expansion-panel-header *ngIf="navItem.subItems !== undefined"
+            ><a [routerLink]="navItem.link" routerLinkActive="active">
+              {{ navItem.text }}
+            </a>
+          </mat-expansion-panel-header>
+          <div>
+            <ng-container *ngFor="let childNav of navItem.subItems">
+              <mat-list-item
+                [routerLink]="childNav.link"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                <small>{{ childNav.text }}</small>
+              </mat-list-item>
+            </ng-container>
+          </div>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-nav-list>
+  </mat-accordion>
 </div>
