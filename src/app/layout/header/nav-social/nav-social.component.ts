@@ -4,6 +4,7 @@ import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../../login/login.component';
+import { RegisterComponent } from '../../register/register.component';
 @Component({
   selector: 'app-nav-social',
   templateUrl: './nav-social.component.html',
@@ -20,7 +21,9 @@ export class NavSocialComponent implements OnInit {
     this.dialog.open(LoginComponent);
   }
 
-  registerDialog() { }
+  registerDialog() {
+    this.dialog.open(RegisterComponent);
+  }
 
 
   ngOnInit(): void { }

@@ -5,8 +5,10 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:5001/api',
-  apiAccount: 'duyphuongprovip',
-  apiPassword: 'doilabekho1214'
+  apiAccount: 'vdp.originals@gmail.com',
+  apiPassword: 'doilabekho@1214',
+  googleId: '942528628965-igadkdr1rk483ivfpivqrvc0vgkc2j0l.apps.googleusercontent.com',
+  facebookId: '641193026445878'
 };
 
 /*

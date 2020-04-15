@@ -12,7 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { LoginComponent } from '../layout/login/login.component';
 import { LayoutComponent } from './layout.component';
-
+import { RegisterComponent } from '../layout/register/register.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +35,7 @@ const routes: Routes = [
   ],
   declarations: [
     LoginComponent,
+    RegisterComponent
   ],
   providers: []
 })

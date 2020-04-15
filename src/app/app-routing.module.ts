@@ -17,6 +17,7 @@ const routes: Routes = [
   {
     path: 'tour', loadChildren: () => import('./tour/tour.module').then(m => m.TourModule)
   }
+  // { path: 'user-profile/:id', component: UserProfileComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

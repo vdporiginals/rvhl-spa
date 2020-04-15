@@ -1,53 +1,113 @@
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/toPromise';
+import { User } from '../user';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpBackend } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+@Injectable({
+  providedIn: 'root'
+})
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: localStorage.getItem('ApiToken')
-  })
-};
-
-@Injectable({ providedIn: 'root' })
 export class AuthClientService {
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  currentUser: any = {};
+  constructor(
+    private http: HttpClient,
+    public router: Router
+  ) { }
 
-  constructor(private http: HttpClient) { }
+  // signInApi() {
+  //   return this.httpApi.post<any>(`${environment.apiUrl}/auth/login`,
+  //     { email: environment.apiAccount, password: environment.apiPassword }).subscribe((res: any) => {
+  //       localStorage.setItem('access_token', res.token);
+  //     }, error => {
+  //       console.log(error.error);
+  //     });
+  // }
 
-  async localLogin(data) {
-    const loginLocal = await this.http.post(`${environment.apiUrl}/api/auth/login`, data);
-    return loginLocal;
+  // Sign-up
+  signUp(user: User): Observable<any> {
+    const api = `${environment.apiUrl}/auth/register`;
+    return this.http.post(api, user)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  async fbLogin() {
-    const loginFb = await this.http.get(`${environment.apiUrl}/api/auth/facebook`);
-    return loginFb;
+  // Sign-in
+  signIn(user: User) {
+    return this.http.post<any>(`${environment.apiUrl}/auth/login`, user).subscribe((res: any) => {
+      const token = res.token;
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      localStorage.setItem('access_token', token);
+      this.getUserProfile(JSON.parse(jsonPayload).id).subscribe((res) => {
+        this.currentUser = res;
+      });
+    }, error => {
+      console.log(error.error);
+    });
   }
 
-  async googleLogin() {
-    const loginGG = await this.http.get(`${environment.apiUrl}/api/auth/google`);
-    return loginGG;
+  sendToRestApiMethod(token: string, socialData, type: string): void {
+    console.log(socialData);
+    this.http.post(`${environment.apiUrl}/auth/${type}`, { token, socialData })
+      .subscribe(success => {
+        console.log(success);
+        // login was successful
+        // save the token that you got from your REST API in your preferred location i.e. as a Cookie or LocalStorage as you do with normal login
+      }, error => {
+        console.log(error);
+        // login was unsuccessful
+        // show an error message
+      });
   }
 
-  logout() {
-    localStorage.removeItem('ApiToken');
+  getUserToken() {
+    return localStorage.getItem('access_token');
   }
 
-  async isLoggedIn() {
-    const isLogin = await JSON.parse(localStorage.getItem('ApiToken'));
-    if (isLogin === null || isLogin === undefined) {
-      return 'Bạn chưa đăng nhập';
-    } else {
-      return isLogin;
+  // getApiToken() {
+  //   return localStorage.getItem('api_token');
+  // }
+
+  get isLoggedIn(): boolean {
+    const authToken = localStorage.getItem('access_token');
+    return (authToken !== null) ? true : false;
+  }
+
+  doLogout() {
+    const removeToken = localStorage.removeItem('access_token');
+    if (removeToken == null) {
+      this.router.navigate(['/home']);
     }
   }
 
-  getCurrentUser() {
-    return new Promise((resolve, reject) => {
-      return this.http.get(`${environment.apiUrl}/auth/facebook`).toPromise().then(response => {
-        resolve(response.json());
-      }).catch(() => reject());
-    });
+  // User profile
+  getUserProfile(id): Observable<any> {
+    const api = `${environment.apiUrl}/users/${id}`;
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res: Response) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  // Error
+  handleError(error: HttpErrorResponse) {
+    let msg = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      msg = error.error.message;
+    } else {
+      // server-side error
+      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(msg);
   }
 }

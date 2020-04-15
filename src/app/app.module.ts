@@ -5,7 +5,7 @@ import {
 } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatMenuModule } from '@angular/material/menu';
@@ -13,12 +13,23 @@ import { LayoutModule } from './layout/layout.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderModule } from './layout/header/header.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HomepageModule } from './homepage/homepage.module'
-// import { JwtModule } from '@auth0/angular-jwt';
+import { HomepageModule } from './homepage/homepage.module';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 
-// export function tokenGetter() {
-//   return localStorage.getItem('access_token');
-// }
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(environment.googleId)
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider(environment.facebookId)
+  }
+]);
+export function provideConfig() {
+  return config;
+}
 
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
@@ -32,6 +43,9 @@ import { NavLogoComponent } from './layout/header/nav-logo/nav-logo.component';
 import { NavMobileComponent } from './layout/header/nav-mobile/nav-mobile.component';
 import { SubMobileComponent } from './layout/header/nav-mobile/sub-menu/sub-menu.component';
 import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.component';
+
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +73,7 @@ import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.com
     LayoutModule,
     HeaderModule,
     HomepageModule,
+    SocialLoginModule,
     FlexLayoutModule.withConfig({ ssrObserveBreakpoints: ['xs', 'lt-md'] })
     // JwtModule.forRoot({
     //   config: {
@@ -70,7 +85,14 @@ import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.com
 
   ],
 
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }, {
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
