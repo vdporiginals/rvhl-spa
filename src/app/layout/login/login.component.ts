@@ -1,10 +1,11 @@
 
 import { Component, Inject, Injectable, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
+import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { AuthClientService } from 'src/app/shared/services/auth-client.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 
 interface DataLogin {
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<LoginComponent>,
     public fb: FormBuilder,
+    public jwtHelper: JwtHelperService,
     public authService: AuthClientService,
     private authSocialService: AuthService,
     public router: Router) {
@@ -40,6 +42,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.jwtHelper.isTokenExpired()) {
+      localStorage.removeItem('access_token');
+    }
     // if (localStorage.fbToken) {
     //   this.loggedIn = true;
     // }
@@ -53,8 +58,6 @@ export class LoginComponent implements OnInit {
   signInWithFB(): void {
     this.authSocialService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       (userData) => {
-
-        console.log(userData.facebook);
         this.authService.sendToRestApiMethod(userData.authToken, userData.facebook, 'facebook');
       });
   }
@@ -80,6 +83,9 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     this.authService.signIn(this.signinForm.value);
+    if (localStorage.getItem('access_token') !== undefined || localStorage.getItem('access_token') !== null) {
+      this.closeMe();
+    }
     // this.closeMe();
   }
 }

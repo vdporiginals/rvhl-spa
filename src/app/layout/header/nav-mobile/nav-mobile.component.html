@@ -48,6 +48,7 @@
                 [routerLink]="childNav.link"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
+                [queryParams]="childNav.queryParams"
               >
                 <small>{{ childNav.text }}</small>
               </mat-list-item>

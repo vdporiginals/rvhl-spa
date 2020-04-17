@@ -12,7 +12,6 @@ import { SanitizeHtmlPipe } from '../shared/pipe/sanitize-html.pipe';
 import { TextOverflowPipe } from '../shared/pipe/text-overflow.pipe';
 
 import { BlogsComponent } from './blogs.component';
-import { BlogBannerComponent } from './blog-banner/blog-banner.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogCommentComponent } from './blog-comment/blog-comment.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
@@ -32,7 +31,6 @@ import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
   ],
   declarations: [
     BlogsComponent,
-    BlogBannerComponent,
     BlogListComponent,
     BlogCommentComponent,
     BlogDetailComponent,
