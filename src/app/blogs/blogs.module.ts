@@ -17,6 +17,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogCommentComponent } from './blog-comment/blog-comment.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogFilterComponent } from './blog-filter/blog-filter.component';
+import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { BlogFilterComponent } from './blog-filter/blog-filter.component';
     BlogCommentComponent,
     BlogDetailComponent,
     BlogFilterComponent,
+    BreadcrumbComponent,
     SanitizeHtmlPipe,
     TextOverflowPipe
   ],

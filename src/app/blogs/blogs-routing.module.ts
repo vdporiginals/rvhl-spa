@@ -11,11 +11,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: BlogListComponent
+        component: BlogListComponent,
       },
       {
         path: ':id/:seo',
-        component: BlogDetailComponent
+        component: BlogDetailComponent,
+        data: {
+          breadcrumb: '',
+        },
       }
     ]
   }

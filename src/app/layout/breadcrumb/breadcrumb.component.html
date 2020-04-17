@@ -1,0 +1,14 @@
+<div class="bradcam_area bradcam_bg_4" fxLayout="row">
+  <div fxFlex fxLayoutAlign="center center">
+    <div class="bradcam_text">
+      <h3>{{ titlePage?.label }}</h3>
+      <ol class="breadcrumb" fxLayout="row" fxLayoutAlign="center center">
+        <li *ngFor="let breadcrumb of breadcrumbs">
+          <span>
+            <a [routerLink]="breadcrumb.url">{{ breadcrumb.label }}</a>
+          </span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>

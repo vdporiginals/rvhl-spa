@@ -5,19 +5,19 @@ export const NavItem = [
   },
   {
     text: 'Review',
-    link: 'blogs',
+    link: 'reviews',
     queryParams: { category: 'bannerBlog' },
     subItems: [
       {
         text: 'Lịch Trình',
-        link: 'blogs',
+        link: 'reviews',
         queryParams: {
           category: 'Schedule'
         }
       },
       {
         text: 'Ăn Gì',
-        link: 'blogs',
+        link: 'reviews',
         queryParams: {
           category: 'Food'
         }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TourRoutingModule } from './tour-routing.module';
-import { MaterialModule } from '../material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -14,7 +13,6 @@ import { ListSingleTourComponent } from './list-single-tour/list-single-tour.com
   imports: [
     CommonModule,
     TourRoutingModule,
-    MaterialModule,
     FontAwesomeModule,
     NgxPaginationModule
   ],

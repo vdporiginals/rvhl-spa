@@ -12,7 +12,11 @@ const routes: Routes = [
     loadChildren: () => import('./homepage/homepage.module').then(m => m.HomepageModule)
   },
   {
-    path: 'blogs', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule)
+    path: 'reviews', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule),
+
+    data: {
+      breadcrumb: 'Review',
+    },
   },
   {
     path: 'tour', loadChildren: () => import('./tour/tour.module').then(m => m.TourModule)

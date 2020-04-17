@@ -59,7 +59,6 @@ export class AuthClientService {
       .subscribe(success => {
         console.log(success);
         // login was successful
-        // save the token that you got from your REST API in your preferred location i.e. as a Cookie or LocalStorage as you do with normal login
       }, error => {
         console.log(error);
         // login was unsuccessful
