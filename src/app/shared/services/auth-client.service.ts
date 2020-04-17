@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpBackend } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { LocalStorageService } from './local-storage.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +15,8 @@ export class AuthClientService {
   currentUser: any = {};
   constructor(
     private http: HttpClient,
-    public router: Router
+    public router: Router,
+    public localStorage: LocalStorageService
   ) { }
 
   // signInApi() {
@@ -44,7 +46,7 @@ export class AuthClientService {
       const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
       }).join(''));
-      localStorage.setItem('access_token', token);
+      this.localStorage.setItem('access_token', token);
       this.getUserProfile(JSON.parse(jsonPayload).id).subscribe((res) => {
         this.currentUser = res;
       });
@@ -67,7 +69,7 @@ export class AuthClientService {
   }
 
   getUserToken() {
-    return localStorage.getItem('access_token');
+    return this.localStorage.getItem('access_token');
   }
 
   // getApiToken() {
@@ -75,12 +77,12 @@ export class AuthClientService {
   // }
 
   get isLoggedIn(): boolean {
-    const authToken = localStorage.getItem('access_token');
+    const authToken = this.localStorage.getItem('access_token');
     return (authToken !== null) ? true : false;
   }
 
   doLogout() {
-    const removeToken = localStorage.removeItem('access_token');
+    const removeToken = this.localStorage.removeItem('access_token');
     if (removeToken == null) {
       this.router.navigate(['/home']);
     }

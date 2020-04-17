@@ -17,7 +17,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomepageModule } from './homepage/homepage.module';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
-import { JwtModule } from '@auth0/angular-jwt';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 import { AppComponent } from './app.component';
@@ -32,6 +32,7 @@ import { NavLogoComponent } from './layout/header/nav-logo/nav-logo.component';
 import { NavMobileComponent } from './layout/header/nav-mobile/nav-mobile.component';
 import { SubMobileComponent } from './layout/header/nav-mobile/sub-menu/sub-menu.component';
 import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.component';
+import { LocalStorageService } from './shared/services/local-storage.service';
 
 const config = new AuthServiceConfig([
   {
@@ -64,10 +65,12 @@ export function provideConfig() {
   ],
   imports: [
     JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [LocalStorageService]
+      },
       config: {
-        tokenGetter: function tokenGetter() {
-          return localStorage.getItem('access_token');
-        },
         whitelistedDomains: ['localhost:5001'],
         blacklistedRoutes: ['http://localhost:5001/auth/login']
       }
@@ -87,14 +90,23 @@ export function provideConfig() {
     FlexLayoutModule.withConfig({ ssrObserveBreakpoints: ['xs', 'lt-md'] })
   ],
 
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }, {
-    provide: AuthServiceConfig,
-    useFactory: provideConfig
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }, {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function jwtOptionsFactory(localService) {
+  return {
+    tokenGetter: () => {
+      return localService.getItem('access_token');
+    }
+  }
+}
