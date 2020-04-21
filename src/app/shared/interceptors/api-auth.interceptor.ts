@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class ApiAuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthClientService) { }
+  constructor() { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const authUserToken = environment.apiToken;

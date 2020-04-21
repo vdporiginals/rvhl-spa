@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { NavItem } from 'src/app/shared/nav-item.interface';
+import { NavItem } from 'src/app/shared/nav-item';
 
 @Component({
   selector: 'app-nav-item',

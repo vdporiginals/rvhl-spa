@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavItem } from 'src/app/shared/nav-item.interface';
+import { NavItem } from 'src/app/shared/nav-item';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../../user/login/login.component';
 
