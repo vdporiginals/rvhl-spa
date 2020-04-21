@@ -1,12 +1,19 @@
-<div class="social_wrap">
+<div class="social_wrap" fxLayoutAlign.gt-lg="end">
   <div class="social_links number">
-    <ul>
+    <ul *ngIf="!isLoggin">
       <li>
         <a (click)="loginDialog()">Đăng Nhập</a>
       </li>
+
       <li>
         <a (click)="registerDialog()">Đăng Ký</a>
       </li>
+    </ul>
+    <ul *ngIf="isLoggin">
+      <li>
+        <a [routerLink]="['/profile']">{{ userName }}</a>
+      </li>
+      <li><a (click)="logout()">Đăng xuất</a></li>
     </ul>
   </div>
   <div class="social_links" fxFlex fxLayout>

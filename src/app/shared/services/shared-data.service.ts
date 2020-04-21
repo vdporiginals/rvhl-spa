@@ -5,8 +5,15 @@ import { BehaviorSubject } from 'rxjs';
 export class SharedDataService {
   private blogId: string;
   private storageName = 'BlogId';
+  private isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLogged = this.isLoggedIn.asObservable();
 
-  constructor() {}
+  constructor() { }
+
+
+  setLogged = (val: boolean) => {
+    this.isLoggedIn.next(val);
+  }
 
   setBlogId(value) {
     this.blogId = value;

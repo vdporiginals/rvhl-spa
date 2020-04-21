@@ -18,7 +18,7 @@ import { HomepageModule } from './homepage/homepage.module';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { ApiAuthInterceptor } from './shared/interceptors/api-auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
@@ -93,7 +93,7 @@ export function provideConfig() {
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: ApiAuthInterceptor,
       multi: true
     }, {
       provide: AuthServiceConfig,
@@ -106,7 +106,7 @@ export class AppModule { }
 export function jwtOptionsFactory(localService) {
   return {
     tokenGetter: () => {
-      return localService.getItem('access_token');
+      return localService.getItem('api_token');
     }
   }
 }

@@ -10,14 +10,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { LoginComponent } from '../layout/login/login.component';
+import { LoginComponent } from './user/login/login.component';
 import { LayoutComponent } from './layout.component';
-import { RegisterComponent } from '../layout/register/register.component';
+import { RegisterComponent } from './user/register/register.component';
+import { ProfileComponent } from './user/profile/profile.component';
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent
   },
+  {
+    path: 'profile',
+    component: ProfileComponent
+  }
 ]
 
 @NgModule({
@@ -35,7 +40,8 @@ const routes: Routes = [
   ],
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   providers: []
 })

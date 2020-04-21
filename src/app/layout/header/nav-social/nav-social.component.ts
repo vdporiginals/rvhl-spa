@@ -3,8 +3,12 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { LoginComponent } from '../../login/login.component';
-import { RegisterComponent } from '../../register/register.component';
+import { LoginComponent } from '../../user/login/login.component';
+import { RegisterComponent } from '../../user/register/register.component';
+import { AuthClientService } from 'src/app/shared/services/auth-client.service';
+import { Router } from '@angular/router';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 @Component({
   selector: 'app-nav-social',
   templateUrl: './nav-social.component.html',
@@ -14,8 +18,15 @@ export class NavSocialComponent implements OnInit {
   faFacebookMessenger = faFacebookMessenger;
   faEnvelope = faEnvelope;
   faFacebook = faFacebook;
+  isLoggin: boolean;
+  userName;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog,
+    public auth: AuthClientService,
+    private localStorage: LocalStorageService,
+    public router: Router,
+    private sharedData: SharedDataService) { }
 
   loginDialog() {
     this.dialog.open(LoginComponent);
@@ -25,6 +36,20 @@ export class NavSocialComponent implements OnInit {
     this.dialog.open(RegisterComponent);
   }
 
+  logout() {
+    this.auth.doLogout();
+    this.isLoggin = false;
+    this.sharedData.setLogged(false);
+  }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.sharedData.isLogged.subscribe((isLogged) => {
+      if (this.localStorage.getItem('access_token') !== null) {
+        this.isLoggin = true;
+        this.userName = JSON.parse(this.localStorage.getItem('access_token')).user;
+      } else {
+        this.isLoggin = isLogged;
+      }
+    });
+  }
 }

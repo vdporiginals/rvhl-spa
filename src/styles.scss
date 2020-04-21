@@ -1,4 +1,5 @@
 @import "~@angular/material/theming";
+@import "~ngx-toastr/toastr";
 @import "app/scss/theme-default.scss";
 @include mat-core();
 

@@ -1,32 +1,28 @@
 import { Injectable } from '@angular/core';
 import { User } from '../user';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpBackend } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
+import { SharedDataService } from './shared-data.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { LoginComponent } from 'src/app/layout/user/login/login.component';
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthClientService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser: any = {};
+  private _currentUser: BehaviorSubject<any> = new BehaviorSubject<any>({});
+  currentUser = this._currentUser.asObservable();
   constructor(
     private http: HttpClient,
+    private sharedData: SharedDataService,
     public router: Router,
     public localStorage: LocalStorageService
   ) { }
-
-  // signInApi() {
-  //   return this.httpApi.post<any>(`${environment.apiUrl}/auth/login`,
-  //     { email: environment.apiAccount, password: environment.apiPassword }).subscribe((res: any) => {
-  //       localStorage.setItem('access_token', res.token);
-  //     }, error => {
-  //       console.log(error.error);
-  //     });
-  // }
 
   // Sign-up
   signUp(user: User): Observable<any> {
@@ -46,20 +42,34 @@ export class AuthClientService {
       const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
       }).join(''));
-      this.localStorage.setItem('access_token', token);
-      this.getUserProfile(JSON.parse(jsonPayload).id).subscribe((res) => {
-        this.currentUser = res;
-      });
+      this.localStorage.setItem('access_token', JSON.stringify({ token: res.token, user: res.user }));
+      // this.getUserProfile(JSON.parse(jsonPayload).id).subscribe((res) => {
+      //   this._currentUser = res;
+      // });
+      if (this.localStorage.getItem('access_token') !== null) {
+        this.sharedData.setLogged(true);
+      }
     }, error => {
       console.log(error.error);
     });
   }
 
   sendToRestApiMethod(token: string, socialData, type: string): void {
-    console.log(socialData);
     this.http.post(`${environment.apiUrl}/auth/${type}`, { token, socialData })
-      .subscribe(success => {
-        console.log(success);
+      .subscribe((res: { token, success, user }) => {
+        const socialToken = res.token;
+        const base64Url = socialToken.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        this.localStorage.setItem('access_token', JSON.stringify({ token: res.token, user: res.user }));
+        if (this.localStorage.getItem('access_token') !== null) {
+          this.sharedData.setLogged(true);
+        }
+        // this.getUserProfile(JSON.parse(jsonPayload).id).subscribe((res) => {
+        //   this.currentUser = res;
+        // });
         // login was successful
       }, error => {
         console.log(error);
@@ -71,7 +81,6 @@ export class AuthClientService {
   getUserToken() {
     return this.localStorage.getItem('access_token');
   }
-
   // getApiToken() {
   //   return localStorage.getItem('api_token');
   // }

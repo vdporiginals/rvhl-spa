@@ -12,6 +12,8 @@ import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
 import { map, catchError } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
+import { HttpHeaders } from '@angular/common/http';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-blog-detail',
@@ -31,7 +33,11 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
   blogDetailImages = [];
   private subcription: Subscription;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(
+    private http: HttpClient,
+    private localStorage: LocalStorageService,
+    private route: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
   ngOnInit(): void {
@@ -53,6 +59,10 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         this.blogDetail = data;
         this.blogDetailImages = data.data.images;
-      });
+      },
+        err => {
+          console.log(err);
+
+        });
   }
 }

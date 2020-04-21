@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 
 interface DataLogin {
   email?: string;
@@ -30,34 +31,33 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<LoginComponent>,
+    private authSocialService: AuthService,
+    private sharedData: SharedDataService,
     public fb: FormBuilder,
     public jwtHelper: JwtHelperService,
     public authService: AuthClientService,
-    private authSocialService: AuthService,
     public router: Router,
     public localStorage: LocalStorageService
   ) {
 
     this.signinForm = this.fb.group({
-      name: [''],
       email: [''],
       password: ['']
     });
   }
 
   ngOnInit() {
+    this.sharedData.isLogged.subscribe((isLogged) => {
+      if (isLogged === true) {
+        this.closeMe();
+      } else {
+        console.log(isLogged);
+      }
+    });
+
     if (this.jwtHelper.isTokenExpired()) {
       this.localStorage.removeItem('access_token');
     }
-
-    // if (localStorage.fbToken) {
-    //   this.loggedIn = true;
-    // }
-    // this.authSocialService.authState.subscribe((user) => {
-    //   this.user = user;
-    //   this.loggedIn = (user != null);
-    //   console.log(this.user);
-    // });
   }
 
   signInWithFB(): void {
@@ -82,15 +82,11 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  public closeMe() {
+  private closeMe() {
     this.dialogRef.close();
   }
 
   loginUser() {
     this.authService.signIn(this.signinForm.value);
-    if (this.localStorage.getItem('access_token') !== undefined || this.localStorage.getItem('access_token') !== null) {
-      this.closeMe();
-    }
-    // this.closeMe();
   }
 }

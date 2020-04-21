@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:5001/api',
-  apiAccount: 'vdp.originals@gmail.com',
-  apiPassword: 'doilabekho@1214',
+  // tslint:disable-next-line: max-line-length
+  apiToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0MiIsIm5hbWUiOiJBZG1pbiBBY2NvdW50Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTg3NDQ2MTQyLCJleHAiOjE1ODgwNTA5NDJ9.5y6V7uM3pqzQM-jXRdbi_mCBZwKCLGAQx4WLWqiUKOs',
   googleId: '942528628965-igadkdr1rk483ivfpivqrvc0vgkc2j0l.apps.googleusercontent.com',
   facebookId: '641193026445878'
 };
