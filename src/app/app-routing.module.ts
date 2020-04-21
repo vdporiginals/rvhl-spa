@@ -15,13 +15,17 @@ const routes: Routes = [
   },
   {
     path: 'reviews', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule),
-
     data: {
       breadcrumb: 'Review',
+      queryBanner: 'bannerReview'
     },
   },
   {
-    path: 'tour', loadChildren: () => import('./tour/tour.module').then(m => m.TourModule)
+    path: 'tour', loadChildren: () => import('./tour/tour.module').then(m => m.TourModule),
+    data: {
+      breadcrumb: 'tour',
+      queryBanner: 'bannerTour'
+    },
   },
   {
     path: 'profile',

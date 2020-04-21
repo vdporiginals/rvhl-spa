@@ -12,7 +12,6 @@ export class ApiAuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const authUserToken = environment.apiToken;
-    console.log(authUserToken);
     req = req.clone({
       setHeaders: {
         Authorization: 'Bearer ' + authUserToken

@@ -43,12 +43,19 @@ export class ApiService {
         limit: '3'
       }
     });
+    const videoBg = this.http.get(`${environment.apiUrl}/advertises`, {
+      params: {
+        select: 'images,seo',
+        category: 'video'
+      }
+    });
     return forkJoin([
       sliderArea,
       popularSchedule,
       popularPlace,
       popularRestaurant,
-      recentBlogs
+      recentBlogs,
+      videoBg
     ]);
   }
 
@@ -77,10 +84,12 @@ export class ApiService {
   }
 
   getBannerPage(queryParams): Observable<any> {
+    console.log(queryParams);
     const bannerPage = this.http.get(`${environment.apiUrl}/advertises`, {
       params: {
         category: queryParams,
-        limit: '1'
+        limit: '1',
+        select: 'images,title'
       }
     });
     return bannerPage;

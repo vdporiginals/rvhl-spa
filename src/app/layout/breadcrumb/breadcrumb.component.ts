@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { IBreadCrumb } from './breadcrumb.interface';
-import { filter, distinctUntilChanged } from 'rxjs/operators';
+import { filter, distinctUntilChanged, map } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss']
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent implements OnInit, OnDestroy {
   public breadcrumbs: IBreadCrumb[];
   public titlePage;
+  private subcription: Subscription;
+  bannerImage;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private api: ApiService
   ) {
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
@@ -25,6 +30,7 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getBannerBg();
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       distinctUntilChanged(),
@@ -32,6 +38,19 @@ export class BreadcrumbComponent implements OnInit {
       this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
     });
     this.titlePage = this.breadcrumbs[0];
+  }
+
+  ngOnDestroy(): void {
+    this.subcription.unsubscribe();
+  }
+
+  getBannerBg() {
+    const queryApi = this.activatedRoute.snapshot.data.queryBanner;
+    this.subcription = this.api.getBannerPage(queryApi).subscribe(res => {
+      this.bannerImage = res;
+    }, err => {
+      console.log(err);
+    })
   }
 
   /**
@@ -54,7 +73,6 @@ export class BreadcrumbComponent implements OnInit {
       path = path.replace(replaceId[0], route.snapshot.params.id);
       label = route.snapshot.params[paramName];
     }
-
 
     // In the routeConfig the complete path is not available,
     // so we rebuild it each time
