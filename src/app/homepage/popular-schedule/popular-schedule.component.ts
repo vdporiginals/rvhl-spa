@@ -7,7 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PopularScheduleComponent implements OnInit {
   @Input() popularScheduleData: any;
-  constructor() { }
+  @Input() popularFoodData: any;
 
-  ngOnInit(): void { }
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    console.log(this.popularFoodData, this.popularScheduleData);
+  }
 }

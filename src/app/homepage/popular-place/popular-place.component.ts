@@ -6,9 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./popular-place.component.scss']
 })
 export class PopularPlaceComponent implements OnInit {
-  @Input() popularPlaceData: any;
-  @Input() popularRestaurant: any;
-  constructor() {}
+  @Input() popularCruiseData: any;
+  @Input() popularHotelData: any;
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

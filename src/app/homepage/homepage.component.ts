@@ -8,11 +8,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit, OnDestroy {
-  sliderData: any = {};
-  popularScheduleData: any = {};
-  popularPlaceData: any = {};
-  popularRestaurant: any = {};
-  recentBlogs: any = {};
+  sliderData: any = [];
+  popularScheduleData: any = [];
+  popularFoodData: any = [];
+  popularHotelData: any = [];
+  popularCruiseData: any = [];
+  recentBlogs: any = [];
+  videoBg: any = [];
   isLoadingResults = true;
   private subcription: Subscription;
 
@@ -28,11 +30,13 @@ export class HomepageComponent implements OnInit, OnDestroy {
   getData() {
     this.subcription = this.api.getContentHomepage().subscribe(
       res => {
-        this.sliderData = res[0];
-        this.popularScheduleData = res[1];
-        this.popularPlaceData = res[2];
-        this.popularRestaurant = res[3];
-        this.recentBlogs = res[4];
+        this.sliderData = res[0].data;
+        this.popularScheduleData = res[1].data;
+        this.popularFoodData = res[2].data;
+        this.popularHotelData = res[3].data;
+        this.popularCruiseData = res[4].data;
+        this.recentBlogs = res[5].data;
+        this.videoBg = res[6].data;
         this.isLoadingResults = false;
       },
       err => {

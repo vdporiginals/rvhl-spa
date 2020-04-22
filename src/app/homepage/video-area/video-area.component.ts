@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { VideoDialogComponent } from './video-dialog/video-dialog.component';
 @Component({
   selector: 'app-video-area',
   templateUrl: './video-area.component.html',
@@ -7,7 +9,17 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 })
 export class VideoAreaComponent implements OnInit {
   faPlay = faPlay;
-  constructor() {}
+  @Input() videoBg;
+  constructor(private dialog: MatDialog) {
+    console.log(this.videoBg);
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  openVideo() {
+    this.dialog.open(VideoDialogComponent, {
+      width: 'auto',
+      panelClass: 'my-dialog'
+    });
+  }
 }

@@ -8,6 +8,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { HomepageComponent } from './homepage.component';
 import { SliderAreaComponent } from './slider-area/slider-area.component';
@@ -17,6 +19,7 @@ import { PopularPlaceComponent } from './popular-place/popular-place.component';
 import { IntroServiceComponent } from './intro-service/intro-service.component';
 import { VideoAreaComponent } from './video-area/video-area.component';
 import { RecentBlogsComponent } from './recent-blogs/recent-blogs.component';
+import { VideoDialogComponent } from './video-area/video-dialog/video-dialog.component';
 @NgModule({
   imports: [
     HomepageRoutingModule,
@@ -27,7 +30,8 @@ import { RecentBlogsComponent } from './recent-blogs/recent-blogs.component';
     MatInputModule,
     MatCarouselModule.forRoot(),
     FontAwesomeModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxYoutubePlayerModule.forRoot()
   ],
   declarations: [
     HomepageComponent,
@@ -37,8 +41,11 @@ import { RecentBlogsComponent } from './recent-blogs/recent-blogs.component';
     PopularPlaceComponent,
     IntroServiceComponent,
     VideoAreaComponent,
-    RecentBlogsComponent
+    RecentBlogsComponent,
+    VideoDialogComponent
   ],
   providers: []
 })
 export class HomepageModule { }
+
+// platformBrowserDynamic().bootstrapMod;

@@ -8,16 +8,16 @@
 >
   <div>
     <div class="section_title" style="text-align: center;">
-      <h3>Lịch trình nổi bật</h3>
+      <h3>Lịch trình, món ăn nổi bật</h3>
       <p>
-        Review chia sẻ hành trình, khám phá và trải nghiệm từ du khách đến Hạ
-        Long
+        Review chia sẻ hành trình, khám phá và món ăn với trải nghiệm từ du
+        khách đến Hạ Long
       </p>
     </div>
   </div>
   <div fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="center center">
     <div
-      *ngFor="let schedule of popularScheduleData.data"
+      *ngFor="let schedule of popularScheduleData"
       fxFlex="65%"
       fxFlex.gt-sm="24%"
       fxFlex.md="40%"
@@ -31,9 +31,25 @@
           />
         </div>
         <div class="content" fxLayoutAlign="center center">
-          <a [routerLink]="['blogs', schedule._id, schedule.seo]">
+          <a [routerLink]="['/reviews', schedule?._id, schedule?.seo]">
             {{ schedule.title }}
-            <!-- <a href="travel_destination.html"> {{ schedule.tags }}</a> -->
+          </a>
+        </div>
+      </mat-card>
+    </div>
+    <div
+      *ngFor="let food of popularFoodData"
+      fxFlex="65%"
+      fxFlex.gt-sm="24%"
+      fxFlex.md="40%"
+    >
+      <mat-card class="single_destination">
+        <div class="thumb">
+          <img mat-card-image [src]="(food?.images)[0]" [alt]="food.title" />
+        </div>
+        <div class="content" fxLayoutAlign="center center">
+          <a [routerLink]="['/reviews', food?._id, food?.seo]">
+            {{ food?.title }}
           </a>
         </div>
       </mat-card>
@@ -41,12 +57,7 @@
   </div>
   <div fxFlex>
     <div class="more_place_btn text-center">
-      <a
-        class="boxed-btn4"
-        [routerLink]="['/blogs']"
-        [queryParams]="{ category: 'Schedule' }"
-        >More Places</a
-      >
+      <a class="boxed-btn4" [routerLink]="['/reviews']">Xem thêm</a>
     </div>
   </div>
 </div>

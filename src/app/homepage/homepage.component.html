@@ -2,6 +2,7 @@
 <app-transfer></app-transfer>
 <section class="bg-schedule">
   <app-popular-schedule
+    [popularFoodData]="popularFoodData"
     [popularScheduleData]="popularScheduleData"
   ></app-popular-schedule>
 </section>
@@ -18,10 +19,10 @@
   </div>
 </div>
 <app-popular-place
-  [popularPlaceData]="popularPlaceData"
-  [popularRestaurant]="popularRestaurant"
+  [popularHotelData]="popularHotelData"
+  [popularCruiseData]="popularCruiseData"
 ></app-popular-place>
-<app-video-area></app-video-area>
+<app-video-area [videoBg]="videoBg"></app-video-area>
 <div class="bg-schedule">
   <app-intro-service></app-intro-service>
 </div>

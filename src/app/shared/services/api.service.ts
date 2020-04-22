@@ -19,22 +19,29 @@ export class ApiService {
     const popularSchedule = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'seo,title,images,createdAt',
-        limit: '6',
+        limit: '3',
         category: 'Schedule'
       }
     });
-    const popularPlace = this.http.get(`${environment.apiUrl}/blogs`, {
+    const popularFood = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'title,description,images,seo,address',
+        select: 'seo,title,images,createdAt',
         limit: '3',
         category: 'Food'
       }
     });
-    const popularRestaurant = this.http.get(`${environment.apiUrl}/blogs`, {
+    const popularHotel = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'title,description,images,seo,address',
+        select: 'title,description,images,seo,address,price',
         limit: '3',
-        category: 'Other'
+        category: 'Hotel'
+      }
+    });
+    const popularCruise = this.http.get(`${environment.apiUrl}/blogs`, {
+      params: {
+        select: 'title,description,images,seo,address,price',
+        limit: '3',
+        category: 'Cruise'
       }
     });
     const recentBlogs = this.http.get(`${environment.apiUrl}/blogs`, {
@@ -52,8 +59,9 @@ export class ApiService {
     return forkJoin([
       sliderArea,
       popularSchedule,
-      popularPlace,
-      popularRestaurant,
+      popularFood,
+      popularHotel,
+      popularCruise,
       recentBlogs,
       videoBg
     ]);
