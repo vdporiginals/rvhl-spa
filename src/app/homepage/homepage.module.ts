@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ShortNumberPipe } from '../shared/pipe/short-num.pipe';
 
 import { HomepageComponent } from './homepage.component';
 import { SliderAreaComponent } from './slider-area/slider-area.component';
@@ -42,9 +42,10 @@ import { VideoDialogComponent } from './video-area/video-dialog/video-dialog.com
     IntroServiceComponent,
     VideoAreaComponent,
     RecentBlogsComponent,
-    VideoDialogComponent
+    VideoDialogComponent,
+    ShortNumberPipe
   ],
-  providers: []
+  providers: [ShortNumberPipe]
 })
 export class HomepageModule { }
 

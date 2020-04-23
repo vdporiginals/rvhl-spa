@@ -17,7 +17,7 @@
     fxLayoutGap="45px"
     fxLayout.lt-md="column"
   >
-    <div fxFlex="33" fxFlex.lt-md *ngFor="let blog of recentBlogs.data">
+    <div fxFlex="33" fxFlex.lt-md *ngFor="let blog of recentBlogs">
       <mat-card class="single_trip">
         <div class="thumb">
           <img mat-card-image [src]="blog.images[0]" [alt]="blog.title" />

@@ -37,9 +37,11 @@
         </li>
       </ul>
       <div
-        [innerHTML]="blogDetail?.data?.content | sanitizeHtml"
         class="blog_content"
-      ></div>
+        [innerHTML]="blogDetail?.data?.content | sanitizeHtml"
+      >
+        <p></p>
+      </div>
     </div>
   </div>
   <div class="navigation-top">

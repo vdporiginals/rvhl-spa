@@ -8,9 +8,9 @@
 >
   <div>
     <div class="section_title">
-      <h3>Bạn ăn gì, Bạn ở đâu</h3>
+      <h3>Chơi đâu và Ở Đâu</h3>
       <p>
-        Gợi ý cho du khách về ẩm thực và chỗ nghỉ nổi bật nhất.
+        Gợi ý cho du khách về những tour ở Hạ long và chỗ nghỉ nổi bật nhất.
       </p>
     </div>
   </div>
@@ -24,17 +24,26 @@
       <mat-card class="single_place">
         <div class="thumb">
           <img mat-card-image [src]="cruise.images[0]" [alt]="cruise.title" />
-          <a href="#" class="prise">{{ cruise.price }}</a>
+          <a href="#" class="prise">{{ cruise.price | shortNumber }}</a>
         </div>
         <div class="place_info">
           <a
-            [routerLink]="['reviews', cruise._id, cruise.seo]"
+            [routerLink]="['/tour', 'ha-long-bay-tour', cruise._id, cruise.seo]"
             fxLayoutAlign="start"
             ><h3>{{ cruise.title }}</h3></a
           >
           <p fxLayoutAlign="start" fxLayoutAlign="start">
-            {{ cruise.address }}
+            {{ cruise.schedule.location }}
           </p>
+          <div fxLayoutAlign="start">
+            <div class="days">
+              <fa-icon [icon]="faClock"></fa-icon>
+              <a>
+                {{ cruise.schedule.timeStart | date: "dd/MM" }} đến
+                {{ cruise.schedule.timeEnd | date: "dd/MM" }}</a
+              >
+            </div>
+          </div>
         </div>
       </mat-card>
     </div>
@@ -47,22 +56,31 @@
       <mat-card class="single_place">
         <div class="thumb">
           <img mat-card-image [src]="hotel.images[0]" [alt]="hotel.title" />
-          <a href="#" class="prise">{{ hotel.price }}</a>
+          <a href="#" class="prise">{{ hotel.price | shortNumber }}</a>
         </div>
         <div class="place_info">
           <a
-            [routerLink]="['tour', 'hotel', hotel._id, hotel.seo]"
+            [routerLink]="['/tour', 'khach-san', hotel._id, hotel.seo]"
             fxLayoutAlign="start"
             ><h3>{{ hotel.title }}</h3></a
           >
-          <p fxLayoutAlign="start">{{ hotel.address }}</p>
+          <p fxLayoutAlign="start">{{ hotel.schedule.location }}</p>
+          <div fxLayoutAlign="start">
+            <div class="days">
+              <fa-icon [icon]="faClock"></fa-icon>
+              <a>
+                {{ hotel.schedule.timeStart | date: "dd/MM" }} đến
+                {{ hotel.schedule.timeEnd | date: "dd/MM" }}</a
+              >
+            </div>
+          </div>
         </div>
       </mat-card>
     </div>
   </div>
   <div fxFlex>
     <div class="more_place_btn">
-      <a class="boxed-btn4" [routerLink]="['tour']">Xem thêm</a>
+      <a class="boxed-btn4" [routerLink]="['/tour']">Xem thêm</a>
     </div>
   </div>
 </div>

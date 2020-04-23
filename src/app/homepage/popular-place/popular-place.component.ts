@@ -1,14 +1,38 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { faClock } from '@fortawesome/free-regular-svg-icons';
 @Component({
   selector: 'app-popular-place',
   templateUrl: './popular-place.component.html',
   styleUrls: ['./popular-place.component.scss']
 })
-export class PopularPlaceComponent implements OnInit {
+export class PopularPlaceComponent implements OnInit, OnChanges {
   @Input() popularCruiseData: any;
   @Input() popularHotelData: any;
+  popularCruise;
+  popularHotel;
+  diffDays
+  faClock = faClock;
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+
+    if (changes.popularCruiseData.previousValue) {
+      this.popularCruise = changes.popularCruiseData.currentValue;
+      console.log(this.popularCruise.timeEnd);
+    }
+
+    if (changes.popularHotelData.previousValue) {
+      this.popularHotel = changes.popularCruiseData.currentValue;
+
+
+    }
+  }
+
+  public intToString(value) {
+
+  }
+
 }

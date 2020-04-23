@@ -30,16 +30,16 @@ export class ApiService {
         category: 'Food'
       }
     });
-    const popularHotel = this.http.get(`${environment.apiUrl}/blogs`, {
+    const popularHotel = this.http.get(`${environment.apiUrl}/tours`, {
       params: {
-        select: 'title,description,images,seo,address,price',
+        select: 'title,description,images,seo,schedule,price',
         limit: '3',
         category: 'Hotel'
       }
     });
-    const popularCruise = this.http.get(`${environment.apiUrl}/blogs`, {
+    const popularCruise = this.http.get(`${environment.apiUrl}/tours`, {
       params: {
-        select: 'title,description,images,seo,address,price',
+        select: 'title,description,images,seo,schedule,price',
         limit: '3',
         category: 'Cruise'
       }
@@ -97,7 +97,7 @@ export class ApiService {
       params: {
         category: queryParams,
         limit: '1',
-        select: 'images,title'
+        select: 'image,title'
       }
     });
     return bannerPage;
