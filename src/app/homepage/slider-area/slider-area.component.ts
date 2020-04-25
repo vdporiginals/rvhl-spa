@@ -1,17 +1,15 @@
 import {
   Component,
   OnInit,
-  OnDestroy,
   Input,
-  HostListener,
   Inject,
-  PLATFORM_ID
+  PLATFORM_ID,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { isPlatformBrowser } from '@angular/common';
-// import { Subcription } from 'rxjs';
-// import { HttpService, ApiConfig } from "../../shared/http.service";
 
 @Component({
   selector: 'app-slider-area',
@@ -25,8 +23,13 @@ export class SliderAreaComponent implements OnInit {
   isBrowser: boolean;
 
   @Input() sliderData: any;
+  @Output() clickScroll = new EventEmitter();
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  clickScrollEvent() {
+    this.clickScroll.emit();
+  }
+
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 

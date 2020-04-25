@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { SanitizeHtmlPipe } from '../shared/pipe/sanitize-html.pipe';
 import { TextOverflowPipe } from '../shared/pipe/text-overflow.pipe';
@@ -16,7 +15,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogCommentComponent } from './blog-comment/blog-comment.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogFilterComponent } from './blog-filter/blog-filter.component';
-import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -26,7 +25,7 @@ import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
     MatCardModule,
     FontAwesomeModule,
     NgxPaginationModule,
-    FlexLayoutModule,
+    SharedModule,
     MatCarouselModule.forRoot(),
   ],
   declarations: [
@@ -35,7 +34,6 @@ import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
     BlogCommentComponent,
     BlogDetailComponent,
     BlogFilterComponent,
-    BreadcrumbComponent,
     SanitizeHtmlPipe,
     TextOverflowPipe
   ],

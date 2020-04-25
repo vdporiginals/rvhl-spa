@@ -52,7 +52,7 @@ export class ApiService {
     });
     const videoBg = this.http.get(`${environment.apiUrl}/advertises`, {
       params: {
-        select: 'images,seo',
+        select: 'images,seo,image',
         category: 'video'
       }
     });

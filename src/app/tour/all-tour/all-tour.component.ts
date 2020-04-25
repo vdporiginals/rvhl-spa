@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-all-tour',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all-tour.component.scss']
 })
 export class AllTourComponent implements OnInit {
-
+  tourData;
   constructor() { }
 
   ngOnInit(): void {

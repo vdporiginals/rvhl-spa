@@ -10,13 +10,16 @@ import { VideoDialogComponent } from './video-dialog/video-dialog.component';
 export class VideoAreaComponent implements OnInit {
   faPlay = faPlay;
   @Input() videoBg;
+
   constructor(private dialog: MatDialog) {
-    console.log(this.videoBg);
+
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   openVideo() {
+    console.log(this.videoBg);
     this.dialog.open(VideoDialogComponent, {
       width: 'auto',
       panelClass: 'my-dialog'

@@ -9,7 +9,7 @@
         <a (click)="registerDialog()">Đăng Ký</a>
       </li>
     </ul>
-    <ul *ngIf="isLoggin">
+    <ul *ngIf="isLoggin" fxFlex fxLayout>
       <li>
         <a [routerLink]="['/profile']">{{ userName }}</a>
       </li>

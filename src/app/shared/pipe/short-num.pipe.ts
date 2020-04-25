@@ -15,7 +15,6 @@ export class ShortNumberPipe implements PipeTransform {
     if (shortValue % 1 !== 0) {
       return shortValue.toFixed(1) + suffixes[suffixNum];
     }
-    console.log(shortValue)
     return shortValue + suffixes[suffixNum];
 
   }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-single-tour.component.scss']
 })
 export class ListSingleTourComponent implements OnInit {
-
+  tourData;
   constructor() { }
 
   ngOnInit(): void {

@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { ShortNumberPipe } from '../shared/pipe/short-num.pipe';
 
 import { HomepageComponent } from './homepage.component';
@@ -31,6 +32,7 @@ import { VideoDialogComponent } from './video-area/video-dialog/video-dialog.com
     MatCarouselModule.forRoot(),
     FontAwesomeModule,
     MatButtonModule,
+    ScrollToModule.forRoot(),
     NgxYoutubePlayerModule.forRoot()
   ],
   declarations: [

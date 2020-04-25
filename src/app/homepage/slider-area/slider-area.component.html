@@ -20,7 +20,9 @@
     <div [ngClass]="{ slider_text: isFavorite }">
       <h3>{{ slide.title }}</h3>
       <p>{{ slide.description }}</p>
-      <a href="#" mat-raised-button><span>Explore Now</span></a>
+      <a mat-raised-button (click)="clickScrollEvent()"
+        ><span>Khám phá ngay</span></a
+      >
     </div>
   </mat-carousel-slide>
 </mat-carousel>

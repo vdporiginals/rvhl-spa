@@ -1,5 +1,8 @@
-<app-slider-area [sliderData]="sliderData"></app-slider-area>
-<app-transfer></app-transfer>
+<app-slider-area
+  [sliderData]="sliderData"
+  (clickScroll)="triggerScrollTo()"
+></app-slider-area>
+<app-transfer id="destination"></app-transfer>
 <section class="bg-schedule">
   <app-popular-schedule
     [popularFoodData]="popularFoodData"

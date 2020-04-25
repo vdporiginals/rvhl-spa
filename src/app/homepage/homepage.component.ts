@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../shared/services/api.service';
 import { Subscription } from 'rxjs';
+import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 
 @Component({
   selector: 'app-homepage',
@@ -18,13 +19,22 @@ export class HomepageComponent implements OnInit, OnDestroy {
   isLoadingResults = true;
   private subcription: Subscription;
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private scrollToService: ScrollToService) {
     this.getData();
   }
   ngOnInit(): void { }
 
   ngOnDestroy(): void {
     this.subcription.unsubscribe();
+  }
+
+  triggerScrollTo() {
+
+    const config: ScrollToConfigOptions = {
+      target: 'destination'
+    };
+
+    this.scrollToService.scrollTo(config);
   }
 
   getData() {

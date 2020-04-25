@@ -20,7 +20,8 @@
 }
 
 .video_bg {
-  // background-image: url(../../../assets/img/banner2.png);
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
 .video_area {
   background-repeat: no-repeat;
