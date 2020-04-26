@@ -79,5 +79,7 @@
 </mat-card>
 
 <mat-card>
-  <app-blog-comment></app-blog-comment>
+  <app-blog-comment
+    [commentData]="blogDetail?.data?.comments"
+  ></app-blog-comment>
 </mat-card>

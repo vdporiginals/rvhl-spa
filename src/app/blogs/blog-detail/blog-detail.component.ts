@@ -53,12 +53,13 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
     this.subcription = this.http
       .get<any>(`${environment.apiUrl}/blogs/${id}`, {
         params: {
-          select: 'title,description,image,seo,address,content'
+          select: 'title,description,image,seo,address,content,comments'
         }
       })
       .subscribe(data => {
         this.blogDetail = data;
         this.blogDetailImages = data.data.images;
+        console.log(this.blogDetail.data.comments);
       },
         err => {
           console.log(err);

@@ -13,7 +13,13 @@
   display: -ms-flexbox !important;
   display: flex !important;
 }
-
+.user {
+  width: 100%;
+}
+.desc {
+  margin: 5px 5px 0 0;
+  width: 100%;
+}
 .comments-area {
   background: transparent;
   // border: 1px solid #eee;
