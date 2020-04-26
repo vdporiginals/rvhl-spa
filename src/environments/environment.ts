@@ -5,6 +5,9 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:5001/api',
+  appId: '0968897925',
+  userName: 'vdp.originals@gmail.com',
+  password: 'doilabekho@1234',
   // tslint:disable-next-line: max-line-length
   apiToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0MiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU4NzYzMzM5MSwiZXhwIjoxNTg4MjM4MTkxfQ.FkPMMnaNUCvsUUShdTRgUSJPIGrO9-eOr-MQ4JHVbhw',
   googleId: '942528628965-igadkdr1rk483ivfpivqrvc0vgkc2j0l.apps.googleusercontent.com',

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavItem } from 'src/app/shared/nav-item';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../../user/login/login.component';
+import { RegisterComponent } from '../../user/register/register.component';
 
 @Component({
   selector: 'app-nav-mobile',
@@ -18,6 +19,8 @@ export class NavMobileComponent implements OnInit {
     this.dialog.open(LoginComponent);
   }
 
-  registerDialog() { }
+  registerDialog() {
+    this.dialog.open(RegisterComponent);
+  }
 
 }

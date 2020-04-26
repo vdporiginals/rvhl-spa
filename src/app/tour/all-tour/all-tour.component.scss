@@ -2,8 +2,8 @@
 @import "../../scss/mixins";
 @import "../../scss/responsive";
 .tour_card {
-  max-width: 600px;
-
+  width: 900px;
+  margin-bottom: 15px;
   .tour_main {
     position: relative;
 
@@ -58,6 +58,15 @@
     .tour_date {
       font-size: 16px;
       font-weight: bold;
+      p {
+        margin-right: 5px;
+
+        &:first-of-type {
+          &:before {
+            content: "|";
+          }
+        }
+      }
     }
 
     button {

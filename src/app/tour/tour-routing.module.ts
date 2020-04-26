@@ -5,12 +5,17 @@ import { CommonModule } from '@angular/common';
 import { ListSingleTourComponent } from './list-single-tour/list-single-tour.component';
 import { TourComponent } from './tour.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
+import { AllTourComponent } from './all-tour/all-tour.component';
 
 const routes: Routes = [
   {
     path: '',
     component: TourComponent,
     children: [
+      {
+        path: '',
+        component: AllTourComponent,
+      },
       {
         path: 'di-chuyen',
         component: ListSingleTourComponent,

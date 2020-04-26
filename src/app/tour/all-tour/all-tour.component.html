@@ -1,24 +1,41 @@
-<div class="tour">
-  <h1>tour category</h1>
-  <mat-card class="tour_card" *ngFor="let tour of tourData" fxLayout="column">
-    <div class="tour_main" fxLayout="row">
+<div class="tab" fxLayout fxLayoutAlign="center">
+  <a>Category 1</a>
+  <a>Category 1</a>
+  <a>Category 1</a>
+  <a>Category 1</a>
+</div>
+<div class="tour" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="tour_card" fxFlex>
+    <!-- *ngFor="let tour of tourData" fxLayout="column" -->
+    <div class="tour_main" fxLayout="row" fxLayoutGap="5px">
       <div class="tour_img" fxFlex="30" fxLayoutAlign="start start">
-        <img [src]="tour.image" [alt]="tour.title" />
+        <img [src]="tourData?.image" [alt]="tourData?.title" />
       </div>
-      <div class="tour_content" fxFlex="45" fxLayoutAlign="start start">
-        <div class="tour_header">
+      <div
+        class="tour_content"
+        fxFlex="55"
+        fxLayoutAlign="start start"
+        fxLayout="column"
+      >
+        <div class="tour_header" fxLayoutAlign="start">
           <h3>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa,
             deleniti?
           </h3>
         </div>
-        <div class="tour_body">
+        <div class="tour_body" fxLayout="column">
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-          <span>Lorem, ipsum.:</span><a href="">Address1 | address 2</a>
-          <a href=""><fa-icon [iccon]></fa-icon> Service 1</a>
+          <span>Địa chỉ:</span><a href="">Address1 | address 2</a>
+          <span><fa-icon [icon]></fa-icon>Dịch vụ:</span
+          ><a href="">Service 1</a>
         </div>
       </div>
-      <div class="tour_price" fxFlex="25" fxLayoutAlign="center center">
+      <div
+        class="tour_price"
+        fxFlex="15"
+        fxLayoutAlign="center center"
+        fxLayout="column"
+      >
         <h3>
           Giá từ:
         </h3>
@@ -28,12 +45,14 @@
         <p>cho 2-3 người</p>
       </div>
     </div>
-    <mat-card-footer class="tour_footer" fxLayout="row" fxLayoutAlign="end end">
+    <mat-card-footer class="tour_footer" fxLayout="row" fxLayoutAlign="end">
       <div class="tour_date">
-        <p>Date Start</p>
-        <p>Date End</p>
+        <p style="float: right;">Date Start</p>
+        <p style="float: right;">Date End</p>
       </div>
-      <button mat-raise-button>Xem chi tiết</button>
+      <button style="float: right;" mat-raise-button>Xem chi tiết</button>
     </mat-card-footer>
   </mat-card>
+
+  <button>Xem thêm</button>
 </div>
