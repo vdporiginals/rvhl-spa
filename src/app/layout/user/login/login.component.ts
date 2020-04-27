@@ -9,6 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 interface DataLogin {
   email?: string;
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
   loggedIn: boolean;
 
   constructor(
+    private noti: NotificationService,
     private dialogRef: MatDialogRef<LoginComponent>,
     private authSocialService: AuthService,
     private sharedData: SharedDataService,
@@ -40,13 +42,14 @@ export class LoginComponent implements OnInit {
     public localStorage: LocalStorageService
   ) {
 
+  }
+
+  ngOnInit() {
     this.signinForm = this.fb.group({
       email: [''],
       password: ['']
     });
-  }
 
-  ngOnInit() {
     this.sharedData.isLogged.subscribe((isLogged) => {
       if (isLogged === true) {
         this.closeMe();
@@ -70,7 +73,6 @@ export class LoginComponent implements OnInit {
   signInWithGG(): void {
     this.authSocialService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       (userData) => {
-        console.log(userData);
         this.authService.sendToRestApiMethod(userData.idToken, {
           google: {
             id: userData.id,
@@ -87,6 +89,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    this.authService.signIn(this.signinForm.value);
+    this.authService.signIn(this.signinForm.value).then(res => {
+      this.noti.showSuccess('Đăng nhập Thành công', '');
+    }).catch(error => {
+      this.noti.showError('Đăng nhập Thất bại', error.error.error);
+    });
   }
 }

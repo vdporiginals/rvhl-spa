@@ -3,6 +3,7 @@ import {
   Inject,
   PLATFORM_ID
 } from '@angular/core';
+import { SanitizeHtmlPipe } from '../../shared/pipe/sanitize-html.pipe';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +15,7 @@ import { map, catchError } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpHeaders } from '@angular/common/http';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
 
 @Component({
   selector: 'app-blog-detail',
@@ -35,6 +37,7 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private http: HttpClient,
+    private seo: SeoService,
     private localStorage: LocalStorageService,
     private route: ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object) {
@@ -59,11 +62,12 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         this.blogDetail = data;
         this.blogDetailImages = data.data.images;
-        console.log(this.blogDetail.data.comments);
-      },
-        err => {
-          console.log(err);
+      }, err => {
+        console.log(err);
 
-        });
+      }, () => {
+        this.seo.setTitle(this.blogDetail.data.title);
+        this.seo.setDescription(this.blogDetail.data.description);
+      });
   }
 }

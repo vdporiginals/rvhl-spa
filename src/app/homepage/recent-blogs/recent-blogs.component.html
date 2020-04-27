@@ -26,7 +26,7 @@
           <div class="date">
             <span>{{ blog.createdAt | date }}</span>
           </div>
-          <a [routerLink]="['/blogs', blog._id, blog.seo]">
+          <a [routerLink]="['/reviews', blog._id, blog.seo]">
             <h3>{{ blog.title }}</h3>
           </a>
         </div>

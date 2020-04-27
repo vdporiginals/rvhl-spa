@@ -15,6 +15,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderModule } from './layout/header/header.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomepageModule } from './homepage/homepage.module';
+import { ToastrModule } from 'ngx-toastr';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
@@ -87,6 +88,10 @@ export function provideConfig() {
     HeaderModule,
     HomepageModule,
     SocialLoginModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      preventDuplicates: true,
+    }),
     FlexLayoutModule.withConfig({ ssrObserveBreakpoints: ['xs', 'lt-md'] })
   ],
 

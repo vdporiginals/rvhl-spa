@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../shared/services/api.service';
 import { Subscription } from 'rxjs';
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
+import { SeoService } from '../shared/services/seo.service';
 
 @Component({
   selector: 'app-homepage',
@@ -19,10 +20,13 @@ export class HomepageComponent implements OnInit, OnDestroy {
   isLoadingResults = true;
   private subcription: Subscription;
 
-  constructor(private api: ApiService, private scrollToService: ScrollToService) {
+  constructor(private api: ApiService, private scrollToService: ScrollToService, private seo: SeoService) {
     this.getData();
   }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.seo.setTitle('Trang chủ');
+    this.seo.setDescription('Review Hạ long, du lịch hạ long')
+  }
 
   ngOnDestroy(): void {
     this.subcription.unsubscribe();

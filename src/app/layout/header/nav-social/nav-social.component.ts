@@ -44,11 +44,12 @@ export class NavSocialComponent implements OnInit {
 
   ngOnInit(): void {
     this.sharedData.isLogged.subscribe((isLogged) => {
-      if (this.localStorage.getItem('access_token') !== null) {
-        this.isLoggin = true;
-        this.userName = JSON.parse(this.localStorage.getItem('access_token')).user;
-      } else {
+      const hasLogin = this.localStorage.getItem('access_token');
+      if (hasLogin === null || hasLogin === undefined) {
         this.isLoggin = isLogged;
+      } else {
+        this.isLoggin = true;
+        this.userName = JSON.parse(hasLogin).user;
       }
     });
   }

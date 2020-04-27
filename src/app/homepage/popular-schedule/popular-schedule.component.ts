@@ -9,10 +9,7 @@ export class PopularScheduleComponent implements OnInit {
   @Input() popularScheduleData: any;
   @Input() popularFoodData: any;
 
-  constructor() {
-  }
+  constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.popularFoodData, this.popularScheduleData);
-  }
+  ngOnInit(): void { }
 }

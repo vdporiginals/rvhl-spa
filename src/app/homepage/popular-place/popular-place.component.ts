@@ -10,7 +10,6 @@ export class PopularPlaceComponent implements OnInit, OnChanges {
   @Input() popularHotelData: any;
   popularCruise;
   popularHotel;
-  diffDays
   faClock = faClock;
   constructor() { }
 
@@ -21,18 +20,10 @@ export class PopularPlaceComponent implements OnInit, OnChanges {
 
     if (changes.popularCruiseData.previousValue) {
       this.popularCruise = changes.popularCruiseData.currentValue;
-      console.log(this.popularCruise.timeEnd);
     }
 
     if (changes.popularHotelData.previousValue) {
       this.popularHotel = changes.popularCruiseData.currentValue;
-
-
     }
   }
-
-  public intToString(value) {
-
-  }
-
 }
