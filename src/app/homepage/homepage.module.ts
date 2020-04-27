@@ -21,6 +21,8 @@ import { IntroServiceComponent } from './intro-service/intro-service.component';
 import { VideoAreaComponent } from './video-area/video-area.component';
 import { RecentBlogsComponent } from './recent-blogs/recent-blogs.component';
 import { VideoDialogComponent } from './video-area/video-dialog/video-dialog.component';
+import { SharedModule } from '../shared/shared.module';
+import { PipeModule } from '../shared/pipe/pipe.module';
 @NgModule({
   imports: [
     HomepageRoutingModule,
@@ -33,6 +35,7 @@ import { VideoDialogComponent } from './video-area/video-dialog/video-dialog.com
     FontAwesomeModule,
     MatButtonModule,
     ScrollToModule.forRoot(),
+    PipeModule,
     NgxYoutubePlayerModule.forRoot()
   ],
   declarations: [
@@ -45,7 +48,6 @@ import { VideoDialogComponent } from './video-area/video-dialog/video-dialog.com
     VideoAreaComponent,
     RecentBlogsComponent,
     VideoDialogComponent,
-    ShortNumberPipe
   ],
   providers: [ShortNumberPipe]
 })

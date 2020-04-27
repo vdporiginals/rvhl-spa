@@ -13,10 +13,10 @@ import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
   ],
   exports: [
     FlexLayoutModule,
-    BreadcrumbComponent,
+    BreadcrumbComponent
   ],
   declarations: [
-    BreadcrumbComponent,
+    BreadcrumbComponent
   ],
 })
 export class SharedModule { }

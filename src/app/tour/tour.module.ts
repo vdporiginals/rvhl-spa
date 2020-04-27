@@ -5,12 +5,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from '../shared/shared.module';
+import { ShortNumberPipe } from '../shared/pipe/short-num.pipe';
 
 import { TourComponent } from './tour.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
-import { AllTourComponent } from './all-tour/all-tour.component';
 import { ListSingleTourComponent } from './list-single-tour/list-single-tour.component';
+import { PipeModule } from '../shared/pipe/pipe.module';
 
 @NgModule({
   imports: [
@@ -19,14 +21,16 @@ import { ListSingleTourComponent } from './list-single-tour/list-single-tour.com
     FontAwesomeModule,
     NgxPaginationModule,
     SharedModule,
+    PipeModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
   ],
   declarations: [
     TourComponent,
     TourDetailComponent,
-    AllTourComponent,
-    ListSingleTourComponent,
+    ListSingleTourComponent
   ],
+  providers: []
 })
 export class TourModule { }
