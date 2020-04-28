@@ -51,10 +51,10 @@
     <mat-card-footer class="tour_footer" fxLayout="row" fxLayoutAlign="end">
       <div class="tour_date">
         <p style="float: right;">
-          {{ tour.schedule.timeEnd | date: "MMM d, y, h:mm a" }}
+          {{ tour.schedule[0].timeEnd | date: "MMM d, y, h:mm a" }}
         </p>
         <p style="float: right;">
-          {{ tour.schedule.timeStart | date: "MMM d, y, h:mm a" }}
+          {{ tour.schedule[0].timeStart | date: "MMM d, y, h:mm a" }}
         </p>
       </div>
       <a

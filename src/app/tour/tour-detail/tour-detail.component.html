@@ -1,19 +1,57 @@
-<div class="header">
-  <div class="list_img"></div>
-</div>
-<div class="body">
-  <h1>4Day 1Port</h1>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, mollitia
-    autem. Velit quaerat eius magnam adipisci est cupiditate, deserunt
-    voluptate.
-  </p>
-  <table></table>
-  <p>
-    note: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium
-    voluptatibus laudantium ullam dolores maxime labore consequatur iure atque
-    obcaecati temporibus. Accusantium, quidem dolores eius suscipit repudiandae
-    error, enim fuga numquam alias nobis, soluta tenetur totam tempore
-    aspernatur! Enim, esse placeat.
-  </p>
+<div fxLayout="column" fxLayoutAlign="center">
+  <div class="header">
+    <div class="list_img"></div>
+  </div>
+  <div class="body">
+    <h1>4Day 1Port</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, mollitia
+      autem. Velit quaerat eius magnam adipisci est cupiditate, deserunt
+      voluptate.
+    </p>
+    <table mat-table [dataSource]="tbData[0]" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="timeStart">
+        <th mat-header-cell *matHeaderCellDef>Ngày</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.timeStart | date: "short" }}
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef>Địa điểm</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.location }}
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="service">
+        <th mat-header-cell *matHeaderCellDef>Dịch vụ</th>
+        <td mat-cell *matCellDef="let element">{{ element.service }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="timeEnd">
+        <th mat-header-cell *matHeaderCellDef>Đến nơi</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.timeEnd | date: "short" }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <p>
+      note: Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+      Accusantium voluptatibus laudantium ullam dolores maxime labore
+      consequatur iure atque obcaecati temporibus. Accusantium, quidem dolores
+      eius suscipit repudiandae error, enim fuga numquam alias nobis, soluta
+      tenetur totam tempore aspernatur! Enim, esse placeat.
+    </p>
+  </div>
 </div>

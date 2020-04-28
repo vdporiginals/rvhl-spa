@@ -20,11 +20,12 @@ export class ListSingleTourComponent implements OnInit {
   }
 
   getTour() {
+    const category = this.route.snapshot.data.category;
     this.http.get(`${environment.apiUrl}/tours`, {
       params: {
         select: 'title,services,description,images,seo,schedule,price',
         limit: '3',
-        category: this.route.snapshot.data.category
+        category
       }
     }).subscribe(data => {
       this.tourData = data;
