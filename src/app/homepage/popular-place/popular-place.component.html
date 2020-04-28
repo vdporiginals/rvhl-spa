@@ -33,15 +33,12 @@
             ><h3>{{ cruise.title }}</h3></a
           >
           <p fxLayoutAlign="start" fxLayoutAlign="start">
-            {{ cruise.schedule.location }}
+            {{ cruise.address }}
           </p>
           <div fxLayoutAlign="start">
             <div class="days">
               <fa-icon [icon]="faClock"></fa-icon>
-              <a>
-                {{ cruise.schedule.timeStart | date: "dd/MM" }} đến
-                {{ cruise.schedule.timeEnd | date: "dd/MM" }}</a
-              >
+              <a> {{ cruise.time }} </a>
             </div>
           </div>
         </div>
@@ -64,14 +61,13 @@
             fxLayoutAlign="start"
             ><h3>{{ hotel.title }}</h3></a
           >
-          <p fxLayoutAlign="start">{{ hotel.schedule.location }}</p>
+          <p fxLayoutAlign="start">{{ hotel.address }}</p>
           <div fxLayoutAlign="start">
             <div class="days">
               <fa-icon [icon]="faClock"></fa-icon>
               <a>
-                {{ hotel.schedule.timeStart | date: "dd/MM" }} đến
-                {{ hotel.schedule.timeEnd | date: "dd/MM" }}</a
-              >
+                {{ hotel.phone }}
+              </a>
             </div>
           </div>
         </div>

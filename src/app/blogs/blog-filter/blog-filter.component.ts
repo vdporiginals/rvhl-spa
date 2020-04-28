@@ -4,7 +4,8 @@ import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 
 @Component({
   selector: 'app-blog-filter',
@@ -17,7 +18,7 @@ export class BlogFilterComponent implements OnInit, OnDestroy {
   recentPost;
   blogCategory;
   private subcription: Subscription;
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private router: Router, private sharedData: SharedDataService) { }
 
   ngOnInit(): void {
     this.getFilter();
@@ -39,5 +40,7 @@ export class BlogFilterComponent implements OnInit, OnDestroy {
         this.isLoadingResults = false;
       });
   }
-
+  filter(id) {
+    this.sharedData.setCategoryId(id);
+  }
 }

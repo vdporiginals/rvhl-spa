@@ -10,17 +10,11 @@ export const NavItem = [
     subItems: [
       {
         text: 'Lịch Trình',
-        link: 'reviews',
-        queryParams: {
-          category: 'Schedule'
-        }
+        link: 'reviews/lich-trinh',
       },
       {
         text: 'Ăn Gì',
-        link: 'reviews',
-        queryParams: {
-          category: 'Food'
-        }
+        link: 'reviews/an-gi',
       }
     ]
   },

@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { NavItem } from 'src/app/shared/nav-item';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav-item',
@@ -13,13 +16,16 @@ export class NavItemComponent implements OnInit {
   isMatMenuOpen = false;
   isMatMenu2Open = false;
   prevButtonTrigger;
+  categoryId: any;
   @Output() menuItem = new EventEmitter();
 
   navItems = NavItem;
 
-  constructor() { }
+  constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+  }
 
   menuItemClicked(child: {}) {
     this.menuItem.emit(child);

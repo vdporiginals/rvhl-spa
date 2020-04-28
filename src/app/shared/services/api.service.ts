@@ -20,28 +20,24 @@ export class ApiService {
       params: {
         select: 'seo,title,images,createdAt',
         limit: '3',
-        category: 'Schedule'
       }
     });
     const popularFood = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'seo,title,images,createdAt',
         limit: '3',
-        category: 'Food'
       }
     });
     const popularHotel = this.http.get(`${environment.apiUrl}/tours`, {
       params: {
-        select: 'title,description,images,seo,schedule,price',
+        select: 'title,address,images,phone,seo,time,price',
         limit: '3',
-        category: 'Hotel'
       }
     });
     const popularCruise = this.http.get(`${environment.apiUrl}/tours`, {
       params: {
-        select: 'title,description,images,seo,schedule,price',
+        select: 'title,address,images,phone,seo,time,price',
         limit: '3',
-        category: 'Cruise'
       }
     });
     const recentBlogs = this.http.get(`${environment.apiUrl}/blogs`, {

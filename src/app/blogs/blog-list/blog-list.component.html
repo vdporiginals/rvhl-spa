@@ -31,7 +31,7 @@
         <ul class="blog-info-link">
           <li>
             <a href="#"
-              ><fa-icon [icon]="faUser"></fa-icon> {{ blog.user.name }}</a
+              ><fa-icon [icon]="faUser"></fa-icon> {{ blog?.user?.name }}</a
             >
           </li>
           <li>
@@ -48,29 +48,11 @@
   >
     <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
       <div>
-        <li class="page-item" *ngIf="categoryParams === undefined">
+        <li class="page-item">
           <a
             class="page-link"
             aria-label="Previous"
-            (click)="getData(currentPage - 1)"
-            *ngIf="!isFirstPage"
-          >
-            <fa-icon [icon]="faAngleLeft"></fa-icon>
-          </a>
-          <a
-            class="page-link disabled"
-            aria-label="Previous"
-            *ngIf="isFirstPage"
-          >
-            <fa-icon [icon]="faAngleLeft"></fa-icon>
-          </a>
-        </li>
-
-        <li class="page-item" *ngIf="categoryParams !== undefined">
-          <a
-            class="page-link"
-            aria-label="Previous"
-            (click)="getDataByQuery(currentPage - 1)"
+            (click)="getData(currentPage - 1, categoryId)"
             *ngIf="!isFirstPage"
           >
             <fa-icon [icon]="faAngleLeft"></fa-icon>
@@ -92,45 +74,24 @@
         <li class="page-item">
           <a
             class="page-link"
-            (click)="getData(page.value)"
-            *ngIf="
-              p.getCurrent() !== page.value && categoryParams === undefined
-            "
+            [class.disabled]="p.getCurrent() === page.value"
+            *ngIf="p.getCurrent() === page.value"
             >{{ page.label }}</a
           >
           <a
             class="page-link"
-            (click)="getDataByQuery(page.value)"
-            *ngIf="
-              p.getCurrent() !== page.value && categoryParams !== undefined
-            "
+            (click)="getData(page.value, categoryId)"
+            *ngIf="p.getCurrent() !== page.value"
             >{{ page.label }}</a
           >
-        </li>
-        <li class="page-item" *ngIf="p.getCurrent() === page.value">
-          <a class="page-link active">{{ page.label }}</a>
         </li>
       </div>
       <div>
-        <li class="page-item" *ngIf="categoryParams === undefined">
+        <li class="page-item">
           <a
             class="page-link"
             aria-label="Next"
-            (click)="getData(currentPage + 1)"
-            *ngIf="!isLastPage"
-          >
-            <fa-icon [icon]="faAngleRight"></fa-icon>
-          </a>
-          <a class="page-link disabled" aria-label="Next" *ngIf="isLastPage">
-            <fa-icon [icon]="faAngleRight"></fa-icon>
-          </a>
-        </li>
-
-        <li class="page-item" *ngIf="categoryParams !== undefined">
-          <a
-            class="page-link"
-            aria-label="Next"
-            (click)="getDataByQuery(currentPage + 1)"
+            (click)="getData(currentPage + 1, categoryId)"
             *ngIf="!isLastPage"
           >
             <fa-icon [icon]="faAngleRight"></fa-icon>

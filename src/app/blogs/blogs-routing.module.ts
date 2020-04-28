@@ -8,7 +8,18 @@ const routes: Routes = [
   {
     path: '',
     component: BlogsComponent,
+    data: { categoryId: '' },
     children: [
+      {
+        path: 'lich-trinh',
+        component: BlogListComponent,
+        data: { category: 'Schedule', categoryId: '' },
+      },
+      {
+        path: 'an-gi',
+        component: BlogListComponent,
+        data: { category: 'Food', categoryId: '' },
+      },
       {
         path: '',
         component: BlogListComponent,
@@ -21,7 +32,7 @@ const routes: Routes = [
         },
       }
     ]
-  }
+  },
 ];
 
 @NgModule({
