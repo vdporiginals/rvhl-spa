@@ -1,13 +1,17 @@
 <div fxLayout="column" fxLayoutAlign="center">
-  <div class="header">
-    <div class="list_img"></div>
-  </div>
   <div class="body">
-    <h1>4Day 1Port</h1>
+    <h1>
+      {{ tourDetail?.data.title }}
+    </h1>
+    <h2>
+      <a
+        fxLayoutAlign="center center"
+        href="{{ 'tel:' + tourDetail?.data.phone }}"
+        >Liên hệ SĐT: {{ tourDetail?.data.phone }}</a
+      >
+    </h2>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, mollitia
-      autem. Velit quaerat eius magnam adipisci est cupiditate, deserunt
-      voluptate.
+      {{ tourDetail?.data.description }}
     </p>
     <table mat-table [dataSource]="tbData[0]" class="mat-elevation-z8">
       <!--- Note that these columns can be defined in any order.
@@ -17,7 +21,7 @@
       <ng-container matColumnDef="timeStart">
         <th mat-header-cell *matHeaderCellDef>Ngày</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.timeStart | date: "short" }}
+          {{ element.timeStart | date: "medium" }}
         </td>
       </ng-container>
 
@@ -38,20 +42,37 @@
       <ng-container matColumnDef="timeEnd">
         <th mat-header-cell *matHeaderCellDef>Đến nơi</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.timeEnd | date: "short" }}
+          {{ element.timeEnd | date: "medium" }}
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-
-    <p>
-      note: Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-      Accusantium voluptatibus laudantium ullam dolores maxime labore
-      consequatur iure atque obcaecati temporibus. Accusantium, quidem dolores
-      eius suscipit repudiandae error, enim fuga numquam alias nobis, soluta
-      tenetur totam tempore aspernatur! Enim, esse placeat.
-    </p>
+  </div>
+  <div class="footer">
+    <div class="list_img">
+      <h1>Một số hình ảnh</h1>
+      <mat-carousel
+        timings="400ms ease-in-out"
+        maxWidth="100%"
+        proportion="60"
+        [autoplay]="true"
+        interval="5000"
+        *ngIf="isBrowser"
+        [loop]="true"
+        [hideArrows]="false"
+        [hideIndicators]="false"
+        [useMouseWheel]="false"
+      >
+        <mat-carousel-slide
+          #matCarouselSlide
+          *ngFor="let slide of tourDetail?.data.images; let i = index"
+          [image]="slide"
+          [hideOverlay]="false"
+        >
+        </mat-carousel-slide>
+      </mat-carousel>
+    </div>
   </div>
 </div>

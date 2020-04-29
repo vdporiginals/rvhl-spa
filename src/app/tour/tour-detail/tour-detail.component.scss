@@ -1,3 +1,4 @@
+@import "../../scss/varriable";
 table {
   text-align: center !important;
   width: 100%;
@@ -9,4 +10,15 @@ table {
 
 .body {
   text-align: center;
+}
+
+.list_img {
+  margin-top: 20px;
+  text-align: center;
+}
+
+a {
+  &:hover {
+    color: $theme-color2;
+  }
 }

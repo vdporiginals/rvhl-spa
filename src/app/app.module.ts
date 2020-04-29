@@ -3,10 +3,10 @@ import {
   HAMMER_GESTURE_CONFIG,
   HammerModule
 } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatMenuModule } from '@angular/material/menu';
@@ -23,7 +23,6 @@ import { ApiAuthInterceptor } from './shared/interceptors/api-auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { MessageComponent } from './message/message.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -34,6 +33,7 @@ import { NavMobileComponent } from './layout/header/nav-mobile/nav-mobile.compon
 import { SubMobileComponent } from './layout/header/nav-mobile/sub-menu/sub-menu.component';
 import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.component';
 import { LocalStorageService } from './shared/services/local-storage.service';
+import { ContactPageComponent } from './layout/contact-page/contact-page.component';
 
 const config = new AuthServiceConfig([
   {
@@ -49,11 +49,31 @@ export function provideConfig() {
   return config;
 }
 
+export function initApp(http: HttpClient, localStorage: LocalStorageService) {
+  return () => {
+    if (localStorage.getItem('api_token') === null || localStorage.getItem('api_token') === undefined) {
+      return http.get(`${environment.apiUrl}/auth-app`, {
+        params: {
+          appId: environment.appId,
+          email: environment.userName,
+          password: environment.password
+        }
+      })
+        .toPromise()
+        .then((res: any) => {
+          localStorage.setItem('api_token', res.token);
+        });
+    } else {
+      return localStorage.getItem('api_token');
+    }
+
+  };
+}
+
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    MessageComponent,
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
@@ -62,7 +82,8 @@ export function provideConfig() {
     NavLogoComponent,
     NavMobileComponent,
     SubMobileComponent,
-    SubMenuComponent
+    SubMenuComponent,
+    ContactPageComponent
   ],
   imports: [
     JwtModule.forRoot({
@@ -100,13 +121,21 @@ export function provideConfig() {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiAuthInterceptor,
       multi: true
-    }, {
+    },
+    {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApp,
+      multi: true,
+      deps: [HttpClient, LocalStorageService]
     }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 
 export function jwtOptionsFactory(localService) {
   return {

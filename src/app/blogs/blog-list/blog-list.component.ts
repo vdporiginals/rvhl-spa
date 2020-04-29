@@ -48,8 +48,8 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
     private route: ActivatedRoute,
     private sharedData: SharedDataService,
     private http: HttpClient,
-    public router: Router, private api: ApiService) {
-
+    public router: Router,
+    private api: ApiService) {
   }
 
   ngOnChanges() {

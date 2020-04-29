@@ -18,7 +18,7 @@ const routes: Routes = [
       {
         path: 'di-chuyen',
         component: ListSingleTourComponent,
-        data: { category: 'Transfer', breadcrumb: 'Di chuyển', queryBanner: 'bannerTransfer' },
+        data: { category: 'Transfer', categoryId: '', breadcrumb: 'Di chuyển', queryBanner: 'bannerTransfer' },
       },
       {
         path: 'di-chuyen/:id/:seo',
@@ -28,7 +28,7 @@ const routes: Routes = [
       {
         path: 'khach-san',
         component: ListSingleTourComponent,
-        data: { category: 'Hotel', breadcrumb: 'Khách sạn', queryBanner: 'bannerHotel' },
+        data: { category: 'Hotel', categoryId: '', breadcrumb: 'Khách sạn', queryBanner: 'bannerHotel' },
 
       },
       {
@@ -39,7 +39,7 @@ const routes: Routes = [
       {
         path: 'ha-long-bay-tour',
         component: ListSingleTourComponent,
-        data: { category: 'Cruise', breadcrumb: 'Tour vịnh', queryBanner: 'bannerCruise' },
+        data: { category: 'Cruise', categoryId: '', breadcrumb: 'Tour vịnh', queryBanner: 'bannerCruise' },
       },
       {
         path: 'ha-long-bay-tour/:id/:seo',
@@ -49,7 +49,7 @@ const routes: Routes = [
       {
         path: 'tron-goi',
         component: ListSingleTourComponent,
-        data: { category: 'AllInOne', breadcrumb: 'Trọn gói', queryBanner: 'bannerTour' },
+        data: { category: 'AllInOne', categoryId: '', breadcrumb: 'Trọn gói', queryBanner: 'bannerTour' },
       },
       {
         path: 'tron-goi/:id/:seo',

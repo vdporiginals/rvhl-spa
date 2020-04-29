@@ -41,8 +41,8 @@ export const NavItem = [
       }
     ]
   },
-  {
-    text: 'Liên hệ',
-    link: 'contact-us'
-  }
+  // {
+  //   text: 'Liên hệ',
+  //   link: 'http://m.me/PageReviewHaLong'
+  // }
 ];

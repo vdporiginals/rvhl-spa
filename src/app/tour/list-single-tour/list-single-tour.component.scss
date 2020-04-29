@@ -2,7 +2,13 @@
 @import "../../scss/mixins";
 @import "../../scss/responsive";
 .tour_card {
-  width: 900px;
+  max-width: 900px;
+  @media ($tablet_device) {
+    width: 600px;
+  }
+  @media ($mobile_device) {
+    max-width: 340px;
+  }
   margin-bottom: 15px;
   .tour_main {
     position: relative;
@@ -16,7 +22,11 @@
       .tour_header {
         h3 {
           font-weight: 400;
-          font-size: 16px;
+          font-size: 18px;
+          @media ($mobile_device) {
+            font-size: 15px;
+            margin: 1px !important;
+          }
         }
       }
 
@@ -24,11 +34,20 @@
         p {
           font-weight: 400;
           font-size: 14px;
+          color: $font_7;
+          @media ($mobile_device) {
+            font-size: 11px;
+            margin: 1px !important;
+          }
         }
 
         span {
           font-weight: bold;
           font-size: 14px;
+          @media ($mobile_device) {
+            font-size: 12px;
+            margin: 1px !important;
+          }
         }
       }
 
@@ -41,29 +60,69 @@
       h3 {
         font-size: 16px;
         font-weight: bold;
+        text-align: center;
+        @media ($mobile_device) {
+          font-size: 11px;
+          margin: 1px !important;
+        }
       }
 
       h2 {
         font-size: 18px;
         font-weight: bold;
+        text-align: center;
+        @media ($mobile_device) {
+          font-size: 12px;
+          margin: 1px !important;
+        }
       }
-
       p {
         font-size: 14px;
+        @media ($mobile_device) {
+          font-size: 9px;
+          margin: 1px !important;
+        }
       }
     }
   }
 
   .tour_footer {
+    width: 50%;
+    position: absolute;
+    right: 0;
+    bottom: -0.5px;
+    @media ($tablet_device) {
+      position: relative;
+      float: right;
+      width: 70%;
+      margin-left: 186px;
+      bottom: -0.5px;
+    }
+    @media ($mobile_device) {
+      position: relative;
+      width: 100%;
+    }
     .tour_date {
       font-size: 16px;
       font-weight: bold;
+      @media ($mobile_device) {
+      }
+      a {
+        &:hover {
+          color: $theme-color2;
+        }
+      }
       p {
+        float: right;
+        margin-bottom: 0px !important;
         margin-right: 5px;
-
+        color: $heading-color;
+        @media ($mobile_device) {
+          font-size: 11px;
+        }
         &:first-of-type {
           &:before {
-            content: "|";
+            // content: "|";
           }
         }
       }
@@ -73,5 +132,139 @@
       font-size: 18px;
       font-weight: 400;
     }
+  }
+}
+.service_container {
+  width: 100%;
+  span {
+    padding: 5px 0px;
+    @media ($mobile_device) {
+      font-size: 11px;
+    }
+  }
+  .service {
+    margin: 2px;
+    border-radius: 0 !important;
+    display: inline-block;
+    background: #2b2b28;
+    border: 0;
+    padding: 3px;
+    border: 1px solid;
+    // width: 180px;
+    text-align: center;
+    color: #f8f8f8;
+    cursor: pointer;
+    @media ($mobile_device) {
+      font-size: 11px;
+    }
+    &:hover {
+      background: $btn_bg;
+      color: #f8f8f8 !important;
+      border: 1px solid $btn_bg;
+    }
+    &:focus {
+      outline: none;
+    }
+    &.large-width {
+      width: 220px;
+    }
+  }
+}
+
+.boxed_btn {
+  border-radius: 0 !important;
+  color: #f8f8f8;
+  display: inline-block;
+  background: $heading-color;
+  padding: 6px;
+  font-family: $font1;
+  font-size: 14px;
+  font-weight: 400;
+  border: 0;
+  border: 1px solid;
+  // width: 180px;
+  text-align: center;
+  @media ($mobile_device) {
+    font-size: 9px;
+  }
+  color: #f8f8f8 !important;
+  text-transform: uppercase;
+  cursor: pointer;
+  &:hover {
+    background: $btn_bg;
+    color: #fff !important;
+    border: 1px solid $btn_bg;
+  }
+  &:focus {
+    outline: none;
+  }
+  &.large-width {
+    width: 220px;
+  }
+}
+.tour-pagination {
+  justify-content: center !important;
+  margin-top: 80px;
+  .page-link {
+    font-size: 14px;
+    position: relative;
+    display: block;
+    padding: 0;
+    text-align: center;
+    margin-left: -1px;
+    line-height: 45px;
+    width: 45px;
+    height: 45px;
+    border-radius: 0 !important;
+    color: #8a8a8a;
+    border: 1px solid #f0e9ff;
+    margin-right: 10px;
+
+    fa-icon,
+    span {
+      font-size: 13px;
+      @media ($mobile_device) {
+        font-size: 11px;
+      }
+    }
+  }
+  .page-item.active {
+    .page-link {
+      background-color: #fbf9ff;
+      border-color: #f0e9ff;
+      color: #888888;
+    }
+  }
+  .page-item:last-child .page-link {
+    margin-right: 0;
+  }
+}
+
+.current {
+  background: -webkit-linear-gradient(131deg, $btn_bg 0%, $btn_bg 99%);
+}
+
+a {
+  cursor: pointer;
+}
+
+a.disabled {
+  color: gray;
+  cursor: not-allowed;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.address {
+  width: 100%;
+  @media ($mobile_device) {
+    font-size: 11px;
   }
 }

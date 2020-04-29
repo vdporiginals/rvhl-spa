@@ -1,12 +1,26 @@
 <div class="tour" fxLayout="column" fxLayoutAlign="center center">
+  <h1>Danh sách các tour</h1>
   <mat-card
     class="tour_card"
     fxFlex
-    *ngFor="let tour of tourData.data"
+    *ngFor="
+      let tour of tourData.data
+        | paginate
+          : {
+              itemsPerPage: limit,
+              currentPage: currentPage,
+              totalItems: count
+            }
+    "
     fxLayout="column"
   >
     <div class="tour_main" fxLayout="row" fxLayoutGap="5px">
-      <div class="tour_img" fxFlex="30" fxLayoutAlign="start start">
+      <div
+        class="tour_img"
+        fxFlex="30"
+        fxLayoutAlign="start start"
+        fxLayoutAlign.lt-md="center center"
+      >
         <img [src]="(tour?.images)[0]" [alt]="tour?.title" />
       </div>
       <div
@@ -22,14 +36,15 @@
         </div>
         <div class="tour_body" fxLayout="column">
           <p>{{ tour.description }}</p>
-          <div style="width: 100%;" fxLayout="row wrap">
-            <span>Địa chỉ:</span
-            ><a href="">{{ tour.schedule.location }} | address 2</a>
+          <div class="address" fxLayout="row wrap">
+            <span>Địa chỉ: &nbsp;</span><a href="">{{ tour.address }}</a>
           </div>
 
-          <div style="width: 100%;" fxLayout="row wrap">
+          <div class="service_container" fxLayout="row wrap">
             <span><fa-icon [icon]></fa-icon>Dịch vụ:</span
-            ><a href="" *ngFor="let service of tour.services">{{ service }},</a>
+            ><a class="service" *ngFor="let service of tour.schedule"
+              >{{ service.service }}
+            </a>
           </div>
         </div>
       </div>
@@ -45,19 +60,18 @@
         <h2>
           {{ tour.price | shortNumber }}
         </h2>
-        <p>cho 2-3 người</p>
       </div>
     </div>
-    <mat-card-footer class="tour_footer" fxLayout="row" fxLayoutAlign="end">
+    <div class="tour_footer" fxLayout="row" fxLayoutAlign="end">
       <div class="tour_date">
-        <p style="float: right;">
-          {{ tour.schedule[0].timeEnd | date: "MMM d, y, h:mm a" }}
-        </p>
-        <p style="float: right;">
-          {{ tour.schedule[0].timeStart | date: "MMM d, y, h:mm a" }}
-        </p>
+        <!-- <p>Thời gian: {{ tour.time }}</p> -->
+        <a fxLayoutAlign="center center" href="{{ 'tel:' + tour.phone }}">
+          Liên hệ SĐT: {{ tour.phone }}</a
+        >
+        <!-- <a href="tel:+">Liên hệ SĐT: {{ tour.phone }}</a> -->
       </div>
       <a
+        class="boxed_btn"
         style="float: right;"
         mat-raise-button
         [routerLink]="[tour._id, tour.seo]"
@@ -65,8 +79,67 @@
       >
         Xem chi tiết
       </a>
-    </mat-card-footer>
+    </div>
   </mat-card>
-
-  <button>Xem thêm</button>
+  <pagination-template
+    class="tour-pagination justify-content-center"
+    #pT="paginationApi"
+    (pageChange)="pageChange.emit($event)"
+  >
+    <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
+      <div>
+        <li class="page-item">
+          <a
+            class="page-link"
+            aria-label="Previous"
+            (click)="getTour(currentPage - 1, categoryId)"
+            *ngIf="!isFirstPage"
+          >
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
+          <a
+            class="page-link disabled"
+            aria-label="Previous"
+            *ngIf="isFirstPage"
+          >
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
+        </li>
+      </div>
+      <div
+        *ngFor="let page of pT.pages"
+        [class.current]="pT.getCurrent() === page.value"
+      >
+        <li class="page-item">
+          <a
+            class="page-link"
+            [class.disabled]="pT.getCurrent() === page.value"
+            *ngIf="pT.getCurrent() === page.value"
+            >{{ page.label }}</a
+          >
+          <a
+            class="page-link"
+            (click)="getTour(page.value, categoryId)"
+            *ngIf="pT.getCurrent() !== page.value"
+            >{{ page.label }}</a
+          >
+        </li>
+      </div>
+      <div>
+        <li class="page-item">
+          <a
+            class="page-link"
+            aria-label="Next"
+            (click)="getTour(currentPage + 1, categoryId)"
+            *ngIf="!isLastPage"
+          >
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+          <a class="page-link disabled" aria-label="Next" *ngIf="isLastPage">
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+        </li>
+      </div>
+    </ul>
+  </pagination-template>
 </div>
