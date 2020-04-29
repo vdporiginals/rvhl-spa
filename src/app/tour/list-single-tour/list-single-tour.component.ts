@@ -57,8 +57,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subcription.unsubscribe();
-
+    if (this.subcription) { this.subcription.unsubscribe(); }
   }
 
   getTour(page, categoryId) {

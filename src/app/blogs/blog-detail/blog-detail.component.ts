@@ -44,30 +44,32 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
   ngOnInit(): void {
-    this.getData();
+    // this.getData();
+    console.log(this.route.snapshot.data.blogpost);
+    this.blogDetail = this.route.snapshot.data.blogpost;
   }
 
   ngOnDestroy(): void {
-    this.subcription.unsubscribe();
+    // this.subcription.unsubscribe();
   }
 
   getData() {
-    const id = this.route.snapshot.params.id;
-    this.subcription = this.http
-      .get<any>(`${environment.apiUrl}/blogs/${id}`, {
-        params: {
-          select: 'title,description,image,seo,address,content,comments'
-        }
-      })
-      .subscribe(data => {
-        this.blogDetail = data;
-        this.blogDetailImages = data.data.images;
-      }, err => {
-        console.log(err);
+    // const id = this.route.snapshot.params.id;
+    // this.subcription = this.http
+    //   .get<any>(`${environment.apiUrl}/blogs/${id}`, {
+    //     params: {
+    //       select: 'title,description,image,seo,address,content,comments'
+    //     }
+    //   })
+    //   .subscribe(data => {
+    //     this.blogDetail = data;
+    //     this.blogDetailImages = data.data.images;
+    //   }, err => {
+    //     console.log(err);
 
-      }, () => {
-        this.seo.setTitle(this.blogDetail.data.title);
-        this.seo.setDescription(this.blogDetail.data.description);
-      });
+    //   }, () => {
+    //     this.seo.setTitle(this.blogDetail.data.title);
+    //     this.seo.setDescription(this.blogDetail.data.description);
+    //   });
   }
 }

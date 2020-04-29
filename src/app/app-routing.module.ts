@@ -15,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'reviews', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule),
+
     data: {
       breadcrumb: 'Review',
       queryBanner: 'bannerReview'

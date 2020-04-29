@@ -12,6 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from './layout/layout.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HeaderModule } from './layout/header/header.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomepageModule } from './homepage/homepage.module';
@@ -20,6 +21,7 @@ import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ApiAuthInterceptor } from './shared/interceptors/api-auth.interceptor';
+import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
 
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
@@ -34,6 +36,7 @@ import { SubMobileComponent } from './layout/header/nav-mobile/sub-menu/sub-menu
 import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.component';
 import { LocalStorageService } from './shared/services/local-storage.service';
 import { ContactPageComponent } from './layout/contact-page/contact-page.component';
+import { MyLoaderComponent } from './layout/my-loader/my-loader.component';
 
 const config = new AuthServiceConfig([
   {
@@ -83,7 +86,8 @@ export function initApp(http: HttpClient, localStorage: LocalStorageService) {
     NavMobileComponent,
     SubMobileComponent,
     SubMenuComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    MyLoaderComponent
   ],
   imports: [
     JwtModule.forRoot({
@@ -109,6 +113,7 @@ export function initApp(http: HttpClient, localStorage: LocalStorageService) {
     HeaderModule,
     HomepageModule,
     SocialLoginModule,
+    MatProgressBarModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       preventDuplicates: true,
@@ -131,6 +136,11 @@ export function initApp(http: HttpClient, localStorage: LocalStorageService) {
       useFactory: initApp,
       multi: true,
       deps: [HttpClient, LocalStorageService]
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
     }],
   bootstrap: [AppComponent]
 })

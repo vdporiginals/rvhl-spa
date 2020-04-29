@@ -14,6 +14,7 @@ import { TourComponent } from './tour.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { ListSingleTourComponent } from './list-single-tour/list-single-tour.component';
 import { PipeModule } from '../shared/pipe/pipe.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [

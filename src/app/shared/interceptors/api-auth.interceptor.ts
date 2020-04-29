@@ -17,6 +17,7 @@ export class ApiAuthInterceptor implements HttpInterceptor {
         Authorization: 'Bearer ' + authUserToken
       }
     });
+    console.log(authUserToken);
     return next.handle(req).pipe(tap(() => { },
       (err: any) => {
         if (err instanceof HttpErrorResponse) {

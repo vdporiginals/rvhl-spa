@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthClientService } from './shared/services/auth-client.service';
 import { Meta } from '@angular/platform-browser';
+import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +10,27 @@ import { Meta } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  loading = false;
+  color: ThemePalette = 'primary';
+  constructor(private router: Router, public auth: AuthClientService, private metaTagService: Meta) {
+    this.router.events.subscribe((event: Event) => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
 
-  constructor(public auth: AuthClientService, private metaTagService: Meta) {
-    // if (this.localStorage.getItem('api_token') === null) {
-    //   this.auth.signInApi();
-    // }
+        case event instanceof NavigationEnd:
+        case event instanceof NavigationCancel:
+        case event instanceof NavigationError: {
+          this.loading = false;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
   }
 
   ngOnInit(): void {

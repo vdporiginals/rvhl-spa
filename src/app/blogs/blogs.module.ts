@@ -16,6 +16,8 @@ import { BlogCommentComponent } from './blog-comment/blog-comment.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogFilterComponent } from './blog-filter/blog-filter.component';
 import { SharedModule } from '../shared/shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiAuthInterceptor } from '../shared/interceptors/api-auth.interceptor';
 
 @NgModule({
   imports: [
@@ -37,6 +39,13 @@ import { SharedModule } from '../shared/shared.module';
     SanitizeHtmlPipe,
     TextOverflowPipe
   ],
-  providers: [SanitizeHtmlPipe, TextOverflowPipe]
+  providers: [
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: ApiAuthInterceptor,
+    //   multi: true
+    // },
+    SanitizeHtmlPipe,
+    TextOverflowPipe]
 })
 export class BlogsModule { }

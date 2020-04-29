@@ -43,7 +43,7 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
   isFirstPage = false;
   private subcription: Subscription;
   categoryId: any = '';
-
+  categoryData: any;
   constructor(
     private route: ActivatedRoute,
     private sharedData: SharedDataService,
@@ -56,19 +56,20 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnInit(): void {
-    this.http.get(`${environment.apiUrl}/blogs/category`).subscribe((res: any) => {
-      res.data.forEach((val) => {
-        if (this.route.snapshot.data.category === val.name) {
-          this.categoryId = `/category/${val._id}`;
-          this.route.snapshot.data.categoryId = this.categoryId;
-        }
-      });
-      if (this.categoryId === undefined || this.categoryId === null) {
-        this.getData(1, '');
-      } else {
-        this.getData(1, this.categoryId);
+    this.categoryData = this.route.snapshot.data.blogCategory;
+    this.categoryData.data.forEach((val) => {
+      if (this.route.snapshot.data.category === val.name) {
+        this.categoryId = `/category/${val._id}`;
+        this.route.snapshot.data.categoryId = this.categoryId;
       }
-    });
+    })
+
+    if (this.categoryId === undefined || this.categoryId === null) {
+      this.getData(1, '');
+    } else {
+      this.getData(1, this.categoryId);
+    }
+
 
     this.sharedData.categoryIdd.subscribe((id) => {
       if (id !== '') {
@@ -79,7 +80,8 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnDestroy(): void {
-    this.subcription.unsubscribe();
+    if (this.subcription) { this.subcription.unsubscribe(); }
+
   }
 
   getData(page, categoryId) {

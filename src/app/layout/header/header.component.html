@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" id="sticky-header" class="header-area">
+<mat-toolbar color="primary" class="header-area" id="sticky-header">
   <app-nav-logo></app-nav-logo>
   <div class="main-header-area">
     <app-nav-item
@@ -15,3 +15,10 @@
     </button>
   </div>
 </mat-toolbar>
+<app-my-loader></app-my-loader>
+<mat-progress-bar
+  class="progress"
+  mode="query"
+  color="warn"
+  *ngIf="loading"
+></mat-progress-bar>

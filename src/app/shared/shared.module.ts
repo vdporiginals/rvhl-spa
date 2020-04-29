@@ -10,6 +10,7 @@ import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
     CommonModule,
     RouterModule,
     FlexLayoutModule,
+    FlexLayoutModule.withConfig({ ssrObserveBreakpoints: ['xs', 'lt-md'] })
   ],
   exports: [
     FlexLayoutModule,

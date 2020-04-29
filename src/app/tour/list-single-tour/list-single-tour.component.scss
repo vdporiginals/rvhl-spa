@@ -14,6 +14,9 @@
     position: relative;
 
     .tour_img {
+      img {
+        max-width: 100%;
+      }
     }
 
     .tour_content {
@@ -102,35 +105,37 @@
       position: relative;
       width: 100%;
     }
-    .tour_date {
-      font-size: 16px;
-      font-weight: bold;
-      @media ($mobile_device) {
-      }
-      a {
-        &:hover {
-          color: $theme-color2;
-        }
-      }
-      p {
-        float: right;
-        margin-bottom: 0px !important;
-        margin-right: 5px;
-        color: $heading-color;
-        @media ($mobile_device) {
-          font-size: 11px;
-        }
-        &:first-of-type {
-          &:before {
-            // content: "|";
-          }
-        }
-      }
-    }
 
     button {
       font-size: 18px;
       font-weight: 400;
+    }
+  }
+}
+
+.tour_date {
+  font-size: 16px;
+  font-weight: bold;
+  @media ($mobile_device) {
+  }
+  a {
+    margin: 9px 5px 0 0;
+    &:hover {
+      color: $theme-color2;
+    }
+  }
+  p {
+    float: right;
+    margin-bottom: 0px !important;
+    margin-right: 5px;
+    color: $heading-color;
+    @media ($mobile_device) {
+      font-size: 11px;
+    }
+    &:first-of-type {
+      &:before {
+        // content: "|";
+      }
     }
   }
 }
