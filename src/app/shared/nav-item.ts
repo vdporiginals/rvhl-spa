@@ -40,9 +40,5 @@ export const NavItem = [
         link: 'tour/tron-goi'
       }
     ]
-  },
-  // {
-  //   text: 'Liên hệ',
-  //   link: 'http://m.me/PageReviewHaLong'
-  // }
+  }
 ];

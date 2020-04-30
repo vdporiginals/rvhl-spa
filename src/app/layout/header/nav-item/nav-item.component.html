@@ -24,9 +24,9 @@
             #menuTrigger="matMenuTrigger"
             (mouseenter)="buttonEnter(menuTrigger)"
             (mouseleave)="buttonLeave(menuTrigger, button)"
-            style="z-index: 1050;"
             >{{ item.text }}
             <fa-icon
+              style="font-size: 15px;"
               [icon]="faAngleDown"
               *ngIf="item.subItems && item.subItems.length > 0"
             ></fa-icon

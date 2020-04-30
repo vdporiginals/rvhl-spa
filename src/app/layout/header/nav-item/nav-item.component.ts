@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { NavItem } from 'src/app/shared/nav-item';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

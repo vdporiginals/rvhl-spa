@@ -72,9 +72,6 @@ export class AuthClientService {
   getUserToken() {
     return this.localStorage.getItem('access_token');
   }
-  // getApiToken() {
-  //   return localStorage.getItem('api_token');
-  // }
 
   get isLoggedIn(): boolean {
     const authToken = this.localStorage.getItem('access_token');

@@ -17,6 +17,38 @@
     <script src="//connect.facebook.net/en_US/sdk.js"></script>
   </head>
   <body class="mat-typography">
-    <app-root></app-root>
+    <div id="loader">
+      <style>
+        #loader {
+          display: grid !important;
+        }
+        .loading-spinner {
+          background-color: #f8f8f8;
+          position: absolute;
+          width: 100%;
+          top: 0px;
+          left: 0px;
+          height: 100vh;
+          align-items: center;
+          justify-content: center;
+          display: grid !important;
+          z-index: 99999;
+        }
+
+        .loading-spinner img {
+          align-self: end;
+        }
+
+        .loading-message {
+          text-align: center;
+          align-self: start;
+        }
+      </style>
+      <div class="loading-spinner">
+        <img src="./assets/spinner.svg" />
+        <span class="loading-message">Loading...</span>
+      </div>
+    </div>
+    <app-root id="loadroot">Loading...</app-root>
   </body>
 </html>

@@ -14,12 +14,6 @@ import { LoginComponent } from './user/login/login.component';
 import { LayoutComponent } from './layout.component';
 import { RegisterComponent } from './user/register/register.component';
 import { ProfileComponent } from './user/profile/profile.component';
-const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent
-  }
-]
 
 @NgModule({
   imports: [
@@ -31,8 +25,7 @@ const routes: Routes = [
     MatInputModule,
     FormsModule,
     MatButtonModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    ReactiveFormsModule
   ],
   declarations: [
     LoginComponent,

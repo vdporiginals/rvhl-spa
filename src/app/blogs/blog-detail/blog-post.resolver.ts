@@ -24,6 +24,6 @@ export class BlogPostResolve implements Resolve<any> {
         params: {
           select: 'title,description,image,seo,address,content,comments'
         }
-      }).pipe(delay(5000412)) : null;
+      }).pipe() : null;
   }
 }

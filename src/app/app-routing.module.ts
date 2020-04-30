@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProfileComponent } from './layout/user/profile/profile.component';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -28,13 +29,9 @@ const routes: Routes = [
       queryBanner: 'bannerTour'
     },
   },
-  {
-    path: 'profile',
-    component: ProfileComponent
-  },
+  { path: 'profile', component: ProfileComponent, data: { userId: '' }, canActivate: [AuthGuard] },
   { path: '404', component: ErrorPageComponent },
   { path: '**', redirectTo: '/404' }
-  // { path: 'user-profile/:id', component: UserProfileComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

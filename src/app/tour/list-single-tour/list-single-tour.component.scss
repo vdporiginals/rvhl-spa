@@ -132,11 +132,6 @@
     @media ($mobile_device) {
       font-size: 11px;
     }
-    &:first-of-type {
-      &:before {
-        // content: "|";
-      }
-    }
   }
 }
 .service_container {
