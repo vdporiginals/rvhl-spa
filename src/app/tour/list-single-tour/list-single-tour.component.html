@@ -1,5 +1,22 @@
 <div class="tour" fxLayout="column" fxLayoutAlign="center center">
   <h1>Danh sách các tour</h1>
+  <mat-form-field class="input_field">
+    <input
+      matInput
+      [formControl]="queryField"
+      type="text"
+      [matAutocomplete]="auto"
+      placeholder="Tìm kiếm"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let result of results"
+        [routerLink]="['/tour', result._id, result.seo]"
+      >
+        {{ result.title }}</mat-option
+      >
+    </mat-autocomplete>
+  </mat-form-field>
   <mat-card
     class="tour_card"
     fxFlex
@@ -60,11 +77,12 @@
         <h2>
           {{ tour.price | shortNumber }}
         </h2>
+        <p>Cho: {{ tour.customerNum }} Người</p>
       </div>
     </div>
     <mat-card-footer fxLayout="row" fxLayoutAlign="end">
       <div class="tour_date">
-        <!-- <p>Thời gian: {{ tour.time }}</p> -->
+        <p>Thời gian: {{ tour.time }}</p>
         <a fxLayoutAlign="center center" href="{{ 'tel:' + tour.phone }}">
           Liên hệ SĐT: {{ tour.phone }}</a
         >

@@ -7,8 +7,6 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
 import { SharedDataService } from './shared-data.service';
-import { MatDialogRef } from '@angular/material/dialog';
-import { LoginComponent } from 'src/app/layout/user/login/login.component';
 import { NotificationService } from './notification.service';
 @Injectable({
   providedIn: 'root'

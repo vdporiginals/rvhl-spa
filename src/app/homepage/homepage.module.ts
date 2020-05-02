@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomepageRoutingModule } from './homepage-routing.module';
 import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
@@ -25,14 +27,17 @@ import { PipeModule } from '../shared/pipe/pipe.module';
 @NgModule({
   imports: [
     HomepageRoutingModule,
+    ReactiveFormsModule,
     CommonModule,
     MatCardModule,
+    FormsModule,
     FlexLayoutModule,
     MatFormFieldModule,
     MatInputModule,
     MatCarouselModule.forRoot(),
     FontAwesomeModule,
     MatButtonModule,
+    MatAutocompleteModule,
     ScrollToModule.forRoot(),
     PipeModule,
     NgxYoutubePlayerModule.forRoot()

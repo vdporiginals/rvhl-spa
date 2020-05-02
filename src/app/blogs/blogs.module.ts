@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { SanitizeHtmlPipe } from '../shared/pipe/sanitize-html.pipe';
 import { TextOverflowPipe } from '../shared/pipe/text-overflow.pipe';
@@ -28,6 +30,9 @@ import { ApiAuthInterceptor } from '../shared/interceptors/api-auth.interceptor'
     FontAwesomeModule,
     NgxPaginationModule,
     SharedModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatCarouselModule.forRoot(),
   ],
   declarations: [

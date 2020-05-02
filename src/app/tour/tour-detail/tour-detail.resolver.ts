@@ -9,15 +9,13 @@ import { isPlatformBrowser } from '@angular/common';
 import { delay } from 'rxjs/operators';
 
 @Injectable()
-export class BlogPostResolve implements Resolve<any> {
+export class TourDetailResolve implements Resolve<any> {
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient, private localStorage: LocalStorageService) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     const id = route.params.id;
-    const authUserToken = this.localStorage.getItem('api_token');
-    console.log(authUserToken);
     return isPlatformBrowser(this.platformId) ? this.http
-      .get<any>(`${environment.apiUrl}/blogs/${id}`, {
+      .get<any>(`${environment.apiUrl}/tours/${id}`, {
         params: {
           select: 'title,description,image,seo,address,content,comments',
           status: 'true'

@@ -6,20 +6,21 @@
           <input
             matInput
             type="text"
+            [formControl]="queryField"
             class="form-control"
-            placeholder="Search Keyword"
+            [matAutocomplete]="auto"
+            placeholder="Tìm kiếm"
           />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let result of results"
+              [routerLink]="['/reviews', result._id, result.seo]"
+            >
+              {{ result.title }}</mat-option
+            >
+          </mat-autocomplete>
         </div>
       </div>
-      <button
-        mat-flat-button
-        class="button rounded-0 primary-bg text-white btn_1 boxed-btn"
-        type="submit"
-        color="warn"
-      >
-        <fa-icon [icon]="faSearch"></fa-icon>
-        Search
-      </button>
     </form>
   </mat-card>
   <mat-card class="single_sidebar_widget post_category_widget">
@@ -46,7 +47,7 @@
       </div>
     </div>
   </mat-card>
-  <mat-card class="single_sidebar_widget tag_cloud_widget">
+  <!-- <mat-card class="single_sidebar_widget tag_cloud_widget">
     <h4 class="widget_title">Tag Clouds</h4>
     <ul class="list">
       <li>
@@ -74,5 +75,5 @@
         <a href="#">illustration</a>
       </li>
     </ul>
-  </mat-card>
+  </mat-card> -->
 </div>

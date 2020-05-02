@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-blog-filter',
@@ -18,10 +20,28 @@ export class BlogFilterComponent implements OnInit, OnDestroy {
   recentPost;
   blogCategory;
   private subcription: Subscription;
+  results: any;
+  queryField: FormControl = new FormControl();
+
   constructor(private api: ApiService, private router: Router, private sharedData: SharedDataService) { }
 
   ngOnInit(): void {
     this.getFilter();
+    this.queryField.valueChanges
+      .pipe(
+        debounceTime(800),
+        distinctUntilChanged(),
+        map(val => val.length >= 3 ? val : null),
+        switchMap((query) => {
+          if (query === null) {
+            return;
+          } else {
+            return this.api.searchByName(query, 'blogs');
+          }
+        })
+      ).subscribe((result: any) => {
+        this.results = result.data;
+      });
   }
 
   ngOnDestroy() {

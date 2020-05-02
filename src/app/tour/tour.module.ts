@@ -9,6 +9,10 @@ import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { TourComponent } from './tour.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
@@ -23,6 +27,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FontAwesomeModule,
     NgxPaginationModule,
     SharedModule,
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
     PipeModule,
     MatButtonModule,
     MatCardModule,

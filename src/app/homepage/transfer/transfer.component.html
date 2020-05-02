@@ -18,16 +18,21 @@
           fxFlexOffset.lt-md="0"
           class="input_field"
         >
-          <input matInput type="text" placeholder="Tìm kiếm" />
-
-          <div
-            class="search_btn"
-            fxFlexOffset="5"
-            fxLayoutAlign="start"
-            fxLayoutGap="5"
-          >
-            <button class="boxed-btn4" type="submit">Search</button>
-          </div>
+          <input
+            matInput
+            [formControl]="queryField"
+            type="text"
+            [matAutocomplete]="auto"
+            placeholder="Tìm kiếm"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let result of results"
+              [routerLink]="['/reviews', result._id, result.seo]"
+            >
+              {{ result.title }}</mat-option
+            >
+          </mat-autocomplete>
         </mat-form-field>
       </form>
       <div fxFlex></div>

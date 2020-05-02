@@ -13,43 +13,50 @@ export class ApiService {
       params: {
         select: 'title,description,image',
         limit: '3',
-        category: 'slider'
+        category: 'slider',
+        status: 'true'
       }
     });
     const popularSchedule = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'seo,title,images,createdAt',
         limit: '3',
+        status: 'true'
       }
     });
     const popularFood = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'seo,title,images,createdAt',
         limit: '3',
+        status: 'true'
       }
     });
     const popularHotel = this.http.get(`${environment.apiUrl}/tours`, {
       params: {
         select: 'title,address,images,phone,seo,time,price',
         limit: '3',
+        status: 'true'
       }
     });
     const popularCruise = this.http.get(`${environment.apiUrl}/tours`, {
       params: {
         select: 'title,address,images,phone,seo,time,price',
         limit: '3',
+        status: 'true'
       }
     });
     const recentBlogs = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'title,description,images,seo,address,createdAt',
-        limit: '3'
+        limit: '3',
+        status: 'true'
       }
     });
     const videoBg = this.http.get(`${environment.apiUrl}/advertises`, {
       params: {
         select: 'images,seo,image',
-        category: 'video'
+        category: 'video',
+        status: 'true'
       }
     });
     return forkJoin([
@@ -68,7 +75,8 @@ export class ApiService {
       params: {
         select: 'title,description,images,seo,address,createdAt',
         page,
-        limit
+        limit,
+        status: 'true'
       }
     });
     // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
@@ -79,7 +87,8 @@ export class ApiService {
     const recentBlogs = this.http.get<any>(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'title,images,seo,createdAt',
-        limit: '5'
+        limit: '5',
+        status: 'true'
       }
     });
     const blogCategory = this.http.get<any>(`${environment.apiUrl}/blogs/category`);
@@ -92,9 +101,20 @@ export class ApiService {
       params: {
         category: queryParams,
         limit: '1',
-        select: 'image,title'
+        select: 'image,title',
+        status: 'true'
       }
     });
     return bannerPage;
+  }
+
+  searchByName(text, apiName) {
+    return this.http.get(`${environment.apiUrl}/${apiName}`, {
+      params: {
+        select: 'seo,title',
+        title: text,
+        limit: '10',
+      }
+    });
   }
 }

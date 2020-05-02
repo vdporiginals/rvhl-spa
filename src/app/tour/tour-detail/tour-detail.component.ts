@@ -26,17 +26,20 @@ export class TourDetailComponent implements OnInit {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
   ngOnInit(): void {
-    this.getTour();
+    console.log(this.route.snapshot.data.tourpost.data.schedule)
+    this.tourDetail = this.route.snapshot.data.tourpost;
+    this.tbData.push(this.route.snapshot.data.tourpost.data.schedule);
+    this.tourImages = this.route.snapshot.data.tourpost.data.images;
   }
 
-  getTour() {
-    this.http.get(`${environment.apiUrl}/tours/${this.route.snapshot.params.id}`).subscribe((data: any) => {
-      this.tourDetail = data;
-      this.tbData.push(data.data.schedule);
-      this.tourImages = data.images;
-      console.log(data);
-    }, err => {
-      console.log(err);
-    }, () => { });
-  }
+  // getTour() {
+  //   this.http.get(`${environment.apiUrl}/tours/${this.route.snapshot.params.id}`).subscribe((data: any) => {
+  //     this.tourDetail = data;
+  //     this.tbData.push(data.data.schedule);
+  //     this.tourImages = data.images;
+  //     console.log(data);
+  //   }, err => {
+  //     console.log(err);
+  //   }, () => { });
+  // }
 }
