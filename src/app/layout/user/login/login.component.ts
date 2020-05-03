@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   faGoogle = faGoogle;
   faFacebook = faFacebook;
   signinForm: FormGroup;
-  title = 'angular-fblogin';
   user: SocialUser;
   loggedIn: boolean;
 

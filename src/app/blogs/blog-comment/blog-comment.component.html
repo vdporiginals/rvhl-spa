@@ -37,7 +37,7 @@
   *ngTemplateOutlet="List; context: { $implicit: commentData }"
 ></ng-container>
 
-<div class="comment-form">
+<div class="comment-form" *ngIf="isLoggin">
   <h4>Leave a Reply</h4>
   <form
     class="form-contact comment_form"
@@ -54,36 +54,6 @@
         rows="9"
         placeholder="Write Comment"
       ></textarea>
-    </div>
-
-    <div fxLayout="row">
-      <div class="form-group" fxFlex="50">
-        <input
-          class="form-control"
-          name="name"
-          id="name"
-          type="text"
-          placeholder="Name"
-        />
-      </div>
-      <div class="form-group" fxFlex="50">
-        <input
-          class="form-control"
-          name="email"
-          id="email"
-          type="email"
-          placeholder="Email"
-        />
-      </div>
-    </div>
-    <div class="form-group" fxFlex="100">
-      <input
-        class="form-control"
-        name="website"
-        id="website"
-        type="text"
-        placeholder="Website"
-      />
     </div>
     <div class="form-group">
       <button
