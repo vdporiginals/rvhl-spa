@@ -81,6 +81,7 @@
 
 <mat-card>
   <app-blog-comment
+    [blogId]="blogDetail?.data?._id"
     [commentData]="blogDetail?.data?.comments"
   ></app-blog-comment>
 </mat-card>

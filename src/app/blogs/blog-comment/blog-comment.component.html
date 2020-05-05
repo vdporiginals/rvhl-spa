@@ -44,9 +44,12 @@
     action="#"
     id="commentForm"
     fxLayout="column"
+    [formGroup]="commentForm"
+    (ngSubmit)="postComment()"
   >
     <div class="form-group" fxFlex="100">
       <textarea
+        formControlName="content"
         class="form-control w-100"
         name="comment"
         id="comment"

@@ -99,7 +99,7 @@ export class ApiService {
   getBannerPage(queryParams): Observable<any> {
     const bannerPage = this.http.get(`${environment.apiUrl}/advertises`, {
       params: {
-        category: queryParams,
+        page: queryParams,
         limit: '1',
         select: 'image,title',
         status: 'true'

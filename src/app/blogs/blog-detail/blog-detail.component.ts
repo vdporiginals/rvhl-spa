@@ -1,7 +1,9 @@
 import {
-  Component, OnInit, OnDestroy, ViewChild, ElementRef,
+  Component, OnInit, OnDestroy,
   Inject,
-  PLATFORM_ID
+  PLATFORM_ID,
+  Injector,
+  AfterContentInit
 } from '@angular/core';
 import { SanitizeHtmlPipe } from '../../shared/pipe/sanitize-html.pipe';
 import { HttpClient } from '@angular/common/http';
@@ -12,7 +14,7 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
 import { map, catchError } from 'rxjs/operators';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { HttpHeaders } from '@angular/common/http';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { SeoService } from 'src/app/shared/services/seo.service';
@@ -23,7 +25,7 @@ import { SeoService } from 'src/app/shared/services/seo.service';
   styleUrls: ['./blog-detail.component.scss']
 })
 
-export class BlogDetailComponent implements OnInit, OnDestroy {
+export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit {
   faFacebookMessenger = faFacebookMessenger;
   faFacebook = faFacebook;
   faHeart = faHeart;
@@ -38,6 +40,7 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
   constructor(
     private http: HttpClient,
     private seo: SeoService,
+    private injector: Injector,
     private localStorage: LocalStorageService,
     private route: ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object) {
@@ -53,6 +56,23 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
     // this.subcription.unsubscribe();
   }
 
+  ngAfterContentInit() {
+    if (isPlatformServer(this.platformId)) {
+      let req = this.injector.get('request');
+      this.seo.setTitle(this.blogDetail.data.title);
+      this.seo.setDescription(this.blogDetail.data.description);
+      this.seo.setKeywords(this.blogDetail.data.keywords);
+      this.seo.setOgSite(req.get('host'));
+      this.seo.setOgUrl(req.get('host'));
+    } else {
+      this.seo.setTitle(this.blogDetail.data.title);
+      this.seo.setDescription(this.blogDetail.data.description);
+      this.seo.setKeywords(this.blogDetail.data.keywords);
+      this.seo.setOgSite(window.location.origin);
+      this.seo.setOgUrl(window.location.origin);
+    }
+
+  }
   getData() {
     // const id = this.route.snapshot.params.id;
     // this.subcription = this.http
@@ -68,8 +88,7 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
     //     console.log(err);
 
     //   }, () => {
-    //     this.seo.setTitle(this.blogDetail.data.title);
-    //     this.seo.setDescription(this.blogDetail.data.description);
+
     //   });
   }
 }

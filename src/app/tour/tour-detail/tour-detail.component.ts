@@ -1,17 +1,17 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, Injector, AfterContentInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SeoService } from 'src/app/shared/services/seo.service';
 import { environment } from 'src/environments/environment';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 @Component({
   selector: 'app-tour-detail',
   templateUrl: './tour-detail.component.html',
   styleUrls: ['./tour-detail.component.scss']
 })
-export class TourDetailComponent implements OnInit {
+export class TourDetailComponent implements OnInit, AfterContentInit {
   tourDetail;
   tbData: any = [];
   isBrowser: boolean;
@@ -21,6 +21,7 @@ export class TourDetailComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private seo: SeoService,
+    private injector: Injector,
     private localStorage: LocalStorageService,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -32,14 +33,20 @@ export class TourDetailComponent implements OnInit {
     this.tourImages = this.route.snapshot.data.tourpost.data.images;
   }
 
-  // getTour() {
-  //   this.http.get(`${environment.apiUrl}/tours/${this.route.snapshot.params.id}`).subscribe((data: any) => {
-  //     this.tourDetail = data;
-  //     this.tbData.push(data.data.schedule);
-  //     this.tourImages = data.images;
-  //     console.log(data);
-  //   }, err => {
-  //     console.log(err);
-  //   }, () => { });
-  // }
+  ngAfterContentInit() {
+    if (isPlatformServer(this.platformId)) {
+      let req = this.injector.get('request');
+      this.seo.setTitle(this.tourDetail.data.title);
+      this.seo.setDescription(this.tourDetail.data.description);
+      this.seo.setKeywords(this.tourDetail.data.keywords);
+      this.seo.setOgSite(req.get('host'));
+      this.seo.setOgUrl(req.get('host'));
+    } else {
+      this.seo.setTitle(this.tourDetail.data.title);
+      this.seo.setDescription(this.tourDetail.data.description);
+      this.seo.setKeywords(this.tourDetail.data.keywords);
+      this.seo.setOgSite(window.location.origin);
+      this.seo.setOgUrl(window.location.origin);
+    }
+  }
 }

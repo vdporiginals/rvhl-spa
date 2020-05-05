@@ -19,7 +19,7 @@ export class BlogPostResolve implements Resolve<any> {
     return isPlatformBrowser(this.platformId) ? this.http
       .get<any>(`${environment.apiUrl}/blogs/${id}`, {
         params: {
-          select: 'title,description,image,seo,address,content,comments',
+          select: 'title,description,image,seo,address,content,comments,keywords',
           status: 'true'
         }
       }).pipe() : null;

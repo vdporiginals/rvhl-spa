@@ -105,7 +105,9 @@ a.disabled {
     display: table;
   }
 }
-
+.card-img {
+  max-height: 500px;
+}
 .blog_item_img {
   position: relative;
 
