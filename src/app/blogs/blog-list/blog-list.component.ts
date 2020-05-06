@@ -5,7 +5,10 @@ import {
   Output,
   Input,
   EventEmitter,
-  OnChanges
+  OnChanges,
+  Injector,
+  Inject,
+  PLATFORM_ID
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -17,6 +20,8 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { isPlatformServer } from '@angular/common';
+import { SeoService } from 'src/app/shared/services/seo.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -49,27 +54,44 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
     private sharedData: SharedDataService,
     private http: HttpClient,
     public router: Router,
-    private api: ApiService) {
+    private injector: Injector,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private api: ApiService,
+    private seo: SeoService) {
   }
 
   ngOnChanges() {
   }
 
   ngOnInit(): void {
+    if (isPlatformServer(this.platformId)) {
+      const req = this.injector.get('request');
+      this.seo.setTitle(this.route.snapshot.data.name);
+      this.seo.setDescription(this.route.snapshot.data.description);
+      this.seo.setKeywords(this.route.snapshot.data.keywords);
+      this.seo.setOgSite(req.get('host'));
+      this.seo.setOgUrl(req.get('host'));
+    } else {
+      this.seo.setTitle(this.route.snapshot.data.name);
+      this.seo.setDescription(this.route.snapshot.data.description);
+      this.seo.setKeywords(this.route.snapshot.data.keywords);
+      this.seo.setOgSite(window.location.origin);
+      this.seo.setOgUrl(window.location.origin);
+    }
+
     this.categoryData = this.route.snapshot.data.blogCategory;
     this.categoryData.data.forEach((val) => {
       if (this.route.snapshot.data.category === val.name) {
         this.categoryId = `/category/${val._id}`;
         this.route.snapshot.data.categoryId = this.categoryId;
       }
-    })
+    });
 
     if (this.categoryId === undefined || this.categoryId === null) {
       this.getData(1, '');
     } else {
       this.getData(1, this.categoryId);
     }
-
 
     this.sharedData.categoryIdd.subscribe((id) => {
       if (id !== '') {
@@ -81,7 +103,6 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnDestroy(): void {
     if (this.subcription) { this.subcription.unsubscribe(); }
-
   }
 
   getData(page, categoryId) {
@@ -95,7 +116,6 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
       })
       .subscribe(data => {
         this.allBlogs = data.data;
-        console.log();
         this.count = data.count;
         if (Object.keys(data.pagination).length !== 0) {
           if (data.pagination.next === undefined) {

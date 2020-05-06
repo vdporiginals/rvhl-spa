@@ -1,6 +1,5 @@
 import {
   BrowserModule,
-  HAMMER_GESTURE_CONFIG,
   HammerModule
 } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
@@ -19,7 +18,6 @@ import { HomepageModule } from './homepage/homepage.module';
 import { ToastrModule } from 'ngx-toastr';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
-import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ApiAuthInterceptor } from './shared/interceptors/api-auth.interceptor';
 import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
 
@@ -61,15 +59,9 @@ export function initApp(http: HttpClient, localStorage: LocalStorageService) {
           email: environment.userName,
           password: environment.password
         }
-      })
-        .toPromise()
-        .then((res: any) => {
-          localStorage.setItem('api_token', res.token);
-        });
-    } else {
-      return localStorage.getItem('api_token');
-    }
-
+      }).toPromise()
+        .then((res: any) => { localStorage.setItem('api_token', res.token); });
+    } else { return localStorage.getItem('api_token'); }
   };
 }
 
@@ -90,17 +82,6 @@ export function initApp(http: HttpClient, localStorage: LocalStorageService) {
     MyLoaderComponent
   ],
   imports: [
-    JwtModule.forRoot({
-      jwtOptionsProvider: {
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory,
-        deps: [LocalStorageService]
-      },
-      config: {
-        whitelistedDomains: ['localhost:5001'],
-        blacklistedRoutes: ['http://localhost:5001/auth/login']
-      }
-    }),
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
@@ -152,5 +133,5 @@ export function jwtOptionsFactory(localService) {
     tokenGetter: () => {
       return localService.getItem('api_token');
     }
-  }
+  };
 }

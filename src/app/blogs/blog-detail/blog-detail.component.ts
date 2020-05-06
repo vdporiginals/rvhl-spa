@@ -2,8 +2,7 @@ import {
   Component, OnInit, OnDestroy,
   Inject,
   PLATFORM_ID,
-  Injector,
-  AfterContentInit
+  Injector
 } from '@angular/core';
 import { SanitizeHtmlPipe } from '../../shared/pipe/sanitize-html.pipe';
 import { HttpClient } from '@angular/common/http';
@@ -25,7 +24,7 @@ import { SeoService } from 'src/app/shared/services/seo.service';
   styleUrls: ['./blog-detail.component.scss']
 })
 
-export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit {
+export class BlogDetailComponent implements OnInit, OnDestroy {
   faFacebookMessenger = faFacebookMessenger;
   faFacebook = faFacebook;
   faHeart = faHeart;
@@ -45,18 +44,13 @@ export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit 
     private route: ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-  }
-  ngOnInit(): void {
+    
     // this.getData();
     console.log(this.route.snapshot.data.blogpost);
     this.blogDetail = this.route.snapshot.data.blogpost;
+  
   }
-
-  ngOnDestroy(): void {
-    // this.subcription.unsubscribe();
-  }
-
-  ngAfterContentInit() {
+  ngOnInit(): void {
     if (isPlatformServer(this.platformId)) {
       let req = this.injector.get('request');
       this.seo.setTitle(this.blogDetail.data.title);
@@ -71,8 +65,11 @@ export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit 
       this.seo.setOgSite(window.location.origin);
       this.seo.setOgUrl(window.location.origin);
     }
-
   }
+
+  ngOnDestroy(): void {
+  }
+
   getData() {
     // const id = this.route.snapshot.params.id;
     // this.subcription = this.http

@@ -9,11 +9,10 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getContentHomepage(): Observable<any> {
-    const sliderArea = this.http.get(`${environment.apiUrl}/advertises`, {
+    const sliderArea = this.http.get(`${environment.apiUrl}/homepage/slider`, {
       params: {
         select: 'title,description,image',
         limit: '3',
-        category: 'slider',
         status: 'true'
       }
     });
@@ -52,10 +51,9 @@ export class ApiService {
         status: 'true'
       }
     });
-    const videoBg = this.http.get(`${environment.apiUrl}/advertises`, {
+    const videoBg = this.http.get(`${environment.apiUrl}/homepage/video-banner`, {
       params: {
         select: 'images,seo,image',
-        category: 'video',
         status: 'true'
       }
     });

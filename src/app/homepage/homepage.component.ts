@@ -33,13 +33,13 @@ export class HomepageComponent implements OnInit, OnDestroy {
     if (isPlatformServer(this.platformId)) {
       let req = this.injector.get('request');
       this.seo.setTitle('Trang chủ review hạ long');
-      this.seo.setDescription('Review Hạ long, du lịch hạ long')
+      this.seo.setDescription('Review Hạ long, du lịch hạ long, đem tới trải nghiệm hạ long tốt nhất cho du khách');
       this.seo.setKeywords('Review hạ long, du lich hạ long, review du lich, hạ long, ha long, quảng ninh');
       this.seo.setOgSite(req.get('host'));
       this.seo.setOgUrl(req.get('host'));
     } else {
       this.seo.setTitle('Review du lịch Hạ Long');
-      this.seo.setDescription('Đánh giá địa điểm, ăn, ngủ nghỉ ở Hạ Long bởi người bản địa');
+      this.seo.setDescription('Review Hạ long, du lịch hạ long, đem tới trải nghiệm hạ long tốt nhất cho du khách');
       this.seo.setKeywords('Review hạ long, du lich hạ long, review du lich, hạ long, ha long, quảng ninh');
       this.seo.setOgSite(window.location.origin);
       this.seo.setOgUrl(window.location.origin);

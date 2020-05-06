@@ -17,8 +17,8 @@ export class SeoService {
       { name: 'description', content: desc }
     );
     this.metaTagService.updateTag({ name: 'robots', content: 'index, follow' });
-    this.metaTagService.updateTag({ name: 'author', content: 'Review Hạ long team' });
-    this.metaTagService.updateTag({ name: 'copyright', content: 'Review Hạ long team' });
+    this.metaTagService.updateTag({ name: 'author', content: 'Review Hạ long' });
+    this.metaTagService.updateTag({ name: 'copyright', content: 'Review Hạ long' });
   }
 
   setKeywords(keyword: string) {

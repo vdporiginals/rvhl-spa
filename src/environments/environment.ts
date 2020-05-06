@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:5001/api',
   appId: '0968897925',
-  userName: 'vp.immortal4@gmail.com',
+  userName: 'vdp.originals@gmail.com',
   password: 'doilabekho@1214',
   // tslint:disable-next-line: max-line-length
   googleId: '942528628965-igadkdr1rk483ivfpivqrvc0vgkc2j0l.apps.googleusercontent.com',
