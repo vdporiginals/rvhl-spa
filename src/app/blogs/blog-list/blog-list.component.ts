@@ -66,15 +66,17 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
   ngOnInit(): void {
     if (isPlatformServer(this.platformId)) {
       const req = this.injector.get('request');
-      this.seo.setTitle(this.route.snapshot.data.name);
-      this.seo.setDescription(this.route.snapshot.data.description);
-      this.seo.setKeywords(this.route.snapshot.data.keywords);
+      this.seo.setTitle('Reviews Du Lịch Hạ Long');
+      this.seo.setDescription('Review về hành trình, địa điểm, quán ăn hay nhà hàng đến từ người bản địa');
+      this.seo.setKeywords('Review hành trình, địa điểm hạ long, quán ăn ngon hạ long, nhà hàng hạ long, tour vịnh hạ long, di chuyển');
       this.seo.setOgSite(req.get('host'));
       this.seo.setOgUrl(req.get('host'));
     } else {
-      this.seo.setTitle(this.route.snapshot.data.name);
-      this.seo.setDescription(this.route.snapshot.data.description);
-      this.seo.setKeywords(this.route.snapshot.data.keywords);
+      this.seo.setTitle('Reviews Du Lịch Hạ Long');
+      this.seo.setDescription('Review về hành trình, địa điểm, quán ăn hay nhà hàng đến từ người bản địa');
+      this.seo.setKeywords(
+        'Review hành trình, địa điểm hạ long, quán ăn ngon hạ long, nhà hàng hạ long, tour vịnh hạ long, di chuyển'
+      );
       this.seo.setOgSite(window.location.origin);
       this.seo.setOgUrl(window.location.origin);
     }

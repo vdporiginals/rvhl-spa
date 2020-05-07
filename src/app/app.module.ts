@@ -35,6 +35,7 @@ import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.com
 import { LocalStorageService } from './shared/services/local-storage.service';
 import { ContactPageComponent } from './layout/contact-page/contact-page.component';
 import { MyLoaderComponent } from './layout/my-loader/my-loader.component';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 const config = new AuthServiceConfig([
   {
@@ -82,6 +83,13 @@ export function initApp(http: HttpClient, localStorage: LocalStorageService) {
     MyLoaderComponent
   ],
   imports: [
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [LocalStorageService]
+      }
+    }),
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
@@ -128,10 +136,10 @@ export function initApp(http: HttpClient, localStorage: LocalStorageService) {
 export class AppModule {
 }
 
-export function jwtOptionsFactory(localService) {
+export function jwtOptionsFactory(localStorage: LocalStorageService) {
   return {
     tokenGetter: () => {
-      return localService.getItem('api_token');
+      return localStorage.getItem('access_token');
     }
-  };
+  }
 }
