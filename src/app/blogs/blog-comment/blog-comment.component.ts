@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./blog-comment.component.scss']
 })
 export class BlogCommentComponent implements OnInit {
-
+  @Input() countReply;
   @Input() commentData;
   @Input() blogId;
 
@@ -27,10 +27,11 @@ export class BlogCommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.commentForm = this.fb.group({
-      content: ['']
+      content: ['', [Validators.required, Validators.minLength(5)]]
     });
     this.shareData.isLogged.subscribe((isLogged) => {
       const hasLogin = this.localStorage.getItem('access_token');
+      console.log(this.countReply)
       if (hasLogin === null || hasLogin === undefined) {
         this.isLoggin = isLogged;
       } else {
@@ -38,11 +39,12 @@ export class BlogCommentComponent implements OnInit {
       }
     });
   }
+
   postComment() {
-    this.http.post(`${environment.apiUrl}/blogs/${this.blogId}/comments`, this.commentForm.value).subscribe(res => {
-      this.noti.showSuccess('Đã đăng comment', '');
+    this.http.post(`${environment.apiUrl}/comments/${this.blogId}`, this.commentForm.value).subscribe(res => {
+      this.noti.showSuccess('Comment của bạn đang chờ được duyệt', '');
     }, error => {
-      this.noti.showError('comment Thất bại', error.error.error);
-    })
+      this.noti.showError('Comment Thất bại', error.error);
+    });
   }
 }

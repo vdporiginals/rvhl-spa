@@ -1,70 +1,56 @@
 <div class="comments-area">
-  <h4>05 Comments</h4>
+  <h4>Đang có {{commentData?.count + countReply}} comment</h4>
 </div>
 <ng-template #List let-items>
   <div class="comment-list" *ngFor="let item of items" fxLayout="column">
     <div class="single-comment justify-content-between d-flex" fxLayout="row">
       <div class="user justify-content-between d-flex">
         <div class="thumb">
-          <img [src]="item.authorAvatar" alt="user.avatar" />
+          <img [src]="'http://' + item.author.avatar" alt="item.author.name" />
         </div>
         <div class="desc" fxFlexAlign="start">
           <p class="comment">
-            {{ item.content }}
+            {{ item?.content }}
           </p>
           <div class="d-flex justify-content-between">
             <div class="d-flex align-items-center">
               <h5>
-                <a href="#">{{ item.authorName }}</a>
+                <a href="#">{{ item?.author.name }}</a>
               </h5>
-              <p class="date">{{ item.createdAt | date: "medium" }}</p>
+              <p class="date">{{ item?.createdAt | date: "medium" }}</p>
             </div>
             <div class="reply-btn" fxLayoutAlign="end">
               <a href="#" class="btn-reply text-uppercase">reply</a>
             </div>
           </div>
 
-          <ng-container
-            *ngTemplateOutlet="List; context: { $implicit: item.reply }"
-          ></ng-container>
         </div>
+
       </div>
+    </div>
+    <div class="reply">
+      <ng-container *ngTemplateOutlet="List; context: { $implicit: item.answer }" fxLayout="column">
+      </ng-container>
     </div>
   </div>
 </ng-template>
-<ng-container
-  [style.marginLeft.px]="300"
-  *ngTemplateOutlet="List; context: { $implicit: commentData }"
-></ng-container>
+<ng-container *ngTemplateOutlet="List; context: { $implicit: commentData?.data }">
+</ng-container>
 
 <div class="comment-form" *ngIf="isLoggin">
   <h4>Leave a Reply</h4>
-  <form
-    class="form-contact comment_form"
-    action="#"
-    id="commentForm"
-    fxLayout="column"
-    [formGroup]="commentForm"
-    (ngSubmit)="postComment()"
-  >
-    <div class="form-group" fxFlex="100">
-      <textarea
-        formControlName="content"
-        class="form-control w-100"
-        name="comment"
-        id="comment"
-        cols="30"
-        rows="9"
-        placeholder="Write Comment"
-      ></textarea>
-    </div>
+  <form class="form-contact comment_form" action="#" id="commentForm" fxLayout="column" [formGroup]="commentForm"
+    (ngSubmit)="postComment()">
+    <mat-form-field class="form-group" fxFlex="100">
+      <textarea formControlName="content" matInput class="form-control w-100" required cols="30" rows="9"
+        placeholder="Write Comment"></textarea>
+    </mat-form-field>
+
+    <mat-error *ngIf="commentForm.hasError('required')">Bắt buộc nhập</mat-error>
+    <mat-error *ngIf="commentForm.hasError('minLength')">Nhập ít nhất 5 ký tự</mat-error>
     <div class="form-group">
-      <button
-        mat-flat-button
-        type="submit"
-        class="button-contactForm btn_1 boxed-btn"
-        color="warn"
-      >
+      <button [disabled]="commentForm.invalid" mat-flat-button type="submit" class="button-contactForm btn_1 boxed-btn"
+        color="warn">
         Send Message
       </button>
     </div>

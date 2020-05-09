@@ -16,6 +16,6 @@ export class BlogResolve implements Resolve<any> {
     const authUserToken = this.localStorage.getItem('api_token');
     console.log(authUserToken);
     return isPlatformBrowser(this.platformId) ?
-      this.http.get(`${environment.apiUrl}/blogs/category`).pipe(delay(0)) : null;
+      this.http.get(`${environment.apiUrl}/blogs/category`) : null;
   }
 }

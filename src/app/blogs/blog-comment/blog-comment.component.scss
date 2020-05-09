@@ -8,18 +8,42 @@
   justify-content: space-between !important;
 }
 
+.reply {
+  margin-left: 30px;
+
+  @media ($xs_mobile) {
+    margin-left: 15px !important;
+    font-size: 9px !important;
+  }
+}
+
 .d-flex {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
 }
+
 .user {
   width: 100%;
+
+  @media ($xs_mobile) {
+    margin-left: 5px !important;
+    font-size: 9px !important;
+  }
 }
 
 .desc {
   margin: 5px 5px 0 0;
   width: 100%;
+}
+
+.thumb {
+  margin-right: 20px;
+
+  img {
+    max-width: 70px !important;
+    border-radius: 50%;
+  }
 }
 
 .comments-area {
@@ -73,37 +97,53 @@
     }
   }
 
-  .thumb {
-    margin-right: 20px;
 
-    img {
-      width: 70px;
-      border-radius: 50%;
-    }
+}
+
+@media (max-width: 430px) {
+  h5 {
+    font-size: 9px;
   }
 
   .date {
-    font-size: 14px;
-    color: #999999;
-    margin-bottom: 0;
-    margin-left: 20px;
+    font-size: 9px;
   }
 
   .comment {
-    margin-bottom: 10px;
-    color: #777777;
-    font-size: 15px;
+    font-size: 9px;
   }
+}
 
-  .btn-reply {
-    text-transform: uppercase;
-    background-color: transparent;
-    color: #888888;
-    padding: 5px 18px;
-    font-size: 14px;
-    display: block;
-    font-weight: 400;
+.date {
+  font-size: 13px !important;
+
+  color: #999999;
+  margin-bottom: 0;
+  margin-left: 20px;
+
+  @media ($xs_mobile) {
+    font-size: 9px !important;
   }
+}
+
+.comment {
+  margin-bottom: 10px;
+  color: #777777;
+  font-size: 13px !important;
+
+  @media ($xs_mobile) {
+    font-size: 9px !important;
+  }
+}
+
+.btn-reply {
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #888888;
+  padding: 5px 18px;
+  font-size: 14px;
+  display: block;
+  font-weight: 400;
 }
 
 .comment-form {
@@ -112,6 +152,7 @@
   margin-top: 50px;
   margin-bottom: 20px;
   width: 95%;
+
   .form-group {
     margin-bottom: 30px;
   }
@@ -223,14 +264,17 @@
   color: #fff !important;
   text-transform: uppercase;
   cursor: pointer;
+
   &:hover {
     background: $btn_bg;
     color: #fff !important;
     border: 1px solid $btn_bg;
   }
+
   &:focus {
     outline: none;
   }
+
   &.large-width {
     width: 220px;
   }

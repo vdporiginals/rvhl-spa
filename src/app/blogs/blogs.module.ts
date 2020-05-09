@@ -8,7 +8,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { SanitizeHtmlPipe } from '../shared/pipe/sanitize-html.pipe';
 import { TextOverflowPipe } from '../shared/pipe/text-overflow.pipe';
 
@@ -18,8 +20,8 @@ import { BlogCommentComponent } from './blog-comment/blog-comment.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogFilterComponent } from './blog-filter/blog-filter.component';
 import { SharedModule } from '../shared/shared.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ApiAuthInterceptor } from '../shared/interceptors/api-auth.interceptor';
+import { ShareButtonComponent } from './blog-detail/share-facebook.component';
+import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 
 @NgModule({
   imports: [
@@ -27,6 +29,8 @@ import { ApiAuthInterceptor } from '../shared/interceptors/api-auth.interceptor'
     CommonModule,
     MatButtonModule,
     MatCardModule,
+    MatInputModule,
+    MatFormFieldModule,
     FontAwesomeModule,
     NgxPaginationModule,
     SharedModule,
@@ -38,19 +42,16 @@ import { ApiAuthInterceptor } from '../shared/interceptors/api-auth.interceptor'
   declarations: [
     BlogsComponent,
     BlogListComponent,
+    ShareButtonComponent,
     BlogCommentComponent,
     BlogDetailComponent,
     BlogFilterComponent,
     SanitizeHtmlPipe,
-    TextOverflowPipe
+    TextOverflowPipe,
   ],
-  providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: ApiAuthInterceptor,
-    //   multi: true
-    // },
-    SanitizeHtmlPipe,
-    TextOverflowPipe]
+  exports: [
+    FlexLayoutModule
+  ],
+  providers: [SanitizeHtmlPipe, TextOverflowPipe],
 })
 export class BlogsModule { }

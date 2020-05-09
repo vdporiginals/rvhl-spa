@@ -7,6 +7,9 @@
   border-top-right-radius: inherit;
 }
 
+.blog_content {
+}
+
 .blog_area {
   a {
     color: $font_1 !important;
@@ -14,11 +17,7 @@
     @include transform_time(0.5s);
     &:hover,
     :hover {
-      background: -webkit-linear-gradient(
-        131deg,
-        $btn_hover 0%,
-        $btn_hover 99%
-      );
+      background: -webkit-linear-gradient(131deg, $btn_hover 0%, $btn_hover 99%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-decoration: none;

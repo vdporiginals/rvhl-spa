@@ -51,20 +51,20 @@ export function provideConfig() {
   return config;
 }
 
-export function initApp(http: HttpClient, localStorage: LocalStorageService) {
-  return () => {
-    if (localStorage.getItem('api_token') === null || localStorage.getItem('api_token') === undefined) {
-      return http.get(`${environment.apiUrl}/auth-app`, {
-        params: {
-          appId: environment.appId,
-          email: environment.userName,
-          password: environment.password
-        }
-      }).toPromise()
-        .then((res: any) => { localStorage.setItem('api_token', res.token); });
-    } else { return localStorage.getItem('api_token'); }
-  };
-}
+// export function initApp(http: HttpClient, localStorage: LocalStorageService) {
+//   return () => {
+//     if (localStorage.getItem('rvhl_social') === null || localStorage.getItem('rvhl_social') === undefined) {
+//       return http.get(`${environment.apiUrl}/social-plugin`, {
+//         params: {
+//           appId: environment.appId,
+//           email: environment.userName,
+//           password: environment.password
+//         }
+//       }).toPromise()
+//         .then((res: any) => { localStorage.setItem('rvhl_social', res); });
+//     } else { return localStorage.getItem('rvhl_social'); }
+//   };
+// }
 
 @NgModule({
   declarations: [
@@ -106,8 +106,7 @@ export function initApp(http: HttpClient, localStorage: LocalStorageService) {
     ToastrModule.forRoot({
       timeOut: 3000,
       preventDuplicates: true,
-    }),
-    FlexLayoutModule.withConfig({ ssrObserveBreakpoints: ['xs', 'lt-md'] })
+    })
   ],
 
   providers: [
@@ -120,12 +119,12 @@ export function initApp(http: HttpClient, localStorage: LocalStorageService) {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initApp,
-      multi: true,
-      deps: [HttpClient, LocalStorageService]
-    },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initApp,
+    //   multi: true,
+    //   deps: [HttpClient, LocalStorageService]
+    // },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
