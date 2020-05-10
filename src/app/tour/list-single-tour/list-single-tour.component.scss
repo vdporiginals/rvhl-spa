@@ -1,15 +1,20 @@
 @import "../../scss/varriable";
 @import "../../scss/mixins";
 @import "../../scss/responsive";
+
 .tour_card {
   max-width: 900px;
+
   @media ($tablet_device) {
     width: 600px;
   }
+
   @media ($mobile_device) {
     max-width: 340px;
   }
+
   margin-bottom: 15px;
+
   .tour_main {
     position: relative;
 
@@ -21,10 +26,12 @@
 
     .tour_content {
       font-family: $font1;
+
       .tour_header {
         h3 {
           font-weight: 400;
           font-size: 18px;
+
           @media ($mobile_device) {
             font-size: 15px;
             margin: 1px !important;
@@ -37,6 +44,7 @@
           font-weight: 400;
           font-size: 14px;
           color: $font_7;
+
           @media ($mobile_device) {
             font-size: 11px;
             margin: 1px !important;
@@ -46,6 +54,7 @@
         span {
           font-weight: bold;
           font-size: 14px;
+
           @media ($mobile_device) {
             font-size: 12px;
             margin: 1px !important;
@@ -63,6 +72,7 @@
         font-size: 16px;
         font-weight: bold;
         text-align: center;
+
         @media ($mobile_device) {
           font-size: 11px;
           margin: 1px !important;
@@ -73,13 +83,16 @@
         font-size: 18px;
         font-weight: bold;
         text-align: center;
+
         @media ($mobile_device) {
           font-size: 12px;
           margin: 1px !important;
         }
       }
+
       p {
         font-size: 14px;
+
         @media ($mobile_device) {
           font-size: 9px;
           margin: 1px !important;
@@ -93,6 +106,7 @@
     position: absolute;
     right: 0;
     bottom: -0.5px;
+
     @media ($tablet_device) {
       position: relative;
       float: right;
@@ -100,6 +114,7 @@
       margin-left: 186px;
       bottom: -0.5px;
     }
+
     @media ($mobile_device) {
       position: relative;
       width: 100%;
@@ -115,32 +130,40 @@
 .tour_date {
   font-size: 16px;
   font-weight: bold;
-  @media ($mobile_device) {
-  }
+
+  @media ($mobile_device) {}
+
   a {
     margin: 9px 5px 0 0;
+
     &:hover {
       color: $theme-color2;
     }
   }
+
   p {
     float: right;
     margin-bottom: 0px !important;
     margin-right: 5px;
     color: $heading-color;
+
     @media ($mobile_device) {
       font-size: 11px;
     }
   }
 }
+
 .service_container {
   width: 100%;
+
   span {
     padding: 5px 0px;
+
     @media ($mobile_device) {
       font-size: 11px;
     }
   }
+
   .service {
     margin: 2px;
     border-radius: 0 !important;
@@ -153,17 +176,21 @@
     text-align: center;
     color: #f8f8f8;
     cursor: pointer;
+
     @media ($mobile_device) {
       font-size: 11px;
     }
+
     &:hover {
       background: $btn_bg;
       color: #f8f8f8 !important;
       border: 1px solid $btn_bg;
     }
+
     &:focus {
       outline: none;
     }
+
     &.large-width {
       width: 220px;
     }
@@ -183,27 +210,34 @@
   border: 1px solid;
   // width: 180px;
   text-align: center;
+
   @media ($mobile_device) {
     font-size: 9px;
   }
+
   color: #f8f8f8 !important;
   text-transform: uppercase;
   cursor: pointer;
+
   &:hover {
     background: $btn_bg;
     color: #fff !important;
     border: 1px solid $btn_bg;
   }
+
   &:focus {
     outline: none;
   }
+
   &.large-width {
     width: 220px;
   }
 }
+
 .tour-pagination {
   justify-content: center !important;
   margin-top: 80px;
+
   .page-link {
     font-size: 14px;
     position: relative;
@@ -222,11 +256,13 @@
     fa-icon,
     span {
       font-size: 13px;
+
       @media ($mobile_device) {
         font-size: 11px;
       }
     }
   }
+
   .page-item.active {
     .page-link {
       background-color: #fbf9ff;
@@ -234,6 +270,7 @@
       color: #888888;
     }
   }
+
   .page-item:last-child .page-link {
     margin-right: 0;
   }
@@ -263,28 +300,38 @@ a.disabled {
 
 .address {
   width: 100%;
+
   @media ($mobile_device) {
     font-size: 11px;
   }
 }
+
 ::ng-deep .mat-focused .mat-form-field-label {
   /*change color of label*/
-  color: $heading_color !important;
+  color: #e3b04b !important;
 }
+
 ::ng-deep .mat-form-field {
   font-size: 18px;
   width: 250px;
+  margin-bottom: 39px;
 }
+
 ::ng-deep.mat-form-field-underline {
   /*change color of underline*/
-  background-color: $heading_color2 !important;
+  background-color: #e3b04b !important;
 }
 
 ::ng-deep.mat-form-field-ripple {
   /*change color of underline when focused*/
-  background-color: $border_color !important;
+  background-color: #e3b04b !important;
 }
 
 ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-label {
   color: $heading_color;
+}
+
+
+.mat-card {
+  border: 1px solid #2b2b28;
 }
