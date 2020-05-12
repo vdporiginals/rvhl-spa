@@ -16,17 +16,20 @@ const routes: Routes = [
   },
   {
     path: 'reviews', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule),
-
     data: {
       breadcrumb: 'Review',
-      queryBanner: 'bannerReview'
     },
   },
   {
     path: 'tour', loadChildren: () => import('./tour/tour.module').then(m => m.TourModule),
     data: {
-      breadcrumb: 'tour',
-      queryBanner: 'bannerTour'
+      breadcrumb: 'Tour',
+    },
+  },
+  {
+    path: 'o-dau-ha-long', loadChildren: () => import('./estate/estate.module').then(m => m.EstateModule),
+    data: {
+      breadcrumb: 'Ở đâu Hạ Long',
     },
   },
   { path: 'profile', component: ProfileComponent, data: { userId: '' }, canActivate: [AuthGuard] },

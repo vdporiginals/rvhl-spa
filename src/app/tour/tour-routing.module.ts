@@ -12,11 +12,10 @@ const routes: Routes = [
   {
     path: '',
     component: TourComponent,
-
     children: [
       {
         path: '',
-        redirectTo: 'tron-goi',
+        redirectTo: 'ha-long-bay-tour',
         resolve: {
           tourCategory: TourResolve
         },
@@ -27,26 +26,10 @@ const routes: Routes = [
         resolve: {
           tourCategory: TourResolve
         },
-        data: { category: 'Transfer', categoryId: '', breadcrumb: 'Di chuyển', queryBanner: 'bannerTransfer' },
+        data: { category: 'Transfer', categoryId: '', breadcrumb: 'Di chuyển', queryBanner: 'TransferPage' },
       },
       {
         path: 'di-chuyen/:id/:seo',
-        component: TourDetailComponent,
-        data: { breadcrumb: '' },
-        resolve: {
-          tourpost: TourDetailResolve
-        },
-      },
-      {
-        path: 'khach-san',
-        component: ListSingleTourComponent,
-        resolve: {
-          tourCategory: TourResolve
-        },
-        data: { category: 'Hotel', categoryId: '', breadcrumb: 'Khách sạn', queryBanner: 'bannerHotel' },
-      },
-      {
-        path: 'khach-san/:id/:seo',
         component: TourDetailComponent,
         data: { breadcrumb: '' },
         resolve: {
@@ -59,7 +42,7 @@ const routes: Routes = [
         resolve: {
           tourCategory: TourResolve
         },
-        data: { category: 'Cruise', categoryId: '', breadcrumb: 'Tour vịnh', queryBanner: 'bannerCruise' },
+        data: { category: 'Cruise', categoryId: '', breadcrumb: 'Tour vịnh', queryBanner: 'TourCruisePage' },
       },
       {
         path: 'ha-long-bay-tour/:id/:seo',
@@ -75,7 +58,7 @@ const routes: Routes = [
         resolve: {
           tourCategory: TourResolve
         },
-        data: { category: 'AllInOne', categoryId: '', breadcrumb: 'Trọn gói', queryBanner: 'bannerTour' },
+        data: { category: 'AllInOne', categoryId: '', breadcrumb: 'Trọn gói', queryBanner: 'TourAllPage' },
       },
       {
         path: 'tron-goi/:id/:seo',

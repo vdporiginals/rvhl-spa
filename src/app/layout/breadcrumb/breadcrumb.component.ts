@@ -19,7 +19,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private api: ApiService
+    private api: ApiService,
   ) {
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
@@ -41,7 +41,9 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subcription.unsubscribe();
+    if (this.subcription) {
+      this.subcription.unsubscribe();
+    }
   }
 
   getBannerBg() {

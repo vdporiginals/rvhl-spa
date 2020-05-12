@@ -1,43 +1,65 @@
 export const NavItem = [
   {
-    text: 'Trang chủ',
+    label: 'Trang chủ',
     link: 'home'
   },
   {
-    text: 'Review',
+    label: 'Review',
     link: 'reviews',
-    queryParams: { category: 'bannerBlog' },
     subItems: [
       {
-        text: 'Lịch Trình',
+        label: 'Lịch Trình',
         link: 'reviews/lich-trinh',
+        paramsPage: { page: 'SchedulePage' },
       },
       {
-        text: 'Ăn Gì',
+        label: 'Ăn Gì',
         link: 'reviews/an-gi',
+        paramsPage: { page: 'FoodPage' },
       }
     ]
   },
   {
-    text: 'Hạ Long Tour',
-    link: 'tour',
-    queryParams: { category: 'bannerTour' },
+    label: 'Hạ Long Tour',
+    link: 'tour/ha-long-bay-tour',
+    paramsPage: { page: 'TourCruisePage' },
     subItems: [
       {
-        text: 'Di Chuyển',
-        link: 'tour/di-chuyen'
+        label: 'Di Chuyển',
+        link: 'tour/di-chuyen',
+        paramsPage: { page: 'TransferPage' },
       },
       {
-        text: 'Ở đâu',
-        link: 'tour/khach-san'
+        label: 'Vịnh',
+        link: 'tour/ha-long-bay-tour',
+        paramsPage: { page: 'TourCruisePage' },
       },
       {
-        text: 'Vịnh',
-        link: 'tour/ha-long-bay-tour'
+        label: 'Trọn gói',
+        link: 'tour/tron-goi',
+        paramsPage: { page: 'TourAllPage' },
+      }
+    ]
+  },
+  {
+    label: 'Ở đâu',
+    link: 'o-dau-ha-long/khach-san',
+    paramsPage: { page: 'HotelPage' },
+    subItems: [
+      {
+        label: 'Khách sạn',
+        link: 'o-dau-ha-long/khach-san',
+        paramsPage: { page: 'HotelPage' },
       },
       {
-        text: 'Trọn gói',
-        link: 'tour/tron-goi'
+        label: 'Homestay',
+        link: 'o-dau-ha-long/homestay',
+        paramsPage: { page: 'HomestayPage' },
+      },
+      {
+        label: 'Villa',
+        link: 'o-dau-ha-long/villa',
+        paramsPage: { page: 'VillaPage' },
       }
     ]
   }

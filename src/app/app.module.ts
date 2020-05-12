@@ -21,6 +21,9 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-logi
 import { ApiAuthInterceptor } from './shared/interceptors/api-auth.interceptor';
 import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
 
+import { LocalStorageService } from './shared/services/local-storage.service';
+import { SessionStorageService } from './shared/services/session-storage.service';
+
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -32,7 +35,6 @@ import { NavLogoComponent } from './layout/header/nav-logo/nav-logo.component';
 import { NavMobileComponent } from './layout/header/nav-mobile/nav-mobile.component';
 import { SubMobileComponent } from './layout/header/nav-mobile/sub-menu/sub-menu.component';
 import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.component';
-import { LocalStorageService } from './shared/services/local-storage.service';
 import { ContactPageComponent } from './layout/contact-page/contact-page.component';
 import { MyLoaderComponent } from './layout/my-loader/my-loader.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
@@ -51,20 +53,14 @@ export function provideConfig() {
   return config;
 }
 
-// export function initApp(http: HttpClient, localStorage: LocalStorageService) {
-//   return () => {
-//     if (localStorage.getItem('rvhl_social') === null || localStorage.getItem('rvhl_social') === undefined) {
-//       return http.get(`${environment.apiUrl}/social-plugin`, {
-//         params: {
-//           appId: environment.appId,
-//           email: environment.userName,
-//           password: environment.password
-//         }
-//       }).toPromise()
-//         .then((res: any) => { localStorage.setItem('rvhl_social', res); });
-//     } else { return localStorage.getItem('rvhl_social'); }
-//   };
-// }
+export function initApp(http: HttpClient, sessionStorage: SessionStorageService) {
+  return () => {
+    if (sessionStorage.getItem('rvhl_config') === null || sessionStorage.getItem('rvhl_config') === undefined) {
+      return http.get(`${environment.apiUrl}/web-config`).toPromise()
+        .then((res: any) => { sessionStorage.setItem('rvhl_config', JSON.stringify(res)); });
+    } else { return sessionStorage.getItem('rvhl_config'); }
+  };
+}
 
 @NgModule({
   declarations: [
@@ -80,7 +76,7 @@ export function provideConfig() {
     SubMobileComponent,
     SubMenuComponent,
     ContactPageComponent,
-    MyLoaderComponent
+    MyLoaderComponent,
   ],
   imports: [
     JwtModule.forRoot({
@@ -95,6 +91,7 @@ export function provideConfig() {
     HttpClientModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    FlexLayoutModule,
     HammerModule,
     MatMenuModule,
     MatSidenavModule,
@@ -119,12 +116,12 @@ export function provideConfig() {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: initApp,
-    //   multi: true,
-    //   deps: [HttpClient, LocalStorageService]
-    // },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApp,
+      multi: true,
+      deps: [HttpClient, SessionStorageService]
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,

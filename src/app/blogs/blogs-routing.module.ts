@@ -14,7 +14,11 @@ const routes: Routes = [
       {
         path: 'lich-trinh',
         component: BlogListComponent,
-        data: { category: 'Schedule', categoryId: '' },
+        data: {
+          category: 'Schedule',
+          queryBanner: 'SchedulePage',
+          categoryId: ''
+        },
 
         resolve: {
           blogCategory: BlogResolve
@@ -23,7 +27,7 @@ const routes: Routes = [
       {
         path: 'an-gi',
         component: BlogListComponent,
-        data: { category: 'Food', categoryId: '' },
+        data: { category: 'Food', queryBanner: 'FoodPage', categoryId: '' },
         resolve: {
           blogCategory: BlogResolve
         },
@@ -31,8 +35,11 @@ const routes: Routes = [
       {
         path: '',
         component: BlogListComponent,
+        data: {
+          queryBanner: 'SchedulePage',
+        },
         resolve: {
-          blogCategory: BlogResolve
+          blogCategory: BlogResolve,
         },
       },
       {

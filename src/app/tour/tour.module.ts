@@ -14,7 +14,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-
 import { TourComponent } from './tour.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { ListSingleTourComponent } from './list-single-tour/list-single-tour.component';

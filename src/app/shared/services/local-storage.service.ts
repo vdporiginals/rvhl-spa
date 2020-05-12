@@ -44,20 +44,3 @@ export class LocalStorageService {
 
 
 }
-
-export class WindowService {
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
-
-  scrollTo(x: number, y: number) {
-    if (isPlatformBrowser(this.platformId)) {
-      window.scrollTo(x, y);
-    }
-  }
-
-  open(url?: string, target?: string, feature?: string, replace?: boolean) {
-    if (isPlatformBrowser(this.platformId)) {
-      window.open(url, target, feature, replace);
-    }
-  }
-
-}

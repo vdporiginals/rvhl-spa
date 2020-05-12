@@ -1,0 +1,15 @@
+<section>
+  <app-breadcrumb></app-breadcrumb>
+</section>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let link of navItems" [routerLink]="link.link" routerLinkActive #rla="routerLinkActive"
+      [active]="rla.isActive">
+      {{ link.title }}
+    </a>
+  </nav>
+</div>
+
+<section fxLayout="column" fxLayoutAlign="center" class="section">
+  <router-outlet></router-outlet>
+</section>

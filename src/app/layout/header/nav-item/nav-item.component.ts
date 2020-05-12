@@ -3,6 +3,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { NavItem } from 'src/app/shared/nav-item';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { SessionStorageService } from 'src/app/shared/services/session-storage.service';
 
 @Component({
   selector: 'app-nav-item',
@@ -20,7 +21,7 @@ export class NavItemComponent implements OnInit {
 
   navItems = NavItem;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private sessionStorage: SessionStorageService) { }
 
   ngOnInit(): void {
 
