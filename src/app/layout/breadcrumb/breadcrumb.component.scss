@@ -3,13 +3,15 @@
 @import "../../scss/responsive";
 
 .bradcam_area {
-  background-size: cover;
-  background-position: center center;
+  background-size: cover !important;
   padding: 175px 0;
   background-repeat: no-repeat;
   text-align: center;
   position: relative;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  z-index: auto;
+  background-position: center;
   @media #{$tablet_device} {
     padding: 120px 0;
   }

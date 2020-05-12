@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
+import { AppShellRenderDirective, AppShellNoRenderDirective } from './directives/app-shell.directive';
 
 @NgModule({
   imports: [
@@ -14,10 +15,15 @@ import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
   ],
   exports: [
     FlexLayoutModule,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    AppShellRenderDirective,
+    AppShellNoRenderDirective,
   ],
   declarations: [
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    AppShellRenderDirective,
+    AppShellNoRenderDirective,
   ],
 })
 export class SharedModule { }
+

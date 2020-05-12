@@ -44,28 +44,15 @@
     </table>
   </div>
   <div class="footer" fxLayoutAlign="center">
-    <div class="list_img" fxFlex>
-      <h1>Một số hình ảnh</h1>
-      <mat-carousel
-        timings="400ms ease-in-out"
-        maxWidth="100%"
-        proportion="70"
-        [autoplay]="true"
-        interval="5000"
-        *ngIf="isBrowser"
-        [loop]="true"
-        [hideArrows]="false"
-        [hideIndicators]="false"
-        [useMouseWheel]="false"
-      >
-        <mat-carousel-slide
-          #matCarouselSlide
-          *ngFor="let slide of tourDetail?.data.images; let i = index"
-          [image]="slide"
-          [hideOverlay]="false"
-        >
-        </mat-carousel-slide>
-      </mat-carousel>
+    <div class="list_img" fxFlex fxLayout="row" fxLayoutGap="3px">
+      <div *ngFor="let image of tourImages; let i = index">
+        <img
+          style="width: 100%;"
+          *appShellNoRender
+          [src]="image.thumb"
+          (click)="open(i)"
+        />
+      </div>
     </div>
   </div>
 </div>

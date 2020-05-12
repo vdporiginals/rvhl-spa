@@ -20,8 +20,7 @@ import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { ListSingleTourComponent } from './list-single-tour/list-single-tour.component';
 import { PipeModule } from '../shared/pipe/pipe.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { GalleryModule } from '@ngx-gallery/core';
-import { LightboxModule } from '@ngx-gallery/lightbox';
+import { LightboxModule } from 'ngx-lightbox';
 @NgModule({
   imports: [
     CommonModule,
@@ -31,8 +30,6 @@ import { LightboxModule } from '@ngx-gallery/lightbox';
     SharedModule,
     FormsModule,
     LightboxModule,
-    GalleryModule,
-    LightboxModule.withConfig({ keyboardShortcuts: true }),
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,

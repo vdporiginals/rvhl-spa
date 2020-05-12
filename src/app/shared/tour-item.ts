@@ -4,10 +4,6 @@ export const TourItem = [
     link: '/tour/ha-long-bay-tour'
   },
   {
-    title: 'Khách sạn',
-    link: '/tour/khach-san'
-  },
-  {
     title: 'Di chuyển',
     link: '/tour/di-chuyen'
   },

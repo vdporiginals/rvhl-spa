@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutServerModule,
     FlexLayoutModule.withConfig({ ssrObserveBreakpoints: ['xs', 'lt-md'] }),
   ],
+
   bootstrap: [AppComponent],
 })
 export class AppServerModule { }

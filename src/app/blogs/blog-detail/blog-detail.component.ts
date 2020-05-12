@@ -2,7 +2,8 @@ import {
   Component, OnInit, OnDestroy,
   Inject,
   PLATFORM_ID,
-  Injector
+  Injector,
+  Optional
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -13,6 +14,7 @@ import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { SeoService } from 'src/app/shared/services/seo.service';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
 
 @Component({
   selector: 'app-blog-detail',
@@ -40,26 +42,29 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
     private seo: SeoService,
     private injector: Injector,
     private route: ActivatedRoute,
+    @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-    this.blogDetail = this.route.snapshot.data.blogpost;
-    console.log(this.blogDetail);
   }
   ngOnInit(): void {
-    if (isPlatformServer(this.platformId)) {
-      let req = this.injector.get('request');
-      this.seo.setTitle(this.blogDetail.data.title);
-      this.seo.setDescription(this.blogDetail.data.description);
-      this.seo.setKeywords(this.blogDetail.data.keywords);
-      this.seo.setOgSite(req.get('host'));
-      this.seo.setOgUrl(req.get('host'));
-    } else {
-      this.seo.setTitle(this.blogDetail.data.title);
-      this.seo.setDescription(this.blogDetail.data.description);
-      this.seo.setKeywords(this.blogDetail.data.keywords);
-      this.seo.setOgSite(window.location.origin);
-      this.seo.setOgUrl(window.location.origin);
+    if (this.route.snapshot.data.blogpost) {
+
+      this.blogDetail = this.route.snapshot.data.blogpost;
+      if (isPlatformServer(this.platformId)) {
+        this.seo.setTitle(this.blogDetail.data.title);
+        this.seo.setDescription(this.blogDetail.data.description);
+        this.seo.setKeywords(this.blogDetail.data.keywords);
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle(this.blogDetail.data.title);
+        this.seo.setDescription(this.blogDetail.data.description);
+        this.seo.setKeywords(this.blogDetail.data.keywords);
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
+      }
     }
+
     this.getComment();
   }
 

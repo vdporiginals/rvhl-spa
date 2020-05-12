@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy, Input, Injector, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Input, Injector, Inject, PLATFORM_ID, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { isPlatformServer } from '@angular/common';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
 @Component({
   selector: 'app-list-single-tour',
   templateUrl: './list-single-tour.component.html',
@@ -42,57 +43,59 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private api: ApiService,
     public router: Router,
-    private injector: Injector,
+    @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object,
     private seo: SeoService) {
   }
 
   ngOnInit(): void {
-    if (isPlatformServer(this.platformId)) {
-      const req = this.injector.get('request');
-      this.seo.setTitle(this.route.snapshot.data.name);
-      this.seo.setDescription(this.route.snapshot.data.description);
-      this.seo.setKeywords(this.route.snapshot.data.keywords);
-      this.seo.setOgSite(req.get('host'));
-      this.seo.setOgUrl(req.get('host'));
-    } else {
-      this.seo.setTitle(this.route.snapshot.data.name);
-      this.seo.setDescription(this.route.snapshot.data.description);
-      this.seo.setKeywords(this.route.snapshot.data.keywords);
-      this.seo.setOgSite(window.location.origin);
-      this.seo.setOgUrl(window.location.origin);
-    }
-
-    this.categoryData = this.route.snapshot.data.tourCategory;
-    this.categoryData.data.forEach((val) => {
-      if (this.route.snapshot.data.category === val.name) {
-        this.categoryId = `/category/${val._id}`;
-        this.route.snapshot.data.categoryId = this.categoryId;
+    if (this.route.snapshot.data.tourCategory) {
+      if (isPlatformServer(this.platformId)) {
+        console.log(this.route.snapshot.data)
+        this.seo.setTitle(this.route.snapshot.data.name);
+        this.seo.setDescription(this.route.snapshot.data.description);
+        this.seo.setKeywords(this.route.snapshot.data.keywords);
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle(this.route.snapshot.data.name);
+        this.seo.setDescription(this.route.snapshot.data.description);
+        this.seo.setKeywords(this.route.snapshot.data.keywords);
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
       }
-    });
 
-
-    if (this.categoryId === undefined || this.categoryId === null) {
-      this.getTour(1, '');
-    } else {
-      this.getTour(1, this.categoryId);
-    }
-    // auto search
-    this.queryField.valueChanges
-      .pipe(
-        debounceTime(800),
-        distinctUntilChanged(),
-        map(val => val.length >= 3 ? val : null),
-        switchMap((query) => {
-          if (query === null) {
-            return;
-          } else {
-            return this.api.searchByName(query, 'tours');
-          }
-        })
-      ).subscribe((result: any) => {
-        this.results = result.data;
+      this.categoryData = this.route.snapshot.data.tourCategory;
+      this.categoryData.data.forEach((val) => {
+        if (this.route.snapshot.data.category === val.name) {
+          this.categoryId = `/category/${val._id}`;
+          this.route.snapshot.data.categoryId = this.categoryId;
+        }
       });
+
+      if (this.categoryId === undefined || this.categoryId === null) {
+        this.getTour(1, '');
+      } else {
+        this.getTour(1, this.categoryId);
+      }
+      // auto search
+      this.queryField.valueChanges
+        .pipe(
+          debounceTime(800),
+          distinctUntilChanged(),
+          map(val => val.length >= 3 ? val : null),
+          switchMap((query) => {
+            if (query === null) {
+              return;
+            } else {
+              return this.api.searchByName(query, 'tours');
+            }
+          })
+        ).subscribe((result: any) => {
+          this.results = result.data;
+        });
+    }
+
   }
 
   ngOnDestroy(): void {

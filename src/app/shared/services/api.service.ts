@@ -16,10 +16,10 @@ export class ApiService {
         status: 'true'
       }
     });
-    const popularSchedule = this.http.get(`${environment.apiUrl}/blogs`, {
+    const popularSchedule = this.http.get(`${environment.apiUrl}/homepage/popular-review`, {
       params: {
         select: 'seo,title,images,createdAt',
-        limit: '3',
+        limit: '6',
         status: 'true'
       }
     });
@@ -30,10 +30,10 @@ export class ApiService {
         status: 'true'
       }
     });
-    const popularHotel = this.http.get(`${environment.apiUrl}/tours`, {
+    const popularHotel = this.http.get(`${environment.apiUrl}/homepage/popular-tour`, {
       params: {
         select: 'title,address,images,phone,seo,time,price',
-        limit: '3',
+        limit: '6',
         status: 'true'
       }
     });
@@ -47,7 +47,7 @@ export class ApiService {
     const recentBlogs = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'title,description,images,seo,address,createdAt',
-        limit: '3',
+        limit: '4',
         status: 'true'
       }
     });
