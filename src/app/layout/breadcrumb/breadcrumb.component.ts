@@ -31,6 +31,11 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getBannerBg();
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(
+        () => {
+        }
+      );
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       distinctUntilChanged(),
@@ -47,7 +52,14 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
   }
 
   getBannerBg() {
-    const queryApi = this.activatedRoute.snapshot.data.queryBanner;
+    let queryApi;
+    if (this.activatedRoute.snapshot.firstChild.data) {
+      queryApi = this.activatedRoute.snapshot.firstChild.data.queryBanner;
+    } else {
+      queryApi = this.activatedRoute.snapshot.data.queryBanner;
+    }
+
+    console.log(queryApi);
     this.subcription = this.api.getBannerPage(queryApi).subscribe(res => {
       this.bannerImage = res.data[0];
     }, err => {

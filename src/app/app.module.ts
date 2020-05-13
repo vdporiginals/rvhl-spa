@@ -33,7 +33,6 @@ import { NavItemComponent } from './layout/header/nav-item/nav-item.component';
 import { NavSocialComponent } from './layout/header/nav-social/nav-social.component';
 import { NavLogoComponent } from './layout/header/nav-logo/nav-logo.component';
 import { NavMobileComponent } from './layout/header/nav-mobile/nav-mobile.component';
-import { SubMobileComponent } from './layout/header/nav-mobile/sub-menu/sub-menu.component';
 import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.component';
 import { ContactPageComponent } from './layout/contact-page/contact-page.component';
 import { MyLoaderComponent } from './layout/my-loader/my-loader.component';
@@ -73,7 +72,6 @@ export function initApp(http: HttpClient, sessionStorage: SessionStorageService)
     NavSocialComponent,
     NavLogoComponent,
     NavMobileComponent,
-    SubMobileComponent,
     SubMenuComponent,
     ContactPageComponent,
     MyLoaderComponent,

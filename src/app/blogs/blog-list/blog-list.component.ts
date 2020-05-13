@@ -49,8 +49,9 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
   isLastPage = false;
   isFirstPage = false;
   private subcription: Subscription;
-  categoryId: any = '';
+  position: any = '';
   categoryData: any;
+  categoryId = '';
   constructor(
     private route: ActivatedRoute,
     private sharedData: SharedDataService,
@@ -66,48 +67,46 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
   ngOnChanges() { }
 
   ngOnInit(): void {
-    if (isPlatformServer(this.platformId)) {
-      this.seo.setTitle('Reviews Du Lịch Hạ Long');
-      this.seo.setDescription(
-        'Review về hành trình, địa điểm, quán ăn hay nhà hàng đến từ người bản địa'
-      );
-      this.seo.setKeywords(
-        'Review hành trình, địa điểm hạ long, quán ăn ngon hạ long, nhà hàng hạ long, tour vịnh hạ long, di chuyển'
-      );
-      this.seo.setOgSite(this.request.get('host'));
-      this.seo.setOgUrl(this.request.get('host'));
-    } else {
-      this.seo.setTitle('Reviews Du Lịch Hạ Long');
-      this.seo.setDescription(
-        'Review về hành trình, địa điểm, quán ăn hay nhà hàng đến từ người bản địa'
-      );
-      this.seo.setKeywords(
-        'Review hành trình, địa điểm hạ long, quán ăn ngon hạ long, nhà hàng hạ long, tour vịnh hạ long, di chuyển'
-      );
-      this.seo.setOgSite(window.location.origin);
-      this.seo.setOgUrl(window.location.origin);
+    if (this.route.snapshot.data.blogCategory) {
+      if (isPlatformServer(this.platformId)) {
+        this.seo.setTitle('Reviews Du Lịch Hạ Long');
+        this.seo.setDescription(
+          'Review về hành trình, địa điểm, quán ăn hay nhà hàng đến từ người bản địa'
+        );
+        this.seo.setKeywords(
+          'Review hành trình, địa điểm hạ long, quán ăn ngon hạ long, nhà hàng hạ long, tour vịnh hạ long, di chuyển'
+        );
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle('Reviews Du Lịch Hạ Long');
+        this.seo.setDescription(
+          'Review về hành trình, địa điểm, quán ăn hay nhà hàng đến từ người bản địa'
+        );
+        this.seo.setKeywords(
+          'Review hành trình, địa điểm hạ long, quán ăn ngon hạ long, nhà hàng hạ long, tour vịnh hạ long, di chuyển'
+        );
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
+      }
+
+      this.categoryData = this.route.snapshot.data.blogCategory;
+      this.position = this.route.snapshot.data.position;
+
+      if (this.position === undefined || this.position === null) {
+        this.getData(1, '');
+      } else {
+        this.getData(1, this.position);
+      }
+
+      this.sharedData.categoryIdd.subscribe((id) => {
+        if (id !== '') {
+          this.categoryId = id;
+          this.getData(1, '', this.categoryId);
+        }
+      });
     }
 
-    this.categoryData = this.route.snapshot.data.blogCategory;
-    this.categoryData.data.forEach((val) => {
-      if (this.route.snapshot.data.category === val.name) {
-        this.categoryId = `/category/${val._id}`;
-        this.route.snapshot.data.categoryId = this.categoryId;
-      }
-    });
-
-    if (this.categoryId === undefined || this.categoryId === null) {
-      this.getData(1, '');
-    } else {
-      this.getData(1, this.categoryId);
-    }
-
-    this.sharedData.categoryIdd.subscribe((id) => {
-      if (id !== '') {
-        this.categoryId = `/category/${id}`;
-        this.getData(1, this.categoryId);
-      }
-    });
   }
 
   ngOnDestroy(): void {
@@ -116,19 +115,30 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
-  getData(page, categoryId) {
+  getData(page, position, category?) {
+    let paramsApi;
+    if (category) {
+      paramsApi = {
+        select: 'title,description,images,seo,address,createdAt',
+        page,
+        category,
+        limit: '4',
+      }
+    } else {
+      paramsApi = {
+        select: 'title,description,images,seo,address,createdAt',
+        page,
+        position,
+        limit: '4',
+      }
+    }
     this.subcription = this.http
-      .get<any>(`${environment.apiUrl}/blogs${categoryId}`, {
-        params: {
-          select: 'title,description,images,seo,address,createdAt',
-          page,
-          limit: '4',
-        },
+      .get<any>(`${environment.apiUrl}/blogs`, {
+        params: paramsApi
       })
       .subscribe((data) => {
         this.allBlogs = data.data;
         this.count = data.count;
-        console.log(data);
         if (Object.keys(data.pagination).length !== 0) {
           if (data.pagination.next === undefined) {
             this.isLastPage = true;

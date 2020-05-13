@@ -1,37 +1,24 @@
 <div fxFlex fxHide.lt-md></div>
-<div
-  class="popular_places_area"
-  fxLayout="column"
-  fxLayoutAlign="space-around center"
-  fxFlex="80"
-  fxFlex.lt-md
->
+<div class="popular_places_area" fxLayout="column" fxLayoutAlign="space-around center" fxFlex="80" fxFlex.lt-md>
   <div>
     <div class="section_title">
-      <h3>Chơi đâu và Ở Đâu</h3>
+      <h3>Tour Hạ Long và Chỗ nghỉ chân</h3>
       <p>
         Gợi ý cho du khách về những tour ở Hạ long và chỗ nghỉ nổi bật nhất.
       </p>
     </div>
   </div>
   <div fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="center center">
-    <div
-      fxFlex="65%"
-      fxFlex.gt-sm="24%"
-      fxFlex.md="40%"
-      *ngFor="let cruise of popularCruiseData"
-    >
+    <div fxFlex="65%" fxFlex.gt-sm="24%" fxFlex.md="40%" *ngFor="let cruise of popularCruiseData">
       <mat-card class="single_place">
         <div class="thumb">
           <img mat-card-image [src]="cruise.images[0]" [alt]="cruise.title" />
           <a href="#" class="prise">{{ cruise.price | shortNumber }}</a>
         </div>
         <div class="place_info">
-          <a
-            [routerLink]="['/tour', 'ha-long-bay-tour', cruise._id, cruise.seo]"
-            fxLayoutAlign="start"
-            ><h3>{{ cruise.title }}</h3></a
-          >
+          <a [routerLink]="['/tour', 'ha-long-bay-tour', cruise._id, cruise.seo]" fxLayoutAlign="start">
+            <h3>{{ cruise.title }}</h3>
+          </a>
           <p fxLayoutAlign="start" fxLayoutAlign="start">
             {{ cruise.address }}
           </p>
@@ -44,23 +31,16 @@
         </div>
       </mat-card>
     </div>
-    <div
-      fxFlex="65%"
-      fxFlex.md="40%"
-      fxFlex.gt-sm="24%"
-      *ngFor="let hotel of popularHotelData"
-    >
+    <div fxFlex="65%" fxFlex.md="40%" fxFlex.gt-sm="24%" *ngFor="let hotel of popularHotelData">
       <mat-card class="single_place">
         <div class="thumb">
           <img mat-card-image [src]="hotel.images[0]" [alt]="hotel.title" />
           <a href="#" class="prise">{{ hotel.price | shortNumber }}</a>
         </div>
         <div class="place_info">
-          <a
-            [routerLink]="['/tour', 'khach-san', hotel._id, hotel.seo]"
-            fxLayoutAlign="start"
-            ><h3>{{ hotel.title }}</h3></a
-          >
+          <a [routerLink]="['/tour', 'khach-san', hotel._id, hotel.seo]" fxLayoutAlign="start">
+            <h3>{{ hotel.title }}</h3>
+          </a>
           <p fxLayoutAlign="start">{{ hotel.address }}</p>
           <div fxLayoutAlign="start">
             <div class="days">

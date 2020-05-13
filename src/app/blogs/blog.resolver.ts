@@ -13,8 +13,6 @@ export class BlogResolve implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     const id = route.params.id;
-    const authUserToken = this.localStorage.getItem('api_token');
-    console.log(authUserToken);
     return isPlatformBrowser(this.platformId) ?
       this.http.get(`${environment.apiUrl}/blogs/category`) : null;
   }

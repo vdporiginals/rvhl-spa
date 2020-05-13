@@ -19,6 +19,7 @@ export class BlogFilterComponent implements OnInit, OnDestroy {
   isLoadingResults = true;
   recentPost;
   blogCategory;
+  fbPlugin: any;
   private subcription: Subscription;
   results: any;
   queryField: FormControl = new FormControl();
@@ -53,8 +54,8 @@ export class BlogFilterComponent implements OnInit, OnDestroy {
       .subscribe(res => {
         this.recentPost = res[0];
         this.blogCategory = res[1];
-        // this.blogCategory = res[1];
-        this.isLoadingResults = false;
+        this.fbPlugin = res[2];
+        this.isLoadingResults = true;
       }, err => {
         console.log(err);
         this.isLoadingResults = false;

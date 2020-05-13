@@ -53,10 +53,11 @@ export class ApiService {
     });
     const videoBg = this.http.get(`${environment.apiUrl}/homepage/video-banner`, {
       params: {
-        select: 'images,seo,image',
+        select: 'images,seo,image,link',
         status: 'true'
       }
     });
+    const advertiseHomepage = this.http.get(`${environment.apiUrl}/homepage/advertise-banner`, { params: { status: 'true' } });
     return forkJoin([
       sliderArea,
       popularSchedule,
@@ -64,7 +65,8 @@ export class ApiService {
       popularHotel,
       popularCruise,
       recentBlogs,
-      videoBg
+      videoBg,
+      advertiseHomepage
     ]);
   }
 
@@ -90,8 +92,9 @@ export class ApiService {
       }
     });
     const blogCategory = this.http.get<any>(`${environment.apiUrl}/blogs/category`);
+    const fbPlugin = this.http.get<any>(`${environment.apiUrl}/web-config`);
     // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
-    return forkJoin([recentBlogs, blogCategory]);
+    return forkJoin([recentBlogs, blogCategory, fbPlugin]);
   }
 
   getBannerPage(queryParams): Observable<any> {

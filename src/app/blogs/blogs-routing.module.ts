@@ -9,15 +9,14 @@ const routes: Routes = [
   {
     path: '',
     component: BlogsComponent,
-    data: { categoryId: '' },
     children: [
       {
         path: 'lich-trinh',
         component: BlogListComponent,
         data: {
-          category: 'Schedule',
           queryBanner: 'SchedulePage',
-          categoryId: ''
+          breadcrumb: 'Lịch trình',
+          position: 'Schedule'
         },
 
         resolve: {
@@ -27,7 +26,7 @@ const routes: Routes = [
       {
         path: 'an-gi',
         component: BlogListComponent,
-        data: { category: 'Food', queryBanner: 'FoodPage', categoryId: '' },
+        data: { breadcrumb: 'Ăn gì', position: 'Food', queryBanner: 'FoodPage' },
         resolve: {
           blogCategory: BlogResolve
         },

@@ -20,6 +20,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   recentBlogs: any = [];
   videoBg: any = [];
   isLoadingResults = true;
+  advertiseHomepage: any;
   private subcription: Subscription;
 
   constructor(
@@ -70,6 +71,8 @@ export class HomepageComponent implements OnInit, OnDestroy {
         this.popularCruiseData = res[4].data;
         this.recentBlogs = res[5].data;
         this.videoBg = res[6].data;
+        this.advertiseHomepage = res[7].data;
+        console.log(this.advertiseHomepage);
         this.isLoadingResults = false;
       },
       err => {
