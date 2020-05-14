@@ -97,6 +97,24 @@ export class ApiService {
     return forkJoin([recentBlogs, blogCategory, fbPlugin]);
   }
 
+  getFilterTour(): Observable<any> {
+    const recentTours = this.http.get<any>(`${environment.apiUrl}/tours`, {
+      params: {
+        select: 'title,images,seo,createdAt',
+        limit: '5',
+        status: 'true'
+      }
+    });
+    const tourCategory = this.http.get<any>(`${environment.apiUrl}/tours/category`);
+    const fbPlugin = this.http.get<any>(`${environment.apiUrl}/web-config`, {
+      params: {
+        select: 'fbPage'
+      }
+    });
+    // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
+    return forkJoin([recentTours, tourCategory, fbPlugin]);
+  }
+
   getBannerPage(queryParams): Observable<any> {
     const bannerPage = this.http.get(`${environment.apiUrl}/advertises`, {
       params: {

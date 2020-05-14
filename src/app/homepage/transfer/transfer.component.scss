@@ -12,27 +12,33 @@
       margin: 0px 0px 27px 21px;
       color: #fff;
       font-weight: 400;
+
       @media #{$mobile_device} {
         margin: 16px 0px 22px -27px;
       }
+
       @media #{$tablet_device} {
         margin: 23px 41px 16px 18px;
       }
+
       @media #{$mid_device} {
         font-size: 18px;
       }
     }
   }
+
   .search_wrap {
     .search_btn {
       max-height: 55px;
       bottom: 5px;
     }
+
     .search_form {
       min-width: 70vw;
       width: 100%;
       max-height: 250px;
     }
+
     .input_field {
       input {
         width: 100%;
@@ -42,11 +48,13 @@
         padding-left: 15px;
         @include border-radius(5px);
         color: #fff;
+
         &::placeholder {
           font-size: 16px;
           color: #aab1b7;
           font-weight: 300;
         }
+
         &:focus {
           outline: none;
         }
@@ -69,41 +77,45 @@
   text-transform: capitalize;
   @include transition(0.3s);
   cursor: pointer;
+
   &:hover {
     background: #2b2b28;
     color: #fff !important;
   }
+
   &:focus {
     outline: none;
   }
+
   &.large-width {
     width: 220px;
   }
+
   @media #{$xs_mobile} {
     padding: 10px;
     font-size: 10px;
   }
 }
 
-::ng-deep .mat-focused .mat-form-field-label {
-  /*change color of label*/
-  color: #f8f8f8 !important;
+::ng-deep.mat-form-field-empty.mat-form-field-label {
+  color: $btn_bg !important;
 }
 
-::ng-deep.mat-form-field-underline {
+.mat-form-field-underline {
   /*change color of underline*/
   background-color: transparent !important;
 }
 
-::ng-deep.mat-form-field-ripple {
+.mat-form-field-ripple {
   /*change color of underline when focused*/
   background-color: transparent !important;
 }
 
-::ng-deep.mat-form-field-appearance-legacy .mat-form-field-label {
+.mat-form-field-appearance-legacy .mat-form-field-label {
   color: #f8f8f8;
   padding: 7px;
 }
+
 .filter-select {
   width: 100%;
   height: 300px;
@@ -117,18 +129,22 @@
   overflow-y: auto;
   background: #fff;
 }
+
 .filter-select-list {
   cursor: pointer;
   padding: 5px 10px;
 }
+
 .artist-name {
   display: inline-block;
   position: absolute;
 }
+
 .filter-select-list:hover {
   background: #c0c0c0;
   color: #fff;
 }
+
 .list-highlight,
 .list-highlight:hover {
   background: rgb(55, 55, 55);

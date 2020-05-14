@@ -2,14 +2,37 @@
   <div fxFlex fxFlex.lt-sm="0"></div>
   <div fxFlex="80" fxLayoutAlign="center center" fxLayout="row">
     <div class="search_wrap" fxLayout="row">
-      <form fxFlex fxLayout="row" fxLayout.lt-md="column" class="search_form" action="#" fxFlexOffset="5"
-        fxLayoutGap="5">
-        <mat-form-field fxFlex="80" fxFlexOffset="5" fxLayoutGap="5" fxFlexOffset.lt-md="0" class="input_field">
-          <input matInput [formControl]="queryField" type="text" [matAutocomplete]="auto"
-            placeholder="Tìm kiếm reviews" />
+      <form
+        fxFlex
+        fxLayout="row"
+        fxLayout.lt-md="column"
+        class="search_form"
+        action="#"
+        fxFlexOffset="5"
+        fxLayoutGap="5"
+      >
+        <mat-form-field
+          fxFlex="80"
+          fxFlexOffset="5"
+          fxLayoutGap="5"
+          fxFlexOffset.lt-md="0"
+          class="input_field"
+        >
+          <input
+            matInput
+            [formControl]="queryField"
+            type="text"
+            [matAutocomplete]="auto"
+            placeholder="Tìm kiếm reviews"
+            color="primary"
+          />
           <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let result of results" [routerLink]="['/reviews', result._id, result.seo]">
-              {{ result.title }}</mat-option>
+            <mat-option
+              *ngFor="let result of results"
+              [routerLink]="['/reviews', result._id, result.seo]"
+            >
+              {{ result.title }}</mat-option
+            >
           </mat-autocomplete>
         </mat-form-field>
       </form>

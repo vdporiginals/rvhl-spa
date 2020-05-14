@@ -13,6 +13,6 @@ export class TourResolve implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     return isPlatformBrowser(this.platformId) ?
-      this.http.get(`${environment.apiUrl}/tours/category`).pipe(delay(0)) : null;
+      this.http.get(`${environment.apiUrl}/tours/category`) : null;
   }
 }

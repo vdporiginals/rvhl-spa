@@ -22,6 +22,11 @@ import { ListSingleTourComponent } from './list-single-tour/list-single-tour.com
 import { PipeModule } from '../shared/pipe/pipe.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LightboxModule } from 'ngx-lightbox';
+import { TransferComponent } from './transfer/transfer.component';
+import { TransferDetailComponent } from './transfer-detail/transfer-detail.component';
+import { TourRightSideComponent } from './tour-right-side/tour-right-side.component';
+import { TourSearchComponent } from './tour-search/tour-search.component';
+import { TransferSearchComponent } from './transfer-search/transfer-search.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -48,7 +53,12 @@ import { LightboxModule } from 'ngx-lightbox';
   declarations: [
     TourComponent,
     TourDetailComponent,
-    ListSingleTourComponent
+    ListSingleTourComponent,
+    TransferComponent,
+    TransferDetailComponent,
+    TourRightSideComponent,
+    TourSearchComponent,
+    TransferSearchComponent
   ],
   providers: []
 })

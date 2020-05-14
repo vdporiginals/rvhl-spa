@@ -1,11 +1,8 @@
 import { Component, OnInit, Injector, Inject, PLATFORM_ID } from '@angular/core';
-import { SeoService } from '../shared/services/seo.service';
 import { TourItem } from 'src/app/shared/tour-item';
 import { ThemePalette } from '@angular/material/core';
-import { ShortNumberPipe } from '../shared/pipe/short-num.pipe';
-import { isPlatformServer } from '@angular/common';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SharedDataService } from '../shared/services/shared-data.service';
+import { Event, Router } from '@angular/router';
+import { NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-tour',
   templateUrl: './tour.component.html',
@@ -13,26 +10,23 @@ import { SharedDataService } from '../shared/services/shared-data.service';
 })
 export class TourComponent implements OnInit {
   navItems: any[] = TourItem;
-  searchForm: FormGroup;
   background: ThemePalette = undefined;
-  constructor(public fb: FormBuilder, private shared: SharedDataService) {
-
-    this.searchForm = this.fb.group({
-      title: [''],
-      price: [''],
-      status: true,
-      page: 1,
-      limit: 4,
-      sort: [''],
-      address: ['']
+  isTourPage = false;
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/tour/ha-long-bay-tour') {
+          this.isTourPage = true;
+        } else if (event.url === '/tour/tron-goi') {
+          this.isTourPage = true;
+        } else {
+          this.isTourPage = false;
+        }
+      }
     });
   }
 
   ngOnInit(): void {
     this.background = 'primary';
-  }
-
-  sendFormData() {
-    this.shared.setFormData(this.searchForm.value);
   }
 }
