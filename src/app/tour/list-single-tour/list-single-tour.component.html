@@ -134,10 +134,18 @@
             >{{ service.service }}
           </a>
         </div>
-
-        <div class="tour_attribute_rating_count">
+        <div
+          class="tour_attribute_rating_count"
+          fxlayout="row"
+          fxLayoutGap="10px"
+        >
           <fa-icon [icon]="faPhone"> </fa-icon>
-          &nbsp;<strong>{{ tour.phone }}</strong>
+          &nbsp;<strong
+            ><a href="{{ 'tel:' + tour.phone }}">{{ tour.phone }}</a></strong
+          >
+          <fa-icon [icon]="faEye"></fa-icon>&nbsp;<strong>{{
+            tour.views
+          }}</strong>
         </div>
       </div>
     </div>

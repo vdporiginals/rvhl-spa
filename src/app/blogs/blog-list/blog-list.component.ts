@@ -92,17 +92,16 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
 
       this.categoryData = this.route.snapshot.data.blogCategory;
       this.position = this.route.snapshot.data.position;
-
-      if (this.position === undefined || this.position === null) {
-        this.getData(1, '');
-      } else {
+      if (this.position === undefined) {
+        this.getData(1);
+      } else if (this.position !== undefined) {
         this.getData(1, this.position);
       }
 
       this.sharedData.categoryIdd.subscribe((id) => {
         if (id !== '') {
           this.categoryId = id;
-          this.getData(1, '', this.categoryId);
+          this.getData(1, undefined, this.categoryId);
         }
       });
     }
@@ -115,20 +114,26 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
-  getData(page, position, category?) {
+  getData(page, position?, category?) {
     let paramsApi;
-    if (category) {
+    if (category !== undefined || category !== '') {
       paramsApi = {
         select: 'title,description,images,seo,address,createdAt',
         page,
         category,
         limit: '4',
       }
-    } else {
+    } else if (position !== undefined) {
       paramsApi = {
         select: 'title,description,images,seo,address,createdAt',
         page,
         position,
+        limit: '4',
+      }
+    } else {
+      paramsApi = {
+        select: 'title,description,images,seo,address,createdAt',
+        page,
         limit: '4',
       }
     }

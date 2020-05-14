@@ -4,7 +4,6 @@
 
 a {
   &:hover {
-    background-color: $heading_color2;
     color: $heading_color2;
   }
 }
@@ -35,6 +34,7 @@ a {
 
 .tour_attribute_rating_count {
   font-size: 14px;
+  margin-top: 5px;
 
   @media(min-width: 960px) and (max-width: 1200px) {
     font-size: 10px;

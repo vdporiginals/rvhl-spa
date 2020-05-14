@@ -22,7 +22,7 @@ import { ListSingleTourComponent } from './list-single-tour/list-single-tour.com
 import { PipeModule } from '../shared/pipe/pipe.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LightboxModule } from 'ngx-lightbox';
-import { TransferComponent } from './transfer/transfer.component';
+import { TransferListComponent } from './transfer-list/transfer-list.component';
 import { TransferDetailComponent } from './transfer-detail/transfer-detail.component';
 import { TourRightSideComponent } from './tour-right-side/tour-right-side.component';
 import { TourSearchComponent } from './tour-search/tour-search.component';
@@ -54,7 +54,7 @@ import { TransferSearchComponent } from './transfer-search/transfer-search.compo
     TourComponent,
     TourDetailComponent,
     ListSingleTourComponent,
-    TransferComponent,
+    TransferListComponent,
     TransferDetailComponent,
     TourRightSideComponent,
     TourSearchComponent,

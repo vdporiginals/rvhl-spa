@@ -58,8 +58,6 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
     } else {
       queryApi = this.activatedRoute.snapshot.data.queryBanner;
     }
-
-    console.log(queryApi);
     this.subcription = this.api.getBannerPage(queryApi).subscribe(res => {
       this.bannerImage = res.data[0];
     }, err => {

@@ -7,6 +7,10 @@ import { TourComponent } from './tour.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { TourResolve } from './tour.resolver';
 import { TourDetailResolve } from './tour-detail/tour-detail.resolver';
+import { TransferResolve } from './transfer.resolver';
+import { TransferDetailComponent } from './transfer-detail/transfer-detail.component';
+import { TransferDetailResolve } from './transfer-detail/transfer-detail.resolver';
+import { TransferListComponent } from './transfer-list/transfer-list.component';
 
 const routes: Routes = [
   {
@@ -22,19 +26,19 @@ const routes: Routes = [
       },
       {
         path: 'di-chuyen',
-        component: ListSingleTourComponent,
-        resolve: {
-          tourCategory: TourResolve
-        },
+        component: TransferListComponent,
+        // resolve: {
+        //   tourCategory: TransferResolve
+        // },
         data: { category: 'Transfer', categoryId: '', breadcrumb: 'Di chuyển', queryBanner: 'TransferPage' },
       },
       {
         path: 'di-chuyen/:id/:seo',
-        component: TourDetailComponent,
+        component: TransferDetailComponent,
         data: { breadcrumb: '' },
-        resolve: {
-          tourpost: TourDetailResolve
-        },
+        // resolve: {
+        //   tourpost: TransferDetailResolve
+        // },
       },
       {
         path: 'ha-long-bay-tour',
@@ -42,7 +46,7 @@ const routes: Routes = [
         resolve: {
           tourCategory: TourResolve
         },
-        data: { category: 'Cruise', categoryId: '', breadcrumb: 'Tour vịnh', queryBanner: 'TourCruisePage' },
+        data: { position: 'TourCruise', categoryId: '', breadcrumb: 'Tour vịnh', queryBanner: 'TourCruisePage' },
       },
       {
         path: 'ha-long-bay-tour/:id/:seo',
@@ -58,7 +62,7 @@ const routes: Routes = [
         resolve: {
           tourCategory: TourResolve
         },
-        data: { category: 'AllInOne', categoryId: '', breadcrumb: 'Trọn gói', queryBanner: 'TourAllPage' },
+        data: { position: 'TourAll', categoryId: '', breadcrumb: 'Trọn gói', queryBanner: 'TourAllPage' },
       },
       {
         path: 'tron-goi/:id/:seo',
@@ -77,6 +81,7 @@ const routes: Routes = [
   declarations: [],
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [TourDetailResolve, TourResolve]
+  providers: [TourDetailResolve, TourResolve, TransferResolve,
+    TransferDetailResolve]
 })
 export class TourRoutingModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Injector, Inject, PLATFORM_ID } from '@angular/core';
 import { TourItem } from 'src/app/shared/tour-item';
 import { ThemePalette } from '@angular/material/core';
-import { Event, Router } from '@angular/router';
+import { Event, Router, ActivatedRoute } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-tour',
@@ -12,12 +12,13 @@ export class TourComponent implements OnInit {
   navItems: any[] = TourItem;
   background: ThemePalette = undefined;
   isTourPage = false;
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        if (event.url === '/tour/ha-long-bay-tour') {
+        const path = this.route.snapshot.firstChild.url[0].path;
+        if (path === 'ha-long-bay-tour') {
           this.isTourPage = true;
-        } else if (event.url === '/tour/tron-goi') {
+        } else if (path === 'tron-goi') {
           this.isTourPage = true;
         } else {
           this.isTourPage = false;
