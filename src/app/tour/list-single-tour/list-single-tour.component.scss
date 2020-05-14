@@ -2,154 +2,95 @@
 @import "../../scss/mixins";
 @import "../../scss/responsive";
 
-.tour_card {
-  max-width: 900px;
+.one_third {
+  width: 30.66%;
+  float: left;
+  margin-right: 4%;
+  margin-bottom: 2%;
+  position: relative;
+  box-sizing: border-box;
 
-  @media ($tablet_device) {
-    width: 600px;
+  @media (max-width: 960px) {
+    width: 100%;
+    margin: 0;
   }
 
-  @media ($mobile_device) {
-    max-width: 340px;
+}
+
+.tour_list_wrapper {
+  border: 1px solid #dce0e0;
+  border-top-color: rgb(220, 224, 224);
+  border-right-color: rgb(220, 224, 224);
+  border-bottom-color: rgb(220, 224, 224);
+  border-left-color: rgb(220, 224, 224);
+  border-radius: 5px;
+}
+
+.tour_attribute_rating_count {
+  font-size: 14px;
+
+  @media(min-width: 960px) and (max-width: 1200px) {
+    font-size: 10px;
   }
+}
 
-  margin-bottom: 15px;
+.tour_image img {
+  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+}
 
-  .tour_main {
-    position: relative;
+.tour_price {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  background: #FF4A52;
+  background-color: rgb(255, 74, 82);
+  padding: 3px 10px 2px 10px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
 
-    .tour_img {
-      img {
-        max-width: 100%;
-      }
-    }
+.two_third {
+  margin: 0;
+  margin-right: 0px;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+}
 
-    .tour_content {
-      font-family: $font1;
+.tour_link {
+  h3 {
 
-      .tour_header {
-        h3 {
-          font-weight: 400;
-          font-size: 18px;
+    font-weight: 700;
+    font-style: inherit;
+    font-size: 18px;
+    font-family: $font1;
+    vertical-align: baseline;
 
-          @media ($mobile_device) {
-            font-size: 15px;
-            margin: 1px !important;
-          }
-        }
-      }
-
-      .tour_body {
-        p {
-          font-weight: 400;
-          font-size: 14px;
-          color: $font_7;
-
-          @media ($mobile_device) {
-            font-size: 11px;
-            margin: 1px !important;
-          }
-        }
-
-        span {
-          font-weight: bold;
-          font-size: 14px;
-
-          @media ($mobile_device) {
-            font-size: 12px;
-            margin: 1px !important;
-          }
-        }
-      }
-
-      &:before {
-        content: "";
-      }
-    }
-
-    .tour_price {
-      h3 {
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-
-        @media ($mobile_device) {
-          font-size: 11px;
-          margin: 1px !important;
-        }
-      }
-
-      h2 {
-        font-size: 18px;
-        font-weight: bold;
-        text-align: center;
-
-        @media ($mobile_device) {
-          font-size: 12px;
-          margin: 1px !important;
-        }
-      }
-
-      p {
-        font-size: 14px;
-
-        @media ($mobile_device) {
-          font-size: 9px;
-          margin: 1px !important;
-        }
-      }
-    }
-  }
-
-  .tour_footer {
-    width: 50%;
-    position: absolute;
-    right: 0;
-    bottom: -0.5px;
-
-    @media ($tablet_device) {
-      position: relative;
-      float: right;
-      width: 70%;
-      margin-left: 186px;
-      bottom: -0.5px;
-    }
-
-    @media ($mobile_device) {
-      position: relative;
-      width: 100%;
-    }
-
-    button {
-      font-size: 18px;
-      font-weight: 400;
+    @media(min-width: 960px) and (max-width: 1200px) {
+      font-size: 15px
     }
   }
 }
 
-.tour_date {
+.tour_list_excerpt {
+  font-weight: lighter;
+  font-style: inherit;
   font-size: 16px;
-  font-weight: bold;
+  font-family: $font1;
+  vertical-align: baseline;
 
-  @media ($mobile_device) {}
-
-  a {
-    margin: 9px 5px 0 0;
-
-    &:hover {
-      color: $theme-color2;
-    }
-  }
-
-  p {
-    float: right;
-    margin-bottom: 0px !important;
-    margin-right: 5px;
-    color: $heading-color;
-
-    @media ($mobile_device) {
-      font-size: 11px;
-    }
+  @media(min-width: 960px) and (max-width: 1200px) {
+    font-size: 12px
   }
 }
 
@@ -159,8 +100,8 @@
   span {
     padding: 5px 0px;
 
-    @media ($mobile_device) {
-      font-size: 11px;
+    @media(min-width: 960px) and (max-width: 1200px) {
+      font-size: 11px
     }
   }
 
@@ -177,8 +118,8 @@
     color: #f8f8f8;
     cursor: pointer;
 
-    @media ($mobile_device) {
-      font-size: 11px;
+    @media(min-width: 960px) and (max-width: 1200px) {
+      font-size: 11px
     }
 
     &:hover {
@@ -197,112 +138,14 @@
   }
 }
 
-.boxed_btn {
-  border-radius: 0 !important;
-  color: #f8f8f8;
-  display: inline-block;
-  background: $heading-color;
-  padding: 6px;
-  font-family: $font1;
+.tour_attribute_wrapper {
+  margin-top: 10px;
   font-size: 14px;
+  font-family: $font1;
   font-weight: 400;
-  border: 0;
-  border: 1px solid;
-  // width: 180px;
-  text-align: center;
 
-  @media ($mobile_device) {
-    font-size: 9px;
-  }
-
-  color: #f8f8f8 !important;
-  text-transform: uppercase;
-  cursor: pointer;
-
-  &:hover {
-    background: $btn_bg;
-    color: #fff !important;
-    border: 1px solid $btn_bg;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &.large-width {
-    width: 220px;
-  }
-}
-
-.tour-pagination {
-  justify-content: center !important;
-  margin-top: 80px;
-
-  .page-link {
-    font-size: 14px;
-    position: relative;
-    display: block;
-    padding: 0;
-    text-align: center;
-    margin-left: -1px;
-    line-height: 45px;
-    width: 45px;
-    height: 45px;
-    border-radius: 0 !important;
-    color: #8a8a8a;
-    border: 1px solid #f0e9ff;
-    margin-right: 10px;
-
-    fa-icon,
-    span {
-      font-size: 13px;
-
-      @media ($mobile_device) {
-        font-size: 11px;
-      }
-    }
-  }
-
-  .page-item.active {
-    .page-link {
-      background-color: #fbf9ff;
-      border-color: #f0e9ff;
-      color: #888888;
-    }
-  }
-
-  .page-item:last-child .page-link {
-    margin-right: 0;
-  }
-}
-
-.current {
-  background: -webkit-linear-gradient(131deg, $btn_bg 0%, $btn_bg 99%);
-}
-
-a {
-  cursor: pointer;
-}
-
-a.disabled {
-  color: gray;
-  cursor: not-allowed;
-}
-
-.pagination {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  list-style: none;
-  border-radius: 0.25rem;
-}
-
-.address {
-  width: 100%;
-
-  @media ($mobile_device) {
-    font-size: 11px;
+  @media(min-width: 960px) and (max-width: 1200px) {
+    font-size: 12px
   }
 }
 
@@ -332,6 +175,6 @@ a.disabled {
 }
 
 
-.mat-card {
-  border: 1px solid #2b2b28;
-}
+// .mat-card {
+//   border: 1px solid #2b2b28;
+// }

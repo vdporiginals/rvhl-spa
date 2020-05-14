@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { ShortNumberPipe } from './short-num.pipe';
+import { TextOverflowPipe } from './text-overflow.pipe';
+import { SanitizeHtmlPipe } from './sanitize-html.pipe';
 
 @NgModule({
   imports: [
@@ -10,10 +12,14 @@ import { ShortNumberPipe } from './short-num.pipe';
     RouterModule,
   ],
   declarations: [
-    ShortNumberPipe
+    ShortNumberPipe,
+    TextOverflowPipe,
+    SanitizeHtmlPipe
   ],
   exports: [
-    ShortNumberPipe
+    ShortNumberPipe,
+    TextOverflowPipe,
+    SanitizeHtmlPipe
   ],
 })
 export class PipeModule { }

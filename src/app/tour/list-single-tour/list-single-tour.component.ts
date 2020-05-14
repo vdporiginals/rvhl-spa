@@ -4,13 +4,13 @@ import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SeoService } from 'src/app/shared/services/seo.service';
 import { Subscription } from 'rxjs';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { isPlatformServer } from '@angular/common';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 @Component({
   selector: 'app-list-single-tour',
   templateUrl: './list-single-tour.component.html',
@@ -24,7 +24,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
 
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
-
+  faPhone = faPhone
   tourData: any = {};
   currentPage: number;
   isLoadingResults = true;
@@ -36,6 +36,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
   categoryId: any = '';
   categoryData: any;
   results: any;
+  position: any;
   queryField: FormControl = new FormControl();
 
   constructor(
@@ -43,6 +44,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private api: ApiService,
     public router: Router,
+    private sharedData: SharedDataService,
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object,
     private seo: SeoService) {
@@ -66,34 +68,24 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
       }
 
       this.categoryData = this.route.snapshot.data.tourCategory;
-      this.categoryData.data.forEach((val) => {
-        if (this.route.snapshot.data.category === val.name) {
-          this.categoryId = `/category/${val._id}`;
-          this.route.snapshot.data.categoryId = this.categoryId;
+      this.position = this.route.snapshot.data.position;
+
+      if (this.position === undefined || this.position === null) {
+        this.getTour(1);
+      } else {
+        this.getTour(1, this.position);
+      }
+
+      this.sharedData.tourCategoryId.subscribe((id) => {
+        if (id !== '') {
+          this.getTour(1, null, id);
         }
       });
-
-      if (this.categoryId === undefined || this.categoryId === null) {
-        this.getTour(1, '');
-      } else {
-        this.getTour(1, this.categoryId);
-      }
-      // auto search
-      this.queryField.valueChanges
-        .pipe(
-          debounceTime(800),
-          distinctUntilChanged(),
-          map(val => val.length >= 3 ? val : null),
-          switchMap((query) => {
-            if (query === null) {
-              return;
-            } else {
-              return this.api.searchByName(query, 'tours');
-            }
-          })
-        ).subscribe((result: any) => {
-          this.results = result.data;
-        });
+      this.sharedData.searchFormData.subscribe((val) => {
+        if (val) {
+          this.getTour(1, null, null, val);
+        }
+      });
     }
 
   }
@@ -102,34 +94,54 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
     if (this.subcription) { this.subcription.unsubscribe(); }
   }
 
-  getTour(page, categoryId) {
-    this.subcription = this.http.get<any>(`${environment.apiUrl}/tours${categoryId}`, {
-      params: {
-        select: 'title,phone,description,images,seo,schedule,time,price,address,customerNum',
+  getTour(page, position?, category?, sort?) {
+    let paramsApi;
+    if (category) {
+      paramsApi = {
+        select: 'title,description,images,seo,address,price,views',
         page,
+        category,
         limit: '4',
       }
-    }).subscribe((data: any) => {
-      this.tourData = data;
-      this.count = data.count;
-      if (Object.keys(data.pagination).length !== 0) {
-        if (data.pagination.next === undefined) {
-          this.isLastPage = true;
-          this.currentPage = data.pagination.prev.page + 1;
-        } else {
-          this.isLastPage = false;
-          this.currentPage = data.pagination.next.page - 1;
-        }
-        if (data.pagination.prev === undefined || Object.keys(data.pagination).length === 0) {
-          this.isFirstPage = true;
-        } else {
-          this.isFirstPage = false;
-        }
-      } else {
-        this.isFirstPage = true;
-        this.isLastPage = true;
+    } else if (sort) {
+      paramsApi = sort;
+    } else {
+      paramsApi = {
+        select: 'title,description,images,seo,address,price,views',
+        page,
+        position,
+        limit: '4',
       }
-    });
+    }
+    this.subcription = this.http
+      .get<any>(`${environment.apiUrl}/tours`, {
+        params: paramsApi
+      })
+      .subscribe((data) => {
+        this.tourData = data;
+        console.log(this.tourData);
+        this.count = data.count;
+        if (Object.keys(data.pagination).length !== 0) {
+          if (data.pagination.next === undefined) {
+            this.isLastPage = true;
+            this.currentPage = data.pagination.prev.page + 1;
+          } else {
+            this.isLastPage = false;
+            this.currentPage = data.pagination.next.page - 1;
+          }
+          if (
+            data.pagination.prev === undefined ||
+            Object.keys(data.pagination).length === 0
+          ) {
+            this.isFirstPage = true;
+          } else {
+            this.isFirstPage = false;
+          }
+        } else {
+          this.isFirstPage = true;
+          this.isLastPage = true;
+        }
+      });
   }
 
 }

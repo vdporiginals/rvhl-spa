@@ -19,3 +19,37 @@ nav {
   min-width: 33vw !important;
   color: #e3b04b;
 }
+
+.tour_search {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  float: left;
+  padding: 31px 20px 0 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #e1e1e1;
+  -webkit-box-shadow: 0 5px 40px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 5px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  position: relative;
+}
+
+.filter_search {
+  width: 100%;
+
+
+  button {
+    margin-top: 15px;
+    width: 100%;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.tour_search_btn {
+  text-align: center;
+  font-size: 14px;
+}

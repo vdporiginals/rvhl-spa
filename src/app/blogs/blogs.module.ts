@@ -22,6 +22,7 @@ import { BlogFilterComponent } from './blog-filter/blog-filter.component';
 import { SharedModule } from '../shared/shared.module';
 import { ShareButtonComponent } from './blog-detail/share-facebook.component';
 import { FlexLayoutServerModule } from '@angular/flex-layout/server';
+import { PipeModule } from '../shared/pipe/pipe.module';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { FlexLayoutServerModule } from '@angular/flex-layout/server';
     FontAwesomeModule,
     NgxPaginationModule,
     SharedModule,
+    PipeModule,
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
@@ -46,12 +48,9 @@ import { FlexLayoutServerModule } from '@angular/flex-layout/server';
     BlogCommentComponent,
     BlogDetailComponent,
     BlogFilterComponent,
-    SanitizeHtmlPipe,
-    TextOverflowPipe,
   ],
   exports: [
     FlexLayoutModule
   ],
-  providers: [SanitizeHtmlPipe, TextOverflowPipe],
 })
 export class BlogsModule { }

@@ -1,4 +1,4 @@
-<div class="tour" fxLayout="column" fxLayoutAlign="center center">
+<!-- <div class="tour" fxLayout="column" fxLayoutAlign="center center">
   <mat-form-field class="input_field">
     <input matInput [formControl]="queryField" type="text" [matAutocomplete]="auto" placeholder="Tìm kiếm" />
     <mat-autocomplete #auto="matAutocomplete">
@@ -53,7 +53,6 @@
       <div class="tour_date">
         <a fxLayoutAlign="center center" href="{{ 'tel:' + tour.phone }}">
           Liên hệ SĐT: {{ tour.phone }}</a>
-        <!-- <a href="tel:+">Liên hệ SĐT: {{ tour.phone }}</a> -->
       </div>
       <a class="boxed_btn" style="float: right;" mat-raise-button [routerLink]="[tour._id, tour.seo]"
         routerLinkActive="router-link-active">
@@ -95,4 +94,52 @@
       </div>
     </ul>
   </pagination-template>
+</div> -->
+<div
+  fxLayout="column"
+  *ngFor="
+    let tour of tourData.data
+      | paginate
+        : {
+            itemsPerPage: limit,
+            currentPage: currentPage,
+            totalItems: count
+          }
+  "
+>
+  <div class="tour_list_wrapper" fxLayout="row" fxLayout.lt-md="column">
+    <div class="one_third" fxFlex="33" fxFlex.lt-md="100">
+      <a class="tour_image">
+        <img [src]="tour.images[0]" [alt]="tour.title" />
+        <div class="tour_price has_discount">
+          <span class="normal_price">{{ tour.price | shortNumber }} </span>
+        </div>
+      </a>
+    </div>
+
+    <div class="two_third last" fxFlex="67" fxFlex.lt-md="100">
+      <a class="tour_link"
+        ><h3>{{ tour.title }}</h3></a
+      >
+      <div class="tour_list_excerpt">
+        {{ tour.description }}
+      </div>
+
+      <div class="tour_attribute_wrapper">
+        <div class="service_container" fxLayout="row wrap">
+          <span> <fa-icon [icon]></fa-icon>Dịch vụ: </span
+          ><a
+            class="service tour_attribute_rating_count"
+            *ngFor="let service of tour.schedule"
+            >{{ service.service }}
+          </a>
+        </div>
+
+        <div class="tour_attribute_rating_count">
+          <fa-icon [icon]="faPhone"> </fa-icon>
+          &nbsp;<strong>{{ tour.phone }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
