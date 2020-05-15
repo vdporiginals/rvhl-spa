@@ -1,0 +1,51 @@
+<div class="blog_right_sidebar">
+  <div class="single_sidebar">
+    <h2 class="widget_title">Lọc theo Danh mục</h2>
+    <ul class="list cat-list">
+      <li *ngFor="let category of tourCategory?.data">
+        <a [routerLink]="['./']" (click)="filter(category._id)" class="d-flex">
+          <p>{{ category?.name }}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="single_sidebar popular_post_widget">
+    <h2 class="widget_title">Bài reviews mới nhất</h2>
+    <div class="media post_item" *ngFor="let post of recentReviews?.data">
+      <img [src]="(post?.images)[0]" [alt]="post?.title" />
+      <div class="media-body">
+        <a [routerLink]="['./', post?._id, post?.seo]">
+          <h3>
+            {{ post?.title | textOverflow: ["35", "..."] }}
+          </h3>
+        </a>
+        <p>{{ post?.createdAt | date }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    [innerHTML]="(fbPlugin?.data)[0]?.fbPage | sanitizeHtml"
+    class="fb_page"
+  ></div>
+
+  <h2 class="widgettitle">Tours mới nhất</h2>
+  <div
+    class="portfolio_type"
+    *ngFor="let tour of recentPost?.data"
+    [routerLink]="['/tour', tour._id, tour.seo]"
+    style="cursor: pointer;"
+    [style.background-image]="'url(' + (tour?.images)[0] + ')'"
+  >
+    <a class="tour_image"></a>
+    <div class="portfolio_info_wrapper">
+      <div class="tour_price">
+        {{ tour?.price | shortNumber }}
+      </div>
+      <a [routerLink]="['/tour', tour._id, tour.seo]"
+        ><h5>{{ tour?.title }}</h5></a
+      >
+    </div>
+  </div>
+</div>

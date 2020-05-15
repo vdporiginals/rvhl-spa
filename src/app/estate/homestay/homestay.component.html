@@ -1,1 +1,70 @@
-<p>homestay works!</p>
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px">
+  <div class="gdlr-item gdlr-room-item gdlr-medium-room" fxFlex="66">
+    <div
+      class="gdlr-ux gdlr-medium-room-ux"
+      fxLayout="row"
+      fxLayoutGap="10px"
+      fxLayout.lt-md="column"
+    >
+      <ngx-image-gallery
+        [images]="hotelImages"
+        [conf]="conf"
+      ></ngx-image-gallery>
+      <div class="gdlr-room-thumbnail" fxFlex="33" fxFlex.lt-md="100">
+        <div class="gdlr-thumbnail-gallery">
+          <a (click)="openGallery(0)"
+            ><img
+              src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2015/03/shutterstock_560973166-400x300.jpg"
+              alt=""
+            />
+            <div class="gdlr-thumbnail-gallery-overlay"></div>
+            <div class="gdlr-thumbnail-gallery-label gdlr-title-font">
+              <fa-icon [icon]="faImage"></fa-icon>Xem ảnh
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="gdlr-room-content-wrapper" fxFlex="66" fxFlex.lt-md="100">
+        <h3 class="gdlr-room-title">
+          <a
+            href="https://demo.goodlayers.com/hotelmaster/main4/room/grand-deluxe/"
+            >Grand Deluxe</a
+          >
+        </h3>
+        <div class="gdlr-hotel-room-info" fxLayout="row" fxLayoutGap="7px">
+          <div class="gdlr-room-info">
+            <fa-icon [icon]="faUser"></fa-icon
+            ><span class="gdlr-tail">3 People</span>
+          </div>
+          <div class="gdlr-room-info">
+            <fa-icon [icon]="faRestroom"></fa-icon
+            ><span class="gdlr-tail">30 sqm.</span>
+          </div>
+          <div class="gdlr-room-info">
+            <fa-icon [icon]="faEye"></fa-icon
+            ><span class="gdlr-tail">Ocean View</span>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="gdlr-room-content">
+          Far far away, behind the word mountains, far from the countries
+          Vokalia and Consonantia, there live the blind texts. Separated they
+          live in Bookmarksgrove right at the coast.
+        </div>
+        <a
+          fxLayoutAlign="start"
+          class="gdlr-button with-border"
+          href="https://demo.goodlayers.com/hotelmaster/main4/room/grand-deluxe/"
+          >Xem chi tiết <fa-icon [icon]="faArrowLong"></fa-icon> ></a
+        >
+        <div class="gdlr-room-price" fxLayoutAlign="end">
+          <span class="gdlr-head">Từ</span><span class="gdlr-tail">$109</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-side" fxFlex="33">
+    <app-right-side-filter></app-right-side-filter>
+  </div>
+</div>

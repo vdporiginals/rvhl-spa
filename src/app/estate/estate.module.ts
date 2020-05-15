@@ -13,10 +13,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { EstateRoutingModule } from './estate-routing.module';
-
+import { NgxImageGalleryModule } from 'ngx-image-gallery';
 import { PipeModule } from '../shared/pipe/pipe.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LightboxModule } from 'ngx-lightbox';
+
 import { HotelComponent } from './hotel/hotel.component';
 import { VillaComponent } from './villa/villa.component';
 import { HomestayComponent } from './homestay/homestay.component';
@@ -25,17 +25,19 @@ import { RouterModule } from '@angular/router';
 import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 import { VillaDetailComponent } from './villa-detail/villa-detail.component';
 import { HomestayDetailComponent } from './homestay-detail/homestay-detail.component';
+import { SearchComponent } from './search/search.component';
+import { RightSideFilterComponent } from './right-side-filter/right-side-filter.component';
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
         EstateRoutingModule,
         FontAwesomeModule,
+        NgxImageGalleryModule,
         NgxPaginationModule,
         SharedModule,
         FormsModule,
         FlexLayoutModule,
-        LightboxModule,
         MatInputModule,
         MatFormFieldModule,
         ReactiveFormsModule,
@@ -55,6 +57,8 @@ import { HomestayDetailComponent } from './homestay-detail/homestay-detail.compo
         HotelDetailComponent,
         VillaDetailComponent,
         HomestayDetailComponent,
+        SearchComponent,
+        RightSideFilterComponent,
     ],
     providers: []
 })
