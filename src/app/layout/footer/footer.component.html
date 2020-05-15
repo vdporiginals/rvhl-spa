@@ -1,19 +1,36 @@
-<div class="landing-page-footer">
-  <div class="landing-page-footer-left container-center">
+<div class="landing-page-footer" fxLayoutAlign="center center" fxLayout="row">
+  <div
+    fxFlex="50"
+    class="landing-page-footer-left container-center"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+  >
     <div class="landing-page-footer-logo">
-      <img class="mighty-avatar-xsmall"
-        src="https://media1-production-mightynetworks.imgix.net/asset/8077488/angularNationLogo.png?ixlib=rails-0.3.0&amp;auto=format&amp;w=64&amp;h=64&amp;fit=crop">
+      <a href="https://www.facebook.com/groups/REVIEWHALONG/" target="_blank">
+        <fa-icon [icon]="faFacebookSquare"></fa-icon
+      ></a>
+      <a href="http://m.me/PageReviewHaLong" target="_blank">
+        <fa-icon [icon]="faFacebookMessenger"></fa-icon
+      ></a>
+      <!-- <span class="landing-page-footer-divider"></span> -->
     </div>
-    <span class="landing-page-footer-divider"></span>
-    <a class="landing-page-footer-mighty-logo" href="https://mightynetworks.com/" target="_blank">
+    <a class="landing-page-footer-mighty-logo" [routerLink]="['/home']">
       <img
-        src="https://assets1-production-mightynetworks.imgix.net/assets/logos/white_with_text-404932c5afba16a3e7362a7364a46fc7654740c03e70cd70e2a253afe4e1451b.png"
-        height="27">
+        src="../../../assets/logo-review-ha-long.png"
+        fxFlex="23"
+        class="logo"
+      />
     </a>
   </div>
-  <div class="landing-page-footer-right text-color-white container-center">
-    <a class="text-color-white-link" href="https://mightynetworks.com/terms_of_use" target="_blank">Terms of Use</a>
-    <span>|</span>
-    <a class="text-color-white-link" href="https://mightynetworks.com/privacy_policy" target="_blank">Privacy Policy</a>
+  <div
+    fxFlex="50"
+    class="landing-page-footer-right container-center"
+    fxLayout="row"
+    fxLayoutAlign="end center"
+  >
+    <p [style.margin-top]="'22px'">
+      Copyright &copy; 2020 &nbsp;<strong>reviewhalong.vn</strong> <br />
+      All rights reserved.
+    </p>
   </div>
 </div>

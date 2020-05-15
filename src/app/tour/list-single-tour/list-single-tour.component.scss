@@ -51,10 +51,10 @@ a {
   position: absolute;
   bottom: 20px;
   left: 0;
-  background: #FF4A52;
-  background-color: rgb(255, 74, 82);
+  background: $btn_bg;
+  background-color: $btn_bg;
   padding: 3px 10px 2px 10px;
-  color: #fff;
+  color: $heading-color;
   font-weight: 700;
   font-size: 15px;
   -webkit-transition-duration: 0.2s;

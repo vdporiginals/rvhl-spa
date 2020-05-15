@@ -16,6 +16,7 @@ export class TourRightSideComponent implements OnInit, OnDestroy {
   isLoadingResults = true;
   recentPost;
   tourCategory;
+  recentReviews;
   fbPlugin: any;
   private subcription: Subscription;
   results: any;
@@ -39,6 +40,7 @@ export class TourRightSideComponent implements OnInit, OnDestroy {
         this.recentPost = res[0];
         this.tourCategory = res[1];
         this.fbPlugin = res[2];
+        this.recentReviews = res[3];
         this.isLoadingResults = true;
       }, err => {
         console.log(err);

@@ -1,19 +1,59 @@
 <div fxLayout="column" fxLayoutAlign="center">
   <div class="body">
-    <h1>
-      {{ tourDetail?.data.title }}
-    </h1>
-    <h2>
+    <h1 fxLayoutAlign="start">{{ tourDetail?.data.title }}</h1>
+    <div
+      class="single_tour_attribute_wrapper themeborder"
+      fxLayout="row"
+      fxLayoutGap="15px"
+    >
+      <div class="one_fourth" fxFlex="33">
+        <fa-icon [icon]="faClock"></fa-icon>
+        <div class="tour_attribute_content">
+          {{ tourDetail?.data.time }}
+        </div>
+      </div>
+
+      <div class="one_fourth" fxFlex="33">
+        <fa-icon [icon]="faDollarSign"></fa-icon>
+        <div class="tour_attribute_content">
+          {{ tourDetail?.data.price | shortNumber }}
+        </div>
+      </div>
+
+      <div class="one_fourth last" fxFlex="33">
+        <fa-icon [icon]="faUser"></fa-icon>
+        <div class="tour_attribute_content">
+          Cho 2 người
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;" fxLayout="row" fxLayoutGap="15px">
       <a
-        fxLayoutAlign="center center"
+        fxFlex="33"
+        class="button_fade"
+        data-type="inline"
         href="{{ 'tel:' + tourDetail?.data.phone }}"
-        >Liên hệ SĐT: {{ tourDetail?.data.phone }}</a
+        ><fa-icon [icon]="faPhone"></fa-icon>{{ tourDetail?.data.phone }}</a
       >
-    </h2>
-    <p>
-      {{ tourDetail?.data.description }}
-    </p>
-    <table mat-table [dataSource]="tbData[0]" class="mat-elevation-z8">
+      <a
+        fxFlex="33"
+        (click)="openVideo(tourDetail?.data.video)"
+        class="button_fade"
+        data-type="inline"
+        ><fa-icon [icon]="faPlay"></fa-icon>Xem Video Reviews</a
+      >
+      <a fxFlex="33" class="button_fade" (click)="openGallery()"
+        ><fa-icon [icon]="faCamera"></fa-icon>Xem ảnh</a
+      >
+    </div>
+
+    <ngx-image-gallery [images]="tourImages" [conf]="conf"></ngx-image-gallery>
+    <table
+      mat-table
+      [dataSource]="tbData[0]"
+      class="mat-elevation-z8"
+      *ngIf="tbData"
+    >
       <ng-container matColumnDef="timeStart">
         <th mat-header-cell *matHeaderCellDef>Ngày</th>
         <td mat-cell *matCellDef="let element">
@@ -42,16 +82,10 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-  </div>
-  <div class="footer" fxLayoutAlign="center">
-    <div class="list_img" fxFlex fxLayout="row" fxLayoutGap="3px">
-      <div *ngFor="let image of tourImages; let i = index">
-        <img
-          style="width: 100%;"
-          *appShellNoRender
-          [src]="image.thumb"
-          (click)="open(i)"
-        />
+    <div class="content">
+      <div class="description">
+        {{ tourDetail?.data.description }}
+        {{ tourDetail?.data.content }}
       </div>
     </div>
   </div>

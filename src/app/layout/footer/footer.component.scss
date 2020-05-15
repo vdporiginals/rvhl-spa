@@ -2,78 +2,54 @@
 @import "../../scss/mixins";
 @import "../../scss/responsive";
 
-.list-inline > li {
-  display: inline-block;
-  padding-right: 5px;
-  padding-left: 5px;
+.landing-page-footer {
+  background-color: $theme-color;
 }
 
-.logo {
-  filter: invert(100%) sepia(19%) saturate(114%) hue-rotate(268deg)
-    brightness(115%) contrast(95%);
-}
-.copyright {
-  background-color: #f0f0f0;
-}
-
-.copyright p {
-  margin: 15px 0px;
+.landing-page-footer {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  height: 150px;
+  padding: 40p
 }
 
-footer {
-  background-color: #040e27;
-  // background-image: url("../../assets/img/bradcam4.png");
-  padding: 10px 0px;
-  position: relative;
+.landing-page-footer-logo {
+  border-right: 1px solid #f8f8f8;
 }
 
-.menu {
-  @media #{$tab} {
-    display: block;
+.landing-page-footer-mighty-logo {
+  margin-left: 10px;
+}
+
+.landing-page-footer-right {
+  color: $btn_bg;
+
+  p {
+    color: $btn_bg;
   }
-}
-
-footer .menu li a {
-  font-size: 16px;
-  color: #f8f8f8;
-  margin-left: 0;
-  text-decoration: none;
-}
-
-footer .menu li a:hover {
-  color: #e3b04b;
 }
 
 fa-icon {
-  color: #f8f8f8;
-  font-size: 32px;
-  padding: 10px;
+  color: $btn_bg;
+
+  font-size: 40px;
+  margin-right: 25px;
+
+  &:hover {
+    color: $btn_hover;
+  }
 }
 
-fa-icon:hover {
-  color: #e3b04b;
+.container-center {
+  height: 100%;
+  min-height: inherit;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.color-footer {
-  filter: $theme-color2;
-}
-.copy-right_text {
-  border-top: 1px solid #f8f8f8;
-  padding-top: 26px;
-  padding-top: 26px;
-  .footer_border {
-    position: absolute;
-  }
-  .copy_right {
-    font-size: 14px;
-    color: #7a838b;
-    margin-bottom: 0;
-    font-weight: 400;
-    @media #{$mobile_device} {
-      font-size: 14px;
-    }
-    a {
-      color: $btn-bg;
-    }
-  }
+.logo {
+  filter: invert(90%) sepia(52%) saturate(2854%) hue-rotate(315deg) brightness(90%) contrast(96%);
 }

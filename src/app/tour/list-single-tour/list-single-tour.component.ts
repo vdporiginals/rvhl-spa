@@ -56,13 +56,13 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
     if (this.route.snapshot.data.tourCategory) {
       if (isPlatformServer(this.platformId)) {
         console.log(this.route.snapshot.data)
-        this.seo.setTitle(this.route.snapshot.data.name);
+        this.seo.setTitle(this.route.snapshot.data.title);
         this.seo.setDescription(this.route.snapshot.data.description);
         this.seo.setKeywords(this.route.snapshot.data.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
-        this.seo.setTitle(this.route.snapshot.data.name);
+        this.seo.setTitle(this.route.snapshot.data.title);
         this.seo.setDescription(this.route.snapshot.data.description);
         this.seo.setKeywords(this.route.snapshot.data.keywords);
         this.seo.setOgSite(window.location.origin);
@@ -107,6 +107,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
       }
     } else if (sort) {
       paramsApi = sort;
+      paramsApi.select = 'title,description,schedule,images,phone,seo,price,views';
     } else if (position !== undefined) {
       paramsApi = {
         select: 'title,description,schedule,images,phone,seo,price,views',

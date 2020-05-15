@@ -1,1 +1,85 @@
-<p>transfer-search works!</p>
+<section fxLayout="row">
+  <div fxFlex="10"></div>
+  <div class="tour_search" fxFlex fxLayout="column">
+    <form
+      name="tour_search_form"
+      [formGroup]="searchForm"
+      (ngSubmit)="sendFormData()"
+    >
+      <div
+        class="tour_search_wrapper"
+        fxLayout="row"
+        fxLayoutAlign="center"
+        fxLayout.lt-md="column"
+        fxLayoutGap="10px"
+      >
+        <div class="filter_search" fxFlex="20" fxFlex.lt-md="100">
+          <mat-form-field class="detail_full_width">
+            <input
+              matInput
+              type="text"
+              class="address"
+              formControlName="address"
+              [placeholder]="'Tìm địa chỉ'"
+            />
+            <span class="ti-search"></span>
+          </mat-form-field>
+        </div>
+        <div class="filter_search" fxFlex="20" fxFlex.lt-md="100">
+          <mat-form-field>
+            <mat-label>Sắp xếp nội dung theo:</mat-label>
+            <mat-select formControlName="sort">
+              <mat-option [value]="'-price'">
+                Giá Cao đến thấp
+              </mat-option>
+              <mat-option [value]="'+price'">
+                Giá Thấp đến cao
+              </mat-option>
+              <mat-option [value]="'+title'">
+                Tên A-Z
+              </mat-option>
+              <mat-option [value]="'-title'">
+                Tên Z-A
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="filter_search" fxFlex="20" fxFlex.lt-md="100">
+          <mat-form-field class="name" fxFlexAlign="center center">
+            <input
+              matInput
+              formControlName="title"
+              [placeholder]="'Tìm chuyến'"
+            />
+          </mat-form-field>
+        </div>
+        <div class="filter_search" fxFlex="20" fxFlex.lt-md="100">
+          <mat-form-field class="detail_full_width">
+            <input
+              OnlyNumber="true"
+              class="price"
+              matInput
+              type="number"
+              formControlName="price"
+              [placeholder]="'Tìm theo giá tối đa'"
+            />
+          </mat-form-field>
+        </div>
+        <div class="filter_search" fxFlex="20" fxFlex.lt-md="100">
+          <button
+            id="tour_search_btn"
+            [style.width]="100"
+            mat-raised-button
+            color="warn"
+            type="submit"
+            class="button"
+          >
+            Tìm kiếm
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div fxFlex="10"></div>
+</section>

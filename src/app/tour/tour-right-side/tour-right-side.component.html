@@ -11,8 +11,8 @@
   </div>
 
   <div class="single_sidebar popular_post_widget">
-    <h2 class="widget_title">Bài viết mới nhất</h2>
-    <div class="media post_item" *ngFor="let post of recentPost?.data">
+    <h2 class="widget_title">Bài reviews mới nhất</h2>
+    <div class="media post_item" *ngFor="let post of recentReviews?.data">
       <img [src]="(post?.images)[0]" [alt]="post?.title" />
       <div class="media-body">
         <a [routerLink]="['./', post?._id, post?.seo]">
@@ -30,22 +30,22 @@
     class="fb_page"
   ></div>
 
-  <h2 class="widgettitle">Recent Tours</h2>
+  <h2 class="widgettitle">Tours mới nhất</h2>
   <div
     class="portfolio_type"
-    style="
-      background-image: url(https://themegoods-cdn-pzbycso8wng.stackpathdns.com/grandtour/demo/wp-content/uploads/2016/12/pexels-photo-197657-700x466.jpeg);
-    "
+    *ngFor="let tour of recentPost?.data"
+    [routerLink]="['/tour', tour._id, tour.seo]"
+    style="cursor: pointer;"
+    [style.background-image]="'url(' + (tour?.images)[0] + ')'"
   >
-    <a
-      class="tour_image"
-      href="http://themes.themegoods.com/grandtour/demo/tour/grand-switzerland/"
-    ></a>
+    <a class="tour_image"></a>
     <div class="portfolio_info_wrapper">
       <div class="tour_price">
-        $6,000
+        {{ tour?.price | shortNumber }}
       </div>
-      <h5>Grand Switzerland</h5>
+      <a [routerLink]="['/tour', tour._id, tour.seo]"
+        ><h5>{{ tour?.title }}</h5></a
+      >
     </div>
   </div>
 </div>

@@ -122,7 +122,7 @@
         ><h3>{{ tour.title }}</h3></a
       >
       <div class="tour_list_excerpt">
-        {{ tour.description }}
+        {{ tour.description | textOverflow: ["327", "..."] }}
       </div>
 
       <div class="tour_attribute_wrapper">
