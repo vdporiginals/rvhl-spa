@@ -23,20 +23,16 @@
       fxFlex.gt-sm="24%"
       fxFlex.md="40%"
     >
-      <mat-card class="single_destination">
+      <div class="single_destination">
         <div class="thumb">
-          <img
-            mat-card-image
-            [src]="schedule.images[0]"
-            [alt]="schedule.title"
-          />
+          <img [src]="schedule.images[0]" [alt]="schedule.title" />
         </div>
         <div class="content" fxLayoutAlign="center center">
           <a [routerLink]="['/reviews', schedule?._id, schedule?.seo]">
             {{ schedule.title }}
           </a>
         </div>
-      </mat-card>
+      </div>
     </div>
     <div
       *ngFor="let food of popularFoodData"
@@ -44,16 +40,16 @@
       fxFlex.gt-sm="24%"
       fxFlex.md="40%"
     >
-      <mat-card class="single_destination">
+      <div class="single_destination">
         <div class="thumb">
-          <img mat-card-image [src]="(food?.images)[0]" [alt]="food.title" />
+          <img [src]="(food?.images)[0]" [alt]="food.title" />
         </div>
         <div class="content" fxLayoutAlign="center center">
           <a [routerLink]="['/reviews', food?._id, food?.seo]">
             {{ food?.title }}
           </a>
         </div>
-      </mat-card>
+      </div>
     </div>
   </div>
   <div fxFlex>

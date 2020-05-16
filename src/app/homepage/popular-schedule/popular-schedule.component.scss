@@ -36,6 +36,9 @@
     overflow: hidden;
     @include transition(0.3s);
     height: 261px !important;
+    @media #{$tablet_device} {
+      height: 100% !important;
+    }
     &:before {
       background: -moz-linear-gradient(
         top,

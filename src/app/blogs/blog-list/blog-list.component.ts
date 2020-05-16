@@ -116,7 +116,7 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
 
   getData(page, position?, category?) {
     let paramsApi;
-    if (category !== undefined || category !== '') {
+    if (category !== undefined) {
       paramsApi = {
         select: 'title,description,images,seo,address,createdAt',
         page,

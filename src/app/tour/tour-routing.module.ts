@@ -31,30 +31,65 @@ const routes: Routes = [
         //   tourCategory: TransferResolve
         // },
         data: { category: 'Transfer', categoryId: '', breadcrumb: 'Di chuyển', queryBanner: 'TransferPage' },
+        children: [
+          {
+            path: '',
+            component: TransferListComponent
+          },
+          {
+            path: ':id/:seo',
+            pathMatch: 'full',
+            component: TransferDetailComponent,
+            data: { breadcrumb: '' },
+            resolve: {
+              tourpost: TransferDetailResolve
+            },
+          },
+        ]
       },
       {
         path: 'ha-long-bay-tour',
-        component: ListSingleTourComponent,
+        // component: ListSingleTourComponent,
         resolve: {
           tourCategory: TourResolve
         },
         data: { position: 'TourCruise', categoryId: '', breadcrumb: 'Tour vịnh', queryBanner: 'TourCruisePage' },
+        children: [
+          {
+            path: '',
+            component: ListSingleTourComponent
+          },
+          {
+            path: ':id/:seo',
+            pathMatch: 'full',
+            component: TourDetailComponent,
+            data: { breadcrumb: '' },
+            resolve: {
+              tourpost: TourDetailResolve
+            },
+          },
+        ]
       },
       {
         path: 'tron-goi',
-        component: ListSingleTourComponent,
         resolve: {
           tourCategory: TourResolve
         },
         data: { position: 'TourAll', categoryId: '', breadcrumb: 'Trọn gói', queryBanner: 'TourAllPage' },
-      },
-      {
-        path: ':id/:seo',
-        component: TourDetailComponent,
-        data: { breadcrumb: '' },
-        resolve: {
-          tourpost: TourDetailResolve
-        },
+        children: [
+          {
+            path: '',
+            component: ListSingleTourComponent
+          },
+          {
+            path: ':id/:seo',
+            component: TourDetailComponent,
+            data: { breadcrumb: '' },
+            resolve: {
+              tourpost: TourDetailResolve
+            },
+          },
+        ]
       },
     ]
   },

@@ -20,7 +20,6 @@ a {
     width: 100%;
     margin: 0;
   }
-
 }
 
 .tour_list_wrapper {
@@ -36,7 +35,7 @@ a {
   font-size: 14px;
   margin-top: 5px;
 
-  @media(min-width: 960px) and (max-width: 1200px) {
+  @media (min-width: 960px) and (max-width: 1200px) {
     font-size: 10px;
   }
 }
@@ -76,7 +75,6 @@ a {
 
 .tour_link {
   h3 {
-
     font-weight: 700;
     font-style: inherit;
     font-size: 18px;
@@ -87,8 +85,8 @@ a {
       color: $heading_color2;
     }
 
-    @media(min-width: 960px) and (max-width: 1200px) {
-      font-size: 15px
+    @media (min-width: 960px) and (max-width: 1200px) {
+      font-size: 15px;
     }
   }
 }
@@ -99,9 +97,9 @@ a {
   font-size: 16px;
   font-family: $font1;
   vertical-align: baseline;
-
-  @media(min-width: 960px) and (max-width: 1200px) {
-    font-size: 12px
+  color: #7a838b;
+  @media (min-width: 960px) and (max-width: 1200px) {
+    font-size: 12px;
   }
 }
 
@@ -111,8 +109,8 @@ a {
   span {
     padding: 5px 0px;
 
-    @media(min-width: 960px) and (max-width: 1200px) {
-      font-size: 11px
+    @media (min-width: 960px) and (max-width: 1200px) {
+      font-size: 11px;
     }
   }
 
@@ -129,8 +127,8 @@ a {
     color: #f8f8f8;
     cursor: pointer;
 
-    @media(min-width: 960px) and (max-width: 1200px) {
-      font-size: 11px
+    @media (min-width: 960px) and (max-width: 1200px) {
+      font-size: 11px;
     }
 
     &:hover {
@@ -155,12 +153,10 @@ a {
   font-family: $font1;
   font-weight: 400;
 
-  @media(min-width: 960px) and (max-width: 1200px) {
-    font-size: 12px
+  @media (min-width: 960px) and (max-width: 1200px) {
+    font-size: 12px;
   }
 }
-
-
 
 // .mat-card {
 //   border: 1px solid #2b2b28;

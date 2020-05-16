@@ -39,6 +39,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
   categoryData: any;
   results: any;
   position: any;
+  typeLink;
   queryField: FormControl = new FormControl();
 
   constructor(
@@ -53,11 +54,11 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.typeLink = this.route.snapshot.parent.url[0].path;
     if (this.route.snapshot.data.tourCategory) {
 
       this.categoryData = this.route.snapshot.data.tourCategory;
       this.position = this.route.snapshot.data.position;
-      console.log(this.route.snapshot.data.tourCategory)
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Tour Hạ Long, Tour trọn gói, Tour vịnh');
         this.seo.setDescription(this.categoryData.data[0].description);

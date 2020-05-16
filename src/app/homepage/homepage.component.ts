@@ -73,6 +73,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
         this.popularCruiseData = res[4].data;
         this.recentBlogs = res[5].data;
         this.videoBg = res[6].data;
+        console.log(this.popularFoodData)
         this.advertiseHomepage = res[7].data;
         this.popularHomestayData = res[8].data;
         this.popularVillaData = res[9].data;

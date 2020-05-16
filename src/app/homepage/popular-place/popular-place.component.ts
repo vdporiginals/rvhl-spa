@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { faClock } from '@fortawesome/free-regular-svg-icons';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-popular-place',
   templateUrl: './popular-place.component.html',
@@ -10,7 +10,7 @@ export class PopularPlaceComponent implements OnInit, OnChanges {
   @Input() popularHotelData: any;
   popularCruise;
   popularHotel;
-  faClock = faClock;
+  faPhone = faPhone;
   constructor() { }
 
   ngOnInit(): void {

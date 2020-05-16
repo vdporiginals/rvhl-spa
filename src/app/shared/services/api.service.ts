@@ -16,23 +16,25 @@ export class ApiService {
         status: 'true'
       }
     });
-    const popularSchedule = this.http.get(`${environment.apiUrl}/homepage/popular-review`, {
+    const popularSchedule = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'seo,title,images,createdAt',
-        limit: '6',
-        status: 'true'
+        limit: '3',
+        position: 'Schedule'
+        // status: 'false'
       }
     });
     const popularFood = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'seo,title,images,createdAt',
         limit: '3',
-        status: 'true'
+        position: 'Food',
+        // status: 'false'
       }
     });
     const popularHotel = this.http.get(`${environment.apiUrl}/homepage/popular-hotel`, {
       params: {
-        select: 'title,address,images,phone,seo,time,price',
+        select: 'name,address,images,phone,seo,time,price',
         limit: '2',
         status: 'true'
       }
@@ -60,7 +62,7 @@ export class ApiService {
     const advertiseHomepage = this.http.get(`${environment.apiUrl}/homepage/advertise-banner`, { params: { status: 'true' } });
     const popularHomestay = this.http.get(`${environment.apiUrl}/estates/homestay`, {
       params: {
-        select: 'title,address,images,phone,seo,time,price',
+        select: 'name,address,images,phone,seo,time,price',
         limit: '2',
         status: 'true',
         isPopular: 'true'
@@ -68,7 +70,7 @@ export class ApiService {
     });
     const popularVilla = this.http.get(`${environment.apiUrl}/estates/villa`, {
       params: {
-        select: 'title,address,images,phone,seo,time,price',
+        select: 'name,address,images,phone,seo,time,price',
         limit: '2',
         status: 'true',
         isPopular: 'true'
