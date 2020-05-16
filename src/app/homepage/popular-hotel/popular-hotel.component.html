@@ -1,0 +1,119 @@
+<div fxFlex fxHide.lt-md></div>
+<div
+  class="popular_places_area"
+  fxLayout="column"
+  fxLayoutAlign="space-around center"
+  fxFlex="80"
+  fxFlex.lt-md
+>
+  <div>
+    <div class="section_title">
+      <h3>Chỗ ở Hạ Long</h3>
+      <p>
+        Gợi ý cho du khách về những chỗ dừng chân nổi bật nhất.
+      </p>
+    </div>
+  </div>
+  <div fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="center center">
+    <div
+      fxFlex="65%"
+      fxFlex.md="40%"
+      fxFlex.gt-sm="24%"
+      *ngFor="let hotel of popularHotelData"
+    >
+      <mat-card class="single_place">
+        <div class="thumb">
+          <img mat-card-image [src]="hotel.images[0]" [alt]="hotel.title" />
+          <a href="#" class="prise">{{ hotel.price | shortNumber }}</a>
+        </div>
+        <div class="place_info">
+          <a
+            [routerLink]="['/o-dau-ha-long', hotel._id, hotel.seo]"
+            fxLayoutAlign="start"
+          >
+            <h3>{{ hotel.title }}</h3>
+          </a>
+          <p fxLayoutAlign="start">{{ hotel.address }}</p>
+          <div fxLayoutAlign="start">
+            <div class="days">
+              <fa-icon [icon]="faPhone"></fa-icon>
+              <a>
+                {{ hotel.phone }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div
+      fxFlex="65%"
+      fxFlex.md="40%"
+      fxFlex.gt-sm="24%"
+      *ngFor="let homestay of popularHomestayData"
+    >
+      <mat-card class="single_place">
+        <div class="thumb">
+          <img
+            mat-card-image
+            [src]="homestay.images[0]"
+            [alt]="homestay.title"
+          />
+          <a href="#" class="prise">{{ homestay.price | shortNumber }}</a>
+        </div>
+        <div class="place_info">
+          <a
+            [routerLink]="['/o-dau-ha-long', homestay._id, homestay.seo]"
+            fxLayoutAlign="start"
+          >
+            <h3>{{ homestay.title }}</h3>
+          </a>
+          <p fxLayoutAlign="start">{{ homestay.address }}</p>
+          <div fxLayoutAlign="start">
+            <div class="days">
+              <fa-icon [icon]="faPhone"></fa-icon>
+              <a>
+                {{ homestay.phone }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div
+      fxFlex="65%"
+      fxFlex.md="40%"
+      fxFlex.gt-sm="24%"
+      *ngFor="let villa of popularVillaData"
+    >
+      <mat-card class="single_place">
+        <div class="thumb">
+          <img mat-card-image [src]="villa.images[0]" [alt]="villa.title" />
+          <a href="#" class="prise">{{ villa.price | shortNumber }}</a>
+        </div>
+        <div class="place_info">
+          <a
+            [routerLink]="['/o-dau-ha-long', villa._id, villa.seo]"
+            fxLayoutAlign="start"
+          >
+            <h3>{{ villa.title }}</h3>
+          </a>
+          <p fxLayoutAlign="start">{{ villa.address }}</p>
+          <div fxLayoutAlign="start">
+            <div class="days">
+              <fa-icon [icon]="faPhone"></fa-icon>
+              <a>
+                {{ villa.phone }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div fxFlex>
+    <div class="more_place_btn">
+      <a class="boxed-btn4" [routerLink]="['/o-dau-ha-long']">Xem thêm</a>
+    </div>
+  </div>
+</div>
+<div fxFlex fxHide.lt-md></div>

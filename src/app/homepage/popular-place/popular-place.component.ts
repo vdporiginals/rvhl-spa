@@ -21,9 +21,5 @@ export class PopularPlaceComponent implements OnInit, OnChanges {
     if (changes.popularCruiseData.previousValue) {
       this.popularCruise = changes.popularCruiseData.currentValue;
     }
-
-    if (changes.popularHotelData.previousValue) {
-      this.popularHotel = changes.popularCruiseData.currentValue;
-    }
   }
 }

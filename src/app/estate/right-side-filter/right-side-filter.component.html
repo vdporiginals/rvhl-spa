@@ -2,7 +2,7 @@
   <div class="single_sidebar">
     <h2 class="widget_title">Lọc theo Danh mục</h2>
     <ul class="list cat-list">
-      <li *ngFor="let category of tourCategory?.data">
+      <li *ngFor="let category of estateCategory?.data">
         <a [routerLink]="['./']" (click)="filter(category._id)" class="d-flex">
           <p>{{ category?.name }}</p>
         </a>
@@ -15,7 +15,7 @@
     <div class="media post_item" *ngFor="let post of recentReviews?.data">
       <img [src]="(post?.images)[0]" [alt]="post?.title" />
       <div class="media-body">
-        <a [routerLink]="['./', post?._id, post?.seo]">
+        <a [routerLink]="['/reviews', post?._id, post?.seo]">
           <h3>
             {{ post?.title | textOverflow: ["35", "..."] }}
           </h3>
@@ -30,21 +30,21 @@
     class="fb_page"
   ></div>
 
-  <h2 class="widgettitle">Tours mới nhất</h2>
+  <h2 class="widgettitle">Chỗ ở mới đăng</h2>
   <div
     class="portfolio_type"
-    *ngFor="let tour of recentPost?.data"
-    [routerLink]="['/tour', tour._id, tour.seo]"
+    *ngFor="let item of recentPost?.data"
+    [routerLink]="['/o-dau-ha-long', item._id, item.seo]"
     style="cursor: pointer;"
-    [style.background-image]="'url(' + (tour?.images)[0] + ')'"
+    [style.background-image]="'url(' + (item?.images)[0] + ')'"
   >
     <a class="tour_image"></a>
     <div class="portfolio_info_wrapper">
       <div class="tour_price">
-        {{ tour?.price | shortNumber }}
+        {{ item?.price | shortNumber }}
       </div>
-      <a [routerLink]="['/tour', tour._id, tour.seo]"
-        ><h5>{{ tour?.title }}</h5></a
+      <a [routerLink]="['/o-dau-ha-long', item._id, item.seo]"
+        ><h5>{{ item?.name }}</h5></a
       >
     </div>
   </div>

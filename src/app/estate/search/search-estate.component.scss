@@ -1,0 +1,59 @@
+@import "../../scss/varriable";
+@import "../../scss/mixins";
+
+.tour_search {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  float: left;
+  padding: 31px 20px 0 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #e1e1e1;
+  -webkit-box-shadow: 0 5px 40px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 5px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  position: relative;
+}
+
+.filter_search {
+  width: 100%;
+
+  button {
+    margin-top: 15px;
+    width: 100%;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.tour_search_btn {
+  text-align: center;
+  font-size: 14px;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #e3b04b !important;
+}
+
+::ng-deep .mat-form-field {
+  font-size: 18px !important;
+  margin-bottom: 39px;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #e3b04b !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #e3b04b !important;
+}
+
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: $heading-color !important;
+}

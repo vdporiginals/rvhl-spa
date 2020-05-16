@@ -23,57 +23,74 @@ const routes: Routes = [
             },
             {
                 path: 'khach-san',
-                component: HotelComponent,
-                pathMatch: 'full',
                 resolve: {
                     estateList: EstateListResolve
                 },
-                data: { categoryId: '', breadcrumb: 'Khách sạn', queryBanner: 'HotelPage' },
-            },
-            {
-                path: 'khach-san/:id/:seo',
-                component: HotelDetailComponent,
-                resolve: {
-                    estateDetail: EstateListResolve
-                },
-                data: { breadcrumb: '' },
+                // pathMatch: 'full',
+                data: { categoryId: '', breadcrumb: 'Khách sạn', position: 'hotel', queryBanner: 'HotelPage' },
+                children: [
+                    {
+                        path: '',
+                        component: HotelComponent,
+                    },
+                    {
+                        path: ':id/:seo',
+                        component: HotelDetailComponent,
+                        pathMatch: 'full',
+                        // resolve: {
+                        //     estateDetail: EstateDetailResolve
+                        // },
+                        data: { breadcrumb: '' },
+                    },
+                ]
             },
             {
                 path: 'homestay',
-                component: HomestayComponent,
-                pathMatch: 'full',
                 resolve: {
                     estateList: EstateListResolve
                 },
-                data: { categoryId: '', breadcrumb: 'Homestay', queryBanner: 'HomestayPage' },
-            },
-            {
-                path: 'homestay/:id/:seo',
-                component: HomestayDetailComponent,
-                resolve: {
-                    estateDetail: EstateListResolve
-                },
-                data: { breadcrumb: '' },
+                data: { categoryId: '', breadcrumb: 'Homestay', queryBanner: 'HomestayPage', position: 'homestay' },
+                children: [
+                    {
+                        path: '',
+                        component: HomestayComponent,
+                    },
+                    {
+                        path: ':id/:seo',
+                        component: HomestayDetailComponent,
+                        pathMatch: 'full',
+                        resolve: {
+                            estateDetail: EstateDetailResolve
+                        },
+                        data: { breadcrumb: '' },
+                    },
+                ]
             },
             {
                 path: 'villa',
-                component: VillaComponent,
-                pathMatch: 'full',
                 resolve: {
                     estateList: EstateListResolve
                 },
-                data: { categoryId: '', breadcrumb: 'Villa', queryBanner: 'VillaPage' },
+                data: { categoryId: '', position: 'villa', breadcrumb: 'Villa', queryBanner: 'VillaPage' },
+                children: [
+                    {
+                        path: '',
+                        component: VillaComponent,
+                    },
+                    {
+                        path: ':id/:seo',
+                        component: VillaDetailComponent,
+                        pathMatch: 'full',
+                        resolve: {
+                            estateDetail: EstateDetailResolve
+                        },
+                        data: { breadcrumb: '' },
+                    },
+                ]
             },
-            {
-                path: 'villa/:id/seo',
-                component: VillaDetailComponent,
-                resolve: {
-                    estateDetail: EstateListResolve
-                },
-                data: { breadcrumb: '' },
-            }]
+        ]
 
-    }
+    },
 ];
 
 @NgModule({

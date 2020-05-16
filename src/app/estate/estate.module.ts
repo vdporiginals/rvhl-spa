@@ -8,13 +8,15 @@ import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { EstateRoutingModule } from './estate-routing.module';
 import { NgxImageGalleryModule } from 'ngx-image-gallery';
 import { PipeModule } from '../shared/pipe/pipe.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { HotelComponent } from './hotel/hotel.component';
@@ -25,7 +27,7 @@ import { RouterModule } from '@angular/router';
 import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 import { VillaDetailComponent } from './villa-detail/villa-detail.component';
 import { HomestayDetailComponent } from './homestay-detail/homestay-detail.component';
-import { SearchComponent } from './search/search.component';
+import { SearchEstateComponent } from './search/search-estate.component';
 import { RightSideFilterComponent } from './right-side-filter/right-side-filter.component';
 @NgModule({
     imports: [
@@ -39,6 +41,7 @@ import { RightSideFilterComponent } from './right-side-filter/right-side-filter.
         FormsModule,
         FlexLayoutModule,
         MatInputModule,
+        MatSelectModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatAutocompleteModule,
@@ -57,7 +60,7 @@ import { RightSideFilterComponent } from './right-side-filter/right-side-filter.
         HotelDetailComponent,
         VillaDetailComponent,
         HomestayDetailComponent,
-        SearchComponent,
+        SearchEstateComponent,
         RightSideFilterComponent,
     ],
     providers: []

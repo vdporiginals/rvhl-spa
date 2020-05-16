@@ -1,0 +1,150 @@
+.gdlr-ux {
+  margin-bottom: 55px;
+}
+.gdlr-medium-room.gdlr-item {
+  margin-bottom: 70px;
+}
+.gdlr-item {
+  margin: 0px 15px 20px;
+  margin-bottom: 20px;
+  min-height: 1px;
+}
+* {
+  line-height: 1.7;
+}
+.gdlr-thumbnail-gallery {
+  position: relative;
+  margin-bottom: 20px;
+  a {
+    img {
+      width: 100%;
+    }
+  }
+}
+.gdlr-thumbnail-gallery:hover .gdlr-thumbnail-gallery-overlay {
+  opacity: 1;
+}
+.gdlr-thumbnail-gallery:hover .gdlr-thumbnail-gallery-label {
+  bottom: 15px;
+}
+.gdlr-thumbnail-gallery-overlay {
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  cursor: pointer;
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  transition: opacity 300ms;
+  -moz-transition: opacity 300ms;
+  -o-transition: opacity 300ms;
+  -webkit-transition: opacity 300ms;
+}
+.gdlr-thumbnail-gallery-label {
+  position: absolute;
+  text-align: center;
+  color: #fff;
+  bottom: -30px;
+  left: 0px;
+  right: 0px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: bottom 300ms;
+  -moz-transition: bottom 300ms;
+  -o-transition: bottom 300ms;
+  -webkit-transition: bottom 300ms;
+  fa-icon {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+}
+
+.gdlr-room-title {
+  font-size: 17px;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  a {
+    color: #333333;
+    transition: color 300ms, background-color 300ms, opacity 300ms;
+    -moz-transition: color 300ms, background-color 300ms, opacity 300ms;
+    -o-transition: color 300ms, background-color 300ms, opacity 300ms;
+    -webkit-transition: color 300ms, background-color 300ms, opacity 300ms;
+  }
+}
+
+.gdlr-hotel-room-info {
+  margin-bottom: 25px;
+  margin-top: 25px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px 20px;
+}
+
+.gdlr-room-info {
+  font-size: 13px;
+  margin-right: 10px;
+  fa-icon {
+    margin-right: 5px;
+    font-size: 14px;
+  }
+}
+
+.gdlr-room-content {
+  font-size: 17px;
+  color: #808080;
+  margin-bottom: 14px;
+  font-family: "Dejavu Sans Condense";
+}
+
+.gdlr-button {
+  margin-top: 35px;
+  border-bottom: 0px;
+  padding: 10px 27px;
+  text-transform: uppercase;
+  font-weight: normal;
+  max-width: 35%;
+  font-style: normal;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-size: 13px;
+  margin-right: 5px;
+  outline: none;
+  cursor: pointer;
+  letter-spacing: 2px;
+  fa-icon {
+    margin-left: 20px;
+    margin-top: -5px;
+    font-size: 18px;
+    transform: scale(2.5, 1);
+  }
+}
+
+.gdlr-room-price {
+  text-align: right;
+  .gdlr-head {
+    font-size: 15px;
+    margin-right: 10px;
+    font-style: italic;
+  }
+  .gdlr-tail {
+    font-size: 19px;
+    color: #161616;
+  }
+}

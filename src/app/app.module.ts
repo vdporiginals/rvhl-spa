@@ -52,14 +52,14 @@ export function provideConfig() {
   return config;
 }
 
-export function initApp(http: HttpClient, sessionStorage: SessionStorageService) {
-  return () => {
-    if (sessionStorage.getItem('rvhl_config') === null || sessionStorage.getItem('rvhl_config') === undefined) {
-      return http.get(`${environment.apiUrl}/web-config`).toPromise()
-        .then((res: any) => { sessionStorage.setItem('rvhl_config', JSON.stringify(res)); });
-    } else { return sessionStorage.getItem('rvhl_config'); }
-  };
-}
+// export function initApp(http: HttpClient, sessionStorage: SessionStorageService) {
+//   return () => {
+//     if (sessionStorage.getItem('rvhl_config') === null || sessionStorage.getItem('rvhl_config') === undefined) {
+//       return http.get(`${environment.apiUrl}/web-config`).toPromise()
+//         .then((res: any) => { sessionStorage.setItem('rvhl_config', JSON.stringify(res)); });
+//     } else { return sessionStorage.getItem('rvhl_config'); }
+//   };
+// }
 
 @NgModule({
   declarations: [
@@ -114,12 +114,12 @@ export function initApp(http: HttpClient, sessionStorage: SessionStorageService)
       provide: AuthServiceConfig,
       useFactory: provideConfig
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initApp,
-      multi: true,
-      deps: [HttpClient, SessionStorageService]
-    },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initApp,
+    //   multi: true,
+    //   deps: [HttpClient, SessionStorageService]
+    // },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,

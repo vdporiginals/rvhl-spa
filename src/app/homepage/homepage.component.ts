@@ -17,10 +17,12 @@ export class HomepageComponent implements OnInit, OnDestroy {
   popularFoodData: any = [];
   popularHotelData: any = [];
   popularCruiseData: any = [];
+  popularHomestayData: any = [];
+  popularVillaData: any = [];
   recentBlogs: any = [];
   videoBg: any = [];
   isLoadingResults = true;
-  advertiseHomepage: any;
+  advertiseHomepage: any = [];
   private subcription: Subscription;
 
   constructor(
@@ -72,7 +74,8 @@ export class HomepageComponent implements OnInit, OnDestroy {
         this.recentBlogs = res[5].data;
         this.videoBg = res[6].data;
         this.advertiseHomepage = res[7].data;
-        console.log(this.advertiseHomepage);
+        this.popularHomestayData = res[8].data;
+        this.popularVillaData = res[9].data;
         this.isLoadingResults = false;
       },
       err => {

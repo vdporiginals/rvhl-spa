@@ -3,7 +3,11 @@
     <h2 class="widget_title">Lọc theo Danh mục</h2>
     <ul class="list cat-list">
       <li *ngFor="let category of tourCategory?.data">
-        <a [routerLink]="['./']" (click)="filter(category._id)" class="d-flex">
+        <a
+          [style.cursor]="'pointer'"
+          (click)="filter(category._id)"
+          class="d-flex"
+        >
           <p>{{ category?.name }}</p>
         </a>
       </li>
@@ -15,7 +19,7 @@
     <div class="media post_item" *ngFor="let post of recentReviews?.data">
       <img [src]="(post?.images)[0]" [alt]="post?.title" />
       <div class="media-body">
-        <a [routerLink]="['./', post?._id, post?.seo]">
+        <a [routerLink]="['/blogs', post?._id, post?.seo]">
           <h3>
             {{ post?.title | textOverflow: ["35", "..."] }}
           </h3>

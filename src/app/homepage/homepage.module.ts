@@ -24,6 +24,7 @@ import { VideoAreaComponent } from './video-area/video-area.component';
 import { RecentBlogsComponent } from './recent-blogs/recent-blogs.component';
 import { VideoDialogComponent } from './video-area/video-dialog/video-dialog.component';
 import { PipeModule } from '../shared/pipe/pipe.module';
+import { PopularHotelComponent } from './popular-hotel/popular-hotel.component';
 @NgModule({
   imports: [
     HomepageRoutingModule,
@@ -52,6 +53,7 @@ import { PipeModule } from '../shared/pipe/pipe.module';
     VideoAreaComponent,
     RecentBlogsComponent,
     VideoDialogComponent,
+    PopularHotelComponent,
   ],
   providers: [ShortNumberPipe]
 })

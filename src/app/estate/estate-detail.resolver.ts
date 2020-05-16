@@ -14,8 +14,9 @@ export class EstateDetailResolve implements Resolve<any> {
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> {
         const id = route.params.id;
+        const position = route.parent.data.position;
         return isPlatformBrowser(this.platformId) ? this.http
-            .get<any>(`${environment.apiUrl}/estates/${id}`, {
+            .get<any>(`${environment.apiUrl}/estates/${position}/${id}`, {
                 params: {
                     status: 'true'
                 }

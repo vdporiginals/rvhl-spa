@@ -15,6 +15,8 @@ import { faHeart, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { SeoService } from 'src/app/shared/services/seo.service';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-blog-detail',
@@ -34,21 +36,21 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
   replyData: any;
   countReply = 0;
   blogDetail: any = {};
+  fbLike;
   blogDetailImages = [];
   private subcription: Subscription;
 
   constructor(
     private http: HttpClient,
     private seo: SeoService,
-    private injector: Injector,
     private route: ActivatedRoute,
+    private api: ApiService,
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
   ngOnInit(): void {
     if (this.route.snapshot.data.blogpost) {
-
       this.blogDetail = this.route.snapshot.data.blogpost;
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.blogDetail.data.title);
@@ -64,7 +66,13 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
         this.seo.setOgUrl(window.location.origin);
       }
     }
-
+    this.api.getFbPlugin('fbLike').pipe(map(res => res.data[0].fbLike)).subscribe(data => {
+      if (isPlatformServer(this.platformId)) {
+        this.fbLike = unescape(data).replace('reviewhalong.vn', this.request.get('host'));
+      } else {
+        this.fbLike = unescape(data).replace('reviewhalong.vn', window.location.origin);
+      }
+    });
     this.getComment();
   }
 
@@ -75,26 +83,26 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
   }
 
   getComment() {
-    console.log(this.route.snapshot.data.blogpost.data._id);
-    const id = this.route.snapshot.data.blogpost.data._id;
-    this.subcription = this.http
-      .get<any>(`${environment.apiUrl}/admin/comments/${id}`, {
-        params: {
-          status: 'false'
-        }
-      })
-      .subscribe(data => {
-        this.commentData = data;
-        console.log(data.data);
-        data.data.forEach((val: any) => {
-          this.countReply = val.answerCount++;
+    if (this.route.snapshot.data.blogpost) {
+      const id = this.route.snapshot.data.blogpost.data._id;
+      this.subcription = this.http
+        .get<any>(`${environment.apiUrl}/admin/comments/${id}`, {
+          params: {
+            status: 'false'
+          }
+        })
+        .subscribe(data => {
+          this.commentData = data;
+          data.data.forEach((val: any) => {
+            this.countReply = val.answerCount++;
+          });
+        }, err => {
+          console.log(err);
+
+        }, () => {
+
         });
-        console.log(this.countReply);
-      }, err => {
-        console.log(err);
+    }
 
-      }, () => {
-
-      });
   }
 }

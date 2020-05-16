@@ -1,6 +1,6 @@
 import { Component, OnInit, Optional, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
-import { faUser, faEye, faImage } from '@fortawesome/free-regular-svg-icons';
-import { faRestroom } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faImage } from '@fortawesome/free-regular-svg-icons';
+import { faHotel, faPhone, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SeoService } from 'src/app/shared/services/seo.service';
@@ -8,18 +8,21 @@ import { MatDialog } from '@angular/material/dialog';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-hotel',
   templateUrl: './hotel.component.html',
   styleUrls: ['./hotel.component.scss']
 })
 export class HotelComponent implements OnInit {
-  faRestroom = faRestroom;
-  faUser = faUser;
+  faHotel = faHotel;
+  faPhone = faPhone;
   faEye = faEye;
   faImage = faImage;
-
+  faLongArrowAltRight = faLongArrowAltRight;
   hotelImages: Array<any> = [];
+  hotelDetail: any = [];
+  routePosition;
   @ViewChild(NgxImageGalleryComponent) ngxImageGallery: NgxImageGalleryComponent;
   conf: GALLERY_CONF = {
     imageOffset: '0px',
@@ -37,7 +40,7 @@ export class HotelComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
-    this.hotelImages = this.route.snapshot.data.tourpost.data.images.map(val => ({ url: val, thumbnailUrl: val }));
+    this.hotelDetail = this.route.snapshot.data.estateList;
   }
 
   openGallery(index: number = 0) {

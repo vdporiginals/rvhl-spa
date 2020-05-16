@@ -1,0 +1,121 @@
+@import "../../scss/varriable";
+@import "../../scss/mixins";
+@import "../../scss/responsive";
+@import "../../scss/section_title";
+
+[fxFlex]:first-of-type {
+  @media #{$tab} {
+    margin-left: 0 !important;
+  }
+  margin-left: 25px !important;
+}
+[fxFlex]:last-of-type {
+  @media #{$tab} {
+    margin-right: 25px !important;
+  }
+}
+[fxFlex]:nth-of-type(4) {
+  @media #{$medium_device} {
+    margin-right: 0 !important;
+  }
+}
+
+.popular_places_area {
+  padding-top: 142px;
+  padding-bottom: 150px;
+  background: #fdf9f7;
+  text-align: center;
+  @media #{$mobile_device} {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .single_place {
+    background: #f8f8f8;
+    @include border-radius(5px);
+    overflow: hidden;
+    @include transition(0.3s);
+    margin-bottom: 30px;
+    .thumb {
+      position: relative;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+      .prise {
+        position: absolute;
+        background: #2b2b28;
+        padding: 7px 18px 4px 18px;
+        display: inline-block;
+        top: 20px;
+        left: 20px;
+        @include border-radius(18px);
+        color: #f8f8f8;
+        font-size: 16px;
+        @include transition(0.3s);
+      }
+    }
+    .place_info {
+      padding: 27px 20px 25px 20px;
+      h3 {
+        font-size: 22px;
+        font-weight: 400;
+        color: #040e27;
+        margin-bottom: 0;
+        @include transition(0.3s);
+      }
+      p {
+        font-size: 14px;
+        font-weight: 400;
+        color: #7a838b;
+        margin-top: 2px;
+        margin-bottom: 7px;
+      }
+    }
+    &:hover {
+      @include box-shadow(0 10px 20px rgba(0, 0, 0, 0.05));
+      .place_info {
+        h3 {
+          color: #e3b04b;
+        }
+      }
+      .thumb {
+        .prise {
+          background: #e3b04b;
+        }
+      }
+    }
+  }
+  .more_place_btn {
+    margin-top: 40px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.boxed-btn4 {
+  background: #e3b04b;
+  color: #f8f8f8;
+  display: inline-block;
+  padding: 13px 39px;
+  font-family: $font1;
+  font-size: 16px;
+  font-weight: 500;
+  border: 0;
+  @include border-radius(5px);
+  text-align: center;
+  text-transform: capitalize;
+  @include transition(0.3s);
+  cursor: pointer;
+  &:hover {
+    background: #2b2b28;
+    color: #f8f8f8 !important;
+  }
+  &:focus {
+    outline: none;
+  }
+  &.large-width {
+    width: 220px;
+  }
+}

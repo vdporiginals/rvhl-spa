@@ -1,23 +1,52 @@
-<app-slider-area [sliderData]="sliderData" (clickScroll)="triggerScrollTo()"></app-slider-area>
+<app-slider-area
+  [sliderData]="sliderData"
+  (clickScroll)="triggerScrollTo()"
+></app-slider-area>
 <app-transfer id="destination"></app-transfer>
 <section class="bg-schedule">
-  <app-popular-schedule [popularFoodData]="popularFoodData" [popularScheduleData]="popularScheduleData">
+  <app-popular-schedule
+    [popularFoodData]="popularFoodData"
+    [popularScheduleData]="popularScheduleData"
+  >
   </app-popular-schedule>
 </section>
-<div class="newletter_area overlay" [style.background-image]="'url(' + advertiseHomepage?.image + ')'">
+<div
+  class="newletter_area overlay"
+  [style.background-image]="'url(' + advertiseHomepage[0]?.image + ')'"
+>
   <div fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="center center">
     <div fxFlex="80%" fxLayoutAlign="center center">
       <div class="newsletter_text">
-        <h4>{{advertiseHomepage?.title}}</h4>
+        <h4>{{ advertiseHomepage[0]?.title }}</h4>
         <p>
-          {{advertiseHomepage?.description}}
+          {{ advertiseHomepage[0]?.description }}
         </p>
       </div>
     </div>
   </div>
 </div>
-<app-popular-place [popularHotelData]="popularHotelData" [popularCruiseData]="popularCruiseData"></app-popular-place>
+<app-popular-place [popularCruiseData]="popularCruiseData"></app-popular-place>
 <app-video-area [videoBg]="videoBg"></app-video-area>
+<app-popular-hotel
+  [popularHotelData]="popularHotelData"
+  [popularVillaData]="popularVillaData"
+  [popularHomestayData]="popularHomestayData"
+></app-popular-hotel>
+<div
+  class="newletter_area overlay"
+  [style.background-image]="'url(' + advertiseHomepage[1]?.image + ')'"
+>
+  <div fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="center center">
+    <div fxFlex="80%" fxLayoutAlign="center center">
+      <div class="newsletter_text">
+        <h4>{{ advertiseHomepage[1]?.title }}</h4>
+        <p>
+          {{ advertiseHomepage[1]?.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="bg-schedule">
   <app-intro-service></app-intro-service>
 </div>

@@ -1,10 +1,24 @@
 <mat-card class="blog_area single-post-area section-padding">
   <div class="single-post">
     <div class="feature-img">
-      <mat-carousel timings="400ms ease-in-out" maxWidth="100%" proportion="60" [autoplay]="true" interval="5000"
-        *ngIf="isBrowser" [loop]="true" [hideArrows]="false" [hideIndicators]="false" [useMouseWheel]="false">
-        <mat-carousel-slide #matCarouselSlide *ngFor="let slide of blogDetail?.data?.images; let i = index"
-          [image]="slide" [hideOverlay]="false">
+      <mat-carousel
+        timings="400ms ease-in-out"
+        maxWidth="100%"
+        proportion="60"
+        [autoplay]="true"
+        interval="5000"
+        *ngIf="isBrowser"
+        [loop]="true"
+        [hideArrows]="false"
+        [hideIndicators]="false"
+        [useMouseWheel]="false"
+      >
+        <mat-carousel-slide
+          #matCarouselSlide
+          *ngFor="let slide of blogDetail?.data?.images; let i = index"
+          [image]="slide"
+          [hideOverlay]="false"
+        >
         </mat-carousel-slide>
       </mat-carousel>
     </div>
@@ -20,9 +34,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
-            <fa-icon [icon]="faComment"></fa-icon> 03 Comments
-          </a>
+          <a href="#"> <fa-icon [icon]="faComment"></fa-icon> 03 Comments </a>
         </li>
       </ul>
       <div class="blog_content" fxLayout="column" fxLayoutAlign="center">
@@ -31,15 +43,20 @@
     </div>
   </div>
   <div class="navigation-top">
-    <div class="d-sm-flex justify-content-between text-center">
+    <div
+      class="d-sm-flex justify-content-between text-center"
+      [innerHTML]="fbLike | sanitizeHtml"
+    >
       <p class="like-info">
-        <span class="align-middle">
+        <!-- <span class="align-middle">
           <fa-icon [icon]="faHeart"></fa-icon>
         </span>
-        Lily and 4 people like this
+        Lily and 4 people like this -->
       </p>
       <div class="col-sm-4 text-center my-2 my-sm-0">
-        <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> {{commentData?.count}}
+        <p class="comment-count">
+          <span class="align-middle"><i class="fa fa-comment"></i></span>
+          {{ commentData?.count }}
         </p>
       </div>
       <ul class="social-icons">
@@ -72,7 +89,12 @@
 </mat-card>
 
 <mat-card>
-  <app-blog-comment [blogId]="blogDetail?.data?._id" [commentData]="commentData" [countReply]="countReply"
-    fxLayout="column" fxLayoutAlign="start">
+  <app-blog-comment
+    [blogId]="blogDetail?.data?._id"
+    [commentData]="commentData"
+    [countReply]="countReply"
+    fxLayout="column"
+    fxLayoutAlign="start"
+  >
   </app-blog-comment>
 </mat-card>

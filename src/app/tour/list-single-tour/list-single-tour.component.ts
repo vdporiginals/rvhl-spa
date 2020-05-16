@@ -54,23 +54,24 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (this.route.snapshot.data.tourCategory) {
+
+      this.categoryData = this.route.snapshot.data.tourCategory;
+      this.position = this.route.snapshot.data.position;
+      console.log(this.route.snapshot.data.tourCategory)
       if (isPlatformServer(this.platformId)) {
-        console.log(this.route.snapshot.data)
-        this.seo.setTitle(this.route.snapshot.data.title);
-        this.seo.setDescription(this.route.snapshot.data.description);
-        this.seo.setKeywords(this.route.snapshot.data.keywords);
+        this.seo.setTitle('Tour Hạ Long, Tour trọn gói, Tour vịnh');
+        this.seo.setDescription(this.categoryData.data[0].description);
+        this.seo.setKeywords(this.categoryData.data[0].keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
-        this.seo.setTitle(this.route.snapshot.data.title);
-        this.seo.setDescription(this.route.snapshot.data.description);
-        this.seo.setKeywords(this.route.snapshot.data.keywords);
+        this.seo.setTitle('Tour Hạ Long, Tour trọn gói, Tour vịnh');
+        this.seo.setDescription(this.categoryData.data[0].description);
+        this.seo.setKeywords(this.categoryData.data[0].keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
 
-      this.categoryData = this.route.snapshot.data.tourCategory;
-      this.position = this.route.snapshot.data.position;
 
       if (this.position === undefined || this.position === null) {
         this.getTour(1);
@@ -81,11 +82,13 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
       this.sharedData.tourCategoryId.subscribe((id) => {
         if (id !== '') {
           this.getTour(1, undefined, id);
+          this.sharedData.setTourCategory('');
         }
       });
       this.sharedData.searchFormData.subscribe((val) => {
         if (Object.keys(val).length !== 0) {
           this.getTour(1, undefined, undefined, val);
+          this.sharedData.setFormData({});
         }
       });
     }

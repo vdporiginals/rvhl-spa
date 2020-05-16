@@ -33,28 +33,12 @@ const routes: Routes = [
         data: { category: 'Transfer', categoryId: '', breadcrumb: 'Di chuyển', queryBanner: 'TransferPage' },
       },
       {
-        path: 'di-chuyen/:id/:seo',
-        component: TransferDetailComponent,
-        data: { breadcrumb: '' },
-        // resolve: {
-        //   tourpost: TransferDetailResolve
-        // },
-      },
-      {
         path: 'ha-long-bay-tour',
         component: ListSingleTourComponent,
         resolve: {
           tourCategory: TourResolve
         },
         data: { position: 'TourCruise', categoryId: '', breadcrumb: 'Tour vịnh', queryBanner: 'TourCruisePage' },
-      },
-      {
-        path: 'ha-long-bay-tour/:id/:seo',
-        component: TourDetailComponent,
-        data: { breadcrumb: '' },
-        resolve: {
-          tourpost: TourDetailResolve
-        },
       },
       {
         path: 'tron-goi',
@@ -65,14 +49,13 @@ const routes: Routes = [
         data: { position: 'TourAll', categoryId: '', breadcrumb: 'Trọn gói', queryBanner: 'TourAllPage' },
       },
       {
-        path: 'tron-goi/:id/:seo',
+        path: ':id/:seo',
         component: TourDetailComponent,
         data: { breadcrumb: '' },
         resolve: {
           tourpost: TourDetailResolve
         },
       },
-
     ]
   },
 ];
