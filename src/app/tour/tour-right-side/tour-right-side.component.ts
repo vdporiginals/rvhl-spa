@@ -26,7 +26,6 @@ export class TourRightSideComponent implements OnInit, OnDestroy {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         const path = this.route.snapshot.firstChild.url[0].path;
-        console.log(path);
         if (path === 'di-chuyen') {
           this.getFilter('transfers');
         } else {

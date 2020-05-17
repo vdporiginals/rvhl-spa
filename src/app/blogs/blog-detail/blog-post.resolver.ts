@@ -14,8 +14,6 @@ export class BlogPostResolve implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     const id = route.params.id;
-    const authUserToken = this.localStorage.getItem('api_token');
-    console.log(authUserToken);
     return isPlatformBrowser(this.platformId) ? this.http
       .get<any>(`${environment.apiUrl}/blogs/${id}`, {
         params: {

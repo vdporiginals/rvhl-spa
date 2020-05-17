@@ -12,12 +12,14 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./blog-comment.component.scss']
 })
 export class BlogCommentComponent implements OnInit {
-  @Input() countReply;
   @Input() commentData;
   @Input() blogId;
-
+  isReply = false;
   commentForm: FormGroup;
+  replyForm: FormGroup;
   isLoggin = false;
+  itemId;
+  itemIndex;
   constructor(
     private shareData: SharedDataService,
     private noti: NotificationService,
@@ -29,9 +31,11 @@ export class BlogCommentComponent implements OnInit {
     this.commentForm = this.fb.group({
       content: ['', [Validators.required, Validators.minLength(5)]]
     });
+    this.replyForm = this.fb.group({
+      content: ['', [Validators.required, Validators.minLength(5)]]
+    });
     this.shareData.isLogged.subscribe((isLogged) => {
       const hasLogin = this.localStorage.getItem('access_token');
-      console.log(this.countReply)
       if (hasLogin === null || hasLogin === undefined) {
         this.isLoggin = isLogged;
       } else {
@@ -41,8 +45,33 @@ export class BlogCommentComponent implements OnInit {
   }
 
   postComment() {
-    this.http.post(`${environment.apiUrl}/comments/${this.blogId}`, this.commentForm.value).subscribe(res => {
+    const auth = JSON.parse(this.localStorage.getItem('access_token'));
+    this.http.post(`${environment.apiUrl}/comments/${this.blogId}`, this.commentForm.value, {
+      headers: {
+        Authorization: 'Bearer ' + auth.token
+      }
+    }).subscribe(res => {
       this.noti.showSuccess('Comment của bạn đang chờ được duyệt', '');
+    }, error => {
+      this.noti.showError('Comment Thất bại', error.error);
+    });
+  }
+
+  checkIsReply(id, index) {
+    this.isReply = true;
+    this.itemId = id;
+    this.itemIndex = index;
+  }
+
+  postReply() {
+    const auth = JSON.parse(this.localStorage.getItem('access_token'));
+    this.http.post(`${environment.apiUrl}/comments/${this.blogId}/${this.itemId}`, this.replyForm.value, {
+      headers: {
+        Authorization: 'Bearer ' + auth.token
+      }
+    }).subscribe(res => {
+      this.noti.showSuccess('Comment của bạn đang chờ được duyệt', '');
+      this.isReply = false;
     }, error => {
       this.noti.showError('Comment Thất bại', error.error);
     });

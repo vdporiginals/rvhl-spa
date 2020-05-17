@@ -1,1 +1,92 @@
-<p>transfer-detail works!</p>
+<div fxLayout="column" fxLayoutAlign="center">
+  <div class="body">
+    <h1 fxLayoutAlign="start">{{ tourDetail?.data.title }}</h1>
+    <div
+      class="single_tour_attribute_wrapper themeborder"
+      fxLayout="row"
+      fxLayoutGap="15px"
+    >
+      <div class="one_fourth" fxFlex="33">
+        <fa-icon [icon]="faClock"></fa-icon>
+        <div class="tour_attribute_content">
+          {{ tourDetail?.data.time }}
+        </div>
+      </div>
+
+      <div class="one_fourth" fxFlex="33">
+        <fa-icon [icon]="faDollarSign"></fa-icon>
+        <div class="tour_attribute_content">
+          {{ tourDetail?.data.price | shortNumber }}
+        </div>
+      </div>
+
+      <div class="one_fourth last" fxFlex="33">
+        <fa-icon [icon]="faUser"></fa-icon>
+        <div class="tour_attribute_content">
+          Cho 2 người
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;" fxLayout="row" fxLayoutGap="15px">
+      <a
+        fxFlex="33"
+        class="button_fade"
+        data-type="inline"
+        href="{{ 'tel:' + tourDetail?.data.phone }}"
+        ><fa-icon [icon]="faPhone"></fa-icon>{{ tourDetail?.data.phone }}</a
+      >
+      <a
+        fxFlex="33"
+        (click)="openVideo(tourDetail?.data.video)"
+        class="button_fade"
+        data-type="inline"
+        ><fa-icon [icon]="faPlay"></fa-icon>Xem Video Reviews</a
+      >
+      <a fxFlex="33" class="button_fade" (click)="openGallery()"
+        ><fa-icon [icon]="faCamera"></fa-icon>Xem ảnh</a
+      >
+    </div>
+
+    <ngx-image-gallery [images]="tourImages" [conf]="conf"></ngx-image-gallery>
+    <table
+      mat-table
+      [dataSource]="tbData[0]"
+      class="mat-elevation-z8"
+      *ngIf="tbData"
+    >
+      <ng-container matColumnDef="timeStart">
+        <th mat-header-cell *matHeaderCellDef>Ngày</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.timeStart | date: "medium" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef>Địa điểm</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.location }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="service">
+        <th mat-header-cell *matHeaderCellDef>Dịch vụ</th>
+        <td mat-cell *matCellDef="let element">{{ element.service }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="timeEnd">
+        <th mat-header-cell *matHeaderCellDef>Đến nơi</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.timeEnd | date: "medium" }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <div class="content" fxLayout="column">
+      <div class="description">
+        {{ tourDetail?.data.description }}
+      </div>
+      <div [innerHtml]="tourDetail?.data.content | sanitizeHtml"></div>
+    </div>
+  </div>
+</div>

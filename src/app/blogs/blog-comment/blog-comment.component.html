@@ -1,8 +1,13 @@
 <div class="comments-area">
-  <h4>Đang có {{commentData?.count + countReply}} comment</h4>
+  <h4>Comment</h4>
 </div>
+
 <ng-template #List let-items>
-  <div class="comment-list" *ngFor="let item of items" fxLayout="column">
+  <div
+    class="comment-list"
+    *ngFor="let item of items; let i = index"
+    fxLayout="column"
+  >
     <div class="single-comment justify-content-between d-flex" fxLayout="row">
       <div class="user justify-content-between d-flex">
         <div class="thumb">
@@ -20,37 +25,105 @@
               <p class="date">{{ item?.createdAt | date: "medium" }}</p>
             </div>
             <div class="reply-btn" fxLayoutAlign="end">
-              <a href="#" class="btn-reply text-uppercase">reply</a>
+              <a
+                class="btn-reply text-uppercase"
+                (click)="checkIsReply(item._id, i)"
+                *ngIf="item.answer !== undefined"
+                >reply</a
+              >
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
+    <form
+      class="form-contact comment_form"
+      action="#"
+      *ngIf="isReply === true && itemIndex === i"
+      fxLayout="column"
+      [formGroup]="replyForm"
+      (ngSubmit)="postReply()"
+    >
+      <mat-form-field class="form-group" fxFlex="100">
+        <textarea
+          formControlName="content"
+          matInput
+          class="form-control w-100"
+          required
+          cols="15"
+          rows="3"
+          placeholder="Write Comment"
+        ></textarea>
+      </mat-form-field>
+
+      <mat-error *ngIf="commentForm.hasError('required')"
+        >Bắt buộc nhập</mat-error
+      >
+      <mat-error *ngIf="commentForm.hasError('minLength')"
+        >Nhập ít nhất 5 ký tự</mat-error
+      >
+      <div class="form-group">
+        <button
+          [disabled]="replyForm.invalid"
+          mat-flat-button
+          type="submit"
+          class="button-contactForm btn_1 boxed-btn"
+          color="warn"
+        >
+          Send Reply
+        </button>
+      </div>
+    </form>
     <div class="reply">
-      <ng-container *ngTemplateOutlet="List; context: { $implicit: item.answer }" fxLayout="column">
+      <ng-container
+        *ngTemplateOutlet="List; context: { $implicit: item.answer }"
+        fxLayout="column"
+      >
       </ng-container>
     </div>
   </div>
 </ng-template>
-<ng-container *ngTemplateOutlet="List; context: { $implicit: commentData?.data }">
+<ng-container
+  *ngTemplateOutlet="List; context: { $implicit: commentData?.data }"
+>
 </ng-container>
 
 <div class="comment-form" *ngIf="isLoggin">
   <h4>Leave a Reply</h4>
-  <form class="form-contact comment_form" action="#" id="commentForm" fxLayout="column" [formGroup]="commentForm"
-    (ngSubmit)="postComment()">
+  <form
+    class="form-contact comment_form"
+    action="#"
+    id="commentForm"
+    fxLayout="column"
+    [formGroup]="commentForm"
+    (ngSubmit)="postComment()"
+  >
     <mat-form-field class="form-group" fxFlex="100">
-      <textarea formControlName="content" matInput class="form-control w-100" required cols="30" rows="9"
-        placeholder="Write Comment"></textarea>
+      <textarea
+        formControlName="content"
+        matInput
+        class="form-control w-100"
+        required
+        cols="30"
+        rows="9"
+        placeholder="Write Comment"
+      ></textarea>
     </mat-form-field>
 
-    <mat-error *ngIf="commentForm.hasError('required')">Bắt buộc nhập</mat-error>
-    <mat-error *ngIf="commentForm.hasError('minLength')">Nhập ít nhất 5 ký tự</mat-error>
+    <mat-error *ngIf="commentForm.hasError('required')"
+      >Bắt buộc nhập</mat-error
+    >
+    <mat-error *ngIf="commentForm.hasError('minLength')"
+      >Nhập ít nhất 5 ký tự</mat-error
+    >
     <div class="form-group">
-      <button [disabled]="commentForm.invalid" mat-flat-button type="submit" class="button-contactForm btn_1 boxed-btn"
-        color="warn">
+      <button
+        [disabled]="commentForm.invalid"
+        mat-flat-button
+        type="submit"
+        class="button-contactForm btn_1 boxed-btn"
+        color="warn"
+      >
         Send Message
       </button>
     </div>

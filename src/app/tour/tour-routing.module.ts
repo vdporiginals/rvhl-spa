@@ -26,7 +26,6 @@ const routes: Routes = [
       },
       {
         path: 'di-chuyen',
-        component: TransferListComponent,
         resolve: {
           transferList: TransferResolve
         },

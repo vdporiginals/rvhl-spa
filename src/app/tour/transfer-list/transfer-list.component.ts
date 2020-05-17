@@ -40,6 +40,8 @@ export class TransferListComponent implements OnInit, OnDestroy {
   categoryData: any;
   results: any;
   position: any;
+
+  sortData: any;
   typeLink;
   queryField: FormControl = new FormControl();
 
@@ -55,10 +57,10 @@ export class TransferListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.typeLink = this.route.snapshot.url[0].path;
-    if (this.route.snapshot.data.transfer) {
+    this.typeLink = this.route.snapshot.parent.url[0].path;
+    if (this.route.snapshot.data.transferList) {
 
-      this.categoryData = this.route.snapshot.data.transfer;
+      this.categoryData = this.route.snapshot.data.transferList;
       this.position = this.route.snapshot.data.position;
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Di chuyển Hạ Long, xe limousine hạ long, Xe tiện chuyến hạ long');
@@ -75,20 +77,21 @@ export class TransferListComponent implements OnInit, OnDestroy {
       }
 
 
-      if (this.position === undefined || this.position === null) {
-        this.getTransfer(1);
-      } else {
-        this.getTransfer(1, this.position);
-      }
+      // if (this.position === undefined || this.position === null) {
+      this.getTransfer(1);
+      // } else {
+      //   this.getTransfer(1, this.position);
+      // }
 
-      this.sharedData.tourCategoryId.subscribe((id) => {
+      this.sharedData.transferCategoryId.subscribe((id) => {
         if (id !== '') {
           this.getTransfer(1, undefined, id);
-          this.sharedData.setTourCategory('');
+          this.sharedData.setTransferCategory('');
         }
       });
       this.sharedData.searchFormData.subscribe((val) => {
         if (Object.keys(val).length !== 0) {
+          this.sortData = val;
           this.getTransfer(1, undefined, undefined, val);
           this.sharedData.setFormData({});
         }
@@ -108,28 +111,29 @@ export class TransferListComponent implements OnInit, OnDestroy {
         select: 'name,description,locationStart,images,seo,phone,price,locationEnd,timePerTrip',
         page,
         category,
+        status: true,
         limit: '4',
       }
     } else if (sort) {
-      paramsApi = sort;
-      paramsApi.select = 'name,description,locationStart,images,phone,seo,price,locationEnd,timePerTrip';
-    } else if (position !== undefined) {
-      paramsApi = {
-        select: 'name,description,locationStart,images,phone,seo,price,locationEnd,timePerTrip',
-        page,
-        position,
-        limit: '4',
+      for (let propName in sort) {
+        if (sort[propName] === '' || sort[propName] === undefined) {
+          delete sort[propName];
+        }
       }
+      paramsApi = sort;
+      paramsApi.page = page;
+      paramsApi.select = 'name,description,locationStart,images,phone,seo,price,locationEnd,timePerTrip';
     } else {
       paramsApi = {
         select: 'name,description,locationStart,phone,images,seo,price,locationEnd,timePerTrip',
         page,
+        status: true,
         limit: '4',
       }
     }
 
     this.subcription = this.http
-      .get<any>(`${environment.apiUrl}/transfer`, {
+      .get<any>(`${environment.apiUrl}/transfers`, {
         params: paramsApi
       })
       .subscribe((data) => {

@@ -34,7 +34,7 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
   public blogId: string;
   commentData: any;
   replyData: any;
-  countReply = 0;
+  countReply;
   blogDetail: any = {};
   fbLike;
   blogDetailImages = [];
@@ -76,6 +76,8 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
     this.getComment();
   }
 
+  ngOnChanges() { }
+
   ngOnDestroy(): void {
     if (this.subcription) {
       this.subcription.unsubscribe();
@@ -93,9 +95,6 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
         })
         .subscribe(data => {
           this.commentData = data;
-          data.data.forEach((val: any) => {
-            this.countReply = val.answerCount++;
-          });
         }, err => {
           console.log(err);
 

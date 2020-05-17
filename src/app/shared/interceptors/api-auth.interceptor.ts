@@ -11,7 +11,8 @@ export class ApiAuthInterceptor implements HttpInterceptor {
   constructor(private router: Router, private localStorage: LocalStorageService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const authUserToken = this.localStorage.getItem('api_token');
+    const authUserToken = this.localStorage.getItem('access_token');
+    console.log(typeof (authUserToken));
     req = req.clone({
       setHeaders: {
         Authorization: 'Bearer ' + authUserToken

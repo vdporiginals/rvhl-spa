@@ -82,11 +82,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-    <div class="content">
+    <div class="content" fxLayout="column">
       <div class="description">
         {{ tourDetail?.data.description }}
-        {{ tourDetail?.data.content }}
       </div>
+      <div [innerHtml]="tourDetail?.data.content | sanitizeHtml"></div>
     </div>
   </div>
 </div>

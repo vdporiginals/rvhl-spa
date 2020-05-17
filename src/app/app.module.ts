@@ -105,11 +105,11 @@ export function provideConfig() {
   ],
 
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ApiAuthInterceptor,
-      multi: true
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: ApiAuthInterceptor,
+    //   multi: true
+    // },
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig

@@ -34,7 +34,7 @@
           </a>
         </li>
         <li>
-          <a href="#"> <fa-icon [icon]="faComment"></fa-icon> 03 Comments </a>
+          <!-- <a href="#"> <fa-icon [icon]="faComment"></fa-icon> 03 Comments </a> -->
         </li>
       </ul>
       <div class="blog_content" fxLayout="column" fxLayoutAlign="center">
@@ -56,7 +56,7 @@
       <div class="col-sm-4 text-center my-2 my-sm-0">
         <p class="comment-count">
           <span class="align-middle"><i class="fa fa-comment"></i></span>
-          {{ commentData?.count }}
+          {{ commentData?.count * 1 + countReply * 1 }}
         </p>
       </div>
       <ul class="social-icons">
@@ -92,7 +92,6 @@
   <app-blog-comment
     [blogId]="blogDetail?.data?._id"
     [commentData]="commentData"
-    [countReply]="countReply"
     fxLayout="column"
     fxLayoutAlign="start"
   >
