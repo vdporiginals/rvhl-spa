@@ -15,8 +15,12 @@
     </a>
   </nav>
 </div>
-<app-tour-search *ngIf="isTourPage === true"></app-tour-search>
-<app-transfer-search *ngIf="isTourPage === false"></app-transfer-search>
+<app-tour-search
+  *ngIf="isTourPage === true && isDetail === false"
+></app-tour-search>
+<app-transfer-search
+  *ngIf="isTourPage === false && isDetail === false"
+></app-transfer-search>
 <section fxLayout="row" class="section-padding">
   <div fxFlex="10"></div>
   <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">

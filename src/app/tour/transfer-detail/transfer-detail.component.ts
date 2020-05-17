@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, Optional, Inject, PLATFORM_ID } from '@angular/core';
-import { faPhone, faPlay, faUser, faDollarSign, faClock, faCamera } from '@fortawesome/free-solid-svg-icons';
+
+// import { faCouc} from '@fortawesome/free-regular-svg-icons';
+import { faPhone, faPlay, faRoute, faCouch, faDollarSign, faClock, faCamera } from '@fortawesome/free-solid-svg-icons';
 import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
@@ -16,15 +18,16 @@ import { TourVideoComponent } from '../tour-detail/tour-video/tour-video.compone
   styleUrls: ['./transfer-detail.component.scss']
 })
 export class TransferDetailComponent implements OnInit {
-  tourDetail;
+  transferDetail;
   tbData: any = [];
   isBrowser: boolean;
   faPhone = faPhone;
   faPlay = faPlay;
-  faUser = faUser; faDollarSign = faDollarSign; faClock = faClock;
+  faRoute = faRoute;
+  faCouch = faCouch; faDollarSign = faDollarSign; faClock = faClock;
   faCamera = faCamera;
-  tourImages: Array<any> = [];
-  displayedColumns: string[] = ['timeStart', 'location', 'service', 'timeEnd'];
+  transferImages: Array<any> = [];
+  displayedColumns: string[] = ['time', 'location'];
   @ViewChild(NgxImageGalleryComponent) ngxImageGallery: NgxImageGalleryComponent;
 
   // gallery configuration
@@ -47,20 +50,20 @@ export class TransferDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.route.snapshot.data.tourpost) {
-      this.tourDetail = this.route.snapshot.data.tourpost;
-      this.tbData.push(this.tourDetail.data.schedule);
-      this.tourImages = this.route.snapshot.data.tourpost.data.images.map(val => ({ url: val, thumbnailUrl: val }));
+    if (this.route.snapshot.data.transferDetail) {
+      this.transferDetail = this.route.snapshot.data.transferDetail;
+      this.tbData.push(this.transferDetail.data.schedule);
+      this.transferImages = this.route.snapshot.data.transferDetail.data.images.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
-        this.seo.setTitle(this.tourDetail.data.title);
-        this.seo.setDescription(this.tourDetail.data.description);
-        this.seo.setKeywords(this.tourDetail.data.keywords);
+        this.seo.setTitle(this.transferDetail.data.title);
+        this.seo.setDescription(this.transferDetail.data.description);
+        this.seo.setKeywords(this.transferDetail.data.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
-        this.seo.setTitle(this.tourDetail.data.title);
-        this.seo.setDescription(this.tourDetail.data.description);
-        this.seo.setKeywords(this.tourDetail.data.keywords);
+        this.seo.setTitle(this.transferDetail.data.title);
+        this.seo.setDescription(this.transferDetail.data.description);
+        this.seo.setKeywords(this.transferDetail.data.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }

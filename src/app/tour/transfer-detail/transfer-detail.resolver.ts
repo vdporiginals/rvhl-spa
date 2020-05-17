@@ -17,7 +17,7 @@ export class TransferDetailResolve implements Resolve<any> {
         return isPlatformBrowser(this.platformId) ? this.http
             .get<any>(`${environment.apiUrl}/transfers/${id}`, {
                 params: {
-                    select: 'title,description,image,seo,address,content,comments,keywords',
+                    select: 'name,description,images,seo,timePerTrip,content,chairNum,locationStart,locationEnd,keywords,schedule,phone',
                     status: 'true'
                 }
             }).pipe() : null;

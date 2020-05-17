@@ -20,12 +20,22 @@ export class TourRightSideComponent implements OnInit, OnDestroy {
   fbPlugin: any;
   private subcription: Subscription;
   results: any;
+  pathUrl;
+  isDetail;
   queryField: FormControl = new FormControl();
 
   constructor(private api: ApiService, private route: ActivatedRoute, private router: Router, private sharedData: SharedDataService) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         const path = this.route.snapshot.firstChild.url[0].path;
+
+        const params = this.route.snapshot.firstChild.firstChild.params;
+        if (Object.keys(params).length === 0) {
+          this.isDetail = false;
+        } else {
+          this.isDetail = true;
+        }
+        this.pathUrl = `/${path}`;
         if (path === 'di-chuyen') {
           this.getFilter('transfers');
         } else {
@@ -64,4 +74,8 @@ export class TourRightSideComponent implements OnInit, OnDestroy {
     this.sharedData.setTourCategory(id);
   }
 
+  filterIsDetail(id) {
+    this.sharedData.setTourCategory(id);
+    this.router.navigate([`/tour${this.pathUrl}`], { state: { category: id } });
+  }
 }

@@ -4,8 +4,17 @@
     <ul class="list cat-list">
       <li *ngFor="let category of tourCategory?.data">
         <a
+          *ngIf="isDetail === false"
           [style.cursor]="'pointer'"
           (click)="filter(category._id)"
+          class="d-flex"
+        >
+          <p>{{ category?.name }}</p>
+        </a>
+        <a
+          *ngIf="isDetail === true"
+          [style.cursor]="'pointer'"
+          (click)="filterIsDetail(category._id)"
           class="d-flex"
         >
           <p>{{ category?.name }}</p>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { Event, Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-transfer-search',
@@ -9,16 +10,15 @@ import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 })
 export class TransferSearchComponent implements OnInit {
   searchForm: FormGroup;
+  isDetailPage;
   constructor(public fb: FormBuilder, private shared: SharedDataService) {
-
     this.searchForm = this.fb.group({
-      title: [''],
+      name: [''],
       price: [''],
       status: true,
-      page: 1,
       limit: 4,
       sort: [''],
-      address: ['']
+      locationStart: ['']
     });
   }
 

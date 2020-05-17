@@ -54,6 +54,9 @@ export class TransferListComponent implements OnInit, OnDestroy {
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object,
     private seo: SeoService) {
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.categoryId = this.router.getCurrentNavigation().extras.state.category;
+    }
   }
 
   ngOnInit(): void {
@@ -76,12 +79,11 @@ export class TransferListComponent implements OnInit, OnDestroy {
         this.seo.setOgUrl(window.location.origin);
       }
 
-
-      // if (this.position === undefined || this.position === null) {
-      this.getTransfer(1);
-      // } else {
-      //   this.getTransfer(1, this.position);
-      // }
+      if (this.categoryId !== undefined) {
+        this.getTransfer(1, undefined, this.categoryId);
+      } else {
+        this.getTransfer(1);
+      }
 
       this.sharedData.transferCategoryId.subscribe((id) => {
         if (id !== '') {

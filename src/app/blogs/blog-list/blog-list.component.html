@@ -27,7 +27,7 @@
         <a class="d-inline-block" [routerLink]="[blog._id, blog.seo]">
           <h2>{{ blog.title }}</h2>
         </a>
-        <p>{{ blog.description }}</p>
+        <p>{{ blog.description | textOverflow: ["300", "..."] }}</p>
         <ul class="blog-info-link">
           <li>
             <a href="#">

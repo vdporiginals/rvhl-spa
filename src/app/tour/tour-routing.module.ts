@@ -29,7 +29,7 @@ const routes: Routes = [
         resolve: {
           transferList: TransferResolve
         },
-        data: { category: 'Transfer', categoryId: '', breadcrumb: 'Di chuyển', queryBanner: 'TransferPage' },
+        data: { breadcrumb: 'Di chuyển', queryBanner: 'TransferPage' },
         children: [
           {
             path: '',
@@ -52,7 +52,7 @@ const routes: Routes = [
         resolve: {
           tourCategory: TourResolve
         },
-        data: { position: 'TourCruise', categoryId: '', breadcrumb: 'Tour vịnh', queryBanner: 'TourCruisePage' },
+        data: { position: 'TourCruise', breadcrumb: 'Tour vịnh', queryBanner: 'TourCruisePage' },
         children: [
           {
             path: '',
@@ -74,7 +74,7 @@ const routes: Routes = [
         resolve: {
           tourCategory: TourResolve
         },
-        data: { position: 'TourAll', categoryId: '', breadcrumb: 'Trọn gói', queryBanner: 'TourAllPage' },
+        data: { position: 'TourAll', breadcrumb: 'Trọn gói', queryBanner: 'TourAllPage' },
         children: [
           {
             path: '',

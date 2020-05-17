@@ -35,7 +35,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
   isLastPage = false;
   isFirstPage = false;
   private subcription: Subscription;
-  categoryId: any = '';
+  categoryId: any;
   categoryData: any;
   results: any;
   position: any;
@@ -52,6 +52,10 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object,
     private seo: SeoService) {
+    if (this.router.getCurrentNavigation().extras.state) {
+
+      this.categoryId = this.router.getCurrentNavigation().extras.state.category;
+    }
   }
 
   ngOnInit(): void {
@@ -60,6 +64,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
 
       this.categoryData = this.route.snapshot.data.tourCategory;
       this.position = this.route.snapshot.data.position;
+
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Tour Hạ Long, Tour trọn gói, Tour vịnh');
         this.seo.setDescription(this.categoryData.data[0].description);
@@ -74,10 +79,13 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
         this.seo.setOgUrl(window.location.origin);
       }
 
+      if (this.categoryId !== undefined) {
+        this.getTour(1, undefined, this.categoryId);
+      }
 
-      if (this.position === undefined || this.position === null) {
+      if ((this.position === undefined || this.position === null) && this.categoryId === undefined) {
         this.getTour(1);
-      } else {
+      } else if ((this.position !== undefined || this.position !== null) && this.categoryId === undefined) {
         this.getTour(1, this.position);
       }
 

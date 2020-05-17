@@ -19,8 +19,8 @@
               matInput
               type="text"
               class="address"
-              formControlName="address"
-              [placeholder]="'Tìm địa chỉ'"
+              formControlName="locationStart"
+              [placeholder]="'Tìm địa điểm khởi hành'"
             />
             <span class="ti-search"></span>
           </mat-form-field>
@@ -35,10 +35,10 @@
               <mat-option [value]="'+price'">
                 Giá Thấp đến cao
               </mat-option>
-              <mat-option [value]="'+title'">
+              <mat-option [value]="'+name'">
                 Tên A-Z
               </mat-option>
-              <mat-option [value]="'-title'">
+              <mat-option [value]="'-name'">
                 Tên Z-A
               </mat-option>
             </mat-select>
@@ -48,8 +48,8 @@
           <mat-form-field class="name" fxFlexAlign="center center">
             <input
               matInput
-              formControlName="title"
-              [placeholder]="'Tìm chuyến'"
+              formControlName="name"
+              [placeholder]="'Tìm tên xe'"
             />
           </mat-form-field>
         </div>
