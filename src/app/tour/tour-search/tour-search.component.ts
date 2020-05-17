@@ -15,7 +15,7 @@ export class TourSearchComponent implements OnInit {
       title: [''],
       price: [''],
       status: true,
-      page: 1,
+      // page: 1,
       limit: 4,
       sort: [''],
       address: ['']

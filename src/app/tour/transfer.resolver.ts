@@ -13,6 +13,6 @@ export class TransferResolve implements Resolve<any> {
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> {
         return isPlatformBrowser(this.platformId) ?
-            this.http.get(`${environment.apiUrl}/transfers/category`) : null;
+            this.http.get(`${environment.apiUrl}/transfers/category`, { params: { select: 'name,description,keywords' } }) : null;
     }
 }

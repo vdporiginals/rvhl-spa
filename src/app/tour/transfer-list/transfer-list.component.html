@@ -1,1 +1,63 @@
-<p>transfer works!</p>
+<div
+  fxLayout="column"
+  *ngFor="
+    let tour of transferData.data
+      | paginate
+        : {
+            itemsPerPage: limit,
+            currentPage: currentPage,
+            totalItems: count
+          }
+  "
+>
+  <div class="tour_list_wrapper" fxLayout="row" fxLayout.lt-md="column">
+    <div class="one_third" fxFlex="33" fxFlex.lt-md="100">
+      <a
+        class="tour_image"
+        [routerLink]="['/tour', typeLink, tour._id, tour.seo]"
+      >
+        <img [src]="tour.images[0]" [alt]="tour.name" />
+        <div class="tour_price has_discount">
+          <span class="normal_price">{{ tour.price | shortNumber }} </span>
+        </div>
+      </a>
+    </div>
+
+    <div class="two_third last" fxFlex="67" fxFlex.lt-md="100">
+      <a
+        class="tour_link"
+        [routerLink]="['/tour', typeLink, tour._id, tour.seo]"
+        ><h3>{{ tour.name }}</h3></a
+      >
+      <div class="tour_list_excerpt">
+        {{ tour.description | textOverflow: ["327", "..."] }}
+      </div>
+
+      <div class="tour_attribute_wrapper">
+        <div class="service_container" fxLayout="row wrap">
+          <span> Lịch trình: </span
+          ><a class="service tour_attribute_rating_count"
+            >{{ tour.locationStart }}
+          </a>
+          <fa-icon [icon]="faLongArrowAltRight"></fa-icon>
+          <a class="service tour_attribute_rating_count"
+            >{{ tour.locationEnd }}
+          </a>
+        </div>
+        <div
+          class="tour_attribute_rating_count"
+          fxlayout="row"
+          fxLayoutGap="10px"
+        >
+          <fa-icon [icon]="faPhone"> </fa-icon>
+          &nbsp;<strong
+            ><a href="{{ 'tel:' + tour.phone }}">{{ tour.phone }}</a></strong
+          >
+          <fa-icon [icon]="faClock"></fa-icon>&nbsp;<strong>{{
+            tour.timePerTrip
+          }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
-import { Router } from '@angular/router';
+import { Event, Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-tour-right-side',
@@ -22,10 +22,23 @@ export class TourRightSideComponent implements OnInit, OnDestroy {
   results: any;
   queryField: FormControl = new FormControl();
 
-  constructor(private api: ApiService, private router: Router, private sharedData: SharedDataService) { }
+  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router, private sharedData: SharedDataService) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        const path = this.route.snapshot.firstChild.url[0].path;
+        console.log(path);
+        if (path === 'di-chuyen') {
+          this.getFilter('transfers');
+        } else {
+          this.getFilter('tours');
+        }
+      }
+    });
+  }
 
   ngOnInit(): void {
-    this.getFilter();
+
+    // this.getFilter();
   }
 
   ngOnDestroy() {
@@ -34,8 +47,8 @@ export class TourRightSideComponent implements OnInit, OnDestroy {
     }
   }
 
-  getFilter() {
-    this.subcription = this.api.getFilterTour()
+  getFilter(type) {
+    this.subcription = this.api.getFilterTour(type)
       .subscribe(res => {
         this.recentPost = res[0];
         this.tourCategory = res[1];

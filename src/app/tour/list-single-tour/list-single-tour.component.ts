@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SeoService } from 'src/app/shared/services/seo.service';
 import { Subscription } from 'rxjs';
-import { faAngleLeft, faAngleRight, faPhone, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight, faPhone, faClock } from '@fortawesome/free-solid-svg-icons';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -25,7 +25,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
   faPhone = faPhone;
-  faEye = faEye;
+  faClock = faClock;
 
   tourData: any = {};
   currentPage: number;
@@ -40,6 +40,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
   results: any;
   position: any;
   typeLink;
+  sortData: any;
   queryField: FormControl = new FormControl();
 
   constructor(
@@ -88,6 +89,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
       });
       this.sharedData.searchFormData.subscribe((val) => {
         if (Object.keys(val).length !== 0) {
+          this.sortData = val;
           this.getTour(1, undefined, undefined, val);
           this.sharedData.setFormData({});
         }
@@ -104,25 +106,35 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
     let paramsApi;
     if (category) {
       paramsApi = {
-        select: 'title,description,schedule,images,seo,phone,price,views',
+        select: 'title,description,schedule,images,seo,phone,price,time',
         page,
         category,
+        status: 'true',
         limit: '4',
       }
     } else if (sort) {
+      for (let propName in sort) {
+        if (sort[propName] === '' || sort[propName] === undefined) {
+          delete sort[propName];
+        }
+      }
       paramsApi = sort;
-      paramsApi.select = 'title,description,schedule,images,phone,seo,price,views';
-    } else if (position !== undefined) {
+      paramsApi.page = page;
+      paramsApi.select = 'title,description,schedule,images,phone,seo,price,time';
+      paramsApi.position = this.position;
+    } else if (position !== undefined && sort === undefined) {
       paramsApi = {
-        select: 'title,description,schedule,images,phone,seo,price,views',
+        select: 'title,description,schedule,images,phone,seo,price,time',
         page,
         position,
+        status: 'true',
         limit: '4',
       }
     } else {
       paramsApi = {
-        select: 'title,description,schedule,phone,images,seo,price,views',
+        select: 'title,description,schedule,phone,images,seo,price,time',
         page,
+        status: 'true',
         limit: '4',
       }
     }

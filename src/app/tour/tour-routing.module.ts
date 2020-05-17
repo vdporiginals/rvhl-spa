@@ -27,9 +27,9 @@ const routes: Routes = [
       {
         path: 'di-chuyen',
         component: TransferListComponent,
-        // resolve: {
-        //   tourCategory: TransferResolve
-        // },
+        resolve: {
+          transferList: TransferResolve
+        },
         data: { category: 'Transfer', categoryId: '', breadcrumb: 'Di chuyển', queryBanner: 'TransferPage' },
         children: [
           {
@@ -42,7 +42,7 @@ const routes: Routes = [
             component: TransferDetailComponent,
             data: { breadcrumb: '' },
             resolve: {
-              tourpost: TransferDetailResolve
+              transferDetail: TransferDetailResolve
             },
           },
         ]

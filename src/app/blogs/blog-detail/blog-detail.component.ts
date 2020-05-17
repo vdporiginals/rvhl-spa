@@ -70,7 +70,7 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
       if (isPlatformServer(this.platformId)) {
         this.fbLike = unescape(data).replace('reviewhalong.vn', this.request.get('host'));
       } else {
-        this.fbLike = unescape(data).replace('reviewhalong.vn', window.location.origin);
+        this.fbLike = unescape(data).replace('reviewhalong.vn', window.location.href);
       }
     });
     this.getComment();

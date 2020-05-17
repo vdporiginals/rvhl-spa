@@ -117,7 +117,7 @@ export class ApiService {
     return forkJoin([recentBlogs, blogCategory, fbPlugin]);
   }
 
-  getFilterTour(): Observable<any> {
+  getFilterTour(type?): Observable<any> {
     const recentTours = this.http.get<any>(`${environment.apiUrl}/tours`, {
       params: {
         select: 'title,images,seo,price,createdAt',
@@ -125,7 +125,7 @@ export class ApiService {
         // status: 'true'
       }
     });
-    const tourCategory = this.http.get<any>(`${environment.apiUrl}/tours/category`);
+    const tourCategory = this.http.get<any>(`${environment.apiUrl}/${type}/category`);
     const fbPlugin = this.http.get<any>(`${environment.apiUrl}/web-config`, {
       params: {
         select: 'fbPage'
