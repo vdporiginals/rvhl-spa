@@ -16,7 +16,7 @@ export class TransferSearchComponent implements OnInit {
       name: [''],
       price: [''],
       status: true,
-      limit: 4,
+      limit: 6,
       sort: [''],
       locationStart: ['']
     });

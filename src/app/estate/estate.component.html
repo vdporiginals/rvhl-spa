@@ -15,7 +15,10 @@
     </a>
   </nav>
 </div>
-<app-estate-search [typeSearch]="typeSearch"></app-estate-search>
+<app-estate-search
+  [typeSearch]="typeSearch"
+  *ngIf="isDetail === false"
+></app-estate-search>
 <section fxLayout="column" fxLayoutAlign="center" class="section">
   <!-- <router-outlet></router-outlet> -->
   <router-outlet></router-outlet>

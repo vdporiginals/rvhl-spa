@@ -10,6 +10,7 @@ export class SharedDataService {
   private tourCategory: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private transferCategory: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private searchForm: BehaviorSubject<object> = new BehaviorSubject<object>({});
+  private searchEstate: BehaviorSubject<object> = new BehaviorSubject<object>({});
   private transferForm: BehaviorSubject<object> = new BehaviorSubject<object>({});
   private isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLogged = this.isLoggedIn.asObservable();
@@ -19,6 +20,7 @@ export class SharedDataService {
   tourCategoryId = this.tourCategory.asObservable();
   searchFormData = this.searchForm.asObservable();
   transferFormData = this.transferForm.asObservable();
+  estateFormData = this.searchEstate.asObservable();
   constructor() { }
 
   setCategoryId = (val: string) => {
@@ -41,27 +43,15 @@ export class SharedDataService {
     this.searchForm.next(val);
   }
 
+  setEstateFormData = (val: any) => {
+    this.searchEstate.next(val);
+  }
+
   setTransferFormData = (val: any) => {
     this.transferForm.next(val);
   }
 
   setLogged = (val: boolean) => {
     this.isLoggedIn.next(val);
-  }
-
-  setBlogId(value) {
-    this.blogId = value;
-  }
-
-  getBlogId() {
-    return this.blogId;
-  }
-
-  saveBlogId(data: any) {
-    localStorage.setItem(this.storageName, this.blogId);
-  }
-
-  clearBlogId() {
-    localStorage.removeItem(this.storageName);
   }
 }

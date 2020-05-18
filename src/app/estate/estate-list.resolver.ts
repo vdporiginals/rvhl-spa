@@ -12,17 +12,17 @@ export class EstateListResolve implements Resolve<any> {
     constructor(@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient) { }
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> {
-        let position = route.data.position;
-
-        // console.log(route.firstChild.data.position);
-        // if (route.data.position === undefined) {
-        //     position = route.data.position;
-        // } else {
-        //     position = route.firstChild.data.position;
-        // }
+        const position = route.data.position;
         return isPlatformBrowser(this.platformId) ?
             this.http.get(`${environment.apiUrl}/estates/${position}`,
-                { params: { select: 'name,phone,description,price,roomNum,seo,views,images' } })
+                {
+                    params: {
+                        select: 'name,phone,description,price,address,roomNum,seo,views,images',
+                        // status: 'true',
+                        limit: '6',
+                        page: '1'
+                    }
+                })
                 .pipe(map((res: any) => {
                     const result = res.data.map((val) => {
                         const images = val.images.map(res => {
@@ -36,6 +36,7 @@ export class EstateListResolve implements Resolve<any> {
                             name: val.name,
                             description: val.description,
                             phone: val.phone,
+                            address: val.address,
                             price: val.price,
                             roomNum: val.roomNum,
                             seo: val.seo,
@@ -43,7 +44,7 @@ export class EstateListResolve implements Resolve<any> {
                             images,
                         };
                     });
-                    return result;
+                    return { count: res.count, numRecord: res.numRecord, pagination: res.pagination, data: result };
                 })) : null;
     }
 }

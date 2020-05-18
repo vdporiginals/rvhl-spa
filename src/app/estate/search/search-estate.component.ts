@@ -13,12 +13,11 @@ export class SearchEstateComponent implements OnInit {
   @Input() typeSearch;
   constructor(public fb: FormBuilder, private shared: SharedDataService) {
     this.searchForm = this.fb.group({
-      title: [''],
-      type: this.typeSearch,
+      name: [''],
+      // type: this.typeSearch,
       price: [''],
       status: true,
-      page: 1,
-      limit: 4,
+      limit: 6,
       sort: [''],
       address: ['']
     });
@@ -28,7 +27,7 @@ export class SearchEstateComponent implements OnInit {
   }
 
   sendFormData() {
-    this.shared.setFormData(this.searchForm.value);
+    this.shared.setEstateFormData(this.searchForm.value);
   }
 
 }

@@ -10,7 +10,15 @@
       fxLayout="row"
       fxLayoutGap="10px"
       fxLayout.lt-md="column"
-      *ngFor="let hotel of hotelDetail"
+      *ngFor="
+        let hotel of hotelDetail.data
+          | paginate
+            : {
+                itemsPerPage: limit,
+                currentPage: currentPage,
+                totalItems: count
+              }
+      "
     >
       <ngx-image-gallery
         [images]="hotel.images"
@@ -33,11 +41,12 @@
       <div class="gdlr-room-content-wrapper" fxFlex="66" fxFlex.lt-md="100">
         <h3 class="gdlr-room-title">
           <a
-            [routerLink]="['/o-dau-ha-long', 'khach-san', hotel._id, hotel.seo]"
+            [routerLink]="['/o-dau-ha-long', 'villa', hotel._id, hotel.seo]"
             routerLinkActive="router-link-active"
             >{{ hotel.name }}</a
           >
         </h3>
+        <h4>Địa chỉ: {{ hotel.address }}</h4>
         <div class="gdlr-hotel-room-info" fxLayout="row" fxLayoutGap="25px">
           <div class="gdlr-room-info">
             <fa-icon [icon]="faPhone"></fa-icon
@@ -54,7 +63,7 @@
           <div class="clear"></div>
         </div>
         <div class="gdlr-room-content">
-          {{ hotel.description }}
+          {{ hotel.description | textOverflow: ["250", "..."] }}
         </div>
         <a class="gdlr-button with-border"
           >Xem chi tiết <fa-icon [icon]="faLongArrowAltRight"></fa-icon
@@ -65,6 +74,74 @@
         </div>
       </div>
     </div>
+    <pagination-template
+      class="blog-pagination justify-content-center"
+      #p="paginationApi"
+      (pageChange)="pageChange.emit($event)"
+    >
+      <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
+        <div>
+          <li class="page-item">
+            <a
+              class="page-link"
+              aria-label="Previous"
+              (click)="
+                getHotel(currentPage - 1, routePosition, categoryId, sortData)
+              "
+              *ngIf="!isFirstPage"
+            >
+              <fa-icon [icon]="faAngleLeft"></fa-icon>
+            </a>
+            <a
+              class="page-link disabled"
+              aria-label="Previous"
+              *ngIf="isFirstPage"
+            >
+              <fa-icon [icon]="faAngleLeft"></fa-icon>
+            </a>
+          </li>
+        </div>
+
+        <div
+          *ngFor="let page of p.pages"
+          [class.current]="p.getCurrent() === page.value"
+        >
+          <li class="page-item">
+            <a
+              class="page-link"
+              [class.disabled]="p.getCurrent() === page.value"
+              *ngIf="p.getCurrent() === page.value"
+              >{{ page.label }}</a
+            >
+            <a
+              class="page-link"
+              (click)="
+                getHotel(page.value, routePosition, categoryId, sortData)
+              "
+              *ngIf="p.getCurrent() !== page.value"
+              >{{ page.label }}</a
+            >
+          </li>
+        </div>
+        <div>
+          <li class="page-item">
+            <a
+              class="page-link"
+              aria-label="Next"
+              (click)="
+                getHotel(currentPage + 1, routePosition, categoryId, sortData)
+              "
+              *ngIf="!isLastPage"
+            >
+              <fa-icon [icon]="faAngleRight"></fa-icon>
+            </a>
+            <a class="page-link disabled" aria-label="Next" *ngIf="isLastPage">
+              <fa-icon [icon]="faAngleRight"></fa-icon>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </pagination-template>
   </div>
 
   <div class="right-side" fxFlex="28">

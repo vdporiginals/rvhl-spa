@@ -32,7 +32,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
   currentPage: number;
   isLoadingResults = true;
   count: number;
-  limit = 4;
+  limit = 6;
   isLastPage = false;
   isFirstPage = false;
   private subcription: Subscription;
@@ -114,7 +114,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
         page,
         category,
         status: true,
-        limit: '4',
+        limit: '6',
       }
     } else if (sort) {
       console.log(sort)
@@ -131,7 +131,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
         select: 'name,description,locationStart,phone,images,seo,price,locationEnd,timePerTrip',
         page,
         status: true,
-        limit: '4',
+        limit: '6',
       }
     }
 

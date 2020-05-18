@@ -35,10 +35,10 @@
               <mat-option [value]="'+price'">
                 Giá Thấp đến cao
               </mat-option>
-              <mat-option [value]="'+title'">
+              <mat-option [value]="'+name'">
                 Tên A-Z
               </mat-option>
-              <mat-option [value]="'-title'">
+              <mat-option [value]="'-name'">
                 Tên Z-A
               </mat-option>
             </mat-select>
@@ -46,7 +46,7 @@
         </div>
         <div class="filter_search" fxFlex="20" fxFlex.lt-md="100">
           <mat-form-field class="name" fxFlexAlign="center center">
-            <input matInput formControlName="title" [placeholder]="'Tìm tên'" />
+            <input matInput formControlName="name" [placeholder]="'Tìm tên'" />
           </mat-form-field>
         </div>
         <div class="filter_search" fxFlex="20" fxFlex.lt-md="100">

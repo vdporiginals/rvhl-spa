@@ -1,3 +1,7 @@
+@import "../../scss/varriable";
+@import "../../scss/mixins";
+@import "../../scss/responsive";
+
 .gdlr-ux {
   margin-bottom: 55px;
 }
@@ -91,7 +95,6 @@
 
 .gdlr-hotel-room-info {
   margin-bottom: 25px;
-  margin-top: 25px;
   border-width: 1px;
   border-style: solid;
   padding: 10px 20px;
@@ -147,4 +150,69 @@
     font-size: 19px;
     color: #161616;
   }
+}
+
+a.disabled {
+  color: gray;
+  cursor: not-allowed;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.justify-content-center {
+  display: flex;
+  -webkit-box-pack: center !important;
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+}
+.blog-pagination {
+  justify-content: center !important;
+  margin-top: 80px;
+  @media (min-width: 1700px) {
+    margin-right: 225px;
+  }
+}
+
+.blog-pagination .page-link {
+  font-size: 14px;
+  position: relative;
+  display: block;
+  padding: 0;
+  text-align: center;
+  margin-left: -1px;
+  line-height: 45px;
+  width: 45px;
+  height: 45px;
+  border-radius: 0 !important;
+  color: #8a8a8a;
+  border: 1px solid #f0e9ff;
+  margin-right: 10px;
+
+  fa-icon,
+  span {
+    font-size: 13px;
+  }
+}
+
+.blog-pagination .page-item.active {
+  .page-link {
+    background-color: #fbf9ff;
+    border-color: #f0e9ff;
+    color: #888888;
+  }
+}
+
+.blog-pagination .page-item:last-child .page-link {
+  margin-right: 0;
+}
+
+.current {
+  background: -webkit-linear-gradient(131deg, $btn_bg 0%, $btn_bg 99%);
 }
