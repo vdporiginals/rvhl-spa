@@ -20,7 +20,6 @@ import { BlogCommentComponent } from './blog-comment/blog-comment.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogFilterComponent } from './blog-filter/blog-filter.component';
 import { SharedModule } from '../shared/shared.module';
-import { ShareButtonComponent } from './blog-detail/share-facebook.component';
 import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 import { PipeModule } from '../shared/pipe/pipe.module';
 
@@ -44,7 +43,6 @@ import { PipeModule } from '../shared/pipe/pipe.module';
   declarations: [
     BlogsComponent,
     BlogListComponent,
-    ShareButtonComponent,
     BlogCommentComponent,
     BlogDetailComponent,
     BlogFilterComponent,

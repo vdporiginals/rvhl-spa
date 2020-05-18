@@ -1,10 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-blog-comment',
@@ -12,8 +15,24 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./blog-comment.component.scss']
 })
 export class BlogCommentComponent implements OnInit {
-  @Input() commentData;
+  commentData;
   @Input() blogId;
+  @Input() id: string;
+  @Input() maxSize: number;
+  @Output() pageChange: EventEmitter<number>;
+  @Output() pageBoundsCorrection: EventEmitter<number>;
+  private subcription: Subscription;
+
+  isLastPage = false;
+  isFirstPage = false;
+  currentPage: number;
+  isLoadingResults = true;
+  count: number;
+  limit = 4;
+
+  faAngleLeft = faAngleLeft;
+  faAngleRight = faAngleRight;
+
   isReply = false;
   commentForm: FormGroup;
   replyForm: FormGroup;
@@ -21,6 +40,7 @@ export class BlogCommentComponent implements OnInit {
   itemId;
   itemIndex;
   constructor(
+    private route: ActivatedRoute,
     private shareData: SharedDataService,
     private noti: NotificationService,
     private http: HttpClient,
@@ -42,6 +62,53 @@ export class BlogCommentComponent implements OnInit {
         this.isLoggin = true;
       }
     });
+
+    this.getComment(1);
+  }
+
+
+  getComment(page) {
+    if (this.route.snapshot.data.blogpost) {
+      const id = this.route.snapshot.data.blogpost.data._id;
+      this.subcription = this.http
+        .get<any>(`${environment.apiUrl}/comments/${id}`, {
+          params: {
+            select: 'content',
+            limit: '4',
+            page,
+            // status: 'false'
+          }
+        })
+        .subscribe(data => {
+          this.commentData = data;
+          if (Object.keys(data.pagination).length !== 0) {
+            if (data.pagination.next === undefined) {
+              this.isLastPage = true;
+              this.currentPage = data.pagination.prev.page + 1;
+            } else {
+              this.isLastPage = false;
+              this.currentPage = data.pagination.next.page - 1;
+            }
+            if (
+              data.pagination.prev === undefined ||
+              Object.keys(data.pagination).length === 0
+            ) {
+              this.isFirstPage = true;
+            } else {
+              this.isFirstPage = false;
+            }
+          } else {
+            this.isFirstPage = true;
+            this.isLastPage = true;
+          }
+        }, err => {
+          console.log(err);
+
+        }, () => {
+
+        });
+    }
+
   }
 
   postComment() {

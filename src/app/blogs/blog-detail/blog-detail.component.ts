@@ -73,7 +73,6 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
         this.fbLike = unescape(data).replace('reviewhalong.vn', window.location.href);
       }
     });
-    this.getComment();
   }
 
   ngOnChanges() { }
@@ -84,24 +83,4 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  getComment() {
-    if (this.route.snapshot.data.blogpost) {
-      const id = this.route.snapshot.data.blogpost.data._id;
-      this.subcription = this.http
-        .get<any>(`${environment.apiUrl}/admin/comments/${id}`, {
-          params: {
-            status: 'false'
-          }
-        })
-        .subscribe(data => {
-          this.commentData = data;
-        }, err => {
-          console.log(err);
-
-        }, () => {
-
-        });
-    }
-
-  }
 }

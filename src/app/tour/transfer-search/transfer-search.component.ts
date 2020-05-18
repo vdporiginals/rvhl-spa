@@ -26,6 +26,6 @@ export class TransferSearchComponent implements OnInit {
   }
 
   sendFormData() {
-    this.shared.setFormData(this.searchForm.value);
+    this.shared.setTransferFormData(this.searchForm.value);
   }
 }

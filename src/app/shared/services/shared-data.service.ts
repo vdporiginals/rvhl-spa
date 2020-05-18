@@ -10,6 +10,7 @@ export class SharedDataService {
   private tourCategory: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private transferCategory: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private searchForm: BehaviorSubject<object> = new BehaviorSubject<object>({});
+  private transferForm: BehaviorSubject<object> = new BehaviorSubject<object>({});
   private isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLogged = this.isLoggedIn.asObservable();
   categoryIdd = this.categoryId.asObservable();
@@ -17,6 +18,7 @@ export class SharedDataService {
   estateCategoryId = this.estateCategory.asObservable();
   tourCategoryId = this.tourCategory.asObservable();
   searchFormData = this.searchForm.asObservable();
+  transferFormData = this.transferForm.asObservable();
   constructor() { }
 
   setCategoryId = (val: string) => {
@@ -37,6 +39,10 @@ export class SharedDataService {
 
   setFormData = (val: any) => {
     this.searchForm.next(val);
+  }
+
+  setTransferFormData = (val: any) => {
+    this.transferForm.next(val);
   }
 
   setLogged = (val: boolean) => {

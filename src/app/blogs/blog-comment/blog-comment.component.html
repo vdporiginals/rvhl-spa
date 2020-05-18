@@ -5,7 +5,16 @@
 <ng-template #List let-items>
   <div
     class="comment-list"
-    *ngFor="let item of items; let i = index"
+    *ngFor="
+      let item of items
+        | paginate
+          : {
+              itemsPerPage: limit,
+              currentPage: currentPage,
+              totalItems: count
+            };
+      let i = index
+    "
     fxLayout="column"
   >
     <div class="single-comment justify-content-between d-flex" fxLayout="row">
@@ -87,6 +96,64 @@
   *ngTemplateOutlet="List; context: { $implicit: commentData?.data }"
 >
 </ng-container>
+<pagination-template
+  class="blog-pagination justify-content-center"
+  #p="paginationApi"
+  (pageChange)="pageChange.emit($event)"
+>
+  <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
+    <div>
+      <li class="page-item">
+        <a
+          class="page-link"
+          aria-label="Previous"
+          (click)="getComment(currentPage - 1)"
+          *ngIf="!isFirstPage"
+        >
+          <fa-icon [icon]="faAngleLeft"></fa-icon>
+        </a>
+        <a class="page-link disabled" aria-label="Previous" *ngIf="isFirstPage">
+          <fa-icon [icon]="faAngleLeft"></fa-icon>
+        </a>
+      </li>
+    </div>
+
+    <div
+      *ngFor="let page of p.pages"
+      [class.current]="p.getCurrent() === page.value"
+    >
+      <li class="page-item">
+        <a
+          class="page-link"
+          [class.disabled]="p.getCurrent() === page.value"
+          *ngIf="p.getCurrent() === page.value"
+          >{{ page.label }}</a
+        >
+        <a
+          class="page-link"
+          (click)="getComment(page.value)"
+          *ngIf="p.getCurrent() !== page.value"
+          >{{ page.label }}</a
+        >
+      </li>
+    </div>
+    <div>
+      <li class="page-item">
+        <a
+          class="page-link"
+          aria-label="Next"
+          (click)="getComment(currentPage + 1)"
+          *ngIf="!isLastPage"
+        >
+          <fa-icon [icon]="faAngleRight"></fa-icon>
+        </a>
+        <a class="page-link disabled" aria-label="Next" *ngIf="isLastPage">
+          <fa-icon [icon]="faAngleRight"></fa-icon>
+        </a>
+      </li>
+    </div>
+  </ul>
+</pagination-template>
 
 <div class="comment-form" *ngIf="isLoggin">
   <h4>Leave a Reply</h4>

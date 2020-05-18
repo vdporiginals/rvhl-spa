@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild, Optional, Inject, PLATFORM_ID } from '@angular/core';
-
-// import { faCouc} from '@fortawesome/free-regular-svg-icons';
 import { faPhone, faPlay, faRoute, faCouch, faDollarSign, faClock, faCamera } from '@fortawesome/free-solid-svg-icons';
 import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
 import { HttpClient } from '@angular/common/http';
@@ -55,13 +53,13 @@ export class TransferDetailComponent implements OnInit {
       this.tbData.push(this.transferDetail.data.schedule);
       this.transferImages = this.route.snapshot.data.transferDetail.data.images.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
-        this.seo.setTitle(this.transferDetail.data.title);
+        this.seo.setTitle(this.transferDetail.data.name);
         this.seo.setDescription(this.transferDetail.data.description);
         this.seo.setKeywords(this.transferDetail.data.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
-        this.seo.setTitle(this.transferDetail.data.title);
+        this.seo.setTitle(this.transferDetail.data.name);
         this.seo.setDescription(this.transferDetail.data.description);
         this.seo.setKeywords(this.transferDetail.data.keywords);
         this.seo.setOgSite(window.location.origin);
@@ -70,9 +68,6 @@ export class TransferDetailComponent implements OnInit {
     }
   }
 
-  ngAfterContentInit() {
-
-  }
   // open gallery
   openGallery(index: number = 0) {
     this.ngxImageGallery.open(index);

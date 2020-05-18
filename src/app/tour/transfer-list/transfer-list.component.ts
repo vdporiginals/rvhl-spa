@@ -91,7 +91,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
           this.sharedData.setTransferCategory('');
         }
       });
-      this.sharedData.searchFormData.subscribe((val) => {
+      this.sharedData.transferFormData.subscribe((val) => {
         if (Object.keys(val).length !== 0) {
           this.sortData = val;
           this.getTransfer(1, undefined, undefined, val);
@@ -117,6 +117,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
         limit: '4',
       }
     } else if (sort) {
+      console.log(sort)
       for (let propName in sort) {
         if (sort[propName] === '' || sort[propName] === undefined) {
           delete sort[propName];
