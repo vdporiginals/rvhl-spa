@@ -1,326 +1,385 @@
-<section class="elementor-element elementor-top-section">
-  <div class="elementor-container elementor-column-gap-default">
-    <div class="elementor-row">
-      <div
-        class="elementor-element elementor-element-5ea8c74e elementor-column elementor-col-50 elementor-top-column"
-        data-id="5ea8c74e"
-        data-element_type="column"
-      >
-        <div class="elementor-column-wrap elementor-element-populated">
-          <div class="elementor-widget-wrap">
+<div fxLayout="row">
+  <div fxFlex="10"></div>
+  <div fxFlex="80">
+    <section class="elementor-element elementor-top-section">
+      <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-row" fxLayout="row" fxLayoutGap="10px">
+          <div class="elementor-top-column" fxFlex="74">
             <div
-              class="elementor-element elementor-element-72b18de elementor-widget elementor-widget-image"
-              data-id="72b18de"
-              data-element_type="widget"
-              data-widget_type="image.default"
+              class="elementor-widget-wrap"
+              fxLayout="column"
+              fxLayoutAlign="start"
             >
-              <div class="elementor-widget-container">
-                <div class="elementor-image">
-                  <img
-                    src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2019/08/shutterstock_419147299-1340x580.jpg"
-                    class="attachment-full-content-thumbnail size-full-content-thumbnail"
-                    alt=""
-                    width="1340"
-                    height="580"
-                  />
+              <div class="elementor-widget-image">
+                <div class="elementor-widget-container">
+                  <div class="elementor-image">
+                    <img
+                      src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2019/08/shutterstock_419147299-1340x580.jpg"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              class="elementor-element elementor-element-47c1822 elementor-widget elementor-widget-heading"
-              data-id="47c1822"
-              data-element_type="widget"
-              data-widget_type="heading.default"
-            >
-              <div class="elementor-widget-container">
-                <h2 class="elementor-heading-title elementor-size-default">
-                  Superior Room - Two Double Beds
-                </h2>
+              <div>
+                <div
+                  class="elementor-widget-container"
+                  fxLayout="row"
+                  fxLayoutGap="15px"
+                >
+                  <h2 class="elementor-heading-title border_right">
+                    Superior Room - Two Double Beds
+                  </h2>
+                  <h2 class="elementor-heading-title elementor-size-default">
+                    SĐT: 0968897925
+                  </h2>
+                </div>
               </div>
-            </div>
-            <div
-              class="elementor-element elementor-element-083bf27 elementor-widget elementor-widget-hotel-room-info"
-              data-id="083bf27"
-              data-element_type="widget"
-              data-widget_type="hotel-room-info.default"
-            >
-              <div class="elementor-widget-container">
-                <div class="gdlr-hotel-room-info-new-style">
-                  <div class="gdlr-room-info-new-style">
-                    <span class="gdlr-head"
-                      ><img
-                        src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2015/03/room-people.png"
-                        alt=""
-                        style="opacity: 1;"
-                        width="81"
-                        height="75" /></span
-                    ><span class="gdlr-tail">3 People</span>
+              <div class="elementor-widget-hotel-room-info">
+                <div class="elementor-widget-container">
+                  <div class="gdlr-hotel-room-info-new-style" fxLayout="row">
+                    <div
+                      class="gdlr-room-info-new-style"
+                      fxFlex
+                      [style.text-align]="'center'"
+                      fxLayout="column"
+                    >
+                      <span class="gdlr-head"
+                        ><img
+                          src="../../../assets/icon/restaurant.svg"
+                          alt=""
+                          [style.width.px]="81"
+                          [style.height.px]="75"
+                          style="opacity: 1;" /></span
+                      ><span class="gdlr-tail">Nhà hàng khách sạn</span>
+                    </div>
+                    <div
+                      class="gdlr-room-info-new-style"
+                      fxFlex
+                      [style.text-align]="'center'"
+                      fxLayout="column"
+                    >
+                      <span class="gdlr-head"
+                        ><img
+                          src="../../../assets/icon/roomHotelSQM.svg"
+                          alt=""
+                          style="opacity: 1;"
+                          [style.width.px]="81"
+                          [style.height.px]="75" /></span
+                      ><span class="gdlr-tail">30 sqm.</span>
+                    </div>
+                    <div
+                      class="gdlr-room-info-new-style"
+                      fxFlex
+                      fxLayout="column"
+                      [style.text-align]="'center'"
+                    >
+                      <span class="gdlr-head"
+                        ><img
+                          src="../../../assets/icon/ocean-view.svg"
+                          alt=""
+                          [style.width.px]="81"
+                          [style.height.px]="75"
+                          style="opacity: 1;" /></span
+                      ><span class="gdlr-tail">Ocean View</span>
+                    </div>
+                    <div
+                      class="gdlr-room-info-new-style"
+                      fxFlex
+                      fxLayout="column"
+                      [style.text-align]="'center'"
+                    >
+                      <span class="gdlr-head"
+                        ><img
+                          src="../../../assets/icon/bed.svg"
+                          alt=""
+                          [style.width.px]="81"
+                          [style.height.px]="75"
+                          style="opacity: 1;" /></span
+                      ><span class="gdlr-tail">King Bed</span>
+                    </div>
+                    <div
+                      class="gdlr-room-info-new-style"
+                      fxFlex
+                      fxLayout="column"
+                      [style.text-align]="'center'"
+                    >
+                      <span class="gdlr-head"
+                        ><img
+                          src="../../../assets/icon/pool.svg"
+                          alt=""
+                          [style.width.px]="81"
+                          [style.height.px]="75"
+                          style="opacity: 1;" /></span
+                      ><span class="gdlr-tail">Bể bơi khách sạn</span>
+                    </div>
+                    <div
+                      class="gdlr-room-info-new-style"
+                      fxFlex
+                      fxLayout="column"
+                      [style.text-align]="'center'"
+                    >
+                      <span class="gdlr-head"
+                        ><img
+                          src="../../../assets/icon/meeting.svg"
+                          alt=""
+                          [style.width.px]="81"
+                          [style.height.px]="75"
+                          style="opacity: 1;" /></span
+                      ><span class="gdlr-tail">Phòng hội họp</span>
+                    </div>
+                    <div
+                      class="gdlr-room-info-new-style"
+                      fxFlex
+                      fxLayout="column"
+                      [style.text-align]="'center'"
+                    >
+                      <span class="gdlr-head"
+                        ><img
+                          src="../../../assets/icon/other.svg"
+                          alt=""
+                          [style.width.px]="81"
+                          [style.height.px]="75"
+                          style="opacity: 1;" /></span
+                      ><span class="gdlr-tail">Dịch vụ khác</span>
+                    </div>
                   </div>
-                  <div class="gdlr-room-info-new-style">
-                    <span class="gdlr-head"
-                      ><img
-                        src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2015/03/room-size.png"
-                        alt=""
-                        style="opacity: 1;"
-                        width="84"
-                        height="80" /></span
-                    ><span class="gdlr-tail">30 sqm.</span>
-                  </div>
-                  <div class="gdlr-room-info-new-style">
-                    <span class="gdlr-head"
-                      ><img
-                        src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2015/03/room-view.png"
-                        alt=""
-                        style="opacity: 1;"
-                        width="80"
-                        height="80" /></span
-                    ><span class="gdlr-tail">Ocean View</span>
-                  </div>
-                  <div class="gdlr-room-info-new-style">
-                    <span class="gdlr-head"
-                      ><img
-                        src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2015/03/room-bed.png"
-                        alt=""
-                        style="opacity: 1;"
-                        width="80"
-                        height="65" /></span
-                    ><span class="gdlr-tail">King Bed</span>
-                  </div>
-                  <div class="gdlr-room-info-new-style">
-                    <span class="gdlr-head"
-                      ><img
-                        src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2015/03/room-smoke.png"
-                        alt=""
-                        style="opacity: 1;"
-                        width="91"
-                        height="91" /></span
-                    ><span class="gdlr-tail">Non Smoking</span>
-                  </div>
-                  <div class="gdlr-room-info-new-style">
-                    <span class="gdlr-head"
-                      ><img
-                        src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2015/03/room-shower.png"
-                        alt=""
-                        style="opacity: 1;"
-                        width="71"
-                        height="80" /></span
-                    ><span class="gdlr-tail">Shower</span>
-                  </div>
-                  <div class="clear"></div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div
-        class="elementor-element elementor-element-678575b elementor-column elementor-col-50 elementor-top-column"
-        data-id="678575b"
-        data-element_type="column"
-      >
-        <div class="elementor-column-wrap elementor-element-populated">
-          <div class="elementor-widget-wrap">
-            <div
-              class="elementor-element elementor-element-5c84ce8 elementor-widget elementor-widget-heading"
-              data-id="5c84ce8"
-              data-element_type="widget"
-              data-widget_type="heading.default"
-            >
-              <div class="elementor-widget-container">
-                <h2 class="elementor-heading-title elementor-size-default">
-                  From
-                </h2>
-              </div>
-            </div>
-            <div
-              class="elementor-element elementor-element-b81eec6 elementor-widget elementor-widget-heading"
-              data-id="b81eec6"
-              data-element_type="widget"
-              data-widget_type="heading.default"
-            >
-              <div class="elementor-widget-container">
-                <h2 class="elementor-heading-title elementor-size-default">
-                  $120
-                </h2>
-              </div>
-            </div>
-            <div
-              class="elementor-element elementor-element-e1a0227 elementor-widget elementor-widget-hotel-room-reservation"
-              data-id="e1a0227"
-              data-element_type="widget"
-              data-widget_type="hotel-room-reservation.default"
-            >
-              <div class="elementor-widget-container">
+          <div fxFlex="25">
+            <div>
+              <div>
+                <div>
+                  <div class="text_hotel">
+                    <h2>
+                      từ
+                    </h2>
+                  </div>
+                </div>
+                <div>
+                  <div class="price_hotel">
+                    <h2>
+                      $120
+                    </h2>
+                  </div>
+                </div>
                 <form
                   class="gdlr-reservation-bar"
-                  id="gdlr-reservation-bar"
-                  data-action="gdlr_hotel_booking"
                   method="post"
-                  action="https://demo.goodlayers.com/hotelmaster/main4/?booking"
+                  fxLayout="column"
+                  [formGroup]="checkAvaiForm"
+                  (ngSubmit)="sendCustomerRequest()"
                 >
-                  <div
-                    class="gdlr-reservation-bar-summary-form"
-                    id="gdlr-reservation-bar-summary-form"
-                  ></div>
-                  <div
-                    class="gdlr-reservation-bar-room-form"
-                    id="gdlr-reservation-bar-room-form"
-                  ></div>
-                  <div
-                    class="gdlr-reservation-bar-date-form"
-                    id="gdlr-reservation-bar-date-form"
-                  >
-                    <div class="gdlr-reservation-field gdlr-resv-datepicker">
-                      <span class="gdlr-reservation-field-title">Check In</span>
-                      <div class="gdlr-datepicker-wrapper">
-                        <input
-                          type="text"
-                          id="gdlr-check-in"
-                          class="gdlr-datepicker hasDatepicker"
-                          data-current-date="2020-05-15"
-                          autocomplete="off"
-                          data-dfm="d M yy"
-                          data-block="[]"
-                          value="2020-05-15"
-                        /><input
-                          type="hidden"
-                          class="gdlr-datepicker-alt"
-                          name="gdlr-check-in"
-                          autocomplete="off"
-                          value="2020-05-15"
-                        />
-                      </div>
-                    </div>
-                    <div
-                      class="gdlr-reservation-field gdlr-resv-combobox gdlr-resv-night"
-                    >
-                      <span class="gdlr-reservation-field-title">Nights</span>
-                      <div class="gdlr-combobox-wrapper">
-                        <select name="gdlr-night" id="gdlr-night"
-                          ><option value="1" selected="">1</option
-                          ><option value="2">2</option
-                          ><option value="3">3</option
-                          ><option value="4">4</option
-                          ><option value="5">5</option
-                          ><option value="6">6</option
-                          ><option value="7">7</option
-                          ><option value="8">8</option
-                          ><option value="9">9</option></select
-                        >
-                      </div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="gdlr-reservation-field gdlr-resv-datepicker">
-                      <span class="gdlr-reservation-field-title"
-                        >Check Out</span
-                      >
-                      <div class="gdlr-datepicker-wrapper">
-                        <input
-                          type="text"
-                          id="gdlr-check-out"
-                          class="gdlr-datepicker hasDatepicker"
-                          data-current-date="2020-05-15"
-                          autocomplete="off"
-                          data-min-night="1"
-                          data-dfm="d M yy"
-                          data-block="[]"
-                          value="2020-05-16"
-                        /><input
-                          type="hidden"
-                          class="gdlr-datepicker-alt"
-                          name="gdlr-check-out"
-                          autocomplete="off"
-                          value="2020-05-16"
-                        />
-                      </div>
-                    </div>
-                    <div class="clear"></div>
-                    <div
-                      class="gdlr-reservation-field gdlr-resv-combobox gdlr-reservation-bar-room-number"
-                    >
-                      <span class="gdlr-reservation-field-title">Rooms</span>
-                      <div class="gdlr-combobox-wrapper">
-                        <select name="gdlr-room-number" id="gdlr-room-number"
-                          ><option value="1" selected="">1</option
-                          ><option value="2">2</option
-                          ><option value="3">3</option
-                          ><option value="4">4</option
-                          ><option value="5">5</option
-                          ><option value="6">6</option
-                          ><option value="7">7</option
-                          ><option value="8">8</option
-                          ><option value="9">9</option></select
-                        >
-                      </div>
-                    </div>
-                    <div class="clear"></div>
-                    <div
-                      class="gdlr-reservation-people-amount-wrapper"
-                      id="gdlr-reservation-people-amount-wrapper"
-                    >
-                      <div class="gdlr-reservation-people-amount">
-                        <div class="gdlr-reservation-people-title">
-                          Room <span>1</span>
-                        </div>
-                        <div class="gdlr-reservation-field gdlr-resv-combobox">
-                          <span class="gdlr-reservation-field-title"
-                            >Adults</span
-                          >
-                          <div class="gdlr-combobox-wrapper">
-                            <select name="gdlr-adult-number[]"
-                              ><option value="1">1</option
-                              ><option value="2" selected="">2</option
-                              ><option value="3">3</option
-                              ><option value="4">4</option
-                              ><option value="5">5</option
-                              ><option value="6">6</option
-                              ><option value="7">7</option
-                              ><option value="8">8</option
-                              ><option value="9">9</option></select
-                            >
-                          </div>
-                        </div>
-                        <div class="gdlr-reservation-field gdlr-resv-combobox">
-                          <span class="gdlr-reservation-field-title"
-                            >Children</span
-                          >
-                          <div class="gdlr-combobox-wrapper">
-                            <select name="gdlr-children-number[]"
-                              ><option value="0">0</option
-                              ><option value="1">1</option
-                              ><option value="2">2</option
-                              ><option value="3">3</option
-                              ><option value="4">4</option
-                              ><option value="5">5</option
-                              ><option value="6">6</option
-                              ><option value="7">7</option
-                              ><option value="8">8</option
-                              ><option value="9">9</option></select
-                            >
-                          </div>
-                        </div>
-                        <div class="clear"></div>
-                      </div>
-                    </div>
-                    <div class="clear"></div>
-                    <input type="hidden" name="hotel_data" value="1" /><input
-                      type="submit"
-                      class="gdlr-reservation-bar-button gdlr-button with-border"
-                      value="Check Availability"
+                  <mat-form-field>
+                    <mat-label>Chọn ngày CheckIn</mat-label>
+                    <input
+                      matInput
+                      formControlName="checkIn"
+                      [matDatepicker]="checkIn"
                     />
-                    <div class="clear"></div>
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="checkIn"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #checkIn></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field class="detail_full_width">
+                    <mat-label>Chọn ngày CheckOut</mat-label>
+                    <input
+                      matInput
+                      formControlName="checkOut"
+                      [matDatepicker]="checkOut"
+                      color="warn"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="checkOut"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #checkOut></mat-datepicker>
+                  </mat-form-field>
+                  <div fxLayout="row" fxLayoutGap="5px">
+                    <mat-form-field class="name" fxFlex="70">
+                      <input
+                        matInput
+                        formControlName="customerLog"
+                        color="warn"
+                        [placeholder]="'Ghi chú của khách hàng'"
+                      />
+                    </mat-form-field>
+                    <mat-form-field class="name" fxFlex="30">
+                      <input
+                        matInput
+                        OnlyNumber
+                        formControlName="night"
+                        color="warn"
+                        [placeholder]="'Số ngày ở'"
+                      />
+                    </mat-form-field>
                   </div>
-                  <div
-                    class="gdlr-reservation-bar-service-form"
-                    id="gdlr-reservation-bar-service-form"
-                  ></div>
-                  <input type="hidden" name="single-room" value="4581" />
+                  <div fxLayout="row" fxLayoutGap="5px">
+                    <mat-form-field class="name" fxFlex="50">
+                      <input
+                        OnlyNumber
+                        matInput
+                        formControlName="customerPhone"
+                        color="warn"
+                        [placeholder]="'Số điện thoại'"
+                      />
+                    </mat-form-field>
+                    <mat-form-field class="name" fxFlex="50">
+                      <input
+                        OnlyNumber
+                        matInput
+                        formControlName="customerNum"
+                        color="warn"
+                        [placeholder]="'Số người'"
+                      />
+                    </mat-form-field>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="gdlr-button"
+                    value=""
+                    [style.text-align]="'start'"
+                  >
+                    Check Availability</button
+                  ><span class="check_avai"
+                    >*Bạn có thể liên hệ số điện thoại hoặc gửi yêu cầu để chúng
+                    tôi liên hệ với bạn</span
+                  >
                 </form>
               </div>
             </div>
           </div>
         </div>
+        <div></div>
       </div>
-    </div>
+    </section>
+    <section [style.margin-top.px]="25">
+      <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-row">
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div class="elementor-widget-container">
+                    <h2
+                      class="elementor-heading-title elementor-size-default"
+                      [style.text-align]="'start'"
+                    >
+                      Room Overview
+                    </h2>
+                  </div>
+                </div>
+                <div class="elementor-widget-text-editor">
+                  <div
+                    class="elementor-widget-container"
+                    [style.margin-top.px]="25"
+                  >
+                    <p>
+                      A wonderful serenity has taken possession of my entire
+                      soul, like these sweet mornings of spring which I enjoy
+                      with my whole heart. I am alone, and feel the charm of
+                      existence in this spot, which was created for the bliss of
+                      souls like mine. I am so happy, my dear friend, so
+                      absorbed in the exquisite sense of mere tranquil
+                      existence, that I neglect my talents. I should be
+                      incapable of drawing a single stroke at the present
+                      moment; and yet I feel that I never was a greater artist
+                      than now. When, while the lovely valley teems with vapour
+                      around me.
+                    </p>
+                    <p>
+                      Far far away, behind the word mountains, far from the
+                      countries Vokalia and Consonantia, there live the blind
+                      texts. Separated they live in Bookmarksgrove right at the
+                      coast of the Semantics, a large language ocean. A small
+                      river named Duden flows by their place and supplies it
+                      with the necessary regelialia. It is a paradisematic
+                      country, in which roasted parts of sentences fly into your
+                      mouth. Even the all-powerful Pointing has no control about
+                      the blind texts it is an almost unorthographic life One
+                      day however a small line of blind text by the name of
+                      Lorem Ipsum decided to leave for the far World of Grammar.
+                      The Big Oxmox a
+                    </p>
+                    <p>&nbsp;</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="elementor-element elementor-top-section"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-widget-container">
+          <h2 class="elementor-heading-title elementor-size-default">
+            Room Gallery
+          </h2>
+        </div>
+        <div class="elementor-widget elementor-widget-divider">
+          <div class="elementor-widget-container">
+            <div class="elementor-divider">
+              <span class="elementor-divider-separator"> </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="elementor-element elementor-top-section"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-row">
+          <div
+            class="elementor-top-column"
+            data-id="c607c71"
+            data-element_type="column"
+          >
+            <div class="elementor-column-wrap elementor-element-populated">
+              <div class="elementor-widget-wrap">
+                <div
+                  class="gallery-spacing-custom elementor-widget elementor-widget-image-gallery"
+                >
+                  <div class="elementor-widget-container">
+                    <div class="elementor-image-gallery">
+                      <div class="gdlr-shortcode-wrapper">
+                        <div
+                          class="gdlr-gallery-item gdlr-item"
+                          fxLayout="row wrap"
+                          fxLayoutGap="32px"
+                          fxLayoutAlign="center"
+                        >
+                          <div class="gallery-column four columns" fxFlex="20">
+                            <a
+                              href="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2019/07/chastity-cortijo-604624-unsplash.jpg"
+                              ><img
+                                src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2019/07/chastity-cortijo-604624-unsplash-750x770.jpg"
+                                alt=""
+                                style="opacity: 1;"
+                            /></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-</section>
+  <div fxFlex="10"></div>
+</div>

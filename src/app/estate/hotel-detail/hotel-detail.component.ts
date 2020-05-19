@@ -7,11 +7,27 @@ import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { faPhone, faPlay, faUser, faDollarSign, faClock, faCamera } from '@fortawesome/free-solid-svg-icons';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 @Component({
   selector: 'app-hotel-detail',
   templateUrl: './hotel-detail.component.html',
-  styleUrls: ['./hotel-detail.component.scss']
+  styleUrls: ['./hotel-detail.component.scss'],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'vi-VN' },
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+  ],
 })
 export class HotelDetailComponent implements OnInit {
   tourDetail;
@@ -22,7 +38,7 @@ export class HotelDetailComponent implements OnInit {
   faUser = faUser; faDollarSign = faDollarSign; faClock = faClock;
   faCamera = faCamera;
   tourImages: Array<any> = [];
-
+  checkAvaiForm: FormGroup;
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -30,9 +46,17 @@ export class HotelDetailComponent implements OnInit {
     private dialog: MatDialog,
     @Optional() @Inject(REQUEST) private request,
     private localStorage: LocalStorageService,
+    public fb: FormBuilder,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-
+    this.checkAvaiForm = this.fb.group({
+      checkIn: ['', Validators.required],
+      checkOut: ['', Validators.required],
+      customerLog: [''],
+      night: [''],
+      customerNum: [''],
+      customerPhone: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {
@@ -54,6 +78,10 @@ export class HotelDetailComponent implements OnInit {
         this.seo.setOgUrl(window.location.origin);
       }
     }
+  }
+
+  sendCustomerRequest() {
+
   }
 
 }

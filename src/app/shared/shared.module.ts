@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
 import { AppShellRenderDirective, AppShellNoRenderDirective } from './directives/app-shell.directive';
+import { OnlyNumberDirective } from './directives/only-num.directive';
 
 @NgModule({
   imports: [
@@ -18,11 +19,13 @@ import { AppShellRenderDirective, AppShellNoRenderDirective } from './directives
     BreadcrumbComponent,
     AppShellRenderDirective,
     AppShellNoRenderDirective,
+    OnlyNumberDirective
   ],
   declarations: [
     BreadcrumbComponent,
     AppShellRenderDirective,
     AppShellNoRenderDirective,
+    OnlyNumberDirective
   ],
 })
 export class SharedModule { }

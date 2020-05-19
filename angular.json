@@ -28,7 +28,6 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/ngx-lightbox/lightbox.css",
               "node_modules/@fortawesome/fontawesome-svg-core/styles.css",
               "src/styles.scss"
             ],

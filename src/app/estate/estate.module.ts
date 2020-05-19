@@ -12,7 +12,7 @@ import { EstateRoutingModule } from './estate-routing.module';
 import { NgxImageGalleryModule } from 'ngx-image-gallery';
 import { PipeModule } from '../shared/pipe/pipe.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,6 +29,7 @@ import { VillaDetailComponent } from './villa-detail/villa-detail.component';
 import { HomestayDetailComponent } from './homestay-detail/homestay-detail.component';
 import { SearchEstateComponent } from './search/search-estate.component';
 import { RightSideFilterComponent } from './right-side-filter/right-side-filter.component';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
     imports: [
         CommonModule,
@@ -41,6 +42,8 @@ import { RightSideFilterComponent } from './right-side-filter/right-side-filter.
         FormsModule,
         FlexLayoutModule,
         MatInputModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
         MatSelectModule,
         MatFormFieldModule,
         ReactiveFormsModule,
