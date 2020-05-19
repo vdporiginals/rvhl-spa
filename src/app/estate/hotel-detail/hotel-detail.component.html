@@ -2,334 +2,256 @@
   <div fxFlex="10"></div>
   <div fxFlex="80">
     <section class="elementor-element elementor-top-section">
-      <div class="elementor-container elementor-column-gap-default">
-        <div class="elementor-row" fxLayout="row" fxLayoutGap="10px">
-          <div class="elementor-top-column" fxFlex="74">
-            <div
-              class="elementor-widget-wrap"
-              fxLayout="column"
-              fxLayoutAlign="start"
-            >
-              <div class="elementor-widget-image">
-                <div class="elementor-widget-container">
-                  <div class="elementor-image">
-                    <img
-                      src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2019/08/shutterstock_419147299-1340x580.jpg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div
-                  class="elementor-widget-container"
-                  fxLayout="row"
-                  fxLayoutGap="15px"
+      <div
+        class="elementor-row"
+        fxLayout="row"
+        fxLayoutGap="10px"
+        fxLayout.lt-md="column"
+      >
+        <div class="elementor-top-column" fxFlex="74" fxFlex.lt-md="100">
+          <div
+            class="elementor-widget-wrap"
+            fxLayout="column"
+            fxLayoutAlign="start"
+          >
+            <div class="elementor-image">
+              <img [src]="(hotelDetail?.images)[0]" alt="hotelDetail?.name" />
+            </div>
+            <div>
+              <div class="hotel_title" fxLayout="row" fxLayoutGap="15px">
+                <h2
+                  [style.padding-right.px]="15"
+                  [style.border-right]="'1px solid'"
                 >
-                  <h2 class="elementor-heading-title border_right">
-                    Superior Room - Two Double Beds
-                  </h2>
-                  <h2 class="elementor-heading-title elementor-size-default">
-                    SĐT: 0968897925
-                  </h2>
-                </div>
-              </div>
-              <div class="elementor-widget-hotel-room-info">
-                <div class="elementor-widget-container">
-                  <div class="gdlr-hotel-room-info-new-style" fxLayout="row">
-                    <div
-                      class="gdlr-room-info-new-style"
-                      fxFlex
-                      [style.text-align]="'center'"
-                      fxLayout="column"
-                    >
-                      <span class="gdlr-head"
-                        ><img
-                          src="../../../assets/icon/restaurant.svg"
-                          alt=""
-                          [style.width.px]="81"
-                          [style.height.px]="75"
-                          style="opacity: 1;" /></span
-                      ><span class="gdlr-tail">Nhà hàng khách sạn</span>
-                    </div>
-                    <div
-                      class="gdlr-room-info-new-style"
-                      fxFlex
-                      [style.text-align]="'center'"
-                      fxLayout="column"
-                    >
-                      <span class="gdlr-head"
-                        ><img
-                          src="../../../assets/icon/roomHotelSQM.svg"
-                          alt=""
-                          style="opacity: 1;"
-                          [style.width.px]="81"
-                          [style.height.px]="75" /></span
-                      ><span class="gdlr-tail">30 sqm.</span>
-                    </div>
-                    <div
-                      class="gdlr-room-info-new-style"
-                      fxFlex
-                      fxLayout="column"
-                      [style.text-align]="'center'"
-                    >
-                      <span class="gdlr-head"
-                        ><img
-                          src="../../../assets/icon/ocean-view.svg"
-                          alt=""
-                          [style.width.px]="81"
-                          [style.height.px]="75"
-                          style="opacity: 1;" /></span
-                      ><span class="gdlr-tail">Ocean View</span>
-                    </div>
-                    <div
-                      class="gdlr-room-info-new-style"
-                      fxFlex
-                      fxLayout="column"
-                      [style.text-align]="'center'"
-                    >
-                      <span class="gdlr-head"
-                        ><img
-                          src="../../../assets/icon/bed.svg"
-                          alt=""
-                          [style.width.px]="81"
-                          [style.height.px]="75"
-                          style="opacity: 1;" /></span
-                      ><span class="gdlr-tail">King Bed</span>
-                    </div>
-                    <div
-                      class="gdlr-room-info-new-style"
-                      fxFlex
-                      fxLayout="column"
-                      [style.text-align]="'center'"
-                    >
-                      <span class="gdlr-head"
-                        ><img
-                          src="../../../assets/icon/pool.svg"
-                          alt=""
-                          [style.width.px]="81"
-                          [style.height.px]="75"
-                          style="opacity: 1;" /></span
-                      ><span class="gdlr-tail">Bể bơi khách sạn</span>
-                    </div>
-                    <div
-                      class="gdlr-room-info-new-style"
-                      fxFlex
-                      fxLayout="column"
-                      [style.text-align]="'center'"
-                    >
-                      <span class="gdlr-head"
-                        ><img
-                          src="../../../assets/icon/meeting.svg"
-                          alt=""
-                          [style.width.px]="81"
-                          [style.height.px]="75"
-                          style="opacity: 1;" /></span
-                      ><span class="gdlr-tail">Phòng hội họp</span>
-                    </div>
-                    <div
-                      class="gdlr-room-info-new-style"
-                      fxFlex
-                      fxLayout="column"
-                      [style.text-align]="'center'"
-                    >
-                      <span class="gdlr-head"
-                        ><img
-                          src="../../../assets/icon/other.svg"
-                          alt=""
-                          [style.width.px]="81"
-                          [style.height.px]="75"
-                          style="opacity: 1;" /></span
-                      ><span class="gdlr-tail">Dịch vụ khác</span>
-                    </div>
-                  </div>
-                </div>
+                  {{ hotelDetail?.name }}
+                </h2>
+                <h2>
+                  <a href="{{ 'tel:' + hotelDetail?.phone }}"
+                    >SĐT: {{ hotelDetail?.phone }}</a
+                  >
+                </h2>
               </div>
             </div>
-          </div>
-          <div fxFlex="25">
             <div>
-              <div>
-                <div>
-                  <div class="text_hotel">
-                    <h2>
-                      từ
-                    </h2>
-                  </div>
-                </div>
-                <div>
-                  <div class="price_hotel">
-                    <h2>
-                      $120
-                    </h2>
-                  </div>
-                </div>
-                <form
-                  class="gdlr-reservation-bar"
-                  method="post"
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start"
+                fxLayoutGap="20px"
+                fxLayoutGap.lt-md="30px"
+              >
+                <div
+                  *ngIf="hotelDetail?.facilities.restaurant"
+                  fxFlex="14"
+                  [style.text-align]="'center'"
                   fxLayout="column"
-                  [formGroup]="checkAvaiForm"
-                  (ngSubmit)="sendCustomerRequest()"
                 >
-                  <mat-form-field>
-                    <mat-label>Chọn ngày CheckIn</mat-label>
-                    <input
-                      matInput
-                      formControlName="checkIn"
-                      [matDatepicker]="checkIn"
-                    />
-                    <mat-datepicker-toggle
-                      matSuffix
-                      [for]="checkIn"
-                    ></mat-datepicker-toggle>
-                    <mat-datepicker #checkIn></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field class="detail_full_width">
-                    <mat-label>Chọn ngày CheckOut</mat-label>
-                    <input
-                      matInput
-                      formControlName="checkOut"
-                      [matDatepicker]="checkOut"
-                      color="warn"
-                    />
-                    <mat-datepicker-toggle
-                      matSuffix
-                      [for]="checkOut"
-                    ></mat-datepicker-toggle>
-                    <mat-datepicker #checkOut></mat-datepicker>
-                  </mat-form-field>
-                  <div fxLayout="row" fxLayoutGap="5px">
-                    <mat-form-field class="name" fxFlex="70">
-                      <input
-                        matInput
-                        formControlName="customerLog"
-                        color="warn"
-                        [placeholder]="'Ghi chú của khách hàng'"
-                      />
-                    </mat-form-field>
-                    <mat-form-field class="name" fxFlex="30">
-                      <input
-                        matInput
-                        OnlyNumber
-                        formControlName="night"
-                        color="warn"
-                        [placeholder]="'Số ngày ở'"
-                      />
-                    </mat-form-field>
-                  </div>
-                  <div fxLayout="row" fxLayoutGap="5px">
-                    <mat-form-field class="name" fxFlex="50">
-                      <input
-                        OnlyNumber
-                        matInput
-                        formControlName="customerPhone"
-                        color="warn"
-                        [placeholder]="'Số điện thoại'"
-                      />
-                    </mat-form-field>
-                    <mat-form-field class="name" fxFlex="50">
-                      <input
-                        OnlyNumber
-                        matInput
-                        formControlName="customerNum"
-                        color="warn"
-                        [placeholder]="'Số người'"
-                      />
-                    </mat-form-field>
-                  </div>
-
-                  <button
-                    type="submit"
-                    class="gdlr-button"
-                    value=""
-                    [style.text-align]="'start'"
+                  <span class="gdlr-head"
+                    ><img
+                      src="../../../assets/icon/restaurant.svg"
+                      alt=""
+                      [style.max-width.%]="66"
+                      [style.max-height.%]="66"
+                      style="opacity: 1;" /></span
+                  ><span class="gdlr-tail">Nhà hàng khách sạn</span>
+                </div>
+                <div
+                  fxFlex="14"
+                  [style.text-align]="'center'"
+                  fxLayout="column"
+                >
+                  <span class="gdlr-head"
+                    ><img
+                      src="../../../assets/icon/roomHotelSQM.svg"
+                      alt=""
+                      style="opacity: 1;"
+                      [style.max-height.%]="66"
+                      [style.max-width.%]="66" /></span
+                  ><span class="gdlr-tail"
+                    >{{ hotelDetail?.facilities.square }} &#13217;</span
                   >
-                    Check Availability</button
-                  ><span class="check_avai"
-                    >*Bạn có thể liên hệ số điện thoại hoặc gửi yêu cầu để chúng
-                    tôi liên hệ với bạn</span
-                  >
-                </form>
+                </div>
+                <div
+                  *ngIf="hotelDetail?.oceanViews"
+                  fxFlex="14"
+                  fxLayout="column"
+                  [style.text-align]="'center'"
+                >
+                  <span class="gdlr-head"
+                    ><img
+                      src="../../../assets/icon/ocean-view.svg"
+                      alt=""
+                      [style.max-height.%]="66"
+                      [style.max-width.%]="66"
+                      style="opacity: 1;" /></span
+                  ><span class="gdlr-tail">Ocean View</span>
+                </div>
+                <div
+                  *ngIf="hotelDetail?.facilities.bed"
+                  fxFlex="14"
+                  fxLayout="column"
+                  [style.text-align]="'center'"
+                >
+                  <span class="gdlr-head"
+                    ><img
+                      src="../../../assets/icon/bed.svg"
+                      alt=""
+                      [style.max-height.%]="66"
+                      [style.max-width.%]="66"
+                      style="opacity: 1;" /></span
+                  ><span class="gdlr-tail">King Bed</span>
+                </div>
+                <div
+                  *ngIf="hotelDetail?.facilities.pool"
+                  fxFlex="14"
+                  fxLayout="column"
+                  [style.text-align]="'center'"
+                >
+                  <span class="gdlr-head"
+                    ><img
+                      src="../../../assets/icon/pool.svg"
+                      alt=""
+                      [style.max-height.%]="66"
+                      [style.max-width.%]="66"
+                      style="opacity: 1;" /></span
+                  ><span class="gdlr-tail">Bể bơi khách sạn</span>
+                </div>
+                <div
+                  *ngIf="hotelDetail?.facilities.meetingRoom"
+                  fxFlex="14"
+                  fxLayout="column"
+                  [style.text-align]="'center'"
+                >
+                  <span class="gdlr-head"
+                    ><img
+                      src="../../../assets/icon/meeting.svg"
+                      alt=""
+                      [style.max-height.%]="66"
+                      [style.max-width.%]="66"
+                      style="opacity: 1;" /></span
+                  ><span class="gdlr-tail">Phòng hội họp</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div></div>
+        <div fxFlex="25" fxFlex.lt-md="100">
+          <div>
+            <div class="text_hotel">
+              <h2>
+                từ
+              </h2>
+            </div>
+
+            <div class="price_hotel">
+              <h2>
+                {{ hotelDetail?.price | currency: "VND":"symbol":"1.0-0" }}
+              </h2>
+            </div>
+            <form
+              fxLayout="column"
+              [formGroup]="checkAvaiForm"
+              (ngSubmit)="sendCustomerRequest()"
+            >
+              <mat-form-field>
+                <mat-label>Chọn ngày CheckIn</mat-label>
+                <input
+                  matInput
+                  formControlName="checkIn"
+                  [matDatepicker]="checkIn"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="checkIn"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #checkIn></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="detail_full_width">
+                <mat-label>Chọn ngày CheckOut</mat-label>
+                <input
+                  matInput
+                  formControlName="checkOut"
+                  [matDatepicker]="checkOut"
+                  color="warn"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="checkOut"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #checkOut></mat-datepicker>
+              </mat-form-field>
+              <div fxLayout="row" fxLayoutGap="5px">
+                <mat-form-field class="name" fxFlex="70">
+                  <input
+                    matInput
+                    formControlName="customerLog"
+                    color="warn"
+                    [placeholder]="'Ghi chú của khách hàng'"
+                  />
+                </mat-form-field>
+                <mat-form-field class="name" fxFlex="30">
+                  <input
+                    matInput
+                    OnlyNumber="true"
+                    formControlName="night"
+                    color="warn"
+                    [placeholder]="'Số ngày ở'"
+                  />
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutGap="15px">
+                <mat-form-field class="name" fxFlex="50">
+                  <input
+                    OnlyNumber="true"
+                    matInput
+                    formControlName="customerPhone"
+                    color="warn"
+                    [placeholder]="'Số điện thoại'"
+                  />
+                </mat-form-field>
+                <mat-form-field class="name" fxFlex="50">
+                  <input
+                    OnlyNumber="true"
+                    matInput
+                    formControlName="customerNum"
+                    color="warn"
+                    [placeholder]="'Số người'"
+                  />
+                </mat-form-field>
+              </div>
+
+              <button
+                type="submit"
+                class="gdlr-button"
+                value=""
+                [style.text-align]="'start'"
+              >
+                Check Availability</button
+              ><span class="check_avai"
+                >*Bạn có thể liên hệ số điện thoại hoặc gửi yêu cầu để chúng tôi
+                liên hệ với bạn</span
+              >
+            </form>
+          </div>
+        </div>
       </div>
     </section>
     <section [style.margin-top.px]="25">
-      <div class="elementor-container elementor-column-gap-default">
-        <div class="elementor-row">
-          <div>
-            <div>
-              <div>
-                <div>
-                  <div class="elementor-widget-container">
-                    <h2
-                      class="elementor-heading-title elementor-size-default"
-                      [style.text-align]="'start'"
-                    >
-                      Room Overview
-                    </h2>
-                  </div>
-                </div>
-                <div class="elementor-widget-text-editor">
-                  <div
-                    class="elementor-widget-container"
-                    [style.margin-top.px]="25"
-                  >
-                    <p>
-                      A wonderful serenity has taken possession of my entire
-                      soul, like these sweet mornings of spring which I enjoy
-                      with my whole heart. I am alone, and feel the charm of
-                      existence in this spot, which was created for the bliss of
-                      souls like mine. I am so happy, my dear friend, so
-                      absorbed in the exquisite sense of mere tranquil
-                      existence, that I neglect my talents. I should be
-                      incapable of drawing a single stroke at the present
-                      moment; and yet I feel that I never was a greater artist
-                      than now. When, while the lovely valley teems with vapour
-                      around me.
-                    </p>
-                    <p>
-                      Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind
-                      texts. Separated they live in Bookmarksgrove right at the
-                      coast of the Semantics, a large language ocean. A small
-                      river named Duden flows by their place and supplies it
-                      with the necessary regelialia. It is a paradisematic
-                      country, in which roasted parts of sentences fly into your
-                      mouth. Even the all-powerful Pointing has no control about
-                      the blind texts it is an almost unorthographic life One
-                      day however a small line of blind text by the name of
-                      Lorem Ipsum decided to leave for the far World of Grammar.
-                      The Big Oxmox a
-                    </p>
-                    <p>&nbsp;</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="elementor-element elementor-top-section"
-      fxLayout="column"
-      fxLayoutAlign="center center"
-    >
-      <div class="elementor-container elementor-column-gap-default">
-        <div class="elementor-widget-container">
-          <h2 class="elementor-heading-title elementor-size-default">
-            Room Gallery
+      <div class="elementor-row">
+        <div class="hotel_title">
+          <h2 [style.text-align]="'start'">
+            Room Overview
           </h2>
+          <h3 [style.text-align]="'start'">
+            Địa chỉ: {{ hotelDetail?.address }}
+          </h3>
         </div>
-        <div class="elementor-widget elementor-widget-divider">
-          <div class="elementor-widget-container">
-            <div class="elementor-divider">
-              <span class="elementor-divider-separator"> </span>
-            </div>
+        <div class="elementor-widget-text-editor">
+          <div
+            class="elementor-widget-container"
+            [style.margin-top.px]="25"
+            [innerHtml]="hotelDetail?.content | sanitizeHtml"
+          >
+            <p>&nbsp;</p>
           </div>
         </div>
       </div>
@@ -339,43 +261,39 @@
       fxLayout="column"
       fxLayoutAlign="center center"
     >
-      <div class="elementor-container elementor-column-gap-default">
-        <div class="elementor-row">
+      <div class="hotel_title">
+        <h2>
+          Room Gallery
+        </h2>
+      </div>
+    </section>
+    <section
+      class="elementor-element elementor-top-section"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <div class="elementor-top-column">
+        <ngx-image-gallery
+          [images]="hotelImages"
+          [conf]="conf"
+        ></ngx-image-gallery>
+        <div
+          class="gdlr-gallery-item gdlr-item"
+          fxLayout="row wrap"
+          fxLayoutGap="15px"
+          fxLayoutAlign="center"
+        >
           <div
-            class="elementor-top-column"
-            data-id="c607c71"
-            data-element_type="column"
+            class="gallery-column four columns"
+            fxFlex="20"
+            *ngFor="let image of hotelImages; let i = index"
           >
-            <div class="elementor-column-wrap elementor-element-populated">
-              <div class="elementor-widget-wrap">
-                <div
-                  class="gallery-spacing-custom elementor-widget elementor-widget-image-gallery"
-                >
-                  <div class="elementor-widget-container">
-                    <div class="elementor-image-gallery">
-                      <div class="gdlr-shortcode-wrapper">
-                        <div
-                          class="gdlr-gallery-item gdlr-item"
-                          fxLayout="row wrap"
-                          fxLayoutGap="32px"
-                          fxLayoutAlign="center"
-                        >
-                          <div class="gallery-column four columns" fxFlex="20">
-                            <a
-                              href="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2019/07/chastity-cortijo-604624-unsplash.jpg"
-                              ><img
-                                src="https://demo.goodlayers.com/hotelmaster/main4/wp-content/uploads/sites/4/2019/07/chastity-cortijo-604624-unsplash-750x770.jpg"
-                                alt=""
-                                style="opacity: 1;"
-                            /></a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <a (click)="openGallery(i)" [style.cursor]="'pointer'"
+              ><img
+                [src]="image?.url"
+                alt="hotelDetail??.name"
+                style="opacity: 1;"
+            /></a>
           </div>
         </div>
       </div>

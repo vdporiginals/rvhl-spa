@@ -23,37 +23,38 @@ const routes: Routes = [
             },
             {
                 path: 'khach-san',
-                resolve: {
-                    estateList: EstateListResolve
-                },
                 // pathMatch: 'full',
                 data: { categoryId: '', breadcrumb: 'Khách sạn', position: 'hotel', queryBanner: 'HotelPage' },
                 children: [
                     {
                         path: '',
                         component: HotelComponent,
+                        pathMatch: 'full',
+                        resolve: {
+                            estateList: EstateListResolve
+                        },
                     },
                     {
                         path: ':id/:seo',
                         component: HotelDetailComponent,
                         pathMatch: 'full',
-                        // resolve: {
-                        //     estateDetail: EstateDetailResolve
-                        // },
+                        resolve: {
+                            estateDetail: EstateDetailResolve
+                        },
                         data: { breadcrumb: '' },
                     },
                 ]
             },
             {
                 path: 'homestay',
-                resolve: {
-                    estateList: EstateListResolve
-                },
                 data: { categoryId: '', breadcrumb: 'Homestay', queryBanner: 'HomestayPage', position: 'homestay' },
                 children: [
                     {
                         path: '',
-                        component: HomestayComponent,
+                        component: HomestayComponent, pathMatch: 'full',
+                        resolve: {
+                            estateList: EstateListResolve
+                        },
                     },
                     {
                         path: ':id/:seo',
@@ -68,14 +69,16 @@ const routes: Routes = [
             },
             {
                 path: 'villa',
-                resolve: {
-                    estateList: EstateListResolve
-                },
+
                 data: { categoryId: '', position: 'villa', breadcrumb: 'Villa', queryBanner: 'VillaPage' },
                 children: [
                     {
                         path: '',
                         component: VillaComponent,
+                        pathMatch: 'full',
+                        resolve: {
+                            estateList: EstateListResolve
+                        },
                     },
                     {
                         path: ':id/:seo',

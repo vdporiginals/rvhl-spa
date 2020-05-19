@@ -19,21 +19,20 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'ha-long-bay-tour',
-        resolve: {
-          tourCategory: TourResolve
-        },
+        redirectTo: 'ha-long-bay-tour'
       },
       {
         path: 'di-chuyen',
-        resolve: {
-          transferList: TransferResolve
-        },
+
         data: { breadcrumb: 'Di chuyển', queryBanner: 'TransferPage' },
         children: [
           {
             path: '',
-            component: TransferListComponent
+            component: TransferListComponent,
+            pathMatch: 'full',
+            resolve: {
+              transferList: TransferResolve
+            },
           },
           {
             path: ':id/:seo',
@@ -48,15 +47,15 @@ const routes: Routes = [
       },
       {
         path: 'ha-long-bay-tour',
-        // component: ListSingleTourComponent,
-        resolve: {
-          tourCategory: TourResolve
-        },
         data: { position: 'TourCruise', breadcrumb: 'Tour vịnh', queryBanner: 'TourCruisePage' },
         children: [
           {
             path: '',
-            component: ListSingleTourComponent
+            component: ListSingleTourComponent,
+            pathMatch: 'full',
+            resolve: {
+              tourCategory: TourResolve
+            },
           },
           {
             path: ':id/:seo',
@@ -71,18 +70,20 @@ const routes: Routes = [
       },
       {
         path: 'tron-goi',
-        resolve: {
-          tourCategory: TourResolve
-        },
         data: { position: 'TourAll', breadcrumb: 'Trọn gói', queryBanner: 'TourAllPage' },
         children: [
           {
             path: '',
-            component: ListSingleTourComponent
+            component: ListSingleTourComponent,
+            pathMatch: 'full',
+            resolve: {
+              tourCategory: TourResolve
+            },
           },
           {
             path: ':id/:seo',
             component: TourDetailComponent,
+            pathMatch: 'full',
             data: { breadcrumb: '' },
             resolve: {
               tourpost: TourDetailResolve
