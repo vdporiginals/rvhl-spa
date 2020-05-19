@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { forkJoin } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -195,5 +196,29 @@ export class ApiService {
       }
     });
     return fbPlugin;
+  }
+
+  postCheckRoom(data, token): Observable<any> {
+    const api = `${environment.apiUrl}/estates/check-room`;
+    return this.http.post(api, data, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  handleError(error: HttpErrorResponse) {
+    let msg = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      msg = error.error.message;
+    } else {
+      // server-side error
+      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(msg);
   }
 }
