@@ -15,6 +15,9 @@ import {
 } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
+import { LoginComponent } from 'src/app/layout/user/login/login.component';
+import { NotificationService } from 'src/app/shared/services/notification.service';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-hotel-detail',
@@ -51,6 +54,8 @@ export class HotelDetailComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private seo: SeoService,
+    private noti: NotificationService,
+    private api: ApiService,
     private dialog: MatDialog,
     @Optional() @Inject(REQUEST) private request,
     private localStorage: LocalStorageService,
@@ -61,9 +66,12 @@ export class HotelDetailComponent implements OnInit {
       checkIn: ['', Validators.required],
       checkOut: ['', Validators.required],
       customerLog: [''],
+      roomCategory: [''],
+      phone: ['', Validators.required],
+      onEstate: 'Hotel',
+      roomId: [''],
       night: [''],
-      customerNum: [''],
-      customerPhone: ['', Validators.required]
+      peopleNum: ['']
     });
   }
 
@@ -84,11 +92,27 @@ export class HotelDetailComponent implements OnInit {
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
+      this.checkAvaiForm.patchValue({
+        roomCategory: this.hotelDetail.category,
+        roomId: this.hotelDetail._id
+      });
     }
   }
 
   sendCustomerRequest() {
-
+    const token = JSON.parse(this.localStorage.getItem('access_token'));
+    if (token === null || token === undefined) {
+      this.noti.showWarning('Bạn cần đăng nhập!', 'Yêu cầu thất bại');
+      this.dialog.open(LoginComponent);
+    } else if (this.checkAvaiForm.invalid) {
+      this.noti.showWarning('Bạn cần nhập đầy đủ sđt, checkIn, checkOut!', 'Yêu cầu thất bại');
+    } else {
+      this.api.postCheckRoom(this.checkAvaiForm.value, token.token).subscribe((res: any) => {
+        console.log(res);
+      }, err => {
+        this.noti.showError(err, 'Yêu cầu thất bại')
+      });
+    }
   }
 
 

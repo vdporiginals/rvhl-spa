@@ -214,10 +214,15 @@ export class ApiService {
     let msg = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error
-      msg = error.error.message;
+      msg = error.message;
     } else {
       // server-side error
-      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      if (error.status === 429) {
+        msg = 'Bạn gửi quá nhiều yêu cầu! Xin hãy đợi ít phút để gửi lại';
+      } else {
+
+        msg = `Error Code: ${error.status}\nMessage: ${error.error.error}`;
+      }
     }
     return throwError(msg);
   }
