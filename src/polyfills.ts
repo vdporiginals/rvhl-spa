@@ -58,6 +58,8 @@
 import 'core-js/features/reflect';
 import 'zone.js/dist/zone';
 import 'hammerjs';
+import 'moment';
+
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
