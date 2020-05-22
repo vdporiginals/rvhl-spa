@@ -65,7 +65,9 @@
         <div class="gdlr-room-content">
           {{ hotel.description | textOverflow: ["250", "..."] }}
         </div>
-        <a class="gdlr-button with-border"
+        <a
+          class="gdlr-button with-border"
+          [routerLink]="['/o-dau-ha-long', 'khach-san', hotel._id, hotel.seo]"
           >Xem chi tiết <fa-icon [icon]="faLongArrowAltRight"></fa-icon
         ></a>
         <div class="gdlr-room-price" [style.float]="'right'" fxFlexAlign="end">
