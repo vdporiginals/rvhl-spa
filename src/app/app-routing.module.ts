@@ -15,9 +15,9 @@ const routes: Routes = [
     loadChildren: () => import('./homepage/homepage.module').then(m => m.HomepageModule)
   },
   {
-    path: 'reviews', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule),
+    path: 'lich-trinh', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule),
     data: {
-      breadcrumb: 'Review',
+      breadcrumb: 'Lịch trình',
     },
   },
   {
@@ -27,10 +27,22 @@ const routes: Routes = [
     },
   },
   {
-    path: 'o-dau-ha-long', loadChildren: () => import('./estate/estate.module').then(m => m.EstateModule),
+    path: 'o-dau', loadChildren: () => import('./estate/estate.module').then(m => m.EstateModule),
     data: {
-      breadcrumb: 'Ở đâu Hạ Long',
+      breadcrumb: 'Ở đâu?',
     },
+  },
+  {
+    path: 'an-gi', loadChildren: () => import('./restaurant/restaurant.module').then(m => m.RestaurantModule),
+    data: {
+      breadcrumb: 'Ăn gì'
+    }
+  },
+  {
+    path: 'reviews', loadChildren: () => import('./user-review/user-review.module').then(m => m.UserReviewModule),
+    data: {
+      breadcrumb: 'Reviews'
+    }
   },
   { path: 'profile', component: ProfileComponent, data: { userId: '' }, canActivate: [AuthGuard] },
   { path: '404', component: ErrorPageComponent },

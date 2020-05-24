@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookMessenger, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../../user/login/login.component';
