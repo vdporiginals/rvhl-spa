@@ -1,0 +1,108 @@
+<div class="blog_left_sidebar">
+  <div
+    *ngFor="
+      let blog of allBlogs
+        | paginate
+          : {
+              itemsPerPage: limit,
+              currentPage: currentPage,
+              totalItems: count
+            }
+    "
+  >
+    <mat-card class="blog_item">
+      <div class="blog_item_img">
+        <img
+          mat-card-image
+          class="card-img rounded-0"
+          [src]="blog.images[0]"
+          [alt]="blog.title"
+        />
+        <a class="blog_item_date">
+          <h3>{{ blog.createdAt | date: "dd" }}</h3>
+          <p>{{ blog.createdAt | date: "LLL" }}</p>
+        </a>
+      </div>
+      <div class="blog_details">
+        <a class="d-inline-block" [routerLink]="[blog._id, blog.seo]">
+          <h2>{{ blog.title }}</h2>
+        </a>
+        <p>{{ blog.description | textOverflow: ["300", "..."] }}</p>
+        <ul class="blog-info-link">
+          <li>
+            <a href="#">
+              <fa-icon [icon]="faUser"></fa-icon> {{ blog?.user?.name }}
+            </a>
+          </li>
+          <!-- <li>
+              <a href="#">
+                <fa-icon [icon]="faComment"></fa-icon> 03 Comments
+              </a>
+            </li> -->
+        </ul>
+      </div>
+    </mat-card>
+  </div>
+  <pagination-template
+    class="blog-pagination justify-content-center"
+    #p="paginationApi"
+    (pageChange)="pageChange.emit($event)"
+  >
+    <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
+      <div>
+        <li class="page-item">
+          <a
+            class="page-link"
+            aria-label="Previous"
+            (click)="getData(currentPage - 1, position, categoryId)"
+            *ngIf="!isFirstPage"
+          >
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
+          <a
+            class="page-link disabled"
+            aria-label="Previous"
+            *ngIf="isFirstPage"
+          >
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
+        </li>
+      </div>
+
+      <div
+        *ngFor="let page of p.pages"
+        [class.current]="p.getCurrent() === page.value"
+      >
+        <li class="page-item">
+          <a
+            class="page-link"
+            [class.disabled]="p.getCurrent() === page.value"
+            *ngIf="p.getCurrent() === page.value"
+            >{{ page.label }}</a
+          >
+          <a
+            class="page-link"
+            (click)="getData(page.value, position, categoryId)"
+            *ngIf="p.getCurrent() !== page.value"
+            >{{ page.label }}</a
+          >
+        </li>
+      </div>
+      <div>
+        <li class="page-item">
+          <a
+            class="page-link"
+            aria-label="Next"
+            (click)="getData(currentPage + 1, position, categoryId)"
+            *ngIf="!isLastPage"
+          >
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+          <a class="page-link disabled" aria-label="Next" *ngIf="isLastPage">
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+        </li>
+      </div>
+    </ul>
+  </pagination-template>
+</div>

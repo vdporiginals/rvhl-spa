@@ -14,6 +14,10 @@ import { SharedModule } from '../shared/shared.module';
 import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 import { PipeModule } from '../shared/pipe/pipe.module';
 import { UserReviewComponent } from './user-review.component';
+import { UserReviewDetailComponent } from './user-review-detail/user-review-detail.component';
+import { UserReviewListComponent } from './user-review-list/user-review-list.component';
+import { UserReviewFilterComponent } from './user-review-filter/user-review-filter.component';
+import { UserReviewCommentComponent } from './user-review-comment/user-review-comment.component';
 
 @NgModule({
     imports: [
@@ -31,7 +35,7 @@ import { UserReviewComponent } from './user-review.component';
         ReactiveFormsModule,
         MatCarouselModule.forRoot(),
     ],
-    declarations: [UserReviewComponent],
+    declarations: [UserReviewComponent, UserReviewDetailComponent, UserReviewListComponent, UserReviewFilterComponent, UserReviewCommentComponent],
     exports: [
         FlexLayoutModule
     ],

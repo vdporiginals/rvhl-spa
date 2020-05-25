@@ -1,1 +1,15 @@
-<p>user-review works!</p>
+<section>
+  <app-breadcrumb></app-breadcrumb>
+</section>
+<section fxLayout="row" class="section-padding">
+  <div fxFlex="10"></div>
+  <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+    <div fxFlex="66" fxFlex.lt-md="80">
+      <router-outlet></router-outlet>
+    </div>
+    <div fxFlex="33" fxFlex.lt-md="80">
+      <app-user-review-filter></app-user-review-filter>
+    </div>
+  </div>
+  <div fxFlex="10"></div>
+</section>

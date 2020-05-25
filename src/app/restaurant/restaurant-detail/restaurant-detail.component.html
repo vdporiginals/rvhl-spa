@@ -1,1 +1,147 @@
-<p>restaurant-detail works!</p>
+<div fxLayout="row">
+  <div fxFlex="10"></div>
+  <div fxFlex="80">
+    <section class="elementor-element elementor-top-section">
+      <div
+        class="elementor-row"
+        fxLayout="row"
+        fxLayoutGap="10px"
+        fxLayout.lt-md="column"
+      >
+        <div class="elementor-top-column" fxFlex="74" fxFlex.lt-md="100">
+          <div
+            class="elementor-widget-wrap"
+            fxLayout="column"
+            fxLayoutAlign="start"
+          >
+            <div class="elementor-image">
+              <!-- <img [src]="(hotelDetail?.images)[0]" alt="hotelDetail?.name" /> -->
+            </div>
+            <div>
+              <div class="hotel_title" fxLayout="row" fxLayoutGap="15px">
+                <h2
+                  [style.padding-right.px]="15"
+                  [style.border-right]="'1px solid'"
+                >
+                  <!-- {{ hotelDetail?.name }} -->
+                </h2>
+                <h2></h2>
+              </div>
+            </div>
+            <div
+              class="single_tour_attribute_wrapper themeborder"
+              fxLayout="row"
+              fxLayoutGap="15px"
+            >
+              <div class="one_fourth" fxFlex="33">
+                <fa-icon [icon]="faClock"></fa-icon>
+                <div class="tour_attribute_content">
+                  <!-- {{ tourDetail?.data.time }} -->
+                </div>
+              </div>
+
+              <div class="one_fourth" fxFlex="33">
+                <fa-icon [icon]="faDollarSign"></fa-icon>
+                <div class="tour_attribute_content">
+                  <!-- {{ tourDetail?.data.price | shortNumber }} -->
+                </div>
+              </div>
+
+              <div class="one_fourth last" fxFlex="33">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <div class="tour_attribute_content">
+                  <!-- <a href="{{ 'tel:' + hotelDetail?.phone }}"
+                    >SĐT: {{ hotelDetail?.phone }}</a
+                  > -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section [style.margin-top.px]="25">
+      <div class="elementor-row">
+        <div class="hotel_title">
+          <h2 [style.text-align]="'center'">
+            Menu
+          </h2>
+          <div class="menu">
+            <div class="hero-menu-item" style="height: 112px;">
+              <a href="images/menu/1.jpg" class="hero-menu-item-img image-popup"
+                ><img src="images/menu/thumbnails/1.jpg" alt=""
+              /></a>
+              <div class="hero-menu-item-title fl-wrap">
+                <h6>Soft shell crab</h6>
+                <div class="hmi-dec" style="left: 162px;"></div>
+                <span class="hero-menu-item-price">$29</span>
+                <div class="add_cart">Add To Cart</div>
+              </div>
+              <div class="hero-menu-item-details">
+                <p>
+                  Seasoned with an herb crust, served with au jus and handcarved
+                  to order.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- <h3 [style.text-align]="'start'">
+            Địa chỉ: {{ hotelDetail?.address }}
+          </h3> -->
+        </div>
+        <div class="elementor-widget-text-editor">
+          <!-- <div
+            class="elementor-widget-container"
+            [style.margin-top.px]="25"
+            [innerHtml]="hotelDetail?.content | sanitizeHtml"
+          >
+            <p>&nbsp;</p>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <section
+      class="elementor-element elementor-top-section"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <div class="hotel_title">
+        <h2>
+          Restaurant Gallery
+        </h2>
+      </div>
+    </section>
+    <section
+      class="elementor-element elementor-top-section"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <div class="elementor-top-column">
+        <ngx-image-gallery
+          [images]="hotelImages"
+          [conf]="conf"
+        ></ngx-image-gallery>
+        <div
+          class="gdlr-gallery-item gdlr-item"
+          fxLayout="row wrap"
+          fxLayoutGap="15px"
+          fxLayoutAlign="center"
+        >
+          <div
+            class="gallery-column four columns"
+            fxFlex="20"
+            *ngFor="let image of hotelImages; let i = index"
+          >
+            <a (click)="openGallery(i)" [style.cursor]="'pointer'"
+              ><img
+                [src]="image?.url"
+                alt="hotelDetail??.name"
+                style="opacity: 1;"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div fxFlex="10"></div>
+</div>

@@ -1,0 +1,98 @@
+<mat-card class="blog_area single-post-area section-padding">
+  <div class="single-post">
+    <div class="feature-img">
+      <mat-carousel
+        timings="400ms ease-in-out"
+        maxWidth="100%"
+        proportion="60"
+        [autoplay]="true"
+        interval="5000"
+        *ngIf="isBrowser"
+        [loop]="true"
+        [hideArrows]="false"
+        [hideIndicators]="false"
+        [useMouseWheel]="false"
+      >
+        <mat-carousel-slide
+          #matCarouselSlide
+          *ngFor="let slide of blogDetail?.data?.images; let i = index"
+          [image]="slide"
+          [hideOverlay]="false"
+        >
+        </mat-carousel-slide>
+      </mat-carousel>
+    </div>
+    <div class="blog_details">
+      <h2>
+        {{ blogDetail?.data?.title }}
+      </h2>
+      <ul class="blog-info-link mt-3 mb-4">
+        <li>
+          <a href="#">
+            <fa-icon [icon]="faUser"></fa-icon>
+            {{ blogDetail?.data?.user?.name }}
+          </a>
+        </li>
+        <li>
+          <!-- <a href="#"> <fa-icon [icon]="faComment"></fa-icon> 03 Comments </a> -->
+        </li>
+      </ul>
+      <div class="blog_content" fxLayout="column" fxLayoutAlign="center">
+        <div [innerHTML]="blogDetail?.data?.content | sanitizeHtml"></div>
+      </div>
+    </div>
+  </div>
+  <div class="navigation-top">
+    <div
+      class="d-sm-flex justify-content-between text-center"
+      [innerHTML]="fbLike | sanitizeHtml"
+    >
+      <p class="like-info">
+        <!-- <span class="align-middle">
+            <fa-icon [icon]="faHeart"></fa-icon>
+          </span>
+          Lily and 4 people like this -->
+      </p>
+      <div class="col-sm-4 text-center my-2 my-sm-0">
+        <p class="comment-count">
+          <span class="align-middle"><i class="fa fa-comment"></i></span>
+          {{ commentData?.count * 1 + countReply * 1 }}
+        </p>
+      </div>
+      <ul class="social-icons">
+        <li>
+          <a href="#">
+            <fa-icon [icon]="faFacebook"></fa-icon>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <fa-icon [icon]="faFacebookMessenger"></fa-icon>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="blog-author">
+    <div class="media align-items-center">
+      <img [src]="blogDetail?.user?.avatar" [alt]="blogDetail?.user?.avatar" />
+      <div class="media-body">
+        <a href="#">
+          <h4>{{ blogDetail?.user?.name }}</h4>
+        </a>
+        <p>
+          {{ blogDetail?.user?.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<mat-card>
+  <app-blog-comment
+    [blogId]="blogDetail?.data?._id"
+    fxLayout="column"
+    fxLayoutAlign="start"
+  >
+  </app-blog-comment>
+</mat-card>

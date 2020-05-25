@@ -14,18 +14,7 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./homepage/homepage.module').then(m => m.HomepageModule)
   },
-  {
-    path: 'lich-trinh', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule),
-    data: {
-      breadcrumb: 'Lịch trình',
-    },
-  },
-  {
-    path: 'tour', loadChildren: () => import('./tour/tour.module').then(m => m.TourModule),
-    data: {
-      breadcrumb: 'Tour',
-    },
-  },
+
   {
     path: 'o-dau', loadChildren: () => import('./estate/estate.module').then(m => m.EstateModule),
     data: {
@@ -37,6 +26,18 @@ const routes: Routes = [
     data: {
       breadcrumb: 'Ăn gì'
     }
+  },
+  {
+    path: 'lich-trinh', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule),
+    data: {
+      breadcrumb: 'Lịch trình',
+    },
+  },
+  {
+    path: 'tour', loadChildren: () => import('./tour/tour.module').then(m => m.TourModule),
+    data: {
+      breadcrumb: 'Tour',
+    },
   },
   {
     path: 'reviews', loadChildren: () => import('./user-review/user-review.module').then(m => m.UserReviewModule),
