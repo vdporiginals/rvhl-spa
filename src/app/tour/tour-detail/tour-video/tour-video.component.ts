@@ -8,13 +8,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class TourVideoComponent implements OnInit {
   player: YT.Player;
-  public idYoute = 'qDuKsiwS5xw';
+  idYoutube: any;
+  // public idYoute = 'qDuKsiwS5xw';
 
 
   constructor(private dialogRef: MatDialogRef<TourVideoComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    this.idYoute = this.data.link
+    this.idYoutube = this.data.link;
   }
 
   savePlayer(player) {

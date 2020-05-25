@@ -17,7 +17,7 @@ export class TourDetailResolve implements Resolve<any> {
     return isPlatformBrowser(this.platformId) ? this.http
       .get<any>(`${environment.apiUrl}/tours/${id}`, {
         params: {
-          select: 'title,description,images,seo,address,content,phone,customerNum,time,keywords',
+          select: 'title,description,images,seo,address,content,phone,customerNum,video,time,keywords',
           status: 'true'
         }
       }).pipe() : null;
