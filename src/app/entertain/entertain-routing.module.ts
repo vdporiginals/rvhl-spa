@@ -21,17 +21,15 @@ const routes: Routes = [
                 data: {
                     queryBanner: 'EntertainPage',
                 },
-                children: [
-                    {
-                        path: ':id/:seo',
-                        pathMatch: 'full',
-                        component: EntertainDetailComponent,
-                        data: { breadcrumb: '' },
-                        resolve: {
-                            entertainDetail: EntertainDetailResolve
-                        },
-                    },
-                ]
+            },
+            {
+                path: ':id/:seo',
+                pathMatch: 'full',
+                component: EntertainDetailComponent,
+                data: { breadcrumb: '' },
+                resolve: {
+                    entertainDetail: EntertainDetailResolve
+                },
             },
 
         ]

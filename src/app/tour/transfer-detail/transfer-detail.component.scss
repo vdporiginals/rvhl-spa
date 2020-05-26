@@ -12,7 +12,10 @@ table {
 
 .body {
   text-align: center;
-
+  img {
+    width: 100%;
+    height: auto;
+  }
   h1 {
     font-size: 40px;
     font-weight: 700;
@@ -60,7 +63,12 @@ a {
   -ms-transition: color 0.2s linear, background 0.1s linear, opacity 0.2s linear;
   -o-transition: color 0.2s linear, background 0.1s linear, opacity 0.2s linear;
   transition: color 0.2s linear, background 0.1s linear, opacity 0.2s linear;
-
+  @media #{$large_mobile} {
+    font-size: 11px;
+  }
+  @media #{$small_mobile} {
+    font-size: 9px;
+  }
   fa-icon {
     margin-right: 3px;
   }

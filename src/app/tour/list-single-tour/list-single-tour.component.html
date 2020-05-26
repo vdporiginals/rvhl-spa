@@ -9,6 +9,7 @@
               totalItems: count
             }
     "
+    [style.margin-bottom.px]="20"
     class="tour_list_wrapper"
     fxLayout="row"
     fxLayout.lt-md="column"
@@ -53,9 +54,8 @@
           &nbsp;<strong
             ><a href="{{ 'tel:' + tour.phone }}">{{ tour.phone }}</a></strong
           >
-          <fa-icon [icon]="faClock"></fa-icon>&nbsp;<strong>{{
-            tour.time
-          }}</strong>
+          <fa-icon [icon]="faClock" [style.margin-left.px]="15"></fa-icon
+          >&nbsp;<strong>{{ tour.time }}</strong>
         </div>
       </div>
     </div>

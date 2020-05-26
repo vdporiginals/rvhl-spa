@@ -1,8 +1,4 @@
 <button class="close" mat-button (click)="close()">X</button>
 <div mat-dialog-content fxLayout fxLayoutAlign="center center">
-  <youtube-player
-    [videoId]="idYoutube"
-    [height]="500"
-    [width]="900"
-  ></youtube-player>
+  <youtube-player fxFlex [videoId]="idYoutube"></youtube-player>
 </div>

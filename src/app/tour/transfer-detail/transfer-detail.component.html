@@ -36,7 +36,8 @@
       <a
         fxFlex="33"
         class="button_fade"
-        data-type="inline"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="center center"
         href="{{ 'tel:' + transferDetail?.data.phone }}"
         ><fa-icon [icon]="faPhone"></fa-icon>{{ transferDetail?.data.phone }}</a
       >
@@ -44,12 +45,18 @@
         fxFlex="33"
         class="button_fade"
         [style.cursor]="'default'"
-        data-type="inline"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="center center"
         ><fa-icon [icon]="faRoute"></fa-icon
         >{{ transferDetail?.data.locationStart }} -
         {{ transferDetail?.data.locationEnd }}</a
       >
-      <a fxFlex="33" class="button_fade" (click)="openGallery()"
+      <a
+        fxFlex="33"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="center center"
+        class="button_fade"
+        (click)="openGallery()"
         ><fa-icon [icon]="faCamera"></fa-icon>Xem ảnh</a
       >
     </div>

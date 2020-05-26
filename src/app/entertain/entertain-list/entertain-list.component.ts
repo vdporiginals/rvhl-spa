@@ -57,6 +57,7 @@ export class EntertainListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log(this.route.snapshot.data.entertainCategory);
     if (this.route.snapshot.data.entertainCategory) {
 
       this.categoryData = this.route.snapshot.data.entertainCategory;
@@ -74,6 +75,7 @@ export class EntertainListComponent implements OnInit, OnDestroy {
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
+      this.getEntertain(1);
 
       if (this.categoryId !== undefined) {
         this.getEntertain(1, this.categoryId);
@@ -105,28 +107,28 @@ export class EntertainListComponent implements OnInit, OnDestroy {
     let paramsApi;
     if (category) {
       paramsApi = {
-        select: 'title,description,schedule,images,seo,phone,price,time',
+        select: 'name,description,images,seo,phone,price,address',
         page,
         category,
         status: 'true',
         limit: '8',
       }
     } else if (sort) {
-      for (let propName in sort) {
+      for (const propName in sort) {
         if (sort[propName] === '' || sort[propName] === undefined) {
           delete sort[propName];
         }
       }
       paramsApi = sort;
       paramsApi.page = page;
-      paramsApi.select = 'title,description,schedule,images,phone,seo,price,time';
+      paramsApi.select = 'name,description,images,phone,seo,price,address';
     } else {
       paramsApi = {
-        select: 'title,description,schedule,phone,images,seo,price,time',
+        select: 'name,description,phone,images,seo,price,address',
         page,
         status: 'true',
         limit: '8',
-      }
+      };
     }
 
     this.subcription = this.http

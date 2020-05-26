@@ -1,9 +1,9 @@
 <div fxLayout="column" fxLayoutAlign="center">
   <div class="body">
-    <h1 fxLayoutAlign="start">{{ entertainDetail?.data.title }}</h1>
+    <h1 fxLayoutAlign="start">{{ entertainDetail?.data.name }}</h1>
     <img
       [src]="(entertainDetail?.data.images)[0]"
-      [alt]="entertainDetail?.data.title"
+      [alt]="entertainDetail?.data.name"
     />
     <div
       class="single_tour_attribute_wrapper themeborder"
@@ -28,8 +28,9 @@
       <a
         fxFlex="33"
         class="button_fade"
-        data-type="inline"
+        fxLayout.lt-md="column"
         href="{{ 'tel:' + entertainDetail?.data.phone }}"
+        fxLayoutAlign="center center"
         ><fa-icon [icon]="faPhone"></fa-icon
         >{{ entertainDetail?.data.phone }}</a
       >
@@ -38,10 +39,16 @@
         *ngIf="entertainDetail?.data.video"
         (click)="openVideo(entertainDetail?.data.video)"
         class="button_fade"
-        data-type="inline"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="center center"
         ><fa-icon [icon]="faPlay"></fa-icon>Xem Video Giới thiệu</a
       >
-      <a fxFlex="33" class="button_fade" (click)="openGallery()"
+      <a
+        fxLayout.lt-md="column"
+        fxLayoutAlign="center center"
+        fxFlex="33"
+        class="button_fade"
+        (click)="openGallery()"
         ><fa-icon [icon]="faCamera"></fa-icon>Xem ảnh</a
       >
     </div>

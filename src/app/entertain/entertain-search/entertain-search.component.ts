@@ -12,7 +12,7 @@ export class EntertainSearchComponent implements OnInit {
   constructor(public fb: FormBuilder, private shared: SharedDataService) {
 
     this.searchForm = this.fb.group({
-      title: [''],
+      name: [''],
       price: [''],
       status: true,
       // page: 1,

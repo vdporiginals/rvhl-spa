@@ -149,7 +149,7 @@ export class ApiService {
   getFilterEntertain(type?): Observable<any> {
     const recentEntertains = this.http.get<any>(`${environment.apiUrl}/${type}`, {
       params: {
-        select: 'title,images,seo,price,createdAt',
+        select: 'name,images,seo,price,createdAt',
         limit: '3',
         // status: 'true'
       }

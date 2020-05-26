@@ -1,1 +1,4 @@
-<p>entertain-video works!</p>
+<button class="close" mat-button (click)="close()">X</button>
+<div mat-dialog-content fxLayout="row" fxLayoutAlign="center center">
+  <youtube-player fxFlex [videoId]="idYoutube"></youtube-player>
+</div>

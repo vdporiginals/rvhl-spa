@@ -9,6 +9,7 @@
               totalItems: count
             }
     "
+    [style.margin-bottom.px]="20"
     class="tour_list_wrapper"
     fxLayout="row"
     fxLayout.lt-md="column"
@@ -18,7 +19,7 @@
         class="tour_image"
         [routerLink]="['/entertain', entertain._id, entertain.seo]"
       >
-        <img [src]="entertain.images[0]" [alt]="entertain.title" />
+        <img [src]="entertain.images[0]" [alt]="entertain.name" />
         <div class="tour_price has_discount">
           <span class="normal_price"
             >từ {{ entertain.price | shortNumber }}
@@ -31,7 +32,7 @@
       <a
         class="tour_link"
         [routerLink]="['/entertain', entertain._id, entertain.seo]"
-        ><h3>{{ entertain.title }}</h3></a
+        ><h3>{{ entertain.name }}</h3></a
       >
       <div class="tour_list_excerpt">
         {{ entertain.description | textOverflow: ["300", "..."] }}
@@ -49,9 +50,8 @@
               entertain.phone
             }}</a></strong
           >
-          <fa-icon [icon]="faMapMarked"></fa-icon>&nbsp;<strong>{{
-            entertain.address
-          }}</strong>
+          <fa-icon [style.margin-left.px]="15" [icon]="faMapMarked"></fa-icon
+          >&nbsp;<strong>{{ entertain.address }}</strong>
         </div>
       </div>
     </div>

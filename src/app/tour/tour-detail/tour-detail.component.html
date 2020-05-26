@@ -32,7 +32,8 @@
       <a
         fxFlex="33"
         class="button_fade"
-        data-type="inline"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="center center"
         href="{{ 'tel:' + tourDetail?.data.phone }}"
         ><fa-icon [icon]="faPhone"></fa-icon>{{ tourDetail?.data.phone }}</a
       >
@@ -40,10 +41,16 @@
         fxFlex="33"
         (click)="openVideo(tourDetail?.data.video)"
         class="button_fade"
-        data-type="inline"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="center center"
         ><fa-icon [icon]="faPlay"></fa-icon>Xem Video Reviews</a
       >
-      <a fxFlex="33" class="button_fade" (click)="openGallery()"
+      <a
+        fxFlex="33"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="center center"
+        class="button_fade"
+        (click)="openGallery()"
         ><fa-icon [icon]="faCamera"></fa-icon>Xem ảnh</a
       >
     </div>
