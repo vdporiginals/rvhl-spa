@@ -31,7 +31,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
   currentPage: number;
   isLoadingResults = true;
   count: number;
-  limit = 6;
+  limit = 8;
   isLastPage = false;
   isFirstPage = false;
   private subcription: Subscription;
@@ -118,7 +118,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
         page,
         category,
         status: 'true',
-        limit: '6',
+        limit: '8',
       }
     } else if (sort) {
       for (let propName in sort) {
@@ -136,14 +136,14 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
         page,
         position,
         status: 'true',
-        limit: '6',
+        limit: '8',
       }
     } else {
       paramsApi = {
         select: 'title,description,schedule,phone,images,seo,price,time',
         page,
         status: 'true',
-        limit: '6',
+        limit: '8',
       }
     }
 

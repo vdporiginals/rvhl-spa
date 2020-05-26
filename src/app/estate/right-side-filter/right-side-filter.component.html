@@ -9,7 +9,7 @@
       </li>
     </ul>
   </div>
-
+  <!-- 
   <div class="single_sidebar popular_post_widget">
     <h2 class="widget_title">Bài reviews mới nhất</h2>
     <div class="media post_item" *ngFor="let post of recentReviews?.data">
@@ -23,18 +23,23 @@
         <p>{{ post?.createdAt | date }}</p>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div
     [innerHTML]="(fbPlugin?.data)[0]?.fbPage | sanitizeHtml"
     class="fb_page"
   ></div>
 
+  <div
+    fxLayoutAlign="center center"
+    [style.margin-bottom.px]="10"
+    [innerHTML]="(fbPlugin?.data)[0]?.fbGroup | sanitizeHtml"
+  ></div>
   <h2 class="widgettitle">Chỗ ở mới đăng</h2>
   <div
     class="portfolio_type"
     *ngFor="let item of recentPost?.data"
-    [routerLink]="['/o-dau-ha-long', item._id, item.seo]"
+    [routerLink]="['/o-dau', item._id, item.seo]"
     style="cursor: pointer;"
     [style.background-image]="'url(' + (item?.images)[0] + ')'"
   >
@@ -43,7 +48,7 @@
       <div class="tour_price">
         {{ item?.price | shortNumber }}
       </div>
-      <a [routerLink]="['/o-dau-ha-long', item._id, item.seo]"
+      <a [routerLink]="['/o-dau', item._id, item.seo]"
         ><h5>{{ item?.name }}</h5></a
       >
     </div>

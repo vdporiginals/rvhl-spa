@@ -26,7 +26,7 @@ export class VillaComponent implements OnInit {
   currentPage: number;
   isLoadingResults = true;
   count: number;
-  limit = 6;
+  limit = 8;
   isLastPage = false;
   isFirstPage = false;
   categoryId;
@@ -123,7 +123,7 @@ export class VillaComponent implements OnInit {
         page,
         category,
         status: 'true',
-        limit: '6',
+        limit: '8',
       }
     } else if (sort) {
       for (let propName in sort) {

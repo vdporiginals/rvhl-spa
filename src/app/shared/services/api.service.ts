@@ -13,6 +13,7 @@ export class ApiService {
     const sliderArea = this.http.get(`${environment.apiUrl}/homepage/slider`, {
       params: {
         select: 'title,description,image',
+        sort: '-isPopular,-createdAt',
         limit: '3',
         status: 'true'
       }
@@ -25,17 +26,18 @@ export class ApiService {
         // status: 'false'
       }
     });
-    const popularFood = this.http.get(`${environment.apiUrl}/blogs`, {
+    const popularFood = this.http.get(`${environment.apiUrl}/restaurants`, {
       params: {
         select: 'seo,title,images,createdAt',
-        limit: '3',
-        position: 'Food',
-        // status: 'false'
+        sort: '-isPopular,-updatedAt',
+        limit: '6',
+        status: 'true',
       }
     });
     const popularHotel = this.http.get(`${environment.apiUrl}/homepage/popular-hotel`, {
       params: {
         select: 'name,address,images,phone,seo,time,price',
+        sort: '-isPopular,-updatedAt',
         limit: '2',
         status: 'true'
       }
@@ -44,13 +46,15 @@ export class ApiService {
       params: {
         select: 'title,address,images,phone,seo,time,price',
         limit: '6',
-        // status: 'true'
+        sort: '-isPopular,-updatedAt',
+        status: 'true'
       }
     });
     const recentBlogs = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
         select: 'title,description,images,seo,address,createdAt',
         limit: '4',
+        sort: '-isPopular,-updatedAt',
         status: 'true'
       }
     });
@@ -66,7 +70,7 @@ export class ApiService {
         select: 'name,address,images,phone,seo,time,price',
         limit: '2',
         status: 'true',
-        isPopular: 'true'
+        sort: '-isPopular,-updatedAt'
       }
     });
     const popularVilla = this.http.get(`${environment.apiUrl}/estates/villa`, {
@@ -74,6 +78,7 @@ export class ApiService {
         select: 'name,address,images,phone,seo,time,price',
         limit: '2',
         status: 'true',
+        sort: '-isPopular,-updatedAt',
         isPopular: 'true'
       }
     });
@@ -113,7 +118,11 @@ export class ApiService {
       }
     });
     const blogCategory = this.http.get<any>(`${environment.apiUrl}/blogs/category`);
-    const fbPlugin = this.http.get<any>(`${environment.apiUrl}/web-config`);
+    const fbPlugin = this.http.get<any>(`${environment.apiUrl}/web-config`, {
+      params: {
+        select: 'fbPage,fbGroup'
+      }
+    });
     // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
     return forkJoin([recentBlogs, blogCategory, fbPlugin]);
   }
@@ -129,18 +138,12 @@ export class ApiService {
     const tourCategory = this.http.get<any>(`${environment.apiUrl}/${type}/category`);
     const fbPlugin = this.http.get<any>(`${environment.apiUrl}/web-config`, {
       params: {
-        select: 'fbPage'
+        select: 'fbPage,fbGroup'
       }
     });
-    const recentReviews = this.http.get<any>(`${environment.apiUrl}/blogs`, {
-      params: {
-        select: 'title,images,seo,createdAt',
-        limit: '3',
-        // status: 'true'
-      }
-    });
+
     // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
-    return forkJoin([recentTours, tourCategory, fbPlugin, recentReviews]);
+    return forkJoin([recentTours, tourCategory, fbPlugin]);
   }
 
   getBannerPage(queryParams): Observable<any> {
@@ -176,17 +179,17 @@ export class ApiService {
     const estateCategory = this.http.get<any>(`${environment.apiUrl}/estates/category/${type}`);
     const fbPlugin = this.http.get<any>(`${environment.apiUrl}/web-config`, {
       params: {
-        select: 'fbPage'
+        select: 'fbPage,fbGroup'
       }
     });
-    const recentReviews = this.http.get<any>(`${environment.apiUrl}/blogs`, {
-      params: {
-        select: 'title,images,seo,createdAt',
-        limit: '3',
-        // status: 'true'
-      }
-    });
-    return forkJoin([recentPost, estateCategory, fbPlugin, recentReviews]);
+    // const recentReviews = this.http.get<any>(`${environment.apiUrl}/blogs`, {
+    //   params: {
+    //     select: 'title,images,seo,createdAt',
+    //     limit: '3',
+    //     // status: 'true'
+    //   }
+    // });
+    return forkJoin([recentPost, estateCategory, fbPlugin]);
   }
 
   getFbPlugin(select): Observable<any> {

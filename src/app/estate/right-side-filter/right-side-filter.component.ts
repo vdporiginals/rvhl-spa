@@ -53,7 +53,6 @@ export class RightSideFilterComponent implements OnInit, OnDestroy {
         this.recentPost = res[0];
         this.estateCategory = res[1];
         this.fbPlugin = res[2];
-        this.recentReviews = res[3];
         this.isLoadingResults = true;
       }, err => {
         console.log(err);

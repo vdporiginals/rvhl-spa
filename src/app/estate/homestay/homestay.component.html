@@ -41,7 +41,7 @@
       <div class="gdlr-room-content-wrapper" fxFlex="66" fxFlex.lt-md="100">
         <h3 class="gdlr-room-title">
           <a
-            [routerLink]="['/o-dau-ha-long', 'homestay', hotel._id, hotel.seo]"
+            [routerLink]="['/o-dau', 'homestay', hotel._id, hotel.seo]"
             routerLinkActive="router-link-active"
             >{{ hotel.name }}</a
           >
@@ -67,7 +67,7 @@
         </div>
         <a
           class="gdlr-button with-border"
-          [routerLink]="['/o-dau-ha-long', 'khach-san', hotel._id, hotel.seo]"
+          [routerLink]="['/o-dau', 'khach-san', hotel._id, hotel.seo]"
           >Xem chi tiết <fa-icon [icon]="faLongArrowAltRight"></fa-icon
         ></a>
         <div class="gdlr-room-price" [style.float]="'right'" fxFlexAlign="end">

@@ -17,8 +17,8 @@
     </div>
   </div>
   <div fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="center center">
-    <div
-      *ngFor="let schedule of popularScheduleData"
+    <!-- <div
+      *ngFor="let food of popularScheduleData"
       fxFlex="65%"
       fxFlex.gt-sm="24%"
       fxFlex.md="40%"
@@ -33,7 +33,7 @@
           </a>
         </div>
       </div>
-    </div>
+    </div> -->
     <div
       *ngFor="let food of popularFoodData"
       fxFlex="65%"
@@ -45,7 +45,7 @@
           <img [src]="(food?.images)[0]" [alt]="food.title" />
         </div>
         <div class="content" fxLayoutAlign="center center">
-          <a [routerLink]="['/reviews', food?._id, food?.seo]">
+          <a [routerLink]="['/an-gi', food?._id, food?.seo]">
             {{ food?.title }}
           </a>
         </div>
@@ -54,7 +54,7 @@
   </div>
   <div fxFlex>
     <div class="more_place_btn text-center">
-      <a class="boxed-btn4" [routerLink]="['/reviews']">Xem thêm</a>
+      <a class="boxed-btn4" [routerLink]="['/an-gi']">Xem thêm</a>
     </div>
   </div>
 </div>

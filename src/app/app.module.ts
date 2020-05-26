@@ -1,6 +1,7 @@
 import {
   BrowserModule,
-  HammerModule
+  HammerModule,
+  HAMMER_GESTURE_CONFIG
 } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +38,7 @@ import { SubMenuComponent } from './layout/header/nav-item/sub-menu/sub-menu.com
 import { ContactPageComponent } from './layout/contact-page/contact-page.component';
 import { MyLoaderComponent } from './layout/my-loader/my-loader.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { MatCarouselHammerConfig } from '@ngmodule/material-carousel';
 
 const config = new AuthServiceConfig([
   {
@@ -113,6 +115,10 @@ export function provideConfig() {
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+    },
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: MatCarouselHammerConfig
     },
     // {
     //   provide: APP_INITIALIZER,

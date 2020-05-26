@@ -11,46 +11,27 @@ const routes: Routes = [
     component: BlogsComponent,
     children: [
       {
-        path: 'lich-trinh',
+        path: '',
         component: BlogListComponent,
+        pathMatch: 'full',
+        resolve: {
+          blogCategory: BlogResolve
+        },
         data: {
           queryBanner: 'SchedulePage',
           breadcrumb: 'Lịch trình',
           position: 'Schedule'
         },
-
-        resolve: {
-          blogCategory: BlogResolve
-        },
-      },
-      {
-        path: 'an-gi',
-        component: BlogListComponent,
-        data: { breadcrumb: 'Ăn gì', position: 'Food', queryBanner: 'FoodPage' },
-        resolve: {
-          blogCategory: BlogResolve
-        },
-      },
-      {
-        path: '',
-        component: BlogListComponent,
-        data: {
-          queryBanner: 'SchedulePage',
-        },
-        resolve: {
-          blogCategory: BlogResolve,
-        },
       },
       {
         path: ':id/:seo',
+        pathMatch: 'full',
         component: BlogDetailComponent,
-        data: {
-          breadcrumb: '',
-        },
+        data: { breadcrumb: '' },
         resolve: {
           blogpost: BlogPostResolve
-        }
-      }
+        },
+      },
     ]
   },
 ];

@@ -43,6 +43,11 @@
     class="fb_page"
   ></div>
 
+  <div
+    [innerHTML]="(fbPlugin?.data)[0]?.fbGroup | sanitizeHtml"
+    class="fb_page"
+  ></div>
+
   <h2 class="widgettitle">Tours mới nhất</h2>
   <div
     class="portfolio_type"

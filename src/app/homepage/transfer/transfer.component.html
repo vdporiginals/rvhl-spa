@@ -23,13 +23,13 @@
             [formControl]="queryField"
             type="text"
             [matAutocomplete]="auto"
-            placeholder="Tìm kiếm reviews"
+            placeholder="Tìm kiếm lịch trình"
             color="primary"
           />
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option
               *ngFor="let result of results"
-              [routerLink]="['/reviews', result._id, result.seo]"
+              [routerLink]="['/lich-trinh', result._id, result.seo]"
             >
               {{ result.title }}</mat-option
             >

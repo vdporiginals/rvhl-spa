@@ -1,36 +1,36 @@
 export const NavItem = [
-  {
-    label: 'Trang chủ',
-    link: 'home'
-  },
+  // {
+  //   label: 'Trang chủ',
+  //   link: 'home'
+  // },
   {
     label: 'Ăn Gì',
-    link: 'reviews/an-gi',
+    link: 'an-gi',
     paramsPage: { page: 'FoodPage' },
   },
   {
     label: 'Vui chơi',
     link: 'vui-choi',
-    paramsPage: { page: 'PlayPage' },
+    paramsPage: { page: 'EntertainPage' },
   },
   {
     label: 'Ở đâu',
-    link: 'o-dau-ha-long/khach-san',
+    link: 'o-dau/khach-san',
     paramsPage: { page: 'HotelPage' },
     subItems: [
       {
         label: 'Khách sạn',
-        link: 'o-dau-ha-long/khach-san',
+        link: 'o-dau/khach-san',
         paramsPage: { page: 'HotelPage' },
       },
       {
         label: 'Homestay',
-        link: 'o-dau-ha-long/homestay',
+        link: 'o-dau/homestay',
         paramsPage: { page: 'HomestayPage' },
       },
       {
         label: 'Villa',
-        link: 'o-dau-ha-long/villa',
+        link: 'o-dau/villa',
         paramsPage: { page: 'VillaPage' },
       }
     ]

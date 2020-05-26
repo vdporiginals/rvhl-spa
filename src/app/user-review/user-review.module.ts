@@ -18,10 +18,12 @@ import { UserReviewDetailComponent } from './user-review-detail/user-review-deta
 import { UserReviewListComponent } from './user-review-list/user-review-list.component';
 import { UserReviewFilterComponent } from './user-review-filter/user-review-filter.component';
 import { UserReviewCommentComponent } from './user-review-comment/user-review-comment.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
         CommonModule,
+        RouterModule,
         MatButtonModule,
         MatCardModule,
         MatInputModule,
@@ -35,7 +37,12 @@ import { UserReviewCommentComponent } from './user-review-comment/user-review-co
         ReactiveFormsModule,
         MatCarouselModule.forRoot(),
     ],
-    declarations: [UserReviewComponent, UserReviewDetailComponent, UserReviewListComponent, UserReviewFilterComponent, UserReviewCommentComponent],
+    declarations: [
+        UserReviewComponent,
+        UserReviewDetailComponent,
+        UserReviewListComponent,
+        UserReviewFilterComponent,
+        UserReviewCommentComponent],
     exports: [
         FlexLayoutModule
     ],
