@@ -27,6 +27,18 @@ export class NavSocialComponent implements OnInit {
     public router: Router,
     private sharedData: SharedDataService) { }
 
+  ngOnInit(): void {
+    this.sharedData.isLogged.subscribe((isLogged) => {
+      const hasLogin = this.localStorage.getItem('access_token');
+      if (hasLogin === null || hasLogin === undefined) {
+        this.isLoggin = isLogged;
+      } else {
+        this.isLoggin = true;
+        this.userName = JSON.parse(hasLogin).user;
+      }
+    });
+  }
+
   loginDialog() {
     this.dialog.open(LoginComponent);
   }
@@ -41,15 +53,4 @@ export class NavSocialComponent implements OnInit {
     this.sharedData.setLogged(false);
   }
 
-  ngOnInit(): void {
-    this.sharedData.isLogged.subscribe((isLogged) => {
-      const hasLogin = this.localStorage.getItem('access_token');
-      if (hasLogin === null || hasLogin === undefined) {
-        this.isLoggin = isLogged;
-      } else {
-        this.isLoggin = true;
-        this.userName = JSON.parse(hasLogin).user;
-      }
-    });
-  }
 }

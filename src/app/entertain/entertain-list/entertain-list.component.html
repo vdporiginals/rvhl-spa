@@ -1,1 +1,121 @@
-<p>entertain-list works!</p>
+<div fxLayout="column">
+  <div
+    *ngFor="
+      let entertain of entertainData.data
+        | paginate
+          : {
+              itemsPerPage: limit,
+              currentPage: currentPage,
+              totalItems: count
+            }
+    "
+    class="tour_list_wrapper"
+    fxLayout="row"
+    fxLayout.lt-md="column"
+  >
+    <div class="one_third" fxFlex="33" fxFlex.lt-md="100">
+      <a
+        class="tour_image"
+        [routerLink]="['/entertain', entertain._id, entertain.seo]"
+      >
+        <img [src]="entertain.images[0]" [alt]="entertain.title" />
+        <div class="tour_price has_discount">
+          <span class="normal_price"
+            >từ {{ entertain.price | shortNumber }}
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <div class="two_third last" fxFlex="67" fxFlex.lt-md="100">
+      <a
+        class="tour_link"
+        [routerLink]="['/entertain', entertain._id, entertain.seo]"
+        ><h3>{{ entertain.title }}</h3></a
+      >
+      <div class="tour_list_excerpt">
+        {{ entertain.description | textOverflow: ["300", "..."] }}
+      </div>
+
+      <div class="tour_attribute_wrapper">
+        <div
+          class="tour_attribute_rating_count"
+          fxlayout="row"
+          fxLayoutGap="10px"
+        >
+          <fa-icon [icon]="faPhone"> </fa-icon>
+          &nbsp;<strong
+            ><a href="{{ 'tel:' + entertain.phone }}">{{
+              entertain.phone
+            }}</a></strong
+          >
+          <fa-icon [icon]="faMapMarked"></fa-icon>&nbsp;<strong>{{
+            entertain.address
+          }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-template
+    class="blog-pagination justify-content-center"
+    #p="paginationApi"
+    (pageChange)="pageChange.emit($event)"
+  >
+    <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
+      <div>
+        <li class="page-item">
+          <a
+            class="page-link"
+            aria-label="Previous"
+            (click)="getEntertain(currentPage - 1, categoryId, sortData)"
+            *ngIf="!isFirstPage"
+          >
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
+          <a
+            class="page-link disabled"
+            aria-label="Previous"
+            *ngIf="isFirstPage"
+          >
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
+        </li>
+      </div>
+
+      <div
+        *ngFor="let page of p.pages"
+        [class.current]="p.getCurrent() === page.value"
+      >
+        <li class="page-item">
+          <a
+            class="page-link"
+            [class.disabled]="p.getCurrent() === page.value"
+            *ngIf="p.getCurrent() === page.value"
+            >{{ page.label }}</a
+          >
+          <a
+            class="page-link"
+            (click)="getEntertain(page.value, categoryId, sortData)"
+            *ngIf="p.getCurrent() !== page.value"
+            >{{ page.label }}</a
+          >
+        </li>
+      </div>
+      <div>
+        <li class="page-item">
+          <a
+            class="page-link"
+            aria-label="Next"
+            (click)="getEntertain(currentPage + 1, categoryId, sortData)"
+            *ngIf="!isLastPage"
+          >
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+          <a class="page-link disabled" aria-label="Next" *ngIf="isLastPage">
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+        </li>
+      </div>
+    </ul>
+  </pagination-template>
+</div>

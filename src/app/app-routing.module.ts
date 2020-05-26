@@ -28,6 +28,12 @@ const routes: Routes = [
     }
   },
   {
+    path: 'entertain', loadChildren: () => import('./entertain/entertain.module').then(m => m.EntertainModule),
+    data: {
+      breadcrumb: 'Chơi đâu vui'
+    }
+  },
+  {
     path: 'lich-trinh', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule),
     data: {
       breadcrumb: 'Lịch trình',

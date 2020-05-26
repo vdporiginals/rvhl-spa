@@ -1,5 +1,6 @@
 
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
@@ -15,6 +16,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   imports: [
+    CommonModule,
     FlexLayoutModule,
     MatFormFieldModule,
     MatCardModule,

@@ -1,1 +1,53 @@
-<p>entertain-filter works!</p>
+<div class="blog_right_sidebar">
+  <div class="single_sidebar">
+    <h2 class="widget_title">Lọc theo Danh mục</h2>
+    <ul class="list cat-list">
+      <li *ngFor="let category of entertainCategory?.data">
+        <a
+          *ngIf="isDetail === false"
+          [style.cursor]="'pointer'"
+          (click)="filter(category._id)"
+          class="d-flex"
+        >
+          <p>{{ category?.name }}</p>
+        </a>
+        <a
+          *ngIf="isDetail === true"
+          [style.cursor]="'pointer'"
+          (click)="filterIsDetail(category._id)"
+          class="d-flex"
+        >
+          <p>{{ category?.name }}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div
+    [innerHTML]="(fbPlugin?.data)[0]?.fbPage | sanitizeHtml"
+    class="fb_page"
+  ></div>
+
+  <div
+    [innerHTML]="(fbPlugin?.data)[0]?.fbGroup | sanitizeHtml"
+    class="fb_page"
+  ></div>
+
+  <h2 class="widgettitle">Nơi giải trí mới nhất</h2>
+  <div
+    class="portfolio_type"
+    *ngFor="let entertain of recentPost?.data"
+    [routerLink]="['/entertain', entertain._id, entertain.seo]"
+    style="cursor: pointer;"
+    [style.background-image]="'url(' + (entertain?.images)[0] + ')'"
+  >
+    <div class="portfolio_info_wrapper">
+      <div class="tour_price">
+        từ &nbsp;{{ entertain?.price | shortNumber }}
+      </div>
+      <a [routerLink]="['/entertain', entertain._id, entertain.seo]"
+        ><h5>{{ entertain?.title }}</h5></a
+      >
+    </div>
+  </div>
+</div>

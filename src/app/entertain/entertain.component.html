@@ -1,1 +1,18 @@
-<p>entertain works!</p>
+<section>
+  <app-breadcrumb></app-breadcrumb>
+</section>
+<app-entertain-search
+  *ngIf="isEntertainPage === true && isDetail === false"
+></app-entertain-search>
+<section fxLayout="row" class="section-padding">
+  <div fxFlex="10"></div>
+  <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+    <div fxFlex="72" fxFlex.lt-md="80">
+      <router-outlet></router-outlet>
+    </div>
+    <div fxFlex="27" fxFlex.lt-md="80" class="filter">
+      <app-entertain-filter></app-entertain-filter>
+    </div>
+  </div>
+  <div fxFlex="10"></div>
+</section>

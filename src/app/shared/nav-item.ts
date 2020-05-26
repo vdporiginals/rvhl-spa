@@ -4,16 +4,6 @@ export const NavItem = [
   //   link: 'home'
   // },
   {
-    label: 'Ăn Gì',
-    link: 'an-gi',
-    paramsPage: { page: 'FoodPage' },
-  },
-  {
-    label: 'Vui chơi',
-    link: 'vui-choi',
-    paramsPage: { page: 'EntertainPage' },
-  },
-  {
     label: 'Ở đâu',
     link: 'o-dau/khach-san',
     paramsPage: { page: 'HotelPage' },
@@ -36,6 +26,23 @@ export const NavItem = [
     ]
   },
   {
+    label: 'Ăn Gì',
+    link: 'an-gi',
+    paramsPage: { page: 'FoodPage' },
+  },
+
+  {
+    label: 'Lịch Trình',
+    link: 'lich-trinh',
+    paramsPage: { page: 'SchedulePage' },
+  },
+  {
+    label: 'Vui chơi',
+    link: 'entertain',
+    paramsPage: { page: 'EntertainPage' },
+  },
+
+  {
     label: 'Tour',
     link: 'tour/ha-long-bay-tour',
     paramsPage: { page: 'TourCruisePage' },
@@ -56,11 +63,6 @@ export const NavItem = [
         paramsPage: { page: 'TourAllPage' },
       }
     ]
-  },
-  {
-    label: 'Lịch Trình',
-    link: 'lich-trinh',
-    paramsPage: { page: 'SchedulePage' },
   },
   {
     label: 'Review',

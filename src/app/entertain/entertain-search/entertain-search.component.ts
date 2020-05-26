@@ -3,11 +3,11 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 
 @Component({
-  selector: 'app-tour-search',
-  templateUrl: './tour-search.component.html',
-  styleUrls: ['./tour-search.component.scss']
+  selector: 'app-entertain-search',
+  templateUrl: './entertain-search.component.html',
+  styleUrls: ['./entertain-search.component.scss']
 })
-export class TourSearchComponent implements OnInit {
+export class EntertainSearchComponent implements OnInit {
   searchForm: FormGroup;
   constructor(public fb: FormBuilder, private shared: SharedDataService) {
 

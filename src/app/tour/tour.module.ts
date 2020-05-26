@@ -29,7 +29,6 @@ import { TransferDetailComponent } from './transfer-detail/transfer-detail.compo
 import { TourRightSideComponent } from './tour-right-side/tour-right-side.component';
 import { TourSearchComponent } from './tour-search/tour-search.component';
 import { TransferSearchComponent } from './transfer-search/transfer-search.component';
-import { GalleryAppComponent } from './tour-detail/gallery.component';
 import { TourVideoComponent } from './tour-detail/tour-video/tour-video.component';
 @NgModule({
   imports: [
@@ -64,7 +63,6 @@ import { TourVideoComponent } from './tour-detail/tour-video/tour-video.componen
     TransferDetailComponent,
     TourRightSideComponent,
     TourSearchComponent,
-    GalleryAppComponent,
     TransferSearchComponent,
     TourVideoComponent
   ],

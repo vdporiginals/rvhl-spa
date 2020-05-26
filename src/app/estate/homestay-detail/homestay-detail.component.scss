@@ -6,7 +6,28 @@
     width: 100%;
   }
 }
-
+.imglast {
+  opacity: 0.3;
+}
+.img {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: relative;
+  width: 100%;
+  height: auto;
+  img {
+    width: 100%;
+  }
+  .overlay {
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    color: #e3b04b;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
 .gallery-column {
   a {
     img {
@@ -15,7 +36,6 @@
     }
   }
 }
-
 .price_hotel {
   h2 {
     color: #212121;
@@ -83,17 +103,17 @@
   border-right: 1px solid;
 }
 
-::ng-deep.mat-form-field-underline {
+.mat-form-field-underline {
   /*change color of underline*/
   background-color: #e3b04b !important;
 }
 
-::ng-deep.mat-form-field-ripple {
+.mat-form-field-ripple {
   /*change color of underline when focused*/
   background-color: #e3b04b !important;
 }
 
-::ng-deep.mat-form-field-appearance-legacy .mat-form-field-label {
+.mat-form-field-appearance-legacy .mat-form-field-label {
   color: $heading-color !important;
 }
 

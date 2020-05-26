@@ -9,22 +9,6 @@
       </li>
     </ul>
   </div>
-  <!-- 
-  <div class="single_sidebar popular_post_widget">
-    <h2 class="widget_title">Bài reviews mới nhất</h2>
-    <div class="media post_item" *ngFor="let post of recentReviews?.data">
-      <img [src]="(post?.images)[0]" [alt]="post?.title" />
-      <div class="media-body">
-        <a [routerLink]="['/reviews', post?._id, post?.seo]">
-          <h3>
-            {{ post?.title | textOverflow: ["35", "..."] }}
-          </h3>
-        </a>
-        <p>{{ post?.createdAt | date }}</p>
-      </div>
-    </div>
-  </div> -->
-
   <div
     [innerHTML]="(fbPlugin?.data)[0]?.fbPage | sanitizeHtml"
     class="fb_page"

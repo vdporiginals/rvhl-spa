@@ -146,6 +146,25 @@ export class ApiService {
     return forkJoin([recentTours, tourCategory, fbPlugin]);
   }
 
+  getFilterEntertain(type?): Observable<any> {
+    const recentEntertains = this.http.get<any>(`${environment.apiUrl}/${type}`, {
+      params: {
+        select: 'title,images,seo,price,createdAt',
+        limit: '3',
+        // status: 'true'
+      }
+    });
+    const entertainCategory = this.http.get<any>(`${environment.apiUrl}/${type}/category`);
+    const fbPlugin = this.http.get<any>(`${environment.apiUrl}/web-config`, {
+      params: {
+        select: 'fbPage,fbGroup'
+      }
+    });
+
+    // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
+    return forkJoin([recentEntertains, entertainCategory, fbPlugin]);
+  }
+
   getBannerPage(queryParams): Observable<any> {
     const bannerPage = this.http.get(`${environment.apiUrl}/advertises`, {
       params: {

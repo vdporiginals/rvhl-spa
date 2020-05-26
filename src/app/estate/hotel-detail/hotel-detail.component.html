@@ -8,7 +8,12 @@
         fxLayoutGap="10px"
         fxLayout.lt-md="column"
       >
-        <div class="elementor-top-column" fxFlex="74" fxFlex.lt-md="100">
+        <div
+          class="elementor-top-column"
+          fxFlex="74"
+          fxFlex.lt-md="100"
+          fxFlex.gt-md="55"
+        >
           <div
             class="elementor-widget-wrap"
             fxLayout="column"
@@ -134,7 +139,7 @@
             </div>
           </div>
         </div>
-        <div fxFlex="25" fxFlex.lt-md="100">
+        <div fxFlex="25" fxFlex.lt-md="100" fxFlex.gt-md="55">
           <div>
             <div class="text_hotel">
               <h2>
@@ -288,12 +293,22 @@
             fxFlex="20"
             *ngFor="let image of hotelImages; let i = index"
           >
-            <a (click)="openGallery(i)" [style.cursor]="'pointer'"
+            <a (click)="openGallery(i)" [style.cursor]="'pointer'" *ngIf="i < 4"
               ><img
                 [src]="image?.url"
                 alt="hotelDetail??.name"
                 style="opacity: 1;"
             /></a>
+            <div
+              class="img"
+              [style.cursor]="'pointer'"
+              *ngIf="i === 4"
+              (click)="openGallery(i)"
+            >
+              <img class="imglast" [src]="image?.url" alt="hotelDetail?.name" />
+              <span class="overlay"> +{{ hotelImages?.length - (i + 1) }}</span>
+            </div>
+            <a> </a>
           </div>
         </div>
       </div>

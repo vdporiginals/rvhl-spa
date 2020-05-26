@@ -9,12 +9,15 @@ export class SharedDataService {
   private estateCategory: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private tourCategory: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private transferCategory: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private entertainCategory: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
   private searchForm: BehaviorSubject<object> = new BehaviorSubject<object>({});
   private searchEstate: BehaviorSubject<object> = new BehaviorSubject<object>({});
   private transferForm: BehaviorSubject<object> = new BehaviorSubject<object>({});
   private isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLogged = this.isLoggedIn.asObservable();
   categoryIdd = this.categoryId.asObservable();
+  entertainCategoryId = this.entertainCategory.asObservable();
   transferCategoryId = this.transferCategory.asObservable();
   estateCategoryId = this.estateCategory.asObservable();
   tourCategoryId = this.tourCategory.asObservable();
@@ -25,6 +28,9 @@ export class SharedDataService {
 
   setCategoryId = (val: string) => {
     this.categoryId.next(val);
+  }
+  setEntertainCategory = (val: string) => {
+    this.entertainCategory.next(val);
   }
 
   setTransferCategory = (val: string) => {

@@ -1,1 +1,60 @@
-<p>entertain-detail works!</p>
+<div fxLayout="column" fxLayoutAlign="center">
+  <div class="body">
+    <h1 fxLayoutAlign="start">{{ entertainDetail?.data.title }}</h1>
+    <img
+      [src]="(entertainDetail?.data.images)[0]"
+      [alt]="entertainDetail?.data.title"
+    />
+    <div
+      class="single_tour_attribute_wrapper themeborder"
+      fxLayout="row"
+      fxLayoutGap="15px"
+    >
+      <div class="one_fourth" fxFlex="50">
+        <fa-icon [icon]="faMapMarked"></fa-icon>
+        <div class="tour_attribute_content">
+          {{ entertainDetail?.data.address }}
+        </div>
+      </div>
+
+      <div class="one_fourth" fxFlex="50">
+        <fa-icon [icon]="faDollarSign"></fa-icon>
+        <div class="tour_attribute_content">
+          từ &nbsp;{{ entertainDetail?.data.price | shortNumber }}
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;" fxLayout="row" fxLayoutGap="15px">
+      <a
+        fxFlex="33"
+        class="button_fade"
+        data-type="inline"
+        href="{{ 'tel:' + entertainDetail?.data.phone }}"
+        ><fa-icon [icon]="faPhone"></fa-icon
+        >{{ entertainDetail?.data.phone }}</a
+      >
+      <a
+        fxFlex="33"
+        *ngIf="entertainDetail?.data.video"
+        (click)="openVideo(entertainDetail?.data.video)"
+        class="button_fade"
+        data-type="inline"
+        ><fa-icon [icon]="faPlay"></fa-icon>Xem Video Giới thiệu</a
+      >
+      <a fxFlex="33" class="button_fade" (click)="openGallery()"
+        ><fa-icon [icon]="faCamera"></fa-icon>Xem ảnh</a
+      >
+    </div>
+
+    <ngx-image-gallery
+      [images]="entertainImages"
+      [conf]="conf"
+    ></ngx-image-gallery>
+    <div class="content" fxLayout="column">
+      <div class="description">
+        {{ entertainDetail?.data.description }}
+      </div>
+      <div [innerHtml]="entertainDetail?.data.content | sanitizeHtml"></div>
+    </div>
+  </div>
+</div>

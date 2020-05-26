@@ -1,6 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="center">
   <div class="body">
     <h1 fxLayoutAlign="start">{{ tourDetail?.data.title }}</h1>
+    <img [src]="(tourDetail?.data.images)[0]" [alt]="tourDetail?.data.title" />
     <div
       class="single_tour_attribute_wrapper themeborder"
       fxLayout="row"
@@ -16,7 +17,7 @@
       <div class="one_fourth" fxFlex="33">
         <fa-icon [icon]="faDollarSign"></fa-icon>
         <div class="tour_attribute_content">
-          {{ tourDetail?.data.price | shortNumber }}
+          từ &nbsp;{{ tourDetail?.data.price | shortNumber }}
         </div>
       </div>
 

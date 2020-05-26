@@ -1,6 +1,11 @@
 <div fxLayout="column" fxLayoutAlign="center">
   <div class="body">
     <h1 fxLayoutAlign="start">{{ transferDetail?.data.name }}</h1>
+    <img
+      [src]="(transferDetail?.data.images)[0]"
+      [alt]="transferDetail?.data.name"
+    />
+
     <div
       class="single_tour_attribute_wrapper themeborder"
       fxLayout="row"
