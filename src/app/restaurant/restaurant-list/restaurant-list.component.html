@@ -23,18 +23,15 @@
     >
       <div class="gdlr-room-thumbnail" fxFlex="33" fxFlex.lt-md="100">
         <div class="gdlr-thumbnail-gallery">
-          <a><img [src]="restaurant.images[0].url" alt="restaurant.name" /> </a>
+          <a
+            ><img [src]="restaurant.gallery[0].url" [alt]="restaurant.name" />
+          </a>
         </div>
       </div>
       <div class="gdlr-room-content-wrapper" fxFlex="66" fxFlex.lt-md="100">
         <h3 class="gdlr-room-title">
           <a
-            [routerLink]="[
-              '/o-dau',
-              'khach-san',
-              restaurant._id,
-              restaurant.seo
-            ]"
+            [routerLink]="['/an-gi', restaurant._id, restaurant.seo]"
             routerLinkActive="router-link-active"
             >{{ restaurant.name }}</a
           >

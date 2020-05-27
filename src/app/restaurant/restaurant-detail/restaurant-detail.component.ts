@@ -1,16 +1,12 @@
 import { Component, OnInit, ViewChild, Optional, Inject, PLATFORM_ID } from '@angular/core';
-import { faPhone, faPlay, faUser, faDollarSign, faClock, faCamera } from '@fortawesome/free-solid-svg-icons';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { faPhone, faSearch, faPlay, faUser, faDollarSign, faClock, faCamera } from '@fortawesome/free-solid-svg-icons';
 import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
 import { ActivatedRoute } from '@angular/router';
 import { SeoService } from 'src/app/shared/services/seo.service';
-import { NotificationService } from 'src/app/shared/services/notification.service';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { MatDialog } from '@angular/material/dialog';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { LoginComponent } from 'src/app/layout/user/login/login.component';
+import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -19,14 +15,15 @@ import { LoginComponent } from 'src/app/layout/user/login/login.component';
 })
 export class RestaurantDetailComponent implements OnInit {
   restaurantDetail;
-  tbData: any = [];
   isBrowser: boolean;
   faPhone = faPhone;
   faPlay = faPlay;
-  faUser = faUser; faDollarSign = faDollarSign; faClock = faClock;
+  faUser = faUser;
+  faSearch = faSearch;
+  faDollarSign = faDollarSign;
+  faClock = faClock;
   faCamera = faCamera;
-  hotelImages: Array<any> = [];
-  checkAvaiForm: FormGroup;
+  restaurantImages: Array<any> = [];
   @ViewChild(NgxImageGalleryComponent) ngxImageGallery: NgxImageGalleryComponent;
   conf: GALLERY_CONF = {
     imageOffset: '0px',
@@ -37,31 +34,16 @@ export class RestaurantDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private seo: SeoService,
-    private noti: NotificationService,
-    private api: ApiService,
-    private dialog: MatDialog,
+    private imageDialog: ImageOverlayService,
     @Optional() @Inject(REQUEST) private request,
-    private localStorage: LocalStorageService,
-    public fb: FormBuilder,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-    this.checkAvaiForm = this.fb.group({
-      checkIn: ['', Validators.required],
-      checkOut: ['', Validators.required],
-      customerLog: [''],
-      roomCategory: [''],
-      phone: ['', Validators.required],
-      onEstate: 'Hotel',
-      roomId: [''],
-      night: [''],
-      peopleNum: ['']
-    });
   }
 
   ngOnInit(): void {
-    if (this.route.snapshot.data.estateDetail) {
-      this.restaurantDetail = this.route.snapshot.data.estateDetail.data;
-      this.hotelImages = this.route.snapshot.data.estateDetail.data.images.map(val => ({ url: val, thumbnailUrl: val }));
+    if (this.route.snapshot.data.restaurantDetail) {
+      this.restaurantDetail = this.route.snapshot.data.restaurantDetail.data;
+      this.restaurantImages = this.route.snapshot.data.restaurantDetail.data.gallery.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.restaurantDetail.name);
         this.seo.setDescription(this.restaurantDetail.description);
@@ -75,26 +57,6 @@ export class RestaurantDetailComponent implements OnInit {
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
-      this.checkAvaiForm.patchValue({
-        roomCategory: this.restaurantDetail.category,
-        roomId: this.restaurantDetail._id
-      });
-    }
-  }
-
-  sendCustomerRequest() {
-    const token = JSON.parse(this.localStorage.getItem('access_token'));
-    if (token === null || token === undefined) {
-      this.noti.showWarning('Bạn cần đăng nhập!', 'Yêu cầu thất bại');
-      this.dialog.open(LoginComponent);
-    } else if (this.checkAvaiForm.invalid) {
-      this.noti.showWarning('Bạn cần nhập đầy đủ sđt, checkIn, checkOut!', 'Yêu cầu thất bại');
-    } else {
-      this.api.postCheckRoom(this.checkAvaiForm.value, token.token).subscribe((res: any) => {
-        console.log(res);
-      }, err => {
-        this.noti.showError(err, 'Yêu cầu thất bại');
-      });
     }
   }
 
@@ -106,5 +68,11 @@ export class RestaurantDetailComponent implements OnInit {
   // close gallery
   closeGallery() {
     this.ngxImageGallery.close();
+  }
+
+  showPreview(file) {
+    const dialogRef: ImageOverlayRef = this.imageDialog.open({
+      image: file
+    });
   }
 }

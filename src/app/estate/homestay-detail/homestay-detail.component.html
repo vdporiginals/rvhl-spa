@@ -267,7 +267,7 @@
             fxFlex="20"
             *ngFor="let image of homestayImages; let i = index"
           >
-            <a (click)="openGallery(i)" [style.cursor]="'pointer'" *ngIf="i < 4"
+            <a (click)="openGallery(i)" [style.cursor]="'pointer'" *ngIf="i < 3"
               ><img
                 [src]="image?.url"
                 alt="homestayDetail??.name"
@@ -276,7 +276,7 @@
             <div
               class="img"
               [style.cursor]="'pointer'"
-              *ngIf="i === 4"
+              *ngIf="i === 3"
               (click)="openGallery(i)"
             >
               <img

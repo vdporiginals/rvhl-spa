@@ -66,13 +66,13 @@ export class VillaComponent implements OnInit {
       this.count = this.hotelDetail.count;
 
       if (isPlatformServer(this.platformId)) {
-        this.seo.setTitle('Khách sạn, Khách sạn hạ long, Khách sạn quảng ninh');
+        this.seo.setTitle('Villa - Villa hạ long - Villa quảng ninh');
         this.seo.setDescription(this.hotelDetail.data[0].description);
         this.seo.setKeywords(this.hotelDetail.data[0].keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
-        this.seo.setTitle('Khách sạn, Khách sạn hạ long, Khách sạn quảng ninh');
+        this.seo.setTitle('Villa - Villa hạ long - Villa quảng ninh');
         this.seo.setDescription(this.hotelDetail.data[0].description);
         this.seo.setKeywords(this.hotelDetail.data[0].keywords);
         this.seo.setOgSite(window.location.origin);

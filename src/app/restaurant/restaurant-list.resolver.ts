@@ -16,7 +16,7 @@ export class RestaurantListResolve implements Resolve<any> {
             this.http.get(`${environment.apiUrl}/restaurants`,
                 {
                     params: {
-                        select: 'name,phone,description,price,address,seo,views,images',
+                        select: 'name,phone,description,price,address,seo,views,gallery',
                         status: 'true',
                         limit: '8',
                         sort: '-isPopular,-updatedAt',
@@ -38,7 +38,7 @@ export class RestaurantListResolve implements Resolve<any> {
                             phone: val.phone,
                             address: val.address,
                             price: val.price,
-                            roomNum: val.roomNum,
+                            // image: val.image,
                             seo: val.seo,
                             views: val.views,
                             gallery,

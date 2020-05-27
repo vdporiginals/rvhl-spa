@@ -25,7 +25,7 @@
     >
       <div class="single_destination">
         <div class="thumb">
-          <img [src]="schedule.images[0]" [alt]="schedule.title" />
+          <img [src]="schedule.gallery[0]" [alt]="schedule.title" />
         </div>
         <div class="content" fxLayoutAlign="center center">
           <a [routerLink]="['/reviews', schedule?._id, schedule?.seo]">
@@ -42,7 +42,7 @@
     >
       <div class="single_destination">
         <div class="thumb">
-          <img [src]="(food?.images)[0]" [alt]="food.title" />
+          <img [src]="(food?.gallery)[0]" [alt]="food.title" />
         </div>
         <div class="content" fxLayoutAlign="center center">
           <a [routerLink]="['/an-gi', food?._id, food?.seo]">

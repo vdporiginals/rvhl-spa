@@ -293,7 +293,7 @@
             fxFlex="20"
             *ngFor="let image of hotelImages; let i = index"
           >
-            <a (click)="openGallery(i)" [style.cursor]="'pointer'" *ngIf="i < 4"
+            <a (click)="openGallery(i)" [style.cursor]="'pointer'" *ngIf="i < 3"
               ><img
                 [src]="image?.url"
                 alt="hotelDetail??.name"
@@ -302,7 +302,7 @@
             <div
               class="img"
               [style.cursor]="'pointer'"
-              *ngIf="i === 4"
+              *ngIf="i === 3"
               (click)="openGallery(i)"
             >
               <img class="imglast" [src]="image?.url" alt="hotelDetail?.name" />

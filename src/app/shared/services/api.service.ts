@@ -28,7 +28,7 @@ export class ApiService {
     });
     const popularFood = this.http.get(`${environment.apiUrl}/restaurants`, {
       params: {
-        select: 'seo,title,images,createdAt',
+        select: 'seo,title,gallery,createdAt',
         sort: '-isPopular,-updatedAt',
         limit: '6',
         status: 'true',
@@ -214,7 +214,7 @@ export class ApiService {
   getFilterRestaurant(): Observable<any> {
     const recentPost = this.http.get<any>(`${environment.apiUrl}/restaurants`, {
       params: {
-        select: 'name,images,seo,price,createdAt',
+        select: 'name,image,seo,price,createdAt',
         limit: '3',
         // status: 'true'
       }

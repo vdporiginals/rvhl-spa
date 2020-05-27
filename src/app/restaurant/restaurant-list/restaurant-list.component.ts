@@ -11,6 +11,7 @@ import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { isPlatformServer } from '@angular/common';
 
 @Component({
   selector: 'app-restaurant-list',
@@ -68,7 +69,20 @@ export class RestaurantListComponent implements OnInit {
     if (this.route.snapshot.data.restaurantList) {
       this.restaurantDetail = this.route.snapshot.data.restaurantList;
       this.count = this.restaurantDetail.count;
-      console.log(this.route.snapshot.data.restaurantList.data);
+      if (isPlatformServer(this.platformId)) {
+        this.seo.setTitle('Nhà hàng quảng ninh - Nhà hàng hạ long - Ăn gì Hạ long');
+        this.seo.setDescription(this.restaurantDetail.data[0].description);
+        this.seo.setKeywords(this.restaurantDetail.data[0].keywords);
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle('Nhà hàng quảng ninh - Nhà hàng hạ long - Ăn gì Hạ long');
+        this.seo.setDescription(this.restaurantDetail.data[0].description);
+        this.seo.setKeywords(this.restaurantDetail.data[0].keywords);
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
+      }
+
       if (Object.keys(this.restaurantDetail.pagination).length !== 0) {
         if (this.restaurantDetail.pagination.next === undefined) {
           this.isLastPage = true;

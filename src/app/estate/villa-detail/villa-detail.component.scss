@@ -6,7 +6,28 @@
     width: 100%;
   }
 }
-
+.imglast {
+  opacity: 0.3;
+}
+.img {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: relative;
+  width: 100%;
+  height: auto;
+  img {
+    width: 100%;
+  }
+  .overlay {
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    color: #e3b04b;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
 .gallery-column {
   a {
     img {

@@ -7,56 +7,85 @@
         fxLayout="row"
         fxLayoutGap="10px"
         fxLayout.lt-md="column"
+        fxLayoutAlign="center center"
       >
-        <div class="elementor-top-column" fxFlex="74" fxFlex.lt-md="100">
+        <div class="elementor-top-column">
           <div
             class="elementor-widget-wrap"
             fxLayout="column"
-            fxLayoutAlign="start"
+            fxLayoutAlign="center"
           >
-            <div class="elementor-image">
-              <img
-                [src]="(restaurantDetail?.images)[0]"
-                alt="restaurantDetail?.name"
-              />
-            </div>
             <div>
-              <div class="hotel_title" fxLayout="row" fxLayoutGap="15px">
+              <div
+                class="hotel_title"
+                [style.text-align]="'center'"
+                fxLayout="row"
+                fxLayoutGap="15px"
+              >
                 <h2
                   [style.padding-right.px]="15"
                   [style.border-right]="'1px solid'"
                 >
                   {{ restaurantDetail?.name }}
                 </h2>
-                <h2></h2>
+                <h2>
+                  <a href="{{ 'tel:' + restaurantDetail?.phone }}"
+                    >SĐT: {{ restaurantDetail?.phone }}</a
+                  >
+                </h2>
               </div>
             </div>
-            <div
-              class="single_tour_attribute_wrapper themeborder"
-              fxLayout="row"
-              fxLayoutGap="15px"
-            >
-              <div class="one_fourth" fxFlex="33">
-                <!-- <fa-icon [icon]="faClock"></fa-icon> -->
-                <div class="tour_attribute_content">
-                  <!-- {{ tourDetail?.data.time }} -->
-                </div>
+            <div class="elementor-image">
+              <img
+                [src]="(restaurantDetail?.gallery)[0]"
+                alt="restaurantDetail?.name"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section [style.margin-top.px]="25">
+      <div class="elementor-row">
+        <div class="hotel_title">
+          <h2 [style.text-align]="'center'">
+            Menu tham khảo
+          </h2>
+        </div>
+        <div
+          fxLayout="row wrap"
+          fxLayoutAlign="center"
+          fxLayoutGap="20px"
+          fxLayoutGap.lt-md="30px"
+          fxLayout.lt-md="column"
+          fxLayoutAlign.lt-md="end"
+        >
+          <div
+            *ngFor="let menu of restaurantDetail?.menu"
+            class="hero-menu-item"
+            style="height: 112px;"
+            fxLayout="row"
+            fxFlex.lt-md="100"
+            fxFlex="30"
+          >
+            <a
+              (click)="showPreview(menu.image)"
+              class="hero-menu-item-img image-popup"
+              ><img [src]="menu.image" [alt]="menu.name" />
+              <fa-icon [icon]="faSearch"></fa-icon>
+            </a>
+            <div fxLayout="column">
+              <div class="hero-menu-item-title fl-wrap">
+                <h6>{{ menu?.name }}</h6>
+                <!-- <div class="hmi-dec" style="left: 162px;"></div> -->
+                <span class="hero-menu-item-price">{{
+                  menu?.price | currency: "VND":"symbol":"1.0-0"
+                }}</span>
               </div>
-
-              <div class="one_fourth" fxFlex="33">
-                <fa-icon [icon]="faDollarSign"></fa-icon>
-                <div class="tour_attribute_content">
-                  <!-- {{ tourDetail?.data.price | shortNumber }} -->
-                </div>
-              </div>
-
-              <div class="one_fourth last" fxFlex="33">
-                <!-- <fa-icon [icon]="faUser"></fa-icon> -->
-                <div class="tour_attribute_content">
-                  <!-- <a href="{{ 'tel:' + restaurantDetail?.phone }}"
-                    >SĐT: {{ restaurantDetail?.phone }}</a
-                  > -->
-                </div>
+              <div class="hero-menu-item-details">
+                <p>
+                  {{ menu?.description }}
+                </p>
               </div>
             </div>
           </div>
@@ -67,50 +96,32 @@
       <div class="elementor-row">
         <div class="hotel_title">
           <h2 [style.text-align]="'center'">
-            Menu
+            Overview
           </h2>
-          <div class="menu">
-            <div class="hero-menu-item" style="height: 112px;">
-              <a href="images/menu/1.jpg" class="hero-menu-item-img image-popup"
-                ><img src="images/menu/thumbnails/1.jpg" alt=""
-              /></a>
-              <div class="hero-menu-item-title fl-wrap">
-                <h6>Soft shell crab</h6>
-                <div class="hmi-dec" style="left: 162px;"></div>
-                <span class="hero-menu-item-price">$29</span>
-                <div class="add_cart">Add To Cart</div>
-              </div>
-              <div class="hero-menu-item-details">
-                <p>
-                  Seasoned with an herb crust, served with au jus and handcarved
-                  to order.
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- <h3 [style.text-align]="'start'">
+          <h3 [style.text-align]="'center'">
             Địa chỉ: {{ restaurantDetail?.address }}
-          </h3> -->
+          </h3>
         </div>
         <div class="elementor-widget-text-editor">
-          <!-- <div
+          <div
             class="elementor-widget-container"
             [style.margin-top.px]="25"
             [innerHtml]="restaurantDetail?.content | sanitizeHtml"
           >
             <p>&nbsp;</p>
-          </div> -->
+          </div>
         </div>
       </div>
     </section>
     <section
+      [style.margin-top.px]="35"
       class="elementor-element elementor-top-section"
       fxLayout="column"
       fxLayoutAlign="center center"
     >
       <div class="hotel_title">
         <h2>
-          Restaurant Gallery
+          Gallery
         </h2>
       </div>
     </section>
@@ -120,28 +131,44 @@
       fxLayoutAlign="center center"
     >
       <div class="elementor-top-column">
-        <!-- <ngx-image-gallery
-          [images]="hotelImages"
+        <ngx-image-gallery
+          [images]="restaurantImages"
           [conf]="conf"
-        ></ngx-image-gallery> -->
+        ></ngx-image-gallery>
         <div
           class="gdlr-gallery-item gdlr-item"
           fxLayout="row wrap"
           fxLayoutGap="15px"
           fxLayoutAlign="center"
         >
-          <!-- <div
+          <div
             class="gallery-column four columns"
             fxFlex="20"
-            *ngFor="let image of hotelImages; let i = index"
+            *ngFor="let image of restaurantImages; let i = index"
           >
-            <a (click)="openGallery(i)" [style.cursor]="'pointer'"
+            <a (click)="openGallery(i)" [style.cursor]="'pointer'" *ngIf="i < 3"
               ><img
                 [src]="image?.url"
                 alt="restaurantDetail??.name"
                 style="opacity: 1;"
             /></a>
-          </div> -->
+            <div
+              class="img"
+              [style.cursor]="'pointer'"
+              *ngIf="i === 3"
+              (click)="openGallery(i)"
+            >
+              <img
+                class="imglast"
+                [src]="image?.url"
+                alt="restaurantDetail??.name"
+              />
+              <span class="overlay">
+                +{{ restaurantImages?.length - (i + 1) }}</span
+              >
+            </div>
+            <a> </a>
+          </div>
         </div>
       </div>
     </section>

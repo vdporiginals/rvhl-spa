@@ -1,0 +1,250 @@
+@import "../../scss/varriable";
+@import "../../scss/mixins";
+@import "../../scss/responsive";
+.elementor-image {
+  img {
+    width: 100%;
+  }
+}
+.imglast {
+  opacity: 0.3;
+}
+.img {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: relative;
+  width: 100%;
+  height: auto;
+  img {
+    width: 100%;
+  }
+  .overlay {
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    color: #e3b04b;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+.gallery-column {
+  a {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+.price_hotel {
+  h2 {
+    color: #212121;
+    font-size: 49px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    @media #{$tab} {
+      font-size: 31px;
+    }
+    @media #{$small_mobile} {
+      font-size: 18px !important;
+    }
+  }
+}
+.gdlr-head {
+  img {
+    max-width: 81px;
+  }
+}
+
+.text_hotel {
+  h2 {
+    color: #979797;
+    font-size: 21px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-style: italic;
+    @media #{$tab} {
+      font-size: 18px;
+    }
+    @media #{$small_mobile} {
+      font-size: 13px !important;
+    }
+  }
+}
+
+.gdlr-button {
+  border-bottom: 0px;
+  padding: 10px 17px;
+  text-transform: uppercase;
+  font-weight: normal;
+  max-width: 70%;
+  font-style: normal;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-size: 13px;
+  margin-right: 5px;
+  outline: none;
+  cursor: pointer;
+  letter-spacing: 2px;
+  &:hover {
+    background-color: $btn_hover;
+  }
+}
+
+.check_avai {
+  font-size: 11px;
+  color: red;
+  font-weight: lighter;
+  font-style: italic;
+}
+.border_right {
+  padding-right: 15px;
+  border-right: 1px solid;
+}
+
+.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #e3b04b !important;
+}
+
+.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #e3b04b !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: $heading-color !important;
+}
+
+.hotel_title {
+  h2 {
+    color: #2b2b2b;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    @media #{$tab} {
+      font-size: 17px;
+    }
+    @media #{$small_mobile} {
+      font-size: 13px !important;
+    }
+    @media #{$large_mobile} {
+      font-size: 13px !important;
+    }
+  }
+}
+
+a {
+  &:hover {
+    color: $btn_hover;
+  }
+}
+
+.hero-menu-item {
+  // width: 50%;
+  float: left;
+  padding-right: 20px;
+  padding-left: 90px;
+  margin-bottom: 20px;
+}
+.hero-menu-item {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.hero-menu-item-img {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    z-index: 2;
+  }
+
+  &:hover {
+    fa-icon {
+      position: absolute;
+      color: $btn_hover;
+      left: 27px;
+      bottom: 10px;
+      right: 10px;
+      line-height: 50px;
+      top: 10px;
+      z-index: 3;
+      font-size: 15px;
+      transition: all 0.2s ease-in-out;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 1;
+      transition: all 0.2s ease-in-out;
+      z-index: 2;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.hero-menu-item-title {
+  width: 100%;
+  position: relative;
+  h6 {
+    color: #000;
+    font-size: 17px;
+    float: left;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+  }
+}
+
+.hmi-dec {
+  position: absolute;
+  left: 162px;
+  border-bottom: 1px dotted rgba(204, 204, 204, 0.2);
+  border-bottom-color: rgba(204, 204, 204, 0.2);
+  bottom: 10px;
+  right: 80px;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.hero-menu-item-price {
+  font-size: 22px;
+  float: right;
+  position: relative;
+  color: $btn_bg;
+}
+
+.hero-menu-item-details p {
+  color: #000;
+  font-weight: 400;
+  text-align: left;
+  max-width: 400px;
+  font-size: 13px;
+  line-height: 24px;
+  padding-bottom: 10px;
+}
