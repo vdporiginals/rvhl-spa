@@ -25,58 +25,6 @@
     }
   }
 }
-.gdlr-thumbnail-gallery:hover .gdlr-thumbnail-gallery-overlay {
-  opacity: 1;
-}
-.gdlr-thumbnail-gallery:hover .gdlr-thumbnail-gallery-label {
-  bottom: 15px;
-}
-.gdlr-thumbnail-gallery-overlay {
-  opacity: 0;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  cursor: pointer;
-  background: -moz-linear-gradient(
-    top,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.9) 100%
-  ); /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    top,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.9) 100%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.9) 100%
-  );
-  transition: opacity 300ms;
-  -moz-transition: opacity 300ms;
-  -o-transition: opacity 300ms;
-  -webkit-transition: opacity 300ms;
-}
-.gdlr-thumbnail-gallery-label {
-  position: absolute;
-  text-align: center;
-  color: #fff;
-  bottom: -30px;
-  left: 0px;
-  right: 0px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: bottom 300ms;
-  -moz-transition: bottom 300ms;
-  -o-transition: bottom 300ms;
-  -webkit-transition: bottom 300ms;
-  fa-icon {
-    font-size: 14px;
-    margin-right: 10px;
-  }
-}
 
 .gdlr-room-title {
   font-size: 17px;

@@ -1,1 +1,8 @@
-<p>restaurant works!</p>
+<section>
+  <app-breadcrumb></app-breadcrumb>
+</section>
+
+<app-restaurant-search *ngIf="isDetail === false"></app-restaurant-search>
+<section fxLayout="column" fxLayoutAlign="center" class="section">
+  <router-outlet></router-outlet>
+</section>

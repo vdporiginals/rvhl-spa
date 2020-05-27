@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+import { Router, Event, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./restaurant.component.scss']
 })
 export class RestaurantComponent implements OnInit {
+  background: ThemePalette = undefined;
+  typeSearch;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  isDetail = false;
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        const params = this.route.snapshot.firstChild.params;
+        if (Object.keys(params).length === 0) {
+          this.isDetail = false;
+        } else {
+          this.isDetail = true;
+        }
+      }
+    });
   }
-
+  ngOnInit(): void {
+    this.background = 'primary';
+  }
 }

@@ -18,6 +18,7 @@ export class RightSideFilterComponent implements OnInit, OnDestroy {
   estateCategory;
   recentReviews;
   fbPlugin: any;
+  routePosition;
   private subcription: Subscription;
   results: any;
   queryField: FormControl = new FormControl();
@@ -28,9 +29,12 @@ export class RightSideFilterComponent implements OnInit, OnDestroy {
         const path = this.route.snapshot.parent.url[0].path;
         if (path === 'khach-san') {
           this.getFilter('hotel');
+          this.routePosition = path;
         } else if (path === 'homestay') {
+          this.routePosition = path;
           this.getFilter('homestay');
         } else if (path === 'villa') {
+          this.routePosition = path;
           this.getFilter('villa');
         }
       }

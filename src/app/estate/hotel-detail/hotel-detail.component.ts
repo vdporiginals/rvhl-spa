@@ -1,5 +1,4 @@
 import { Component, OnInit, Optional, Inject, PLATFORM_ID, LOCALE_ID, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SeoService } from 'src/app/shared/services/seo.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -51,7 +50,6 @@ export class HotelDetailComponent implements OnInit {
   };
 
   constructor(
-    private http: HttpClient,
     private route: ActivatedRoute,
     private seo: SeoService,
     private noti: NotificationService,

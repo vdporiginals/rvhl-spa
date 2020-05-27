@@ -51,7 +51,6 @@ export class VillaDetailComponent implements OnInit {
   };
 
   constructor(
-    private http: HttpClient,
     private route: ActivatedRoute,
     private noti: NotificationService,
     private api: ApiService,

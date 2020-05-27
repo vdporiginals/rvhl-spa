@@ -13,7 +13,7 @@ export class TourSearchComponent implements OnInit {
 
     this.searchForm = this.fb.group({
       title: [''],
-      price: [''],
+      'price[lte]': [''],
       status: true,
       // page: 1,
       limit: 8,

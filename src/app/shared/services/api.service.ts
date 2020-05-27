@@ -13,7 +13,7 @@ export class ApiService {
     const sliderArea = this.http.get(`${environment.apiUrl}/homepage/slider`, {
       params: {
         select: 'title,description,image',
-        sort: '-isPopular,-createdAt',
+        // sort: '-isPopular,-createdAt',
         limit: '3',
         status: 'true'
       }
@@ -209,6 +209,23 @@ export class ApiService {
     //   }
     // });
     return forkJoin([recentPost, estateCategory, fbPlugin]);
+  }
+
+  getFilterRestaurant(): Observable<any> {
+    const recentPost = this.http.get<any>(`${environment.apiUrl}/restaurants`, {
+      params: {
+        select: 'name,images,seo,price,createdAt',
+        limit: '3',
+        // status: 'true'
+      }
+    });
+    const restaurantCategory = this.http.get<any>(`${environment.apiUrl}/restaurants/category`);
+    const fbPlugin = this.http.get<any>(`${environment.apiUrl}/web-config`, {
+      params: {
+        select: 'fbPage,fbGroup'
+      }
+    });
+    return forkJoin([recentPost, restaurantCategory, fbPlugin]);
   }
 
   getFbPlugin(select): Observable<any> {

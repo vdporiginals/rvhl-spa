@@ -15,9 +15,9 @@ export class SearchEstateComponent implements OnInit {
     this.searchForm = this.fb.group({
       name: [''],
       // type: this.typeSearch,
-      price: [''],
+      'price[lte]': [''],
       status: true,
-      limit: 6,
+      limit: 8,
       sort: [''],
       address: ['']
     });

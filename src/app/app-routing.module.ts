@@ -24,7 +24,7 @@ const routes: Routes = [
   {
     path: 'an-gi', loadChildren: () => import('./restaurant/restaurant.module').then(m => m.RestaurantModule),
     data: {
-      breadcrumb: 'Ăn gì'
+      breadcrumb: 'Ăn gì ngon'
     }
   },
   {

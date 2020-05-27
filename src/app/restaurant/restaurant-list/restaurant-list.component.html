@@ -1,27 +1,139 @@
-<div class="mb-50 mb-sm-30">
-  <div class="pos-relative mb-30 pt-15">
-    <div class="font-8 abs-tl p-20 bg-primary color-white">
-      <h4><b>Hạ long, hà tu</b></h4>
-
-      <div class="brdr-style-1"></div>
-    </div>
-    <img src="images/blog-1-1000x400.jpg" alt="" />
-  </div>
-  <h4>
-    <a href="#"><b>The secret of the perfect italian pizza</b></a>
-  </h4>
-  <h6 class="mt-10 bg-lite-blue dplay-inl-block">
-    <a class="plr-20 mtb-10" href="#"><b>By Admin</b></a>
-    <a class="plr-20 mtb-10 brder-lr-lite-black-2" href="#"
-      ><b>in Recipes</b></a
+<div
+  [style.margin-top.px]="50"
+  fxLayout="row"
+  fxLayout.lt-md="column"
+  fxLayoutGap="25px"
+>
+  <div class="gdlr-item gdlr-room-item gdlr-medium-room" fxFlex="72">
+    <div
+      class="gdlr-ux gdlr-medium-room-ux"
+      fxLayout="row"
+      fxLayoutGap="10px"
+      fxLayout.lt-md="column"
+      *ngFor="
+        let restaurant of restaurantDetail.data
+          | paginate
+            : {
+                itemsPerPage: limit,
+                currentPage: currentPage,
+                totalItems: count
+              };
+        let i = index
+      "
     >
-    <a class="plr-20 mtb-10" href="#"><b>3 Comments</b></a>
-  </h6>
-  <p class="mt-30">
-    Proin dictum viverra varius. Etiam vulputate libero dui, at pretium elit
-    elementum quis. Enean porttitor eros non ultrices convallis. Vivamus quis
-    dolor ut arcu lobortis finibus a vitae leo. Sed eget tempus sem. Nullam sed
-    lacus sed metus tincidunt lobortis lobortis at nibh. Morbi euismod, arcu in
-    gravida rhoncus
-  </p>
+      <div class="gdlr-room-thumbnail" fxFlex="33" fxFlex.lt-md="100">
+        <div class="gdlr-thumbnail-gallery">
+          <a><img [src]="restaurant.images[0].url" alt="restaurant.name" /> </a>
+        </div>
+      </div>
+      <div class="gdlr-room-content-wrapper" fxFlex="66" fxFlex.lt-md="100">
+        <h3 class="gdlr-room-title">
+          <a
+            [routerLink]="[
+              '/o-dau',
+              'khach-san',
+              restaurant._id,
+              restaurant.seo
+            ]"
+            routerLinkActive="router-link-active"
+            >{{ restaurant.name }}</a
+          >
+        </h3>
+        <h4>Địa chỉ: {{ restaurant.address }}</h4>
+        <div class="gdlr-hotel-room-info" fxLayout="row" fxLayoutGap="25px">
+          <div class="gdlr-room-info">
+            <fa-icon [icon]="faPhone"></fa-icon
+            ><span class="gdlr-tail">{{ restaurant.phone }}</span>
+          </div>
+          <div class="gdlr-room-info">
+            <fa-icon [icon]="faMapMarker"></fa-icon
+            ><span class="gdlr-tail">{{ restaurant.address }}</span>
+          </div>
+          <div class="gdlr-room-info">
+            <fa-icon [icon]="faEye"></fa-icon
+            ><span class="gdlr-tail">{{ restaurant.views }}</span>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="gdlr-room-content">
+          {{ restaurant.description | textOverflow: ["250", "..."] }}
+        </div>
+        <a
+          class="gdlr-button with-border"
+          [routerLink]="['/an-gi', restaurant._id, restaurant.seo]"
+          >Xem chi tiết <fa-icon [icon]="faLongArrowAltRight"></fa-icon
+        ></a>
+        <div class="gdlr-room-price" [style.float]="'right'" fxFlexAlign="end">
+          <span class="gdlr-head">Từ</span
+          ><span class="gdlr-tail">{{ restaurant.price | shortNumber }}</span>
+        </div>
+      </div>
+    </div>
+    <pagination-template
+      class="blog-pagination justify-content-center"
+      #p="paginationApi"
+      (pageChange)="pageChange.emit($event)"
+    >
+      <ul class="pagination" fxLayout="row" fxLayoutAlign="center center">
+        <div>
+          <li class="page-item">
+            <a
+              class="page-link"
+              aria-label="Previous"
+              (click)="getRestaurant(currentPage - 1, categoryId, sortData)"
+              *ngIf="!isFirstPage"
+            >
+              <fa-icon [icon]="faAngleLeft"></fa-icon>
+            </a>
+            <a
+              class="page-link disabled"
+              aria-label="Previous"
+              *ngIf="isFirstPage"
+            >
+              <fa-icon [icon]="faAngleLeft"></fa-icon>
+            </a>
+          </li>
+        </div>
+
+        <div
+          *ngFor="let page of p.pages"
+          [class.current]="p.getCurrent() === page.value"
+        >
+          <li class="page-item">
+            <a
+              class="page-link"
+              [class.disabled]="p.getCurrent() === page.value"
+              *ngIf="p.getCurrent() === page.value"
+              >{{ page.label }}</a
+            >
+            <a
+              class="page-link"
+              (click)="getRestaurant(page.value, categoryId, sortData)"
+              *ngIf="p.getCurrent() !== page.value"
+              >{{ page.label }}</a
+            >
+          </li>
+        </div>
+        <div>
+          <li class="page-item">
+            <a
+              class="page-link"
+              aria-label="Next"
+              (click)="getRestaurant(currentPage + 1, categoryId, sortData)"
+              *ngIf="!isLastPage"
+            >
+              <fa-icon [icon]="faAngleRight"></fa-icon>
+            </a>
+            <a class="page-link disabled" aria-label="Next" *ngIf="isLastPage">
+              <fa-icon [icon]="faAngleRight"></fa-icon>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </pagination-template>
+  </div>
+
+  <div class="right-side" fxFlex="28">
+    <app-restaurant-right></app-restaurant-right>
+  </div>
 </div>

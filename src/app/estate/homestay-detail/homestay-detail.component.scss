@@ -120,14 +120,17 @@
 .hotel_title {
   h2 {
     color: #2b2b2b;
-    font-size: 27px;
+    font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2.5px;
     @media #{$tab} {
-      font-size: 20px;
+      font-size: 17px;
     }
     @media #{$small_mobile} {
+      font-size: 13px !important;
+    }
+    @media #{$large_mobile} {
       font-size: 13px !important;
     }
   }

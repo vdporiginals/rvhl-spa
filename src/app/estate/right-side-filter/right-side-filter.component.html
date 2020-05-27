@@ -23,16 +23,14 @@
   <div
     class="portfolio_type"
     *ngFor="let item of recentPost?.data"
-    [routerLink]="['/o-dau', item._id, item.seo]"
+    [routerLink]="['/o-dau', routePosition, item._id, item.seo]"
     style="cursor: pointer;"
     [style.background-image]="'url(' + (item?.images)[0] + ')'"
   >
     <a class="tour_image"></a>
     <div class="portfolio_info_wrapper">
-      <div class="tour_price">
-        {{ item?.price | shortNumber }}
-      </div>
-      <a [routerLink]="['/o-dau', item._id, item.seo]"
+      <div class="tour_price">từ &nbsp;{{ item?.price | shortNumber }}</div>
+      <a [routerLink]="['/o-dau', routePosition, item._id, item.seo]"
         ><h5>{{ item?.name }}</h5></a
       >
     </div>

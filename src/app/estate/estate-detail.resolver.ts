@@ -20,6 +20,6 @@ export class EstateDetailResolve implements Resolve<any> {
                 params: {
                     status: 'true'
                 }
-            }).pipe() : null;
+            }) : null;
     }
 }

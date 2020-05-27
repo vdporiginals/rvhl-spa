@@ -1,5 +1,4 @@
 import { Component, OnInit, Optional, Inject, PLATFORM_ID, LOCALE_ID, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SeoService } from 'src/app/shared/services/seo.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,7 +15,6 @@ import {
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { LoginComponent } from 'src/app/layout/user/login/login.component';
 
@@ -52,13 +50,11 @@ export class HomestayDetailComponent implements OnInit {
   };
 
   constructor(
-    private http: HttpClient,
     private route: ActivatedRoute,
     private seo: SeoService,
     private api: ApiService,
     private dialog: MatDialog,
     private noti: NotificationService,
-    private sharedData: SharedDataService,
     @Optional() @Inject(REQUEST) private request,
     private localStorage: LocalStorageService,
     public fb: FormBuilder,

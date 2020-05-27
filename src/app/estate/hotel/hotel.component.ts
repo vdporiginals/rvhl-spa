@@ -4,14 +4,13 @@ import { faHotel, faPhone, faLongArrowAltRight, faAngleLeft, faAngleRight } from
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SeoService } from 'src/app/shared/services/seo.service';
-import { MatDialog } from '@angular/material/dialog';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 import { Subscription } from 'rxjs';
+import { isPlatformServer } from '@angular/common';
 @Component({
   selector: 'app-hotel',
   templateUrl: './hotel.component.html',
@@ -30,7 +29,6 @@ export class HotelComponent implements OnInit {
   isLastPage = false;
   isFirstPage = false;
   categoryId;
-  private subcription: Subscription;
 
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
@@ -54,10 +52,8 @@ export class HotelComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private seo: SeoService,
-    private dialog: MatDialog,
     private sharedData: SharedDataService,
     @Optional() @Inject(REQUEST) private request,
-    private localStorage: LocalStorageService,
     @Inject(PLATFORM_ID) private platformId: Object) {
 
     this.routePosition = this.route.snapshot.parent.data.position;
@@ -68,6 +64,21 @@ export class HotelComponent implements OnInit {
     if (this.route.snapshot.data.estateList) {
       this.hotelDetail = this.route.snapshot.data.estateList;
       this.count = this.hotelDetail.count;
+
+      if (isPlatformServer(this.platformId)) {
+        this.seo.setTitle('Khách sạn, Khách sạn hạ long, Khách sạn quảng ninh');
+        this.seo.setDescription(this.hotelDetail.data[0].description);
+        this.seo.setKeywords(this.hotelDetail.data[0].keywords);
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle('Khách sạn, Khách sạn hạ long, Khách sạn quảng ninh');
+        this.seo.setDescription(this.hotelDetail.data[0].description);
+        this.seo.setKeywords(this.hotelDetail.data[0].keywords);
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
+      }
+
       if (Object.keys(this.hotelDetail.pagination).length !== 0) {
         if (this.hotelDetail.pagination.next === undefined) {
           this.isLastPage = true;
@@ -184,7 +195,7 @@ export class HotelComponent implements OnInit {
           this.isFirstPage = true;
           this.isLastPage = true;
         }
-      })
+      });
   }
 
 }

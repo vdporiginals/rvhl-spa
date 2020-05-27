@@ -24,10 +24,13 @@ import { RestaurantComponent } from './restaurant.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 import { RestaurantRightComponent } from './restaurant-right/restaurant-right.component';
+import { RestaurantRoutingModule } from './restaurant-routing.module';
+import { RestaurantSearchComponent } from './restaurant-search/restaurant-search.component';
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
+        RestaurantRoutingModule,
         FontAwesomeModule,
         NgxImageGalleryModule,
         NgxPaginationModule,
@@ -48,7 +51,7 @@ import { RestaurantRightComponent } from './restaurant-right/restaurant-right.co
         MatTableModule,
         MatCarouselModule.forRoot(),
     ],
-    declarations: [RestaurantComponent, RestaurantListComponent, RestaurantDetailComponent, RestaurantRightComponent],
+    declarations: [RestaurantComponent, RestaurantListComponent, RestaurantDetailComponent, RestaurantRightComponent, RestaurantSearchComponent],
     providers: []
 })
 export class RestaurantModule { }

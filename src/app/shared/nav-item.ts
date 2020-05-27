@@ -30,7 +30,6 @@ export const NavItem = [
     link: 'an-gi',
     paramsPage: { page: 'FoodPage' },
   },
-
   {
     label: 'Lịch Trình',
     link: 'lich-trinh',
