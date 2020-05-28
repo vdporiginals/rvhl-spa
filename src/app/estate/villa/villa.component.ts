@@ -147,6 +147,7 @@ export class VillaComponent implements OnInit {
         select: 'name,phone,description,price,roomNum,seo,address,views,images',
         page,
         category,
+        sort: '-isPopular,-updatedAt',
         status: 'true',
         limit: '8',
       }

@@ -18,7 +18,8 @@ export class EstateListResolve implements Resolve<any> {
                 {
                     params: {
                         select: 'name,phone,description,price,address,roomNum,seo,views,image',
-                        // status: 'true',
+                        status: 'true',
+                        sort: '-isPopular,-updatedAt',
                         limit: '8',
                         page: '1'
                     }

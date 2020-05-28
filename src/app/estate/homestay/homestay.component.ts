@@ -146,6 +146,7 @@ export class HomestayComponent implements OnInit {
         select: 'name,phone,description,price,roomNum,seo,address,views,image',
         page,
         category,
+        sort: '-isPopular,-updatedAt',
         status: 'true',
         limit: '8',
       }

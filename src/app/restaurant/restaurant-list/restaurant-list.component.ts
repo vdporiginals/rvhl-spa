@@ -154,6 +154,7 @@ export class RestaurantListComponent implements OnInit {
         select: 'name,phone,description,price,seo,address,views,image',
         page,
         category,
+        sort: '-isPopular,-updatedAt',
         status: 'true',
         limit: '8',
       }
@@ -166,14 +167,8 @@ export class RestaurantListComponent implements OnInit {
       paramsApi = sort;
       paramsApi.page = page;
       paramsApi.select = 'name,phone,description,price,seo,views,address,image';
-    } else {
-      paramsApi = {
-        select: 'name,phone,description,price,seo,address,views,image',
-        page,
-        status: 'true',
-        limit: '8',
-      }
     }
+
     this.http.get(`${environment.apiUrl}/restaurants`,
       {
         params: paramsApi

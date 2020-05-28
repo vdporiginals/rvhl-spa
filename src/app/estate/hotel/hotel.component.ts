@@ -150,6 +150,7 @@ export class HotelComponent implements OnInit {
         category,
         status: 'true',
         limit: '8',
+        sort: '-isPopular,-updatedAt'
       }
     } else if (sort) {
       for (let propName in sort) {

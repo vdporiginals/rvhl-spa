@@ -122,7 +122,7 @@ export class ApiService {
       params: {
         select: 'title,image,seo,price,createdAt',
         limit: '3',
-        // status: 'true'
+        status: 'true'
       }
     });
     const tourCategory = this.http.get<any>(`${environment.apiUrl}/${type}/category`);
@@ -141,7 +141,7 @@ export class ApiService {
       params: {
         select: 'name,image,seo,price,createdAt',
         limit: '3',
-        // status: 'true'
+        status: 'true'
       }
     });
     const entertainCategory = this.http.get<any>(`${environment.apiUrl}/${type}/category`);
@@ -174,6 +174,7 @@ export class ApiService {
         select: 'seo,title',
         title: text,
         limit: '10',
+        status: 'true'
       }
     });
   }
@@ -183,7 +184,7 @@ export class ApiService {
       params: {
         select: 'name,image,seo,price,createdAt',
         limit: '3',
-        // status: 'true'
+        status: 'true'
       }
     });
     const estateCategory = this.http.get<any>(`${environment.apiUrl}/estates/category/${type}`);
@@ -207,7 +208,7 @@ export class ApiService {
       params: {
         select: 'name,image,seo,price,createdAt',
         limit: '3',
-        // status: 'true'
+        status: 'true'
       }
     });
     const restaurantCategory = this.http.get<any>(`${environment.apiUrl}/restaurants/category`);

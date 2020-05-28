@@ -123,6 +123,7 @@ export class EntertainListComponent implements OnInit, OnDestroy {
         select: 'name,description,image,seo,phone,price,address',
         page,
         category,
+        sort: '-isPopular,-updatedAt',
         status: 'true',
         limit: '8',
       }
@@ -139,6 +140,7 @@ export class EntertainListComponent implements OnInit, OnDestroy {
       paramsApi = {
         select: 'name,description,phone,image,seo,price,address',
         page,
+        sort: '-isPopular,-updatedAt',
         status: 'true',
         limit: '8',
       };

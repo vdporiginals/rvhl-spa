@@ -132,12 +132,16 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
         page,
         category,
         limit: '6',
+        status: 'true',
+        sort: '-isPopular,-updatedAt'
       };
     } else {
       paramsApi = {
         select: 'title,description,image,seo,address,createdAt',
         page,
+        status: 'true',
         limit: '6',
+        sort: '-isPopular,-updatedAt'
       };
     }
     this.subcription = this.http
