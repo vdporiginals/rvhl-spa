@@ -1,26 +1,7 @@
-<!-- <mat-card class="blog_area single-post-area section-padding">
-  <div class="single-post">
+<mat-card class="blog_area single-post-area section-padding">
+  <div class="single-post" fxLayout="column">
     <div class="feature-img">
-      <mat-carousel
-        timings="400ms ease-in-out"
-        maxWidth="100%"
-        proportion="60"
-        [autoplay]="true"
-        interval="5000"
-        *ngIf="isBrowser"
-        [loop]="true"
-        [hideArrows]="false"
-        [hideIndicators]="false"
-        [useMouseWheel]="false"
-      >
-        <mat-carousel-slide
-          #matCarouselSlide
-          *ngFor="let slide of blogDetail?.data?.images; let i = index"
-          [image]="slide"
-          [hideOverlay]="false"
-        >
-        </mat-carousel-slide>
-      </mat-carousel>
+      <img [src]="blogDetail?.data?.image" [alt]="blogDetail?.data?.title" />
     </div>
     <div class="blog_details">
       <h2>
@@ -34,6 +15,7 @@
           </a>
         </li>
         <li>
+          <!-- <a href="#"> <fa-icon [icon]="faComment"></fa-icon> 03 Comments </a> -->
         </li>
       </ul>
       <div class="blog_content" fxLayout="column" fxLayoutAlign="center">
@@ -47,6 +29,10 @@
       [innerHTML]="fbLike | sanitizeHtml"
     >
       <p class="like-info">
+        <!-- <span class="align-middle">
+          <fa-icon [icon]="faHeart"></fa-icon>
+        </span>
+        Lily and 4 people like this -->
       </p>
       <div class="col-sm-4 text-center my-2 my-sm-0">
         <p class="comment-count">
@@ -84,10 +70,10 @@
 </mat-card>
 
 <mat-card>
-  <app-blog-comment
+  <app-user-review-comment
     [blogId]="blogDetail?.data?._id"
     fxLayout="column"
     fxLayoutAlign="start"
   >
-  </app-blog-comment>
-</mat-card> -->
+  </app-user-review-comment>
+</mat-card>

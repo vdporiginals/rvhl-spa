@@ -42,7 +42,7 @@
     >
       <div class="single_destination">
         <div class="thumb">
-          <img [src]="(food?.gallery)[0]" [alt]="food.name" />
+          <img [src]="food?.image" [alt]="food.name" />
         </div>
         <div class="content" fxLayoutAlign="center center">
           <a [routerLink]="['/an-gi', food?._id, food?.seo]">

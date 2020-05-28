@@ -126,7 +126,6 @@ export class HotelComponent implements OnInit {
     this.sharedData.estateFormData.subscribe((val) => {
       if (Object.keys(val).length !== 0) {
         this.sortData = val;
-        console.log(val);
         this.getHotel(1, this.routePosition, undefined, val);
         this.sharedData.setEstateFormData({});
       }
@@ -146,7 +145,7 @@ export class HotelComponent implements OnInit {
     let paramsApi;
     if (category) {
       paramsApi = {
-        select: 'name,phone,description,price,roomNum,seo,address,views,images',
+        select: 'name,phone,description,price,roomNum,seo,address,views,image',
         page,
         category,
         status: 'true',
@@ -160,34 +159,14 @@ export class HotelComponent implements OnInit {
       }
       paramsApi = sort;
       paramsApi.page = page;
-      paramsApi.select = 'name,phone,description,price,roomNum,seo,views,address,images';
+      paramsApi.select = 'name,phone,description,price,roomNum,seo,views,address,image';
     }
     this.http.get(`${environment.apiUrl}/estates/${routePosition}`,
       {
         params: paramsApi
       })
       .pipe(map((res: any) => {
-        const result = res.data.map((val) => {
-          const images = val.images.map(res => {
-            return {
-              url: res,
-              thumbnailUrl: res
-            }
-          });
-          return {
-            _id: val._id,
-            name: val.name,
-            description: val.description,
-            phone: val.phone,
-            price: val.price,
-            roomNum: val.roomNum,
-            seo: val.seo,
-            address: val.address,
-            views: val.views,
-            images,
-          };
-        });
-        return { count: res.count, numRecord: res.numRecord, pagination: res.pagination, data: result };
+        return { count: res.count, numRecord: res.numRecord, pagination: res.pagination, data: res.data };
       })).subscribe(res => {
         this.hotelDetail = res;
         this.count = this.hotelDetail.count;

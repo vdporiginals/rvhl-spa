@@ -20,7 +20,7 @@ export class ApiService {
     });
     const popularFood = this.http.get(`${environment.apiUrl}/restaurants`, {
       params: {
-        select: 'seo,name,gallery,createdAt',
+        select: 'seo,name,image,createdAt',
         sort: '-isPopular,-updatedAt',
         limit: '6',
         status: 'true',
@@ -28,7 +28,7 @@ export class ApiService {
     });
     const popularHotel = this.http.get(`${environment.apiUrl}/homepage/popular-estates`, {
       params: {
-        select: 'name,address,images,phone,seo,time,price',
+        select: 'name,address,image,phone,seo,time,price',
         sort: '-isPopular,-updatedAt',
         limit: '6',
         status: 'true'
@@ -36,7 +36,7 @@ export class ApiService {
     });
     const popularCruise = this.http.get(`${environment.apiUrl}/tours`, {
       params: {
-        select: 'title,address,images,phone,seo,time,price',
+        select: 'title,address,image,phone,seo,time,price',
         limit: '6',
         sort: '-isPopular,-updatedAt',
         status: 'true'
@@ -44,7 +44,7 @@ export class ApiService {
     });
     const recentBlogs = this.http.get(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'title,description,images,seo,address,createdAt',
+        select: 'title,description,image,seo,address,createdAt',
         limit: '4',
         sort: '-isPopular,-updatedAt',
         status: 'true'
@@ -68,23 +68,23 @@ export class ApiService {
     ]);
   }
 
-  getBlogs(page, limit): Observable<any> {
-    const allBlogs = this.http.get(`${environment.apiUrl}/blogs`, {
-      params: {
-        select: 'title,description,images,seo,address,createdAt',
-        page,
-        limit,
-        status: 'true'
-      }
-    });
-    // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
-    return forkJoin([allBlogs]);
-  }
+  // getBlogs(page, limit): Observable<any> {
+  //   const allBlogs = this.http.get(`${environment.apiUrl}/blogs`, {
+  //     params: {
+  //       select: 'title,description,image,seo,address,createdAt',
+  //       page,
+  //       limit,
+  //       status: 'true'
+  //     }
+  //   });
+  //   // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
+  //   return allBlogs;
+  // }
 
   getFilter(): Observable<any> {
     const recentBlogs = this.http.get<any>(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'title,images,seo,createdAt',
+        select: 'title,image,seo,createdAt',
         limit: '5',
         status: 'true'
       }
@@ -99,10 +99,28 @@ export class ApiService {
     return forkJoin([recentBlogs, blogCategory, fbPlugin]);
   }
 
+  getFilterReview(): Observable<any> {
+    const recentBlogs = this.http.get<any>(`${environment.apiUrl}/user-reviews`, {
+      params: {
+        select: 'title,image,seo,createdAt',
+        limit: '5',
+        status: 'true'
+      }
+    });
+    const blogCategory = this.http.get<any>(`${environment.apiUrl}/user-reviews/category`);
+    const fbPlugin = this.http.get<any>(`${environment.apiUrl}/web-config`, {
+      params: {
+        select: 'fbPage,fbGroup'
+      }
+    });
+    // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
+    return forkJoin([recentBlogs, blogCategory, fbPlugin]);
+  }
+
   getFilterTour(type?): Observable<any> {
     const recentTours = this.http.get<any>(`${environment.apiUrl}/tours`, {
       params: {
-        select: 'title,images,seo,price,createdAt',
+        select: 'title,image,seo,price,createdAt',
         limit: '3',
         // status: 'true'
       }
@@ -121,7 +139,7 @@ export class ApiService {
   getFilterEntertain(type?): Observable<any> {
     const recentEntertains = this.http.get<any>(`${environment.apiUrl}/${type}`, {
       params: {
-        select: 'name,images,seo,price,createdAt',
+        select: 'name,image,seo,price,createdAt',
         limit: '3',
         // status: 'true'
       }
@@ -163,7 +181,7 @@ export class ApiService {
   getFilterEstate(type): Observable<any> {
     const recentPost = this.http.get<any>(`${environment.apiUrl}/estates/${type}`, {
       params: {
-        select: 'name,images,seo,price,createdAt',
+        select: 'name,image,seo,price,createdAt',
         limit: '3',
         // status: 'true'
       }

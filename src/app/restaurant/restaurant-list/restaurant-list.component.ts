@@ -119,19 +119,19 @@ export class RestaurantListComponent implements OnInit {
         this.isLastPage = true;
       }
     }
-    this.sharedData.estateCategoryId.subscribe((id) => {
+    this.sharedData.restaurantCategoryId.subscribe((id) => {
       if (id !== '') {
         this.categoryId = id;
         this.getRestaurant(1, id);
-        this.sharedData.setEstateCategory('');
+        this.sharedData.setRestaurantCategory('');
       }
     });
-    this.sharedData.estateFormData.subscribe((val) => {
+
+    this.sharedData.restaurantFormData.subscribe((val) => {
       if (Object.keys(val).length !== 0) {
         this.sortData = val;
-        console.log(val);
         this.getRestaurant(1, undefined, val);
-        this.sharedData.setEstateFormData({});
+        this.sharedData.setRestaurantFormData({});
       }
     });
 

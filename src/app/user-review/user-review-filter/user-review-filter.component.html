@@ -1,5 +1,5 @@
 <div class="blog_right_sidebar">
-  <!-- <mat-card class="single_sidebar_widget search_widget">
+  <mat-card class="single_sidebar_widget search_widget">
     <form action="#">
       <div class="form-group">
         <div class="input-group mb-3">
@@ -9,12 +9,12 @@
             [formControl]="queryField"
             class="form-control"
             [matAutocomplete]="auto"
-            placeholder="Tìm kiếm"
+            placeholder="Tìm kiếm lịch trình"
           />
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option
               *ngFor="let result of results"
-              [routerLink]="['/reviews', result._id, result.seo]"
+              [routerLink]="['/lich-trinh', result._id, result.seo]"
             >
               {{ result.title }}</mat-option
             >
@@ -36,7 +36,7 @@
   <mat-card class="single_sidebar_widget popular_post_widget">
     <h3 class="widget_title">Bài viết mới nhất</h3>
     <div class="media post_item" *ngFor="let post of recentPost?.data">
-      <img [src]="(post?.images)[0]" [alt]="post?.title" />
+      <img [src]="post?.image" [alt]="post?.title" />
       <div class="media-body">
         <a [routerLink]="['./', post?._id, post?.seo]">
           <h3>
@@ -50,34 +50,38 @@
   <mat-card
     [innerHTML]="(fbPlugin?.data)[0]?.fbPage | sanitizeHtml"
     class="fb_page"
-  ></mat-card> -->
+  ></mat-card>
+  <mat-card
+    [innerHTML]="(fbPlugin?.data)[0]?.fbGroup | sanitizeHtml"
+    class="fb_page"
+  ></mat-card>
   <!-- <mat-card class="single_sidebar_widget tag_cloud_widget">
-      <h4 class="widget_title">Tag Clouds</h4>
-      <ul class="list">
-        <li>
-          <a href="#">project</a>
-        </li>
-        <li>
-          <a href="#">love</a>
-        </li>
-        <li>
-          <a href="#">technology</a>
-        </li>
-        <li>
-          <a href="#">travel</a>
-        </li>
-        <li>
-          <a href="#">restaurant</a>
-        </li>
-        <li>
-          <a href="#">life style</a>
-        </li>
-        <li>
-          <a href="#">design</a>
-        </li>
-        <li>
-          <a href="#">illustration</a>
-        </li>
-      </ul>
-    </mat-card> -->
+    <h4 class="widget_title">Tag Clouds</h4>
+    <ul class="list">
+      <li>
+        <a href="#">project</a>
+      </li>
+      <li>
+        <a href="#">love</a>
+      </li>
+      <li>
+        <a href="#">technology</a>
+      </li>
+      <li>
+        <a href="#">travel</a>
+      </li>
+      <li>
+        <a href="#">restaurant</a>
+      </li>
+      <li>
+        <a href="#">life style</a>
+      </li>
+      <li>
+        <a href="#">design</a>
+      </li>
+      <li>
+        <a href="#">illustration</a>
+      </li>
+    </ul>
+  </mat-card> -->
 </div>

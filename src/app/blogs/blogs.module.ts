@@ -11,16 +11,12 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SanitizeHtmlPipe } from '../shared/pipe/sanitize-html.pipe';
-import { TextOverflowPipe } from '../shared/pipe/text-overflow.pipe';
-
 import { BlogsComponent } from './blogs.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogCommentComponent } from './blog-comment/blog-comment.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogFilterComponent } from './blog-filter/blog-filter.component';
 import { SharedModule } from '../shared/shared.module';
-import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 import { PipeModule } from '../shared/pipe/pipe.module';
 
 @NgModule({

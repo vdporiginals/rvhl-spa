@@ -20,7 +20,7 @@
     <div fxFlex="33" fxFlex.lt-md *ngFor="let blog of recentBlogs">
       <mat-card class="single_trip">
         <div class="thumb">
-          <img mat-card-image [src]="blog.images[0]" [alt]="blog.title" />
+          <img mat-card-image [src]="blog.image" [alt]="blog.title" />
         </div>
         <div class="info">
           <div class="date">

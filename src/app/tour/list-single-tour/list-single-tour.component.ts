@@ -115,7 +115,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
     let paramsApi;
     if (category) {
       paramsApi = {
-        select: 'title,description,schedule,images,seo,phone,price,time',
+        select: 'title,description,schedule,image,seo,phone,price,time',
         page,
         category,
         status: 'true',
@@ -129,11 +129,11 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
       }
       paramsApi = sort;
       paramsApi.page = page;
-      paramsApi.select = 'title,description,schedule,images,phone,seo,price,time';
+      paramsApi.select = 'title,description,schedule,image,phone,seo,price,time';
       paramsApi.position = this.position;
     } else if (position !== undefined && sort === undefined) {
       paramsApi = {
-        select: 'title,description,schedule,images,phone,seo,price,time',
+        select: 'title,description,schedule,image,phone,seo,price,time',
         page,
         position,
         status: 'true',
@@ -141,7 +141,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
       }
     } else {
       paramsApi = {
-        select: 'title,description,schedule,phone,images,seo,price,time',
+        select: 'title,description,schedule,phone,image,seo,price,time',
         page,
         status: 'true',
         limit: '8',

@@ -47,7 +47,7 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
   currentPage: number;
   isLoadingResults = true;
   count: number;
-  limit = 4;
+  limit = 6;
   isLastPage = false;
   isFirstPage = false;
   private subcription: Subscription;
@@ -105,17 +105,13 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
       }
 
       this.categoryData = this.route.snapshot.data.blogCategory;
-      this.position = this.route.snapshot.data.position;
-      if (this.position === undefined) {
-        this.getData(1);
-      } else if (this.position !== undefined) {
-        this.getData(1, this.position);
-      }
+      this.getData(1);
+
 
       this.sharedData.categoryIdd.subscribe((id) => {
         if (id !== '') {
           this.categoryId = id;
-          this.getData(1, undefined, this.categoryId);
+          this.getData(1, this.categoryId);
         }
       });
     }
@@ -128,27 +124,20 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
-  getData(page, position?, category?) {
+  getData(page, category?) {
     let paramsApi;
-    if (category !== undefined) {
+    if (category !== undefined && category !== '') {
       paramsApi = {
-        select: 'title,description,images,seo,address,createdAt',
+        select: 'title,description,image,seo,address,createdAt',
         page,
         category,
-        limit: '4',
-      };
-    } else if (position !== undefined) {
-      paramsApi = {
-        select: 'title,description,images,seo,address,createdAt',
-        page,
-        position,
-        limit: '4',
+        limit: '6',
       };
     } else {
       paramsApi = {
-        select: 'title,description,images,seo,address,createdAt',
+        select: 'title,description,image,seo,address,createdAt',
         page,
-        limit: '4',
+        limit: '6',
       };
     }
     this.subcription = this.http

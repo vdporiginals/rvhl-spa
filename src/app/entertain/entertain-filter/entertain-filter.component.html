@@ -39,7 +39,7 @@
     *ngFor="let entertain of recentPost?.data"
     [routerLink]="['/entertain', entertain._id, entertain.seo]"
     style="cursor: pointer;"
-    [style.background-image]="'url(' + (entertain?.images)[0] + ')'"
+    [style.background-image]="'url(' + entertain?.image + ')'"
   >
     <div class="portfolio_info_wrapper">
       <div class="tour_price">

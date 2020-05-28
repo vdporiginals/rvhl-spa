@@ -15,7 +15,7 @@
         <img
           mat-card-image
           class="card-img rounded-0"
-          [src]="blog.images[0]"
+          [src]="blog.image"
           [alt]="blog.title"
         />
         <a class="blog_item_date">
@@ -54,7 +54,7 @@
           <a
             class="page-link"
             aria-label="Previous"
-            (click)="getData(currentPage - 1, position, categoryId)"
+            (click)="getData(currentPage - 1, categoryId)"
             *ngIf="!isFirstPage"
           >
             <fa-icon [icon]="faAngleLeft"></fa-icon>
@@ -82,7 +82,7 @@
           >
           <a
             class="page-link"
-            (click)="getData(page.value, position, categoryId)"
+            (click)="getData(page.value, categoryId)"
             *ngIf="p.getCurrent() !== page.value"
             >{{ page.label }}</a
           >
@@ -93,7 +93,7 @@
           <a
             class="page-link"
             aria-label="Next"
-            (click)="getData(currentPage + 1, position, categoryId)"
+            (click)="getData(currentPage + 1, categoryId)"
             *ngIf="!isLastPage"
           >
             <fa-icon [icon]="faAngleRight"></fa-icon>

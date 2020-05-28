@@ -26,7 +26,7 @@ export class RestaurantSearchComponent implements OnInit {
   }
 
   sendFormData() {
-    this.shared.setEstateFormData(this.searchForm.value);
+    this.shared.setRestaurantFormData(this.searchForm.value);
   }
 
 }

@@ -76,7 +76,7 @@ export class BlogCommentComponent implements OnInit {
             select: 'content',
             limit: '4',
             page,
-            // status: 'false'
+            status: 'true'
           }
         })
         .subscribe(data => {

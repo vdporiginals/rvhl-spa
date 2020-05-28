@@ -101,11 +101,11 @@ export class EntertainListComponent implements OnInit, OnDestroy {
         }
       });
 
-      this.sharedData.searchFormData.subscribe((val) => {
+      this.sharedData.entertainFormData.subscribe((val) => {
         if (Object.keys(val).length !== 0) {
           this.sortData = val;
           this.getEntertain(1, undefined, val);
-          this.sharedData.setFormData({});
+          this.sharedData.setEntertainFormData({});
         }
       });
     }
@@ -120,7 +120,7 @@ export class EntertainListComponent implements OnInit, OnDestroy {
     let paramsApi;
     if (category) {
       paramsApi = {
-        select: 'name,description,images,seo,phone,price,address',
+        select: 'name,description,image,seo,phone,price,address',
         page,
         category,
         status: 'true',
@@ -134,10 +134,10 @@ export class EntertainListComponent implements OnInit, OnDestroy {
       }
       paramsApi = sort;
       paramsApi.page = page;
-      paramsApi.select = 'name,description,images,phone,seo,price,address';
+      paramsApi.select = 'name,description,image,phone,seo,price,address';
     } else {
       paramsApi = {
-        select: 'name,description,phone,images,seo,price,address',
+        select: 'name,description,phone,image,seo,price,address',
         page,
         status: 'true',
         limit: '8',

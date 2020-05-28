@@ -61,7 +61,6 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
     }
     this.subcription = this.api.getBannerPage(queryApi).subscribe(res => {
       this.bannerImage = res.data[0];
-      console.log(res)
     }, err => {
       console.log(err);
     });

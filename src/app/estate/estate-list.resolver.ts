@@ -17,34 +17,14 @@ export class EstateListResolve implements Resolve<any> {
             this.http.get(`${environment.apiUrl}/estates/${position}`,
                 {
                     params: {
-                        select: 'name,phone,description,price,address,roomNum,seo,views,images',
+                        select: 'name,phone,description,price,address,roomNum,seo,views,image',
                         // status: 'true',
-                        limit: '6',
+                        limit: '8',
                         page: '1'
                     }
                 })
                 .pipe(map((res: any) => {
-                    const result = res.data.map((val) => {
-                        const images = val.images.map(res => {
-                            return {
-                                url: res,
-                                thumbnailUrl: res
-                            }
-                        });
-                        return {
-                            _id: val._id,
-                            name: val.name,
-                            description: val.description,
-                            phone: val.phone,
-                            address: val.address,
-                            price: val.price,
-                            roomNum: val.roomNum,
-                            seo: val.seo,
-                            views: val.views,
-                            images,
-                        };
-                    });
-                    return { count: res.count, numRecord: res.numRecord, pagination: res.pagination, data: result };
+                    return { count: res.count, numRecord: res.numRecord, pagination: res.pagination, data: res.data };
                 })) : null;
     }
 }

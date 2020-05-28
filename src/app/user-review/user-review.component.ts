@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-review.component.scss']
 })
 export class UserReviewComponent implements OnInit {
-
+  categoryId: any;
   constructor() { }
 
   ngOnInit(): void {

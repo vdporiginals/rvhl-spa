@@ -15,7 +15,6 @@ export class EntertainSearchComponent implements OnInit {
       name: [''],
       'price[lte]': [''],
       status: true,
-      // page: 1,
       limit: 8,
       sort: [''],
       address: ['']
@@ -26,6 +25,6 @@ export class EntertainSearchComponent implements OnInit {
   }
 
   sendFormData() {
-    this.shared.setFormData(this.searchForm.value);
+    this.shared.setEntertainFormData(this.searchForm.value);
   }
 }

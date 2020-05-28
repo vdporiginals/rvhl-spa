@@ -32,7 +32,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
   currentPage: number;
   isLoadingResults = true;
   count: number;
-  limit = 6;
+  limit = 8;
   isLastPage = false;
   isFirstPage = false;
   private subcription: Subscription;
@@ -110,11 +110,11 @@ export class TransferListComponent implements OnInit, OnDestroy {
     let paramsApi;
     if (category) {
       paramsApi = {
-        select: 'name,description,locationStart,images,seo,phone,price,locationEnd,timePerTrip',
+        select: 'name,description,locationStart,image,seo,phone,price,locationEnd,timePerTrip',
         page,
         category,
         status: true,
-        limit: '6',
+        limit: '8',
       }
     } else if (sort) {
       console.log(sort)
@@ -125,13 +125,13 @@ export class TransferListComponent implements OnInit, OnDestroy {
       }
       paramsApi = sort;
       paramsApi.page = page;
-      paramsApi.select = 'name,description,locationStart,images,phone,seo,price,locationEnd,timePerTrip';
+      paramsApi.select = 'name,description,locationStart,image,phone,seo,price,locationEnd,timePerTrip';
     } else {
       paramsApi = {
-        select: 'name,description,locationStart,phone,images,seo,price,locationEnd,timePerTrip',
+        select: 'name,description,locationStart,phone,image,seo,price,locationEnd,timePerTrip',
         page,
         status: true,
-        limit: '6',
+        limit: '8',
       }
     }
 
