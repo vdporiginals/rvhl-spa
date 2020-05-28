@@ -3,9 +3,8 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { isPlatformBrowser } from '@angular/common';
-import { delay, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class RestaurantListResolve implements Resolve<any> {
