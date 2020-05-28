@@ -10,6 +10,8 @@ import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { SeoService } from 'src/app/shared/services/seo.service';
 import { isPlatformServer } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
 
 @Component({
   selector: 'app-entertain-list',
@@ -45,6 +47,7 @@ export class EntertainListComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private http: HttpClient,
     private api: ApiService,
+    private imageDialog: ImageOverlayService,
     public router: Router,
     private sharedData: SharedDataService,
     @Optional() @Inject(REQUEST) private request,
@@ -57,7 +60,17 @@ export class EntertainListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.data.entertainCategory);
+    this.api.getAdvertisePage('EntertainPage').subscribe(res => {
+      if (res.data.length !== 0) {
+        const dialogRef: ImageOverlayRef = this.imageDialog.open({
+          image: {
+            name: res.data[0].name,
+            url: res.data[0].image,
+            link: res.data[0].link
+          },
+        });
+      }
+    });
     if (this.route.snapshot.data.entertainCategory) {
 
       this.categoryData = this.route.snapshot.data.entertainCategory;

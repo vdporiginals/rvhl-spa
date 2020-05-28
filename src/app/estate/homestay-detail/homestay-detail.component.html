@@ -8,12 +8,7 @@
         fxLayoutGap="10px"
         fxLayout.lt-md="column"
       >
-        <div
-          class="elementor-top-column"
-          fxFlex="74"
-          fxFlex.lt-md="100"
-          fxFlex.gt-md="55"
-        >
+        <div class="elementor-top-column" fxFlex="74" fxFlex.lt-md="100">
           <div
             class="elementor-widget-wrap"
             fxLayout="column"
@@ -40,7 +35,7 @@
                 </h2>
               </div>
             </div>
-            <div>
+            <div class="facilities">
               <div
                 fxLayout="row"
                 fxLayoutAlign="start"
@@ -111,9 +106,92 @@
                 </div>
               </div>
             </div>
+            <section [style.margin-top.px]="25">
+              <div class="elementor-row">
+                <div class="hotel_title">
+                  <h2 [style.text-align]="'start'">
+                    Room Overview
+                  </h2>
+                </div>
+                <div class="elementor-widget-text-editor">
+                  <h3 [style.text-align]="'start'">
+                    Địa chỉ: {{ homestayDetail?.address }}
+                  </h3>
+                  <div
+                    class="elementor-widget-container"
+                    [style.margin-top.px]="25"
+                    [innerHtml]="homestayDetail?.content | sanitizeHtml"
+                  >
+                    <p>&nbsp;</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section
+              [style.margin-top.px]="25"
+              class="elementor-element elementor-top-section"
+              fxLayout="column"
+              fxLayoutAlign="start "
+            >
+              <div class="hotel_title">
+                <h2>
+                  Room Gallery
+                </h2>
+              </div>
+            </section>
+            <section
+              class="elementor-element elementor-top-section"
+              fxLayout="column"
+              fxLayoutAlign=" start"
+            >
+              <div class="elementor-top-column">
+                <ngx-image-gallery
+                  [images]="homestayImages"
+                  [conf]="conf"
+                ></ngx-image-gallery>
+                <div
+                  class="gdlr-gallery-item gdlr-item"
+                  fxLayout="row wrap"
+                  fxLayoutGap="15px"
+                  fxLayoutAlign="start"
+                >
+                  <div
+                    class="gallery-column four columns"
+                    fxFlex="20"
+                    *ngFor="let image of homestayImages; let i = index"
+                  >
+                    <a
+                      (click)="openGallery(i)"
+                      [style.cursor]="'pointer'"
+                      *ngIf="i < 3"
+                      ><img
+                        [src]="image?.url"
+                        alt="homestayDetail??.name"
+                        style="opacity: 1;"
+                    /></a>
+                    <div
+                      class="img"
+                      [style.cursor]="'pointer'"
+                      *ngIf="i === 3"
+                      (click)="openGallery(i)"
+                    >
+                      <img
+                        class="imglast"
+                        [src]="image?.url"
+                        alt="homestayDetail??.name"
+                      />
+                      <span class="overlay">
+                        +{{ homestayImages?.length - (i + 1) }}</span
+                      >
+                    </div>
+                    <a> </a>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
-        <div fxFlex="25" fxFlex.lt-md="100" fxFlex.gt-md="55">
+        <div fxFlex="25" fxFlex.lt-md="100">
           <div>
             <div class="text_hotel">
               <h2>
@@ -210,85 +288,6 @@
                 liên hệ với bạn</span
               >
             </form>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section [style.margin-top.px]="25">
-      <div class="elementor-row">
-        <div class="hotel_title">
-          <h2 [style.text-align]="'start'">
-            Room Overview
-          </h2>
-          <h3 [style.text-align]="'start'">
-            Địa chỉ: {{ homestayDetail?.address }}
-          </h3>
-        </div>
-        <div class="elementor-widget-text-editor">
-          <div
-            class="elementor-widget-container"
-            [style.margin-top.px]="25"
-            [innerHtml]="homestayDetail?.content | sanitizeHtml"
-          >
-            <p>&nbsp;</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="elementor-element elementor-top-section"
-      fxLayout="column"
-      fxLayoutAlign="center center"
-    >
-      <div class="hotel_title">
-        <h2>
-          Room Gallery
-        </h2>
-      </div>
-    </section>
-    <section
-      class="elementor-element elementor-top-section"
-      fxLayout="column"
-      fxLayoutAlign="center center"
-    >
-      <div class="elementor-top-column">
-        <ngx-image-gallery
-          [images]="homestayImages"
-          [conf]="conf"
-        ></ngx-image-gallery>
-        <div
-          class="gdlr-gallery-item gdlr-item"
-          fxLayout="row wrap"
-          fxLayoutGap="15px"
-          fxLayoutAlign="center"
-        >
-          <div
-            class="gallery-column four columns"
-            fxFlex="20"
-            *ngFor="let image of homestayImages; let i = index"
-          >
-            <a (click)="openGallery(i)" [style.cursor]="'pointer'" *ngIf="i < 3"
-              ><img
-                [src]="image?.url"
-                alt="homestayDetail??.name"
-                style="opacity: 1;"
-            /></a>
-            <div
-              class="img"
-              [style.cursor]="'pointer'"
-              *ngIf="i === 3"
-              (click)="openGallery(i)"
-            >
-              <img
-                class="imglast"
-                [src]="image?.url"
-                alt="homestayDetail??.name"
-              />
-              <span class="overlay">
-                +{{ homestayImages?.length - (i + 1) }}</span
-              >
-            </div>
-            <a> </a>
           </div>
         </div>
       </div>

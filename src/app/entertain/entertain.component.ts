@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { Event, ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ApiService } from '../shared/services/api.service';
+import { ImageOverlayService } from '../shared/image-overlay/image-overlay.service';
+import { ImageOverlayRef } from '../shared/image-overlay/image-overlay-ref';
 
 @Component({
   selector: 'app-entertain',

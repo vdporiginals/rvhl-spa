@@ -10,6 +10,9 @@ import { Subscription } from 'rxjs';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 import { environment } from 'src/environments/environment';
 import { isPlatformServer } from '@angular/common';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
 
 @Component({
   selector: 'app-homestay',
@@ -51,7 +54,7 @@ export class HomestayComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private seo: SeoService,
+    private seo: SeoService, private api: ApiService, private imageDialog: ImageOverlayService,
     private sharedData: SharedDataService,
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object) {
@@ -61,6 +64,17 @@ export class HomestayComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.api.getAdvertisePage('HomestayPage').subscribe(res => {
+      if (res.data.length !== 0) {
+        const dialogRef: ImageOverlayRef = this.imageDialog.open({
+          image: {
+            name: res.data[0].name,
+            url: res.data[0].image,
+            link: res.data[0].link
+          },
+        });
+      }
+    });
     if (this.route.snapshot.data.estateList) {
       this.hotelDetail = this.route.snapshot.data.estateList;
       this.count = this.hotelDetail.count;

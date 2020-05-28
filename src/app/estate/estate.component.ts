@@ -37,5 +37,6 @@ export class EstateComponent implements OnInit {
   }
   ngOnInit(): void {
     this.background = 'primary';
+
   }
 }

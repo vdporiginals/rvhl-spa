@@ -72,7 +72,11 @@ export class RestaurantDetailComponent implements OnInit {
 
   showPreview(file) {
     const dialogRef: ImageOverlayRef = this.imageDialog.open({
-      image: file
+      image: {
+        name: this.restaurantDetail.name,
+        link: '',
+        url: file
+      }
     });
   }
 }

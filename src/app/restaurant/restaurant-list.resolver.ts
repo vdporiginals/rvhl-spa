@@ -16,7 +16,7 @@ export class RestaurantListResolve implements Resolve<any> {
             this.http.get(`${environment.apiUrl}/restaurants`,
                 {
                     params: {
-                        select: 'name,phone,description,price,address,seo,views,gallery',
+                        select: 'name,phone,description,price,address,seo,views,image',
                         status: 'true',
                         limit: '8',
                         sort: '-isPopular,-updatedAt',
@@ -25,12 +25,12 @@ export class RestaurantListResolve implements Resolve<any> {
                 })
                 .pipe(map((res: any) => {
                     const result = res.data.map((val) => {
-                        const gallery = val.gallery.map(res => {
-                            return {
-                                url: res,
-                                thumbnailUrl: res
-                            }
-                        });
+                        // const gallery = val.gallery.map(res => {
+                        //     return {
+                        //         url: res,
+                        //         thumbnailUrl: res
+                        //     }
+                        // });
                         return {
                             _id: val._id,
                             name: val.name,
@@ -38,10 +38,10 @@ export class RestaurantListResolve implements Resolve<any> {
                             phone: val.phone,
                             address: val.address,
                             price: val.price,
-                            // image: val.image,
+                            image: val.image,
                             seo: val.seo,
                             views: val.views,
-                            gallery,
+                            // gallery,
                         };
                     });
                     return { count: res.count, numRecord: res.numRecord, pagination: res.pagination, data: result };

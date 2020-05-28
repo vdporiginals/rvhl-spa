@@ -15,12 +15,19 @@
             fxLayout="column"
             fxLayoutAlign="center"
           >
-            <div>
+            <div class="facilities">
+              <div class="elementor-image">
+                <img
+                  [src]="restaurantDetail?.image"
+                  [alt]="restaurantDetail?.name"
+                />
+              </div>
               <div
                 class="hotel_title"
                 [style.text-align]="'center'"
                 fxLayout="row"
                 fxLayoutGap="15px"
+                fxLayoutAlign="center"
               >
                 <h2
                   [style.padding-right.px]="15"
@@ -35,17 +42,11 @@
                 </h2>
               </div>
             </div>
-            <div class="elementor-image">
-              <img
-                [src]="(restaurantDetail?.gallery)[0]"
-                alt="restaurantDetail?.name"
-              />
-            </div>
           </div>
         </div>
       </div>
     </section>
-    <section [style.margin-top.px]="25">
+    <section [style.margin-top.px]="25" class="facilities">
       <div class="elementor-row">
         <div class="hotel_title">
           <h2 [style.text-align]="'center'">
@@ -53,12 +54,14 @@
           </h2>
         </div>
         <div
+          [style.margin-top.px]="25"
           fxLayout="row wrap"
           fxLayoutAlign="center"
           fxLayoutGap="20px"
           fxLayoutGap.lt-md="30px"
           fxLayout.lt-md="column"
           fxLayoutAlign.lt-md="end"
+          class="menu_flex"
         >
           <div
             *ngFor="let menu of restaurantDetail?.menu"
@@ -92,20 +95,25 @@
         </div>
       </div>
     </section>
+
+    <div class="elementor-divider" [style.width.%]="50">
+      <mat-divider [vertical]="true"></mat-divider>
+    </div>
     <section [style.margin-top.px]="25">
       <div class="elementor-row">
         <div class="hotel_title">
           <h2 [style.text-align]="'center'">
-            Overview
+            Giới thiệu
           </h2>
+        </div>
+        <div class="elementor-widget-text-editor">
           <h3 [style.text-align]="'center'">
             Địa chỉ: {{ restaurantDetail?.address }}
           </h3>
-        </div>
-        <div class="elementor-widget-text-editor">
           <div
             class="elementor-widget-container"
             [style.margin-top.px]="25"
+            fxLayoutAlign="center"
             [innerHtml]="restaurantDetail?.content | sanitizeHtml"
           >
             <p>&nbsp;</p>
@@ -113,15 +121,16 @@
         </div>
       </div>
     </section>
+
     <section
       [style.margin-top.px]="35"
-      class="elementor-element elementor-top-section"
+      class="elementor-element"
       fxLayout="column"
       fxLayoutAlign="center center"
     >
-      <div class="hotel_title">
+      <div class="hotel_title facilities">
         <h2>
-          Gallery
+          Hình ảnh
         </h2>
       </div>
     </section>
@@ -149,7 +158,7 @@
             <a (click)="openGallery(i)" [style.cursor]="'pointer'" *ngIf="i < 3"
               ><img
                 [src]="image?.url"
-                alt="restaurantDetail??.name"
+                [alt]="restaurantDetail?.name"
                 style="opacity: 1;"
             /></a>
             <div
@@ -161,7 +170,7 @@
               <img
                 class="imglast"
                 [src]="image?.url"
-                alt="restaurantDetail??.name"
+                [alt]="restaurantDetail?.name"
               />
               <span class="overlay">
                 +{{ restaurantImages?.length - (i + 1) }}</span

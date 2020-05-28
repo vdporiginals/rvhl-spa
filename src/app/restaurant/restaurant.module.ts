@@ -17,6 +17,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { RouterModule } from '@angular/router';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -32,6 +33,7 @@ import { RestaurantSearchComponent } from './restaurant-search/restaurant-search
         RouterModule,
         RestaurantRoutingModule,
         FontAwesomeModule,
+        MatDividerModule,
         NgxImageGalleryModule,
         NgxPaginationModule,
         SharedModule,

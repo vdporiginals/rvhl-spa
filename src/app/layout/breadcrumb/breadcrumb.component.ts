@@ -41,6 +41,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
       distinctUntilChanged(),
     ).subscribe(() => {
       this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
+      this.getBannerBg();
     });
     this.titlePage = this.breadcrumbs[0];
   }
@@ -60,9 +61,10 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
     }
     this.subcription = this.api.getBannerPage(queryApi).subscribe(res => {
       this.bannerImage = res.data[0];
+      console.log(res)
     }, err => {
       console.log(err);
-    })
+    });
   }
 
   /**

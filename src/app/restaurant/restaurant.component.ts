@@ -25,6 +25,7 @@ export class RestaurantComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+
     this.background = 'primary';
   }
 }

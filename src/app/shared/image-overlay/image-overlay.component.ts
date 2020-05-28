@@ -13,4 +13,8 @@ export class ImageOverlayComponent {
   constructor(
     public dialogRef: ImageOverlayRef,
     @Inject(IMAGE_DIALOG_DATA) public image: any) { }
+
+  close() {
+    this.dialogRef.close();
+  }
 }

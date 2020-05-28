@@ -18,27 +18,19 @@ export class ApiService {
         status: 'true'
       }
     });
-    const popularSchedule = this.http.get(`${environment.apiUrl}/blogs`, {
-      params: {
-        select: 'seo,title,images,createdAt',
-        limit: '3',
-        position: 'Schedule'
-        // status: 'false'
-      }
-    });
     const popularFood = this.http.get(`${environment.apiUrl}/restaurants`, {
       params: {
-        select: 'seo,title,gallery,createdAt',
+        select: 'seo,name,gallery,createdAt',
         sort: '-isPopular,-updatedAt',
         limit: '6',
         status: 'true',
       }
     });
-    const popularHotel = this.http.get(`${environment.apiUrl}/homepage/popular-hotel`, {
+    const popularHotel = this.http.get(`${environment.apiUrl}/homepage/popular-estates`, {
       params: {
         select: 'name,address,images,phone,seo,time,price',
         sort: '-isPopular,-updatedAt',
-        limit: '2',
+        limit: '6',
         status: 'true'
       }
     });
@@ -60,39 +52,19 @@ export class ApiService {
     });
     const videoBg = this.http.get(`${environment.apiUrl}/homepage/video-banner`, {
       params: {
-        select: 'images,seo,image,link',
+        select: 'image,seo,image,link',
         status: 'true'
       }
     });
     const advertiseHomepage = this.http.get(`${environment.apiUrl}/homepage/advertise-banner`, { params: { status: 'true' } });
-    const popularHomestay = this.http.get(`${environment.apiUrl}/estates/homestay`, {
-      params: {
-        select: 'name,address,images,phone,seo,time,price',
-        limit: '2',
-        status: 'true',
-        sort: '-isPopular,-updatedAt'
-      }
-    });
-    const popularVilla = this.http.get(`${environment.apiUrl}/estates/villa`, {
-      params: {
-        select: 'name,address,images,phone,seo,time,price',
-        limit: '2',
-        status: 'true',
-        sort: '-isPopular,-updatedAt',
-        isPopular: 'true'
-      }
-    });
     return forkJoin([
       sliderArea,
-      popularSchedule,
       popularFood,
       popularHotel,
       popularCruise,
       recentBlogs,
       videoBg,
       advertiseHomepage,
-      popularHomestay,
-      popularVilla
     ]);
   }
 
@@ -168,7 +140,8 @@ export class ApiService {
   getBannerPage(queryParams): Observable<any> {
     const bannerPage = this.http.get(`${environment.apiUrl}/advertises`, {
       params: {
-        page: queryParams,
+        pagePosition: queryParams,
+        typeAdvertise: 'BannerPage',
         limit: '1',
         select: 'image,title',
         status: 'true'
@@ -247,6 +220,16 @@ export class ApiService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  getAdvertisePage(page): Observable<any> {
+    const advPage = this.http.get<any>(`${environment.apiUrl}/advertises`, {
+      params: {
+        pagePosition: 'SchedulePage',
+        typeAdvertise: 'Advertise'
+      }
+    });
+    return advPage;
   }
 
   handleError(error: HttpErrorResponse) {

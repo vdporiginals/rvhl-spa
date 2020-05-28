@@ -60,6 +60,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.typeLink = this.route.snapshot.parent.url[0].path;
+
     if (this.route.snapshot.data.tourCategory) {
 
       this.categoryData = this.route.snapshot.data.tourCategory;

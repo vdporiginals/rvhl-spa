@@ -12,6 +12,9 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { isPlatformServer } from '@angular/common';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
 
 @Component({
   selector: 'app-restaurant-list',
@@ -56,6 +59,7 @@ export class RestaurantListComponent implements OnInit {
     private route: ActivatedRoute,
     private seo: SeoService,
     private dialog: MatDialog,
+    private api: ApiService, private imageDialog: ImageOverlayService,
     private sharedData: SharedDataService,
     @Optional() @Inject(REQUEST) private request,
     private localStorage: LocalStorageService,
@@ -66,6 +70,17 @@ export class RestaurantListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.api.getAdvertisePage('FoodPage').subscribe(res => {
+      if (res.data.length !== 0) {
+        const dialogRef: ImageOverlayRef = this.imageDialog.open({
+          image: {
+            name: res.data[0].name,
+            url: res.data[0].image,
+            link: res.data[0].link
+          },
+        });
+      }
+    });
     if (this.route.snapshot.data.restaurantList) {
       this.restaurantDetail = this.route.snapshot.data.restaurantList;
       this.count = this.restaurantDetail.count;
@@ -136,7 +151,7 @@ export class RestaurantListComponent implements OnInit {
     let paramsApi;
     if (category) {
       paramsApi = {
-        select: 'name,phone,description,price,seo,address,views,gallery',
+        select: 'name,phone,description,price,seo,address,views,image',
         page,
         category,
         status: 'true',
@@ -150,10 +165,10 @@ export class RestaurantListComponent implements OnInit {
       }
       paramsApi = sort;
       paramsApi.page = page;
-      paramsApi.select = 'name,phone,description,price,seo,views,address,gallery';
+      paramsApi.select = 'name,phone,description,price,seo,views,address,image';
     } else {
       paramsApi = {
-        select: 'name,phone,description,price,seo,address,views,gallery',
+        select: 'name,phone,description,price,seo,address,views,image',
         page,
         status: 'true',
         limit: '8',
@@ -165,12 +180,12 @@ export class RestaurantListComponent implements OnInit {
       })
       .pipe(map((res: any) => {
         const result = res.data.map((val) => {
-          const gallery = val.gallery.map(res => {
-            return {
-              url: res,
-              thumbnailUrl: res
-            }
-          });
+          // const gallery = val.gallery.map(res => {
+          //   return {
+          //     url: res,
+          //     thumbnailUrl: res
+          //   }
+          // });
           return {
             _id: val._id,
             name: val.name,
@@ -180,7 +195,7 @@ export class RestaurantListComponent implements OnInit {
             seo: val.seo,
             address: val.address,
             views: val.views,
-            gallery,
+            image: val.image,
           };
         });
         return { count: res.count, numRecord: res.numRecord, pagination: res.pagination, data: result };

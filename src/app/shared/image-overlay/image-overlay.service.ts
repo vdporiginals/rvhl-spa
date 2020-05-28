@@ -10,6 +10,7 @@ import { IMAGE_DIALOG_DATA } from './image-overlay.token';
 export interface Image {
     name: string;
     url: string;
+    link: string;
 }
 
 interface ImageDialogConfig {

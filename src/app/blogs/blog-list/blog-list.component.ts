@@ -24,6 +24,8 @@ import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 import { isPlatformServer } from '@angular/common';
 import { SeoService } from 'src/app/shared/services/seo.service';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
 
 @Component({
   selector: 'app-blog-list',
@@ -57,16 +59,28 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
     private sharedData: SharedDataService,
     private http: HttpClient,
     public router: Router,
+    private api: ApiService, private imageDialog: ImageOverlayService,
     @Optional() @Inject(REQUEST) private request,
     private injector: Injector,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private api: ApiService,
     private seo: SeoService
   ) { }
 
   ngOnChanges() { }
 
   ngOnInit(): void {
+    this.api.getAdvertisePage('SchedulePage').subscribe(res => {
+      if (res.data.length !== 0) {
+        const dialogRef: ImageOverlayRef = this.imageDialog.open({
+          image: {
+            name: res.data[0].name,
+            url: res.data[0].image,
+            link: res.data[0].link
+          },
+        });
+      }
+    });
+
     if (this.route.snapshot.data.blogCategory) {
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Reviews Du Lịch Hạ Long');
@@ -122,20 +136,20 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
         page,
         category,
         limit: '4',
-      }
+      };
     } else if (position !== undefined) {
       paramsApi = {
         select: 'title,description,images,seo,address,createdAt',
         page,
         position,
         limit: '4',
-      }
+      };
     } else {
       paramsApi = {
         select: 'title,description,images,seo,address,createdAt',
         page,
         limit: '4',
-      }
+      };
     }
     this.subcription = this.http
       .get<any>(`${environment.apiUrl}/blogs`, {

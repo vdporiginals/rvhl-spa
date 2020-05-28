@@ -9,5 +9,6 @@ export class BlogsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 }

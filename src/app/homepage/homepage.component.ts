@@ -17,8 +17,6 @@ export class HomepageComponent implements OnInit, OnDestroy {
   popularFoodData: any = [];
   popularHotelData: any = [];
   popularCruiseData: any = [];
-  popularHomestayData: any = [];
-  popularVillaData: any = [];
   recentBlogs: any = [];
   videoBg: any = [];
   isLoadingResults = true;
@@ -68,15 +66,13 @@ export class HomepageComponent implements OnInit, OnDestroy {
       res => {
         this.sliderData = res[0].data;
         this.popularScheduleData = res[1].data;
-        this.popularFoodData = res[2].data;
-        this.popularHotelData = res[3].data;
-        this.popularCruiseData = res[4].data;
-        this.recentBlogs = res[5].data;
-        this.videoBg = res[6].data;
+        this.popularFoodData = res[1].data;
+        this.popularHotelData = res[2].data;
+        this.popularCruiseData = res[3].data;
+        this.recentBlogs = res[4].data;
+        this.videoBg = res[5].data;
         // console.log(this.popularFoodData)
-        this.advertiseHomepage = res[7].data;
-        this.popularHomestayData = res[8].data;
-        this.popularVillaData = res[9].data;
+        this.advertiseHomepage = res[6].data;
         this.isLoadingResults = false;
       },
       err => {

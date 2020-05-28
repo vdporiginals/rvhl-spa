@@ -19,7 +19,7 @@ const routes: Routes = [
                     restaurantList: RestaurantListResolve
                 },
                 data: {
-                    queryBanner: 'EntertainPage',
+                    queryBanner: 'FoodPage',
                 },
             },
             {
