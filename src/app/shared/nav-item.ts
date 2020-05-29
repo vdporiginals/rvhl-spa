@@ -3,6 +3,22 @@ export const NavItem = [
   //   label: 'Trang chủ',
   //   link: 'home'
   // },
+
+  {
+    label: 'Lịch Trình',
+    link: 'lich-trinh',
+    paramsPage: { page: 'SchedulePage' },
+  },
+  {
+    label: 'Ăn Gì',
+    link: 'an-gi',
+    paramsPage: { page: 'FoodPage' },
+  },
+  {
+    label: 'Chơi gì',
+    link: 'entertain',
+    paramsPage: { page: 'EntertainPage' },
+  },
   {
     label: 'Ở đâu',
     link: 'o-dau/khach-san',
@@ -25,22 +41,6 @@ export const NavItem = [
       }
     ]
   },
-  {
-    label: 'Ăn Gì',
-    link: 'an-gi',
-    paramsPage: { page: 'FoodPage' },
-  },
-  {
-    label: 'Lịch Trình',
-    link: 'lich-trinh',
-    paramsPage: { page: 'SchedulePage' },
-  },
-  {
-    label: 'Vui chơi',
-    link: 'entertain',
-    paramsPage: { page: 'EntertainPage' },
-  },
-
   {
     label: 'Tour',
     link: 'tour/ha-long-bay-tour',
