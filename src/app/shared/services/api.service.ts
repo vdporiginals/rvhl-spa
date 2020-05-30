@@ -34,9 +34,9 @@ export class ApiService {
         status: 'true'
       }
     });
-    const popularCruise = this.http.get(`${environment.apiUrl}/tours`, {
+    const popularEntertain = this.http.get(`${environment.apiUrl}/entertains`, {
       params: {
-        select: 'title,address,image,phone,seo,time,price',
+        select: 'name,address,image,phone,seo,price',
         limit: '6',
         sort: '-isPopular,-updatedAt',
         status: 'true'
@@ -61,7 +61,7 @@ export class ApiService {
       sliderArea,
       popularFood,
       popularHotel,
-      popularCruise,
+      popularEntertain,
       recentBlogs,
       videoBg,
       advertiseHomepage,

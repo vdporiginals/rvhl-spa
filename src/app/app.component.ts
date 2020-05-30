@@ -42,8 +42,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.metaTagService.addTags([
-      { name: 'keywords', content: 'Review hạ long, chia sẻ hạ long, du lịch hạ long' },
+      { name: 'googlebot', content: 'all, index, follow' },
       { name: 'robots', content: 'index, follow' },
+      { name: 'copyright', content: 'reviewhalong.vn' },
       { name: 'author', content: 'Review Hạ Long team' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'date', content: '2020-5-01', scheme: 'YYYY-MM-DD' },

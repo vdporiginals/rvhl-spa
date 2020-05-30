@@ -19,7 +19,7 @@
         class="tour_image"
         [routerLink]="['/tour', typeLink, tour._id, tour.seo]"
       >
-        <img [src]="tour.images[0]" [alt]="tour.name" />
+        <img [src]="tour.image" [alt]="tour.name" />
         <div class="tour_price has_discount">
           <span class="normal_price"
             >từ &nbsp;{{ tour.price | shortNumber }}

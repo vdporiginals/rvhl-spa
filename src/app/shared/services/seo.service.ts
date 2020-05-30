@@ -10,16 +10,14 @@ export class SeoService {
 
   setTitle(title: string) {
     this.titleService.setTitle(title);
+
   }
 
   setDescription(desc: string) {
     this.metaTagService.updateTag(
       { name: 'description', content: desc }
     );
-    this.metaTagService.updateTag({ name: 'robots', content: 'index, follow' });
     this.metaTagService.updateTag({ property: 'og:description', content: desc });
-    this.metaTagService.updateTag({ name: 'author', content: 'Review Hạ long' });
-    this.metaTagService.updateTag({ name: 'copyright', content: 'Review Hạ long' });
   }
 
   setKeywords(keyword: string) {

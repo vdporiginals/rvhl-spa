@@ -118,6 +118,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
         select: 'title,description,schedule,image,seo,phone,price,time',
         page,
         category,
+        sort: '-isPopular,-updatedAt',
         status: 'true',
         limit: '8',
       }
@@ -135,6 +136,7 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
       paramsApi = {
         select: 'title,description,schedule,image,phone,seo,price,time',
         page,
+        sort: '-isPopular,-updatedAt',
         position,
         status: 'true',
         limit: '8',

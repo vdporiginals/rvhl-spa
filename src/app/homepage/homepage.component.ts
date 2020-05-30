@@ -34,14 +34,14 @@ export class HomepageComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     if (isPlatformServer(this.platformId)) {
-      this.seo.setTitle('Trang chủ review hạ long');
-      this.seo.setDescription('Review Hạ long, du lịch hạ long- quảng ninh, đem tới trải nghiệm hạ long tốt nhất cho du khách');
+      this.seo.setTitle('Review Hạ Long | Trải nghiệm Hạ Long trong tầm tay');
+      this.seo.setDescription('Kết nối, chia sẻ kinh nghiệm du lịch Hạ Long, Quảng Ninh');
       this.seo.setKeywords('Review hạ long, du lich hạ long,du lịch quảng ninh,review du lich, hạ long, ha long, quảng ninh');
       this.seo.setOgSite(this.request.get('host'));
       this.seo.setOgUrl(this.request.get('host'));
     } else {
-      this.seo.setTitle('Review du lịch Hạ Long');
-      this.seo.setDescription('Review Hạ long, du lịch hạ long - quảng ninh, đem tới trải nghiệm hạ long tốt nhất cho du khách');
+      this.seo.setTitle('Review Hạ Long | Trải nghiệm Hạ Long trong tầm tay');
+      this.seo.setDescription('Kết nối, chia sẻ kinh nghiệm du lịch Hạ Long, Quảng Ninh');
       this.seo.setKeywords('Review hạ long, du lich hạ long,du lịch quảng ninh,review du lich, hạ long, ha long, quảng ninh');
       this.seo.setOgSite(window.location.origin);
       this.seo.setOgUrl(window.location.origin);

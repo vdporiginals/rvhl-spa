@@ -7,10 +7,15 @@
   fxFlex.lt-md
 >
   <div>
-    <div class="section_title">
-      <h3>Chỗ ở Hạ Long</h3>
+    <div
+      class="section_title"
+      [style.text-align]="'center'"
+      fxLayoutAlign="center"
+      fxLayout="column"
+    >
+      <h3>Địa điểm lưu trú - Hạ Long</h3>
       <p>
-        Gợi ý cho du khách về những chỗ dừng chân nổi bật nhất.
+        Gợi ý cho du khách về chỗ ở như khách sạn, homestay, villa phù hợp nhất
       </p>
     </div>
   </div>
@@ -19,7 +24,7 @@
       fxFlex="65%"
       fxFlex.md="40%"
       fxFlex.gt-sm="24%"
-      *ngFor="let hotel of popularHotelData"
+      *ngFor="let hotel of popularHotelData | slice: 0:6"
     >
       <mat-card class="single_place">
         <div class="thumb">

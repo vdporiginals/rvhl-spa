@@ -7,10 +7,15 @@
   fxFlex.lt-md
 >
   <div>
-    <div class="section_title">
-      <h3>Tour Hạ Long</h3>
+    <div
+      class="section_title"
+      [style.text-align]="'center'"
+      fxLayoutAlign="center"
+      fxLayout="column"
+    >
+      <h3>Địa điểm vui chơi - Hạ Long</h3>
       <p>
-        Gợi ý cho du khách về những tour ở Hạ long nổi bật nhất.
+        Gợi ý cho du khách về những địa điểm vui chơi ở Hạ long nổi bật nhất.
       </p>
     </div>
   </div>
@@ -28,10 +33,10 @@
         </div>
         <div class="place_info">
           <a
-            [routerLink]="['/tour', cruise._id, cruise.seo]"
+            [routerLink]="['/entertain', cruise._id, cruise.seo]"
             fxLayoutAlign="start"
           >
-            <h3>{{ cruise.title }}</h3>
+            <h3>{{ cruise.name }}</h3>
           </a>
           <p fxLayoutAlign="start" fxLayoutAlign="start">
             {{ cruise.address }}
@@ -48,7 +53,7 @@
   </div>
   <div fxFlex>
     <div class="more_place_btn">
-      <a class="boxed-btn4" [routerLink]="['/tour']">Xem thêm</a>
+      <a class="boxed-btn4" [routerLink]="['/entertain']">Xem thêm</a>
     </div>
   </div>
 </div>

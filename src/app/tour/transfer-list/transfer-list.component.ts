@@ -112,6 +112,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
       paramsApi = {
         select: 'name,description,locationStart,image,seo,phone,price,locationEnd,timePerTrip',
         page,
+        sort: '-isPopular,-updatedAt',
         category,
         status: true,
         limit: '8',
@@ -130,6 +131,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
       paramsApi = {
         select: 'name,description,locationStart,phone,image,seo,price,locationEnd,timePerTrip',
         page,
+        sort: '-isPopular,-updatedAt',
         status: true,
         limit: '8',
       }

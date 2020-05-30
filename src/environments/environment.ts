@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+
   apiUrl: 'http://localhost:5001/api',
   appId: '0968897925',
   userName: 'vdp.originals@gmail.com',
