@@ -17,6 +17,7 @@ export class RestaurantDetailComponent implements OnInit {
   restaurantDetail;
   isBrowser: boolean;
   faPhone = faPhone;
+  isMenu: boolean;
   faPlay = faPlay;
   faUser = faUser;
   faSearch = faSearch;
@@ -43,6 +44,12 @@ export class RestaurantDetailComponent implements OnInit {
   ngOnInit(): void {
     if (this.route.snapshot.data.restaurantDetail) {
       this.restaurantDetail = this.route.snapshot.data.restaurantDetail.data;
+      if (this.route.snapshot.data.restaurantDetail.data.menu[0].name === '') {
+        this.isMenu = false;
+      } else {
+        this.isMenu = true;
+      }
+
       this.restaurantImages = this.route.snapshot.data.restaurantDetail.data.gallery.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.restaurantDetail.name);

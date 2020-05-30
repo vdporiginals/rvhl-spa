@@ -46,7 +46,11 @@
         </div>
       </div>
     </section>
-    <section [style.margin-top.px]="25" class="facilities">
+    <section
+      [style.margin-top.px]="25"
+      class="facilities"
+      *ngIf="isMenu === true"
+    >
       <div class="elementor-row">
         <div class="hotel_title">
           <h2 [style.text-align]="'center'">

@@ -131,9 +131,15 @@ export class ApiService {
         select: 'fbPage,fbGroup'
       }
     });
-
+    const recentReviews = this.http.get<any>(`${environment.apiUrl}/blogs`, {
+      params: {
+        select: 'title,images,seo,createdAt',
+        limit: '3',
+        status: 'true'
+      }
+    });
     // const typeBlogs = this.http.get(`${this.apiUrl}/blogs?select=title,description,image,seo,address,createdAt&tags=`);
-    return forkJoin([recentTours, tourCategory, fbPlugin]);
+    return forkJoin([recentTours, tourCategory, fbPlugin, recentReviews]);
   }
 
   getFilterEntertain(type?): Observable<any> {
