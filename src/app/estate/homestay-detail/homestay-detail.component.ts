@@ -71,31 +71,33 @@ export class HomestayDetailComponent implements OnInit {
       night: [''],
       peopleNum: ['']
     });
-  }
 
-  ngOnInit(): void {
     if (this.route.snapshot.data.estateDetail) {
       this.homestayDetail = this.route.snapshot.data.estateDetail.data;
       this.homestayImages = this.route.snapshot.data.estateDetail.data.images.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.homestayDetail.name);
-        this.seo.setDescription(this.homestayDetail.description);
+        this.seo.setDescription(this.homestayDetail.description, this.homestayDetail.image);
         this.seo.setKeywords(this.homestayDetail.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
         this.seo.setTitle(this.homestayDetail.name);
-        this.seo.setDescription(this.homestayDetail.description);
+        this.seo.setDescription(this.homestayDetail.description, this.homestayDetail.image);
         this.seo.setKeywords(this.homestayDetail.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
 
-      this.checkAvaiForm.patchValue({
-        roomCategory: this.homestayDetail.category,
-        roomId: this.homestayDetail._id
-      });
     }
+  }
+
+  ngOnInit(): void {
+
+    this.checkAvaiForm.patchValue({
+      roomCategory: this.homestayDetail.category,
+      roomId: this.homestayDetail._id
+    });
   }
 
   sendCustomerRequest() {

@@ -61,10 +61,29 @@ export class TransferListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.typeLink = this.route.snapshot.parent.url[0].path;
-    if (this.route.snapshot.data.transferList) {
+    this.position = this.route.snapshot.data.position;
+    if (this.categoryId !== undefined) {
+      this.getTransfer(1, undefined, this.categoryId);
+    } else {
+      this.getTransfer(1);
+    }
+
+    this.sharedData.transferCategoryId.subscribe((id) => {
+      if (id !== '') {
+        this.getTransfer(1, undefined, id);
+        this.sharedData.setTransferCategory('');
+      }
+    });
+    this.sharedData.transferFormData.subscribe((val) => {
+      if (Object.keys(val).length !== 0) {
+        this.sortData = val;
+        this.getTransfer(1, undefined, undefined, val);
+        this.sharedData.setFormData({});
+      }
+    });
+    if (this.route.snapshot.data.transferList.count !== 0) {
 
       this.categoryData = this.route.snapshot.data.transferList;
-      this.position = this.route.snapshot.data.position;
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Di chuyển Hạ Long, xe limousine hạ long, Xe tiện chuyến hạ long');
         this.seo.setDescription(this.categoryData.data[0].description);
@@ -79,25 +98,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
         this.seo.setOgUrl(window.location.origin);
       }
 
-      if (this.categoryId !== undefined) {
-        this.getTransfer(1, undefined, this.categoryId);
-      } else {
-        this.getTransfer(1);
-      }
 
-      this.sharedData.transferCategoryId.subscribe((id) => {
-        if (id !== '') {
-          this.getTransfer(1, undefined, id);
-          this.sharedData.setTransferCategory('');
-        }
-      });
-      this.sharedData.transferFormData.subscribe((val) => {
-        if (Object.keys(val).length !== 0) {
-          this.sortData = val;
-          this.getTransfer(1, undefined, undefined, val);
-          this.sharedData.setFormData({});
-        }
-      });
     }
 
   }

@@ -10,14 +10,18 @@ export class SeoService {
 
   setTitle(title: string) {
     this.titleService.setTitle(title);
+    this.metaTagService.updateTag({ property: 'og:title', content: title });
+
 
   }
 
-  setDescription(desc: string) {
+  setDescription(desc: string, img?) {
     this.metaTagService.updateTag(
       { name: 'description', content: desc }
     );
     this.metaTagService.updateTag({ property: 'og:description', content: desc });
+    this.metaTagService.updateTag({ property: 'og:image', content: img });
+
   }
 
   setKeywords(keyword: string) {
@@ -29,7 +33,7 @@ export class SeoService {
 
   setOgUrl(url: string) {
     this.metaTagService.updateTag({ property: 'og:url', content: url });
-    this.metaTagService.updateTag({ property: 'og:type', content: 'website' });
+    this.metaTagService.updateTag({ property: 'og:type', content: "article" });
     this.metaTagService.updateTag({ property: 'fb:app_id', content: environment.facebookId });
     this.metaTagService.updateTag({ property: 'og:rich_attachment', content: 'true' });
   }

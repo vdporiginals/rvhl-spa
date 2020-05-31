@@ -60,11 +60,34 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.typeLink = this.route.snapshot.parent.url[0].path;
+    if (this.categoryId !== undefined) {
+      this.getTour(1, undefined, this.categoryId);
+    }
 
+    this.position = this.route.snapshot.data.position;
+
+    if ((this.position === undefined || this.position === null) && this.categoryId === undefined) {
+      this.getTour(1);
+    } else if ((this.position !== undefined || this.position !== null) && this.categoryId === undefined) {
+      this.getTour(1, this.position);
+    }
+
+    this.sharedData.tourCategoryId.subscribe((id) => {
+      if (id !== '') {
+        this.getTour(1, undefined, id);
+        this.sharedData.setTourCategory('');
+      }
+    });
+    this.sharedData.searchFormData.subscribe((val) => {
+      if (Object.keys(val).length !== 0) {
+        this.sortData = val;
+        this.getTour(1, undefined, undefined, val);
+        this.sharedData.setFormData({});
+      }
+    });
     if (this.route.snapshot.data.tourCategory) {
 
       this.categoryData = this.route.snapshot.data.tourCategory;
-      this.position = this.route.snapshot.data.position;
 
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Tour Hạ Long, Tour trọn gói, Tour vịnh');
@@ -79,30 +102,6 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
-
-      if (this.categoryId !== undefined) {
-        this.getTour(1, undefined, this.categoryId);
-      }
-
-      if ((this.position === undefined || this.position === null) && this.categoryId === undefined) {
-        this.getTour(1);
-      } else if ((this.position !== undefined || this.position !== null) && this.categoryId === undefined) {
-        this.getTour(1, this.position);
-      }
-
-      this.sharedData.tourCategoryId.subscribe((id) => {
-        if (id !== '') {
-          this.getTour(1, undefined, id);
-          this.sharedData.setTourCategory('');
-        }
-      });
-      this.sharedData.searchFormData.subscribe((val) => {
-        if (Object.keys(val).length !== 0) {
-          this.sortData = val;
-          this.getTour(1, undefined, undefined, val);
-          this.sharedData.setFormData({});
-        }
-      });
     }
 
   }

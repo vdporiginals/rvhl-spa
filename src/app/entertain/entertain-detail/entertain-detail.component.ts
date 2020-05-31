@@ -43,28 +43,28 @@ export class EntertainDetailComponent implements OnInit {
     private localStorage: LocalStorageService,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-
-  }
-
-  ngOnInit(): void {
     if (this.route.snapshot.data.entertainDetail) {
       this.entertainDetail = this.route.snapshot.data.entertainDetail;
       this.tbData.push(this.entertainDetail.data.schedule);
       this.entertainImages = this.route.snapshot.data.entertainDetail.data.images.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.entertainDetail.data.title);
-        this.seo.setDescription(this.entertainDetail.data.description);
+        this.seo.setDescription(this.entertainDetail.data.description, this.entertainDetail.data.image);
         this.seo.setKeywords(this.entertainDetail.data.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
         this.seo.setTitle(this.entertainDetail.data.title);
-        this.seo.setDescription(this.entertainDetail.data.description);
+        this.seo.setDescription(this.entertainDetail.data.description, this.entertainDetail.data.image);
         this.seo.setKeywords(this.entertainDetail.data.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
     }
+  }
+
+  ngOnInit(): void {
+
   }
 
   // open gallery

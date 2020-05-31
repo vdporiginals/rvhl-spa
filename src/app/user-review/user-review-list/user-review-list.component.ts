@@ -64,7 +64,17 @@ export class UserReviewListComponent implements OnInit, OnDestroy {
       }
     });
 
-    if (this.route.snapshot.data.userCategory) {
+
+    this.getData(1);
+
+    this.sharedData.reviewCategoryId.subscribe((id) => {
+      if (id !== '') {
+        this.categoryId = id;
+        this.getData(1, this.categoryId);
+      }
+    });
+
+    if (this.route.snapshot.data.userCategory.count === 0) {
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Reviews Du Lịch Hạ Long');
         this.seo.setDescription(
@@ -87,16 +97,23 @@ export class UserReviewListComponent implements OnInit, OnDestroy {
         this.seo.setOgUrl(window.location.origin);
       }
 
+
+    } else {
       this.categoryData = this.route.snapshot.data.userCategory;
+      if (isPlatformServer(this.platformId)) {
+        this.seo.setTitle('Reviews Du Lịch Hạ Long');
+        this.seo.setDescription(this.categoryData.data[0].description);
+        this.seo.setKeywords(this.categoryData.data[0].keywords);
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle('Reviews Du Lịch Hạ Long');
+        this.seo.setDescription(this.categoryData.data[0].description);
+        this.seo.setKeywords(this.categoryData.data[0].keywords);
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
+      }
 
-      this.getData(1);
-
-      this.sharedData.reviewCategoryId.subscribe((id) => {
-        if (id !== '') {
-          this.categoryId = id;
-          this.getData(1, this.categoryId);
-        }
-      });
     }
 
   }
@@ -109,11 +126,11 @@ export class UserReviewListComponent implements OnInit, OnDestroy {
 
   getData(page, category?) {
     let paramsApi;
-    console.log(category);
     if (category !== undefined && category !== '') {
       paramsApi = {
         select: 'title,description,image,seo,address,createdAt',
         page,
+        status: true,
         category,
         limit: '6',
       };
@@ -121,6 +138,7 @@ export class UserReviewListComponent implements OnInit, OnDestroy {
       paramsApi = {
         select: 'title,description,image,seo,address,createdAt',
         page,
+        status: true,
         limit: '6',
       };
     }

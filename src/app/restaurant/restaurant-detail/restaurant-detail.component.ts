@@ -39,9 +39,6 @@ export class RestaurantDetailComponent implements OnInit {
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-  }
-
-  ngOnInit(): void {
     if (this.route.snapshot.data.restaurantDetail) {
       this.restaurantDetail = this.route.snapshot.data.restaurantDetail.data;
       if (this.route.snapshot.data.restaurantDetail.data.menu[0].name === '') {
@@ -53,18 +50,23 @@ export class RestaurantDetailComponent implements OnInit {
       this.restaurantImages = this.route.snapshot.data.restaurantDetail.data.gallery.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.restaurantDetail.name);
-        this.seo.setDescription(this.restaurantDetail.description);
+        this.seo.setDescription(this.restaurantDetail.description, this.restaurantDetail.image);
         this.seo.setKeywords(this.restaurantDetail.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
         this.seo.setTitle(this.restaurantDetail.name);
-        this.seo.setDescription(this.restaurantDetail.description);
+        this.seo.setDescription(this.restaurantDetail.description, this.restaurantDetail.image);
+
         this.seo.setKeywords(this.restaurantDetail.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
     }
+  }
+
+  ngOnInit(): void {
+
   }
 
 

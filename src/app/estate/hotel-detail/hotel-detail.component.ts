@@ -71,30 +71,32 @@ export class HotelDetailComponent implements OnInit {
       night: [''],
       peopleNum: ['']
     });
-  }
 
-  ngOnInit(): void {
     if (this.route.snapshot.data.estateDetail) {
       this.hotelDetail = this.route.snapshot.data.estateDetail.data;
       this.hotelImages = this.route.snapshot.data.estateDetail.data.images.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.hotelDetail.name);
-        this.seo.setDescription(this.hotelDetail.description);
+        this.seo.setDescription(this.hotelDetail.description, this.hotelDetail.image);
         this.seo.setKeywords(this.hotelDetail.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
         this.seo.setTitle(this.hotelDetail.name);
-        this.seo.setDescription(this.hotelDetail.description);
+        this.seo.setDescription(this.hotelDetail.description, this.hotelDetail.image);
         this.seo.setKeywords(this.hotelDetail.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
-      this.checkAvaiForm.patchValue({
-        roomCategory: this.hotelDetail.category,
-        roomId: this.hotelDetail._id
-      });
     }
+  }
+
+  ngOnInit(): void {
+
+    this.checkAvaiForm.patchValue({
+      roomCategory: this.hotelDetail.category,
+      roomId: this.hotelDetail._id
+    });
   }
 
   sendCustomerRequest() {

@@ -71,31 +71,34 @@ export class VillaDetailComponent implements OnInit {
       night: [''],
       peopleNum: ['']
     });
-  }
 
-  ngOnInit(): void {
     if (this.route.snapshot.data.estateDetail) {
       this.villaDetail = this.route.snapshot.data.estateDetail.data;
       this.villaImages = this.route.snapshot.data.estateDetail.data.images.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.villaDetail.name);
-        this.seo.setDescription(this.villaDetail.description);
+        this.seo.setDescription(this.villaDetail.description, this.villaDetail.image);
         this.seo.setKeywords(this.villaDetail.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
         this.seo.setTitle(this.villaDetail.name);
-        this.seo.setDescription(this.villaDetail.description);
+        this.seo.setDescription(this.villaDetail.description, this.villaDetail.image);
         this.seo.setKeywords(this.villaDetail.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
 
-      this.checkAvaiForm.patchValue({
-        roomCategory: this.villaDetail.category,
-        roomId: this.villaDetail._id
-      });
     }
+
+  }
+
+  ngOnInit(): void {
+
+    this.checkAvaiForm.patchValue({
+      roomCategory: this.villaDetail.category,
+      roomId: this.villaDetail._id
+    });
   }
 
   sendCustomerRequest() {

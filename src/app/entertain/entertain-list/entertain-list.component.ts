@@ -71,10 +71,30 @@ export class EntertainListComponent implements OnInit, OnDestroy {
         });
       }
     });
-    if (this.route.snapshot.data.entertainCategory) {
+
+    this.getEntertain(1);
+
+    if (this.categoryId !== undefined) {
+      this.getEntertain(1, this.categoryId);
+    }
+
+    this.sharedData.entertainCategoryId.subscribe((id) => {
+      if (id !== '') {
+        this.getEntertain(1, id);
+        this.sharedData.setEntertainCategory('');
+      }
+    });
+
+    this.sharedData.entertainFormData.subscribe((val) => {
+      if (Object.keys(val).length !== 0) {
+        this.sortData = val;
+        this.getEntertain(1, undefined, val);
+        this.sharedData.setEntertainFormData({});
+      }
+    });
+    if (this.route.snapshot.data.entertainCategory.numRecord !== 0) {
 
       this.categoryData = this.route.snapshot.data.entertainCategory;
-
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Giải trí Hạ Long, vui chơi hạ long');
         this.seo.setDescription(this.categoryData.data[0].description);
@@ -88,26 +108,7 @@ export class EntertainListComponent implements OnInit, OnDestroy {
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
-      this.getEntertain(1);
 
-      if (this.categoryId !== undefined) {
-        this.getEntertain(1, this.categoryId);
-      }
-
-      this.sharedData.entertainCategoryId.subscribe((id) => {
-        if (id !== '') {
-          this.getEntertain(1, id);
-          this.sharedData.setEntertainCategory('');
-        }
-      });
-
-      this.sharedData.entertainFormData.subscribe((val) => {
-        if (Object.keys(val).length !== 0) {
-          this.sortData = val;
-          this.getEntertain(1, undefined, val);
-          this.sharedData.setEntertainFormData({});
-        }
-      });
     }
 
   }
@@ -152,6 +153,7 @@ export class EntertainListComponent implements OnInit, OnDestroy {
       })
       .subscribe((data) => {
         this.entertainData = data;
+        console.log(this.entertainData)
         this.count = data.count;
         if (Object.keys(data.pagination).length !== 0) {
           if (data.pagination.next === undefined) {

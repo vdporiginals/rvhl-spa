@@ -44,28 +44,28 @@ export class TransferDetailComponent implements OnInit {
     private localStorage: LocalStorageService,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-
-  }
-
-  ngOnInit(): void {
     if (this.route.snapshot.data.transferDetail) {
       this.transferDetail = this.route.snapshot.data.transferDetail;
       this.tbData.push(this.transferDetail.data.schedule);
       this.transferImages = this.route.snapshot.data.transferDetail.data.images.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.transferDetail.data.name);
-        this.seo.setDescription(this.transferDetail.data.description);
+        this.seo.setDescription(this.transferDetail.data.description, this.transferDetail.data.image);
         this.seo.setKeywords(this.transferDetail.data.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
         this.seo.setTitle(this.transferDetail.data.name);
-        this.seo.setDescription(this.transferDetail.data.description);
+        this.seo.setDescription(this.transferDetail.data.description, this.transferDetail.data.image);
         this.seo.setKeywords(this.transferDetail.data.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
     }
+  }
+
+  ngOnInit(): void {
+
   }
 
   // open gallery

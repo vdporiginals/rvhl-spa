@@ -39,24 +39,25 @@ export class UserReviewDetailComponent implements OnInit, OnDestroy {
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-  }
-  ngOnInit(): void {
     if (this.route.snapshot.data.userpost) {
       this.blogDetail = this.route.snapshot.data.userpost;
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.blogDetail.data.title);
-        this.seo.setDescription(this.blogDetail.data.description);
+        this.seo.setDescription(this.blogDetail.data.description, this.blogDetail.data.image);
         this.seo.setKeywords(this.blogDetail.data.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
         this.seo.setTitle(this.blogDetail.data.title);
-        this.seo.setDescription(this.blogDetail.data.description);
+        this.seo.setDescription(this.blogDetail.data.description, this.blogDetail.data.image);
         this.seo.setKeywords(this.blogDetail.data.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
     }
+  }
+  ngOnInit(): void {
+
     this.api.getFbPlugin('fbLike').pipe(map(res => res.data[0].fbLike)).subscribe(data => {
       if (isPlatformServer(this.platformId)) {
         this.fbLike = unescape(data).replace('reviewhalong.vn', this.request.get('host'));

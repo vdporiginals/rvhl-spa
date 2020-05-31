@@ -44,28 +44,28 @@ export class TourDetailComponent implements OnInit, AfterContentInit {
     private localStorage: LocalStorageService,
     @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-
-  }
-
-  ngOnInit(): void {
     if (this.route.snapshot.data.tourpost) {
       this.tourDetail = this.route.snapshot.data.tourpost;
       this.tbData.push(this.tourDetail.data.schedule);
       this.tourImages = this.route.snapshot.data.tourpost.data.images.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.tourDetail.data.title);
-        this.seo.setDescription(this.tourDetail.data.description);
+        this.seo.setDescription(this.tourDetail.data.description, this.tourDetail.data.image);
         this.seo.setKeywords(this.tourDetail.data.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
         this.seo.setTitle(this.tourDetail.data.title);
-        this.seo.setDescription(this.tourDetail.data.description);
+        this.seo.setDescription(this.tourDetail.data.description, this.tourDetail.data.image);
         this.seo.setKeywords(this.tourDetail.data.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
     }
+  }
+
+  ngOnInit(): void {
+
   }
 
   ngAfterContentInit() {

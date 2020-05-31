@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  apiUrl: 'http://localhost:5001/api',
+  apiUrl: 'https://api.reviewhalong.vn/api',
   appId: '0968897925',
   userName: 'vdp.originals@gmail.com',
   password: 'doilabekho@1214',
