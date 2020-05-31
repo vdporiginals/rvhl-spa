@@ -22,7 +22,7 @@ export class VideoAreaComponent implements OnInit {
     console.log(this.videoBg);
     this.dialog.open(VideoDialogComponent, {
       data: {
-        link: this.videoBg.link
+        link: this.videoBg
       },
       width: 'auto',
       panelClass: 'my-dialog'

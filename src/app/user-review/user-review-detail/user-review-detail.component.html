@@ -1,7 +1,26 @@
 <mat-card class="blog_area single-post-area section-padding">
   <div class="single-post" fxLayout="column">
     <div class="feature-img">
-      <img [src]="blogDetail?.data?.image" [alt]="blogDetail?.data?.title" />
+      <mat-carousel
+        timings="400ms ease-in-out"
+        maxWidth="100%"
+        proportion="60"
+        [autoplay]="true"
+        interval="5000"
+        *ngIf="isBrowser"
+        [loop]="true"
+        [hideArrows]="false"
+        [hideIndicators]="false"
+        [useMouseWheel]="false"
+      >
+        <mat-carousel-slide
+          #matCarouselSlide
+          *ngFor="let slide of blogDetail?.data?.images; let i = index"
+          [image]="slide"
+          [hideOverlay]="false"
+        >
+        </mat-carousel-slide>
+      </mat-carousel>
     </div>
     <div class="blog_details">
       <h2>

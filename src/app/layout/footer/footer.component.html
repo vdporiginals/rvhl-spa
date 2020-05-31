@@ -1,7 +1,13 @@
-<div class="landing-page-footer" fxLayoutAlign="center center" fxLayout="row">
+<div
+  class="landing-page-footer"
+  fxLayoutAlign="center center"
+  fxLayout="row"
+  fxLayout.lt-md="column"
+>
   <div
     [style.margin-left.px]="10"
     fxFlex="50"
+    fxFlex.lt-md="100"
     class="landing-page-footer-left container-center"
     fxLayout="row"
     fxLayoutAlign="center center"
@@ -15,7 +21,11 @@
       ></a>
       <!-- <span class="landing-page-footer-divider"></span> -->
     </div>
-    <a class="landing-page-footer-mighty-logo" [routerLink]="['/home']">
+    <a
+      class="landing-page-footer-mighty-logo"
+      fxHide.lt-md
+      [routerLink]="['/home']"
+    >
       <img
         src="../../../assets/logo-review-ha-long.png"
         fxFlex="23"
@@ -26,9 +36,11 @@
   <div
     [style.margin-right.px]="10"
     fxFlex="50"
+    fxFlex.lt-md="100"
     class="landing-page-footer-right container-center"
     fxLayout="row"
     fxLayoutAlign="end center"
+    fxLayoutAlign.lt-md="center center"
   >
     <p [style.margin-top]="'22px'">
       Copyright &copy; 2020 &nbsp;<strong>reviewhalong.vn</strong> <br />

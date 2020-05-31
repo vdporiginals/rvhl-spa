@@ -45,7 +45,6 @@
         height: 55px;
         background: transparent;
         border: 1px solid #363e52;
-        padding-left: 15px;
         @include border-radius(5px);
         color: #fff;
 
@@ -53,6 +52,7 @@
           font-size: 16px;
           color: #aab1b7;
           font-weight: 300;
+          padding: 10px;
         }
 
         &:focus {
@@ -99,6 +99,7 @@
 
 ::ng-deep.mat-form-field-empty.mat-form-field-label {
   color: $btn_bg !important;
+  padding: 10px;
 }
 
 .mat-form-field-underline {
@@ -106,14 +107,18 @@
   background-color: transparent !important;
 }
 
-.mat-form-field-ripple {
-  /*change color of underline when focused*/
-  background-color: transparent !important;
+.mat-form-field {
+  font-size: 18px !important;
 }
 
 .mat-form-field-appearance-legacy .mat-form-field-label {
-  color: #f8f8f8;
+  color: $btn_bg;
   padding: 7px;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #e3b04b !important;
 }
 
 .filter-select {

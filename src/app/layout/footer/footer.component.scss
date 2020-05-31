@@ -12,11 +12,13 @@
   -webkit-justify-content: space-between;
   justify-content: space-between;
   height: 150px;
-  padding: 40p
 }
 
 .landing-page-footer-logo {
   border-right: 1px solid #f8f8f8;
+  @media (max-width: 959px) {
+    border-right: transparent;
+  }
 }
 
 .landing-page-footer-mighty-logo {
@@ -51,5 +53,6 @@ fa-icon {
 }
 
 .logo {
-  filter: invert(90%) sepia(52%) saturate(2854%) hue-rotate(315deg) brightness(90%) contrast(96%);
+  filter: invert(90%) sepia(52%) saturate(2854%) hue-rotate(315deg)
+    brightness(90%) contrast(96%);
 }

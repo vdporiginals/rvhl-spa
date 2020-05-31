@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: 'o-dau', loadChildren: () => import('./estate/estate.module').then(m => m.EstateModule),
     data: {
-      breadcrumb: 'Ở đâu?',
+      breadcrumb: 'Ở đâu',
     },
   },
   {
@@ -48,7 +48,7 @@ const routes: Routes = [
   {
     path: 'reviews', loadChildren: () => import('./user-review/user-review.module').then(m => m.UserReviewModule),
     data: {
-      breadcrumb: 'Reviews du lịch'
+      breadcrumb: 'Reviews từ du khách'
     }
   },
   { path: 'profile', component: ProfileComponent, data: { userId: '' }, canActivate: [AuthGuard] },
