@@ -25,7 +25,7 @@ export class TransferDetailComponent implements OnInit {
   faCouch = faCouch; faDollarSign = faDollarSign; faClock = faClock;
   faCamera = faCamera;
   transferImages: Array<any> = [];
-  displayedColumns: string[] = ['time', 'location'];
+  displayedColumns: string[] = ['locationStart', 'locationEnd', 'price'];
   @ViewChild(NgxImageGalleryComponent) ngxImageGallery: NgxImageGalleryComponent;
 
   // gallery configuration

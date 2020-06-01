@@ -91,9 +91,6 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
     <div class="content" fxLayout="column">
-      <div class="description">
-        {{ tourDetail?.data.description }}
-      </div>
       <div [innerHtml]="tourDetail?.data.content | sanitizeHtml"></div>
     </div>
   </div>

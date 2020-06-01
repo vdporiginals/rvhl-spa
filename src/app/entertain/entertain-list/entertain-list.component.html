@@ -22,7 +22,7 @@
         <img [src]="entertain.image" [alt]="entertain.name" />
         <div class="tour_price has_discount">
           <span class="normal_price"
-            >từ {{ entertain.price | shortNumber }}
+            >từ {{ entertain.price | currency: "VND":"symbol":"1.0-0" }}
           </span>
         </div>
       </a>

@@ -21,7 +21,9 @@
       <div class="one_fourth" fxFlex="33">
         <fa-icon [icon]="faDollarSign"></fa-icon>
         <div class="tour_attribute_content">
-          từ &nbsp;{{ transferDetail?.data.price | shortNumber }}
+          từ &nbsp;{{
+            transferDetail?.data.price | currency: "VND":"symbol":"1.0-0"
+          }}
         </div>
       </div>
 
@@ -34,14 +36,14 @@
     </div>
     <div style="text-align: center;" fxLayout="row" fxLayoutGap="15px">
       <a
-        fxFlex="33"
+        fxFlex="50"
         class="button_fade"
         fxLayout.lt-md="column"
         fxLayoutAlign="center center"
         href="{{ 'tel:' + transferDetail?.data.phone }}"
         ><fa-icon [icon]="faPhone"></fa-icon>{{ transferDetail?.data.phone }}</a
       >
-      <a
+      <!-- <a
         fxFlex="33"
         class="button_fade"
         [style.cursor]="'default'"
@@ -50,9 +52,9 @@
         ><fa-icon [icon]="faRoute"></fa-icon
         >{{ transferDetail?.data.locationStart }} -
         {{ transferDetail?.data.locationEnd }}</a
-      >
+      > -->
       <a
-        fxFlex="33"
+        fxFlex="50"
         fxLayout.lt-md="column"
         fxLayoutAlign="center center"
         class="button_fade"
@@ -66,24 +68,30 @@
       [conf]="conf"
     ></ngx-image-gallery>
     <div>
-      <h1>Lịch trình đầy đủ</h1>
+      <h2>Lịch trình đầy đủ</h2>
       <table
         mat-table
         [dataSource]="tbData[0]"
         class="mat-elevation-z8"
         *ngIf="tbData"
       >
-        <ng-container matColumnDef="time">
-          <th mat-header-cell *matHeaderCellDef>Thời gian</th>
+        <ng-container matColumnDef="locationStart">
+          <th mat-header-cell *matHeaderCellDef>Điểm khởi hành</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.time }}
+            {{ element.locationStart }}
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="location">
-          <th mat-header-cell *matHeaderCellDef>Địa điểm</th>
+        <ng-container matColumnDef="locationEnd">
+          <th mat-header-cell *matHeaderCellDef>Điểm đến</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.location }}
+            {{ element.locationEnd }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Giá</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.price | currency: "VND":"symbol":"1.0-0" }}
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -92,9 +100,6 @@
     </div>
 
     <div class="content" fxLayout="column">
-      <div class="description">
-        {{ transferDetail?.data.description }}
-      </div>
       <div [innerHtml]="transferDetail?.data.content | sanitizeHtml"></div>
     </div>
   </div>

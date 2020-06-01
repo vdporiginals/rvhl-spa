@@ -60,7 +60,9 @@
         ></a>
         <div class="gdlr-room-price" [style.float]="'right'" fxFlexAlign="end">
           <span class="gdlr-head">Từ</span
-          ><span class="gdlr-tail">{{ hotel.price | shortNumber }}</span>
+          ><span class="gdlr-tail">{{
+            hotel.price | currency: "VND":"symbol":"1.0-0"
+          }}</span>
         </div>
       </div>
     </div>

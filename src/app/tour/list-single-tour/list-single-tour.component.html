@@ -21,7 +21,9 @@
       >
         <img [src]="tour.image" [alt]="tour.title" />
         <div class="tour_price has_discount">
-          <span class="normal_price">từ {{ tour.price | shortNumber }} </span>
+          <span class="normal_price"
+            >từ {{ tour.price | currency: "VND":"symbol":"1.0-0" }}
+          </span>
         </div>
       </a>
     </div>

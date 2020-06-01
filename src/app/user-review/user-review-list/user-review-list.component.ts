@@ -73,8 +73,6 @@ export class UserReviewListComponent implements OnInit, OnDestroy {
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
-
-
     } else {
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Reviews Du Lịch Hạ Long');

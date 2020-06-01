@@ -20,7 +20,9 @@
       <div class="one_fourth" fxFlex="50">
         <fa-icon [icon]="faDollarSign"></fa-icon>
         <div class="tour_attribute_content">
-          từ &nbsp;{{ entertainDetail?.data.price | shortNumber }}
+          từ &nbsp;{{
+            entertainDetail?.data.price | currency: "VND":"symbol":"1.0-0"
+          }}
         </div>
       </div>
     </div>

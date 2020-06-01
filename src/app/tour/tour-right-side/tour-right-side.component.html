@@ -48,7 +48,9 @@
   >
     <a class="tour_image"></a>
     <div class="portfolio_info_wrapper">
-      <div class="tour_price">từ &nbsp;{{ tour?.price | shortNumber }}</div>
+      <div class="tour_price">
+        từ &nbsp;{{ tour?.price | currency: "VND":"symbol":"1.0-0" }}
+      </div>
       <a [routerLink]="['/tour', tour._id, tour.seo]"
         ><h5>{{ tour?.title }}</h5></a
       >

@@ -7,19 +7,19 @@ import { join } from 'path';
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
-const domino = require('domino');
-const fs = require('fs');
-const path = require('path');
+// const domino = require('domino');
+// const fs = require('fs');
+// const path = require('path');
 
 // Use the browser index.html as template for the mock window
-const template = fs.readFileSync(path.join(__dirname, '../', 'browser', 'index.html')).toString();
+// const template = fs.readFileSync(path.join(__dirname, '../', 'browser', 'index.html')).toString();
 
 // Shim for the global window and document objects.
-const window = domino.createWindow(template);
+// const window = domino.createWindow(template);
 // tslint:disable-next-line:no-string-literal
-global['window'] = window;
+// global['window'] = window;
 // tslint:disable-next-line:no-string-literal
-global['document'] = window.document;
+// global['document'] = window.document;
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
