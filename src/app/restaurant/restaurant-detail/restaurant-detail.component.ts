@@ -7,11 +7,22 @@ import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
 import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-restaurant-detail',
   templateUrl: './restaurant-detail.component.html',
-  styleUrls: ['./restaurant-detail.component.scss']
+  styleUrls: ['./restaurant-detail.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(2000, style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class RestaurantDetailComponent implements OnInit {
   restaurantDetail;
@@ -25,6 +36,11 @@ export class RestaurantDetailComponent implements OnInit {
   faClock = faClock;
   faCamera = faCamera;
   restaurantImages: Array<any> = [];
+  menuItem = [];
+  show = 2;
+  counter = 0;
+  menuItemArr: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  menuItem$: Observable<any> = this.menuItemArr.asObservable();
   @ViewChild(NgxImageGalleryComponent) ngxImageGallery: NgxImageGalleryComponent;
   conf: GALLERY_CONF = {
     imageOffset: '0px',
@@ -41,7 +57,7 @@ export class RestaurantDetailComponent implements OnInit {
     this.isBrowser = isPlatformBrowser(this.platformId);
     if (this.route.snapshot.data.restaurantDetail) {
       this.restaurantDetail = this.route.snapshot.data.restaurantDetail.data;
-      if (this.route.snapshot.data.restaurantDetail.data.menu[0] === undefined) {
+      if (this.route.snapshot.data.restaurantDetail?.data?.menu[0] === undefined) {
         this.isMenu = false;
       } else {
         this.isMenu = true;
@@ -63,7 +79,10 @@ export class RestaurantDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.restaurantImages = this.route.snapshot.data.restaurantDetail.data.gallery.map(val => ({ url: val, thumbnailUrl: val }));
+    this.restaurantImages = this.restaurantDetail?.gallery.map(val => ({ url: val, thumbnailUrl: val }));
+
+    this.menuItem.push(this.restaurantDetail?.menu[0], this.restaurantDetail?.menu[1]);
+    this.counter = this.counter + 2;
   }
 
 
@@ -85,4 +104,6 @@ export class RestaurantDetailComponent implements OnInit {
       }
     });
   }
+
+
 }

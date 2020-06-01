@@ -10,11 +10,20 @@ import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { SeoService } from 'src/app/shared/services/seo.service';
 import { isPlatformServer } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-transfer-list',
   templateUrl: './transfer-list.component.html',
-  styleUrls: ['./transfer-list.component.scss']
+  styleUrls: ['./transfer-list.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(2000, style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class TransferListComponent implements OnInit, OnDestroy {
   @Input() id: string;

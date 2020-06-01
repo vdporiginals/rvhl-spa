@@ -13,11 +13,20 @@ import { isPlatformServer } from '@angular/common';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
 import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-villa',
   templateUrl: './villa.component.html',
-  styleUrls: ['./villa.component.scss']
+  styleUrls: ['./villa.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(2000, style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class VillaComponent implements OnInit {
   @Input() id: string;

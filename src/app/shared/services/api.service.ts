@@ -133,7 +133,7 @@ export class ApiService {
     });
     const recentReviews = this.http.get<any>(`${environment.apiUrl}/blogs`, {
       params: {
-        select: 'title,images,seo,createdAt',
+        select: 'title,image,seo,createdAt',
         limit: '3',
         status: 'true'
       }

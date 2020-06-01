@@ -12,11 +12,20 @@ import { isPlatformServer } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
 import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-entertain-list',
   templateUrl: './entertain-list.component.html',
-  styleUrls: ['./entertain-list.component.scss']
+  styleUrls: ['./entertain-list.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(2000, style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class EntertainListComponent implements OnInit, OnDestroy {
   @Input() id: string;

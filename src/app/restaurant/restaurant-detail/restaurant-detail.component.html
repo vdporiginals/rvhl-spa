@@ -65,9 +65,13 @@
           fxLayoutGap.lt-md="30px"
           fxLayout.lt-sm="column"
           class="menu_flex"
+          [@fade]
         >
           <div
-            *ngFor="let menu of restaurantDetail?.menu"
+            *ngFor="
+              let menu of restaurantDetail?.menu | slice: 0:show;
+              let i = index
+            "
             class="hero-menu-item"
             style="height: 112px;"
             fxLayout="row"
@@ -94,6 +98,13 @@
                 </p>
               </div>
             </div>
+
+            <a
+              class="show_more"
+              *ngIf="i == 1 && show == 2"
+              (click)="show = restaurantDetail?.menu.lenght"
+              >Show more</a
+            >
           </div>
         </div>
       </div>

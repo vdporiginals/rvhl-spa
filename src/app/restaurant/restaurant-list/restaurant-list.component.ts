@@ -15,11 +15,20 @@ import { isPlatformServer } from '@angular/common';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
 import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-restaurant-list',
   templateUrl: './restaurant-list.component.html',
-  styleUrls: ['./restaurant-list.component.scss']
+  styleUrls: ['./restaurant-list.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(2000, style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class RestaurantListComponent implements OnInit {
   @Input() id: string;

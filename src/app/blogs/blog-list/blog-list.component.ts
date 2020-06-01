@@ -26,11 +26,19 @@ import { SeoService } from 'src/app/shared/services/seo.service';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
 import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-blog-list',
   templateUrl: './blog-list.component.html',
-  styleUrls: ['./blog-list.component.scss'],
+  styleUrls: ['./blog-list.component.scss'], animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(2000, style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
   @Input() id: string;

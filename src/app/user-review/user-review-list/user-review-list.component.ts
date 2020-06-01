@@ -11,11 +11,20 @@ import { SeoService } from 'src/app/shared/services/seo.service';
 import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
 import { isPlatformServer } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-user-review-list',
   templateUrl: './user-review-list.component.html',
-  styleUrls: ['./user-review-list.component.scss']
+  styleUrls: ['./user-review-list.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(2000, style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class UserReviewListComponent implements OnInit, OnDestroy {
   @Input() id: string;

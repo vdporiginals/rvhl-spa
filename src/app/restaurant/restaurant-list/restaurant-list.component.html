@@ -4,12 +4,13 @@
   fxLayout.lt-md="column"
   fxLayoutGap="25px"
 >
-  <div class="gdlr-item gdlr-room-item gdlr-medium-room" fxFlex="72">
+  <div class="gdlr-item gdlr-room-item gdlr-medium-room">
     <div
       class="gdlr-ux gdlr-medium-room-ux"
       fxLayout="row"
       fxLayoutGap="10px"
       fxLayout.lt-md="column"
+      [@fade]
       *ngFor="
         let restaurant of restaurantDetail.data
           | paginate
@@ -128,9 +129,5 @@
         </div>
       </ul>
     </pagination-template>
-  </div>
-
-  <div class="right-side" fxFlex="28">
-    <!-- <app-restaurant-right></app-restaurant-right> -->
   </div>
 </div>

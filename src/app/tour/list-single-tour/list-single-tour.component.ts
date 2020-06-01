@@ -11,10 +11,19 @@ import { ApiService } from 'src/app/shared/services/api.service';
 import { isPlatformServer } from '@angular/common';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 @Component({
   selector: 'app-list-single-tour',
   templateUrl: './list-single-tour.component.html',
-  styleUrls: ['./list-single-tour.component.scss']
+  styleUrls: ['./list-single-tour.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(2000, style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class ListSingleTourComponent implements OnInit, OnDestroy {
   @Input() id: string;
