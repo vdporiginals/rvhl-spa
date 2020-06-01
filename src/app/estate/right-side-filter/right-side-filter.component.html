@@ -9,16 +9,7 @@
       </li>
     </ul>
   </div>
-  <div
-    [innerHTML]="(fbPlugin?.data)[0]?.fbPage | sanitizeHtml"
-    class="fb_page"
-  ></div>
 
-  <div
-    fxLayoutAlign="center center"
-    [style.margin-bottom.px]="10"
-    [innerHTML]="(fbPlugin?.data)[0]?.fbGroup | sanitizeHtml"
-  ></div>
   <h2 class="widgettitle">Chỗ ở mới đăng</h2>
   <div
     class="portfolio_type"
@@ -35,4 +26,15 @@
       >
     </div>
   </div>
+
+  <div
+    [innerHTML]="(fbPlugin?.data)[0]?.fbPage | sanitizeHtml"
+    class="fb_page"
+  ></div>
+
+  <div
+    fxLayoutAlign="center center"
+    [style.margin-bottom.px]="10"
+    [innerHTML]="(fbPlugin?.data)[0]?.fbGroup | sanitizeHtml"
+  ></div>
 </div>

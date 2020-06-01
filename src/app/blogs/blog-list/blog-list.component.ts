@@ -64,7 +64,35 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
     private injector: Injector,
     @Inject(PLATFORM_ID) private platformId: Object,
     private seo: SeoService
-  ) { }
+  ) {
+
+
+    if (this.route.snapshot.data.blogCategory) {
+
+
+      this.categoryData = this.route.snapshot.data.blogCategory;
+      if (isPlatformServer(this.platformId)) {
+        this.seo.setTitle('Lịch trình Du Lịch Hạ Long');
+        this.seo.setDescription(
+          this.categoryData?.data[0]?.description
+        );
+        this.seo.setKeywords(
+          this.categoryData?.data[0]?.keywords);
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle('Lịch trình Du Lịch Hạ Long');
+        this.seo.setDescription(
+          this.categoryData?.data[0]?.description
+        );
+        this.seo.setKeywords(
+          this.categoryData?.data[0]?.keywords);
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
+      }
+    }
+
+  }
 
   ngOnChanges() { }
 
@@ -80,42 +108,15 @@ export class BlogListComponent implements OnInit, OnDestroy, OnChanges {
         });
       }
     });
+    this.getData(1);
 
-    if (this.route.snapshot.data.blogCategory) {
-      if (isPlatformServer(this.platformId)) {
-        this.seo.setTitle('Reviews Du Lịch Hạ Long');
-        this.seo.setDescription(
-          'Review về hành trình, địa điểm, quán ăn hay nhà hàng đến từ người bản địa'
-        );
-        this.seo.setKeywords(
-          'Review hành trình, địa điểm hạ long, quán ăn ngon hạ long, nhà hàng hạ long, tour vịnh hạ long, di chuyển'
-        );
-        this.seo.setOgSite(this.request.get('host'));
-        this.seo.setOgUrl(this.request.get('host'));
-      } else {
-        this.seo.setTitle('Reviews Du Lịch Hạ Long');
-        this.seo.setDescription(
-          'Review về hành trình, địa điểm, quán ăn hay nhà hàng đến từ người bản địa'
-        );
-        this.seo.setKeywords(
-          'Review hành trình, địa điểm hạ long, quán ăn ngon hạ long, nhà hàng hạ long, tour vịnh hạ long, di chuyển'
-        );
-        this.seo.setOgSite(window.location.origin);
-        this.seo.setOgUrl(window.location.origin);
+
+    this.sharedData.categoryIdd.subscribe((id) => {
+      if (id !== '') {
+        this.categoryId = id;
+        this.getData(1, this.categoryId);
       }
-
-      this.categoryData = this.route.snapshot.data.blogCategory;
-      this.getData(1);
-
-
-      this.sharedData.categoryIdd.subscribe((id) => {
-        if (id !== '') {
-          this.categoryId = id;
-          this.getData(1, this.categoryId);
-        }
-      });
-    }
-
+    });
   }
 
   ngOnDestroy(): void {

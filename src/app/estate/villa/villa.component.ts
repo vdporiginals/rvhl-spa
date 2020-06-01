@@ -60,7 +60,26 @@ export class VillaComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object) {
 
     this.routePosition = this.route.snapshot.parent.data.position;
-    // console.log(this.routePosition)
+    if (this.route.snapshot.data.estateList) {
+      this.hotelDetail = this.route.snapshot.data.estateList;
+      this.count = this.hotelDetail?.count;
+
+      if (isPlatformServer(this.platformId)) {
+        this.seo.setTitle('Villa - Villa hạ long - Villa quảng ninh');
+        this.seo.setDescription(this.hotelDetail?.data[0]?.description);
+        this.seo.setKeywords(this.hotelDetail?.data[0]?.keywords);
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle('Villa - Villa hạ long - Villa quảng ninh');
+        this.seo.setDescription(this.hotelDetail?.data[0]?.description);
+        this.seo.setKeywords(this.hotelDetail?.data[0]?.keywords);
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
+      }
+
+
+    }
   }
 
   ngOnInit(): void {
@@ -75,44 +94,26 @@ export class VillaComponent implements OnInit {
         });
       }
     });
-    if (this.route.snapshot.data.estateList) {
-      this.hotelDetail = this.route.snapshot.data.estateList;
-      this.count = this.hotelDetail.count;
 
-      if (isPlatformServer(this.platformId)) {
-        this.seo.setTitle('Villa - Villa hạ long - Villa quảng ninh');
-        this.seo.setDescription(this.hotelDetail.data[0].description);
-        this.seo.setKeywords(this.hotelDetail.data[0].keywords);
-        this.seo.setOgSite(this.request.get('host'));
-        this.seo.setOgUrl(this.request.get('host'));
-      } else {
-        this.seo.setTitle('Villa - Villa hạ long - Villa quảng ninh');
-        this.seo.setDescription(this.hotelDetail.data[0].description);
-        this.seo.setKeywords(this.hotelDetail.data[0].keywords);
-        this.seo.setOgSite(window.location.origin);
-        this.seo.setOgUrl(window.location.origin);
-      }
-
-      if (Object.keys(this.hotelDetail.pagination).length !== 0) {
-        if (this.hotelDetail.pagination.next === undefined) {
-          this.isLastPage = true;
-          this.currentPage = this.hotelDetail.pagination.prev.page + 1;
-        } else {
-          this.isLastPage = false;
-          this.currentPage = this.hotelDetail.pagination.next.page - 1;
-        }
-        if (
-          this.hotelDetail.pagination.prev === undefined ||
-          Object.keys(this.hotelDetail.pagination).length === 0
-        ) {
-          this.isFirstPage = true;
-        } else {
-          this.isFirstPage = false;
-        }
-      } else {
-        this.isFirstPage = true;
+    if (Object.keys(this.hotelDetail.pagination).length !== 0) {
+      if (this.hotelDetail.pagination.next === undefined) {
         this.isLastPage = true;
+        this.currentPage = this.hotelDetail.pagination.prev.page + 1;
+      } else {
+        this.isLastPage = false;
+        this.currentPage = this.hotelDetail.pagination.next.page - 1;
       }
+      if (
+        this.hotelDetail.pagination.prev === undefined ||
+        Object.keys(this.hotelDetail.pagination).length === 0
+      ) {
+        this.isFirstPage = true;
+      } else {
+        this.isFirstPage = false;
+      }
+    } else {
+      this.isFirstPage = true;
+      this.isLastPage = true;
     }
     this.sharedData.estateCategoryId.subscribe((id) => {
       if (id !== '') {

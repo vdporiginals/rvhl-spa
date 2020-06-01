@@ -52,10 +52,29 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object,
     private seo: SeoService) {
-    if (this.router.getCurrentNavigation().extras.state) {
+    if (this.router.getCurrentNavigation().extras.state !== undefined) {
 
       this.categoryId = this.router.getCurrentNavigation().extras.state.category;
     }
+    if (this.route.snapshot.data.tourCategory) {
+
+      this.categoryData = this.route.snapshot.data.tourCategory;
+
+      if (isPlatformServer(this.platformId)) {
+        this.seo.setTitle('Tour Hạ Long, Tour trọn gói, Tour vịnh');
+        this.seo.setDescription(this.categoryData?.data[0]?.description);
+        this.seo.setKeywords(this.categoryData?.data[0]?.keywords);
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle('Tour Hạ Long, Tour trọn gói, Tour vịnh');
+        this.seo.setDescription(this.categoryData?.data[0]?.description);
+        this.seo.setKeywords(this.categoryData?.data[0]?.keywords);
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
+      }
+    }
+
   }
 
   ngOnInit(): void {
@@ -85,24 +104,6 @@ export class ListSingleTourComponent implements OnInit, OnDestroy {
         this.sharedData.setFormData({});
       }
     });
-    if (this.route.snapshot.data.tourCategory) {
-
-      this.categoryData = this.route.snapshot.data.tourCategory;
-
-      if (isPlatformServer(this.platformId)) {
-        this.seo.setTitle('Tour Hạ Long, Tour trọn gói, Tour vịnh');
-        this.seo.setDescription(this.categoryData.data[0].description);
-        this.seo.setKeywords(this.categoryData.data[0].keywords);
-        this.seo.setOgSite(this.request.get('host'));
-        this.seo.setOgUrl(this.request.get('host'));
-      } else {
-        this.seo.setTitle('Tour Hạ Long, Tour trọn gói, Tour vịnh');
-        this.seo.setDescription(this.categoryData.data[0].description);
-        this.seo.setKeywords(this.categoryData.data[0].keywords);
-        this.seo.setOgSite(window.location.origin);
-        this.seo.setOgUrl(window.location.origin);
-      }
-    }
 
   }
 

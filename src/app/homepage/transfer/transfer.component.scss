@@ -99,10 +99,10 @@
 
 ::ng-deep.mat-form-field-empty.mat-form-field-label {
   color: $btn_bg !important;
-  padding: 10px;
+  padding: 10px !important;
 }
 
-.mat-form-field-underline {
+::ng-deep.mat-form-field-underline {
   /*change color of underline*/
   background-color: transparent !important;
 }
@@ -111,8 +111,8 @@
   font-size: 18px !important;
 }
 
-.mat-form-field-appearance-legacy .mat-form-field-label {
-  color: $btn_bg;
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: $btn_bg !important;
   padding: 7px;
 }
 

@@ -44,6 +44,10 @@
   margin-bottom: 39px;
 }
 
+::ng-deep.mat-form-field-empty.mat-form-field-label {
+  padding: 0 !important;
+}
+
 ::ng-deep.mat-form-field-underline {
   /*change color of underline*/
   background-color: #e3b04b !important;

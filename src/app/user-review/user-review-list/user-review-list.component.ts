@@ -49,32 +49,9 @@ export class UserReviewListComponent implements OnInit, OnDestroy {
     private injector: Injector,
     @Inject(PLATFORM_ID) private platformId: Object,
     private seo: SeoService
-  ) { }
-
-  ngOnInit(): void {
-    this.api.getAdvertisePage('ReviewPage').subscribe(res => {
-      if (res.data.length !== 0) {
-        const dialogRef: ImageOverlayRef = this.imageDialog.open({
-          image: {
-            name: res.data[0].name,
-            url: res.data[0].image,
-            link: res.data[0].link
-          },
-        });
-      }
-    });
-
-
-    this.getData(1);
-
-    this.sharedData.reviewCategoryId.subscribe((id) => {
-      if (id !== '') {
-        this.categoryId = id;
-        this.getData(1, this.categoryId);
-      }
-    });
-
-    if (this.route.snapshot.data.userCategory.count === 0) {
+  ) {
+    this.categoryData = this.route.snapshot.data.userCategory;
+    if (this.categoryData?.count === 0) {
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Reviews Du Lịch Hạ Long');
         this.seo.setDescription(
@@ -99,22 +76,47 @@ export class UserReviewListComponent implements OnInit, OnDestroy {
 
 
     } else {
-      this.categoryData = this.route.snapshot.data.userCategory;
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle('Reviews Du Lịch Hạ Long');
-        this.seo.setDescription(this.categoryData.data[0].description);
-        this.seo.setKeywords(this.categoryData.data[0].keywords);
+        this.seo.setDescription(this.categoryData?.data[0]?.description);
+        this.seo.setKeywords(this.categoryData?.data[0]?.keywords);
         this.seo.setOgSite(this.request.get('host'));
         this.seo.setOgUrl(this.request.get('host'));
       } else {
         this.seo.setTitle('Reviews Du Lịch Hạ Long');
-        this.seo.setDescription(this.categoryData.data[0].description);
-        this.seo.setKeywords(this.categoryData.data[0].keywords);
+        this.seo.setDescription(this.categoryData?.data[0]?.description);
+        this.seo.setKeywords(this.categoryData?.data[0]?.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
       }
 
     }
+
+  }
+
+  ngOnInit(): void {
+    this.api.getAdvertisePage('ReviewPage').subscribe(res => {
+      if (res.data.length !== 0) {
+        const dialogRef: ImageOverlayRef = this.imageDialog.open({
+          image: {
+            name: res.data[0].name,
+            url: res.data[0].image,
+            link: res.data[0].link
+          },
+        });
+      }
+    });
+
+
+    this.getData(1);
+
+    this.sharedData.reviewCategoryId.subscribe((id) => {
+      if (id !== '') {
+        this.categoryId = id;
+        this.getData(1, this.categoryId);
+      }
+    });
+
 
   }
 

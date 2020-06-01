@@ -40,14 +40,23 @@
 
       <div class="tour_attribute_wrapper">
         <div class="service_container" fxLayout="row wrap">
-          <span> Lịch trình: </span
-          ><a class="service tour_attribute_rating_count"
-            >{{ tour.locationStart }}
-          </a>
-          <fa-icon [icon]="faLongArrowAltRight"></fa-icon>
-          <a class="service tour_attribute_rating_count"
-            >{{ tour.locationEnd }}
-          </a>
+          <span> Lịch trình: </span>
+          <div *ngFor="let newSchedule of tour.schedule; last as isLast">
+            <a class="service tour_attribute_rating_count"
+              >{{ newSchedule.locationStart }}
+            </a>
+            <fa-icon [icon]="faLongArrowAltRight"></fa-icon>
+            <a class="service tour_attribute_rating_count"
+              >{{ newSchedule.locationEnd }}
+            </a>
+            <span
+              [style.font-size.px]="20"
+              [style.font-weight]="'bold'"
+              [style.padding]="'0 0 0 3px'"
+              *ngIf="!isLast"
+              >,</span
+            >
+          </div>
         </div>
         <div
           class="tour_attribute_rating_count"
@@ -58,8 +67,6 @@
           &nbsp;<strong
             ><a href="{{ 'tel:' + tour.phone }}">{{ tour.phone }}</a></strong
           >
-          <fa-icon [icon]="faClock" [style.margin-left.px]="15"></fa-icon
-          >&nbsp;<strong>{{ tour.timePerTrip }}/Chuyến</strong>
         </div>
       </div>
     </div>

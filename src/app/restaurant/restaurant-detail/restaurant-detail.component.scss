@@ -118,6 +118,7 @@
 }
 
 .facilities {
+  position: relative;
   padding-bottom: 5px;
   margin-bottom: 25px;
   border-bottom-width: 2px;
@@ -136,8 +137,9 @@
 
 .hotel_title {
   h2 {
+    display: inline-block;
     color: #2b2b2b;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2.5px;
@@ -165,6 +167,9 @@ a {
   padding-right: 20px;
   padding-left: 90px;
   margin-bottom: 20px;
+  @media (min-width: 959px) {
+    margin-bottom: 50px !important;
+  }
 }
 .hero-menu-item {
   margin-bottom: 16px;

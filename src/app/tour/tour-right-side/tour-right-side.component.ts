@@ -28,7 +28,6 @@ export class TourRightSideComponent implements OnInit, OnDestroy {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         const path = this.route.snapshot.firstChild.url[0].path;
-
         const params = this.route.snapshot.firstChild.firstChild.params;
         if (Object.keys(params).length === 0) {
           this.isDetail = false;
@@ -46,7 +45,6 @@ export class TourRightSideComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
     // this.getFilter();
   }
 
@@ -71,11 +69,25 @@ export class TourRightSideComponent implements OnInit, OnDestroy {
   }
 
   filter(id) {
-    this.sharedData.setTourCategory(id);
-  }
+    if (this.pathUrl === '/ha-long-bay-tour') {
+      this.sharedData.setTourCategory(id);
+    } else if (this.pathUrl === '/tron-goi') {
+      this.sharedData.setTourCategory(id);
+    } else {
+      this.sharedData.setTransferCategory(id);
+    }
 
+
+  }
   filterIsDetail(id) {
-    this.sharedData.setTourCategory(id);
+    if (this.pathUrl === '/ha-long-bay-tour') {
+      this.sharedData.setTourCategory(id);
+    } else if (this.pathUrl === '/tron-goi') {
+      this.sharedData.setTourCategory(id);
+    } else {
+      this.sharedData.setTransferCategory(id);
+    }
+
     this.router.navigate([`/tour${this.pathUrl}`], { state: { category: id } });
   }
 }

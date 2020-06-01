@@ -15,19 +15,13 @@
             fxLayout="column"
             fxLayoutAlign="center"
           >
-            <div class="facilities">
-              <div class="elementor-image">
-                <img
-                  [src]="restaurantDetail?.image"
-                  [alt]="restaurantDetail?.name"
-                />
-              </div>
+            <div>
               <div
                 class="hotel_title"
-                [style.text-align]="'center'"
+                [style.text-align]="'start'"
                 fxLayout="row"
                 fxLayoutGap="15px"
-                fxLayoutAlign="center"
+                fxLayoutAlign="start"
               >
                 <h2
                   [style.padding-right.px]="15"
@@ -40,6 +34,12 @@
                     >SĐT: {{ restaurantDetail?.phone }}</a
                   >
                 </h2>
+              </div>
+              <div class="elementor-image">
+                <img
+                  [src]="restaurantDetail?.image"
+                  [alt]="restaurantDetail?.name"
+                />
               </div>
             </div>
           </div>
@@ -63,8 +63,7 @@
           fxLayoutAlign="center"
           fxLayoutGap="20px"
           fxLayoutGap.lt-md="30px"
-          fxLayout.lt-md="column"
-          fxLayoutAlign.lt-md="end"
+          fxLayout.lt-sm="column"
           class="menu_flex"
         >
           <div
@@ -72,8 +71,8 @@
             class="hero-menu-item"
             style="height: 112px;"
             fxLayout="row"
-            fxFlex.lt-md="100"
-            fxFlex="30"
+            fxFlex="40"
+            fxFlex.lt-sm="100"
           >
             <a
               (click)="showPreview(menu.image)"
@@ -100,28 +99,25 @@
       </div>
     </section>
 
-    <div class="elementor-divider" [style.width.%]="50">
+    <div class="elementor-divider" [style.width.%]="50" *ngIf="isMenu === true">
       <mat-divider [vertical]="true"></mat-divider>
     </div>
     <section [style.margin-top.px]="25">
       <div class="elementor-row">
         <div class="hotel_title">
-          <h2 [style.text-align]="'center'">
+          <h2 [style.text-align]="'start'" class="facilities">
             Giới thiệu
           </h2>
         </div>
         <div class="elementor-widget-text-editor">
-          <h3 [style.text-align]="'center'">
+          <h3 [style.text-align]="'start'">
             Địa chỉ: {{ restaurantDetail?.address }}
           </h3>
           <div
             class="elementor-widget-container"
             [style.margin-top.px]="25"
-            fxLayoutAlign="center"
             [innerHtml]="restaurantDetail?.content | sanitizeHtml"
-          >
-            <p>&nbsp;</p>
-          </div>
+          ></div>
         </div>
       </div>
     </section>

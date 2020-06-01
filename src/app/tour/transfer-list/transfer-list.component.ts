@@ -54,8 +54,25 @@ export class TransferListComponent implements OnInit, OnDestroy {
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object,
     private seo: SeoService) {
-    if (this.router.getCurrentNavigation().extras.state) {
+    if (this.router.getCurrentNavigation().extras.state !== undefined) {
       this.categoryId = this.router.getCurrentNavigation().extras.state.category;
+    }
+    this.categoryData = this.route.snapshot.data.transferList;
+    if (this.categoryData?.count !== 0) {
+      if (isPlatformServer(this.platformId)) {
+        this.seo.setTitle('Di chuyển Hạ Long, xe limousine hạ long, Xe tiện chuyến hạ long');
+        this.seo.setDescription(this.categoryData?.data[0].description);
+        this.seo.setKeywords(this.categoryData?.data[0].keywords);
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle('Di chuyển Hạ Long, xe limousine hạ long, Xe tiện chuyến hạ long');
+        this.seo.setDescription(this.categoryData?.data[0]?.description);
+        this.seo.setKeywords(this.categoryData?.data[0]?.keywords);
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
+      }
+
     }
   }
 
@@ -81,25 +98,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
         this.sharedData.setFormData({});
       }
     });
-    if (this.route.snapshot.data.transferList.count !== 0) {
 
-      this.categoryData = this.route.snapshot.data.transferList;
-      if (isPlatformServer(this.platformId)) {
-        this.seo.setTitle('Di chuyển Hạ Long, xe limousine hạ long, Xe tiện chuyến hạ long');
-        this.seo.setDescription(this.categoryData.data[0].description);
-        this.seo.setKeywords(this.categoryData.data[0].keywords);
-        this.seo.setOgSite(this.request.get('host'));
-        this.seo.setOgUrl(this.request.get('host'));
-      } else {
-        this.seo.setTitle('Di chuyển Hạ Long, xe limousine hạ long, Xe tiện chuyến hạ long');
-        this.seo.setDescription(this.categoryData.data[0].description);
-        this.seo.setKeywords(this.categoryData.data[0].keywords);
-        this.seo.setOgSite(window.location.origin);
-        this.seo.setOgUrl(window.location.origin);
-      }
-
-
-    }
 
   }
 
@@ -111,7 +110,7 @@ export class TransferListComponent implements OnInit, OnDestroy {
     let paramsApi;
     if (category) {
       paramsApi = {
-        select: 'name,description,locationStart,image,seo,phone,price,locationEnd,timePerTrip',
+        select: 'name,description,locationStart,image,seo,phone,price,schedule',
         page,
         sort: '-isPopular,-updatedAt',
         category,
@@ -127,10 +126,10 @@ export class TransferListComponent implements OnInit, OnDestroy {
       }
       paramsApi = sort;
       paramsApi.page = page;
-      paramsApi.select = 'name,description,locationStart,image,phone,seo,price,locationEnd,timePerTrip';
+      paramsApi.select = 'name,description,locationStart,image,phone,seo,price,schedule';
     } else {
       paramsApi = {
-        select: 'name,description,locationStart,phone,image,seo,price,locationEnd,timePerTrip',
+        select: 'name,description,locationStart,phone,image,seo,price,schedule',
         page,
         sort: '-isPopular,-updatedAt',
         status: true,

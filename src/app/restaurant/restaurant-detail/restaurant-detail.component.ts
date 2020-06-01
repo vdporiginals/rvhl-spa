@@ -41,13 +41,11 @@ export class RestaurantDetailComponent implements OnInit {
     this.isBrowser = isPlatformBrowser(this.platformId);
     if (this.route.snapshot.data.restaurantDetail) {
       this.restaurantDetail = this.route.snapshot.data.restaurantDetail.data;
-      if (this.route.snapshot.data.restaurantDetail.data.menu[0].name === '') {
+      if (this.route.snapshot.data.restaurantDetail.data.menu[0] === undefined) {
         this.isMenu = false;
       } else {
         this.isMenu = true;
       }
-
-      this.restaurantImages = this.route.snapshot.data.restaurantDetail.data.gallery.map(val => ({ url: val, thumbnailUrl: val }));
       if (isPlatformServer(this.platformId)) {
         this.seo.setTitle(this.restaurantDetail.name);
         this.seo.setDescription(this.restaurantDetail.description, this.restaurantDetail.image);
@@ -57,7 +55,6 @@ export class RestaurantDetailComponent implements OnInit {
       } else {
         this.seo.setTitle(this.restaurantDetail.name);
         this.seo.setDescription(this.restaurantDetail.description, this.restaurantDetail.image);
-
         this.seo.setKeywords(this.restaurantDetail.keywords);
         this.seo.setOgSite(window.location.origin);
         this.seo.setOgUrl(window.location.origin);
@@ -66,7 +63,7 @@ export class RestaurantDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.restaurantImages = this.route.snapshot.data.restaurantDetail.data.gallery.map(val => ({ url: val, thumbnailUrl: val }));
   }
 
 

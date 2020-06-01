@@ -53,9 +53,26 @@ export class EntertainListComponent implements OnInit, OnDestroy {
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object,
     private seo: SeoService) {
-    if (this.router.getCurrentNavigation().extras.state) {
+    if (this.router.getCurrentNavigation().extras.state !== undefined) {
 
       this.categoryId = this.router.getCurrentNavigation().extras.state.category;
+    }
+    if (this.route.snapshot.data.entertainCategory) {
+      this.categoryData = this.route.snapshot.data.entertainCategory;
+      if (isPlatformServer(this.platformId)) {
+        this.seo.setTitle('Giải trí Hạ Long, vui chơi hạ long');
+        this.seo.setDescription(this.categoryData?.data[0]?.description);
+        this.seo.setKeywords(this.categoryData?.data[0]?.keywords);
+        this.seo.setOgSite(this.request.get('host'));
+        this.seo.setOgUrl(this.request.get('host'));
+      } else {
+        this.seo.setTitle('Giải trí Hạ Long, vui chơi hạ long');
+        this.seo.setDescription(this.categoryData?.data[0]?.description);
+        this.seo.setKeywords(this.categoryData?.data[0]?.keywords);
+        this.seo.setOgSite(window.location.origin);
+        this.seo.setOgUrl(window.location.origin);
+      }
+
     }
   }
 
@@ -92,24 +109,7 @@ export class EntertainListComponent implements OnInit, OnDestroy {
         this.sharedData.setEntertainFormData({});
       }
     });
-    if (this.route.snapshot.data.entertainCategory.numRecord !== 0) {
 
-      this.categoryData = this.route.snapshot.data.entertainCategory;
-      if (isPlatformServer(this.platformId)) {
-        this.seo.setTitle('Giải trí Hạ Long, vui chơi hạ long');
-        this.seo.setDescription(this.categoryData.data[0].description);
-        this.seo.setKeywords(this.categoryData.data[0].keywords);
-        this.seo.setOgSite(this.request.get('host'));
-        this.seo.setOgUrl(this.request.get('host'));
-      } else {
-        this.seo.setTitle('Giải trí Hạ Long, vui chơi hạ long');
-        this.seo.setDescription(this.categoryData.data[0].description);
-        this.seo.setKeywords(this.categoryData.data[0].keywords);
-        this.seo.setOgSite(window.location.origin);
-        this.seo.setOgUrl(window.location.origin);
-      }
-
-    }
 
   }
 

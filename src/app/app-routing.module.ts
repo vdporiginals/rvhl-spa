@@ -48,7 +48,7 @@ const routes: Routes = [
   {
     path: 'reviews', loadChildren: () => import('./user-review/user-review.module').then(m => m.UserReviewModule),
     data: {
-      breadcrumb: 'Reviews từ du khách'
+      breadcrumb: 'Reviews du lịch Hạ Long'
     }
   },
   { path: 'profile', component: ProfileComponent, data: { userId: '' }, canActivate: [AuthGuard] },

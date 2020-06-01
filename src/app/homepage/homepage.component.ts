@@ -30,9 +30,6 @@ export class HomepageComponent implements OnInit, OnDestroy {
     private injector: Injector,
     @Optional() @Inject(REQUEST) private request,
     @Inject(PLATFORM_ID) private platformId: Object) {
-    this.getData();
-  }
-  ngOnInit(): void {
     if (isPlatformServer(this.platformId)) {
       this.seo.setTitle('Review Hạ Long | Trải nghiệm Hạ Long trong tầm tay');
       this.seo.setDescription('Kết nối, chia sẻ kinh nghiệm du lịch Hạ Long, Quảng Ninh');
@@ -46,6 +43,10 @@ export class HomepageComponent implements OnInit, OnDestroy {
       this.seo.setOgSite(window.location.origin);
       this.seo.setOgUrl(window.location.origin);
     }
+    this.getData();
+  }
+  ngOnInit(): void {
+
   }
 
   ngOnDestroy(): void {
