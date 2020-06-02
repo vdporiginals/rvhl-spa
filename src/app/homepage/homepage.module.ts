@@ -13,7 +13,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { ShortNumberPipe } from '../shared/pipe/short-num.pipe';
-import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 
 
 import { HomepageComponent } from './homepage.component';
@@ -35,7 +34,6 @@ import { PopularHotelComponent } from './popular-hotel/popular-hotel.component';
     MatCardModule,
     FormsModule,
     FlexLayoutModule,
-    AnimateOnScrollModule.forRoot(),
     MatFormFieldModule,
     MatInputModule,
     MatCarouselModule.forRoot(),

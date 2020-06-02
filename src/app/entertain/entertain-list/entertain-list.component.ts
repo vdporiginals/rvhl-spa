@@ -136,7 +136,7 @@ export class EntertainListComponent implements OnInit, OnDestroy {
         sort: '-isPopular,-updatedAt',
         status: 'true',
         limit: '8',
-      }
+      };
     } else if (sort) {
       for (const propName in sort) {
         if (sort[propName] === '' || sort[propName] === undefined) {
@@ -162,7 +162,6 @@ export class EntertainListComponent implements OnInit, OnDestroy {
       })
       .subscribe((data) => {
         this.entertainData = data;
-        console.log(this.entertainData)
         this.count = data.count;
         if (Object.keys(data.pagination).length !== 0) {
           if (data.pagination.next === undefined) {

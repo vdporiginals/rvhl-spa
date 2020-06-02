@@ -89,7 +89,7 @@
                 <h6>{{ menu?.name }}</h6>
                 <!-- <div class="hmi-dec" style="left: 162px;"></div> -->
                 <span class="hero-menu-item-price">{{
-                  menu?.price | currency: "VND":"symbol":"1.0-0"
+                  menu?.price | shortNumber | currency: "VND":"symbol":"1.0-0"
                 }}</span>
               </div>
               <div class="hero-menu-item-details">

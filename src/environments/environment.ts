@@ -5,8 +5,7 @@
 export const environment = {
   production: false,
 
-  apiUrl: 'http://localhost:5001/api',
-  appId: '0968897925',
+  apiUrl: 'https://api.reviewhalong.vn/api',
   // tslint:disable-next-line: max-line-length
   googleId: '942528628965-igadkdr1rk483ivfpivqrvc0vgkc2j0l.apps.googleusercontent.com',
   facebookId: '641193026445878'

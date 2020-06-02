@@ -37,6 +37,7 @@
     "@jemys89/ngx-facebook": "^1.0.0",
     "@ngmodule/material-carousel": "^0.6.0",
     "@nguniversal/express-engine": "^9.1.0",
+    "@nguniversal/module-map-ngfactory-loader": "^8.2.6",
     "@nicky-lenaers/ngx-scroll-to": "^3.0.1",
     "angularx-social-login": "^2.2.1",
     "animate.css": "^3.7.2",
