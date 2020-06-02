@@ -1,13 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
-import { SharedDataService } from 'src/app/shared/services/shared-data.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NotificationService } from 'src/app/shared/services/notification.service';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-blog-comment',

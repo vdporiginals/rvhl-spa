@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Event, NavigationEnd, Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
-import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { Event, ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 
 @Component({

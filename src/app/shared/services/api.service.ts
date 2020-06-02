@@ -1,9 +1,8 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { forkJoin } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { forkJoin, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -165,7 +164,7 @@ export class ApiService {
     const bannerPage = this.http.get(`${environment.apiUrl}/advertises`, {
       params: {
         pagePosition: queryParams,
-        typeAdvertise: 'BannerPage',
+        // typeAdvertise: 'BannerPage',
         limit: '1',
         select: 'image,title',
         status: 'true'

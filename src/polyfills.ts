@@ -56,9 +56,9 @@
  * Zone JS is required by default for Angular itself.
  */
 import 'core-js/features/reflect';
-import 'zone.js/dist/zone';
 import 'hammerjs';
 import 'moment';
+import 'zone.js/dist/zone';
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

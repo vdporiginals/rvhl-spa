@@ -1,19 +1,18 @@
-import { Component, OnInit, ViewChild, Optional, Inject, PLATFORM_ID, Input, Output, EventEmitter } from '@angular/core';
-import { faEye, faImage, faLongArrowAltRight, faHotel, faPhone, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { isPlatformServer } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Inject, Input, OnInit, Optional, Output, PLATFORM_ID, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SeoService } from 'src/app/shared/services/seo.service';
+import { faAngleLeft, faAngleRight, faEye, faHotel, faImage, faLongArrowAltRight, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { GALLERY_CONF, NgxImageGalleryComponent } from 'ngx-image-gallery';
 import { map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
+import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 import { environment } from 'src/environments/environment';
-import { isPlatformServer } from '@angular/common';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
-import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-villa',

@@ -1,17 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter, Optional, Inject, Injector, PLATFORM_ID, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { faUser, faComment, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { Subscription } from 'rxjs';
-import { SharedDataService } from 'src/app/shared/services/shared-data.service';
-import { HttpClient } from '@angular/common/http';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { SeoService } from 'src/app/shared/services/seo.service';
-import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { isPlatformServer } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Inject, Injector, Input, OnDestroy, OnInit, Optional, Output, PLATFORM_ID } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { faAngleLeft, faAngleRight, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { Subscription } from 'rxjs';
+import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
+import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 import { environment } from 'src/environments/environment';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-user-review-list',

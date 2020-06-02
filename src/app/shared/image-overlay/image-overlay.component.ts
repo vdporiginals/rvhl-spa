@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { IMAGE_DIALOG_DATA } from './image-overlay.token';
+import { Component, Inject } from '@angular/core';
 import { ImageOverlayRef } from './image-overlay-ref';
+import { IMAGE_DIALOG_DATA } from './image-overlay.token';
 
 @Component({
   selector: 'app-image-overlay',

@@ -1,13 +1,13 @@
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../user';
-import { Observable, throwError, BehaviorSubject } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpBackend } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { User } from '../user';
 import { LocalStorageService } from './local-storage.service';
-import { SharedDataService } from './shared-data.service';
 import { NotificationService } from './notification.service';
+import { SharedDataService } from './shared-data.service';
 @Injectable({
   providedIn: 'root'
 })

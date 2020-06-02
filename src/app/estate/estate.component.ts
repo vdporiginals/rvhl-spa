@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { ActivatedRoute, Event, NavigationEnd, Router } from '@angular/router';
 import { EstateItem } from './estate-item';
-import { Event, NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-estate',

@@ -1,32 +1,17 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  Output,
-  Input,
-  EventEmitter,
-  OnChanges,
-  Injector,
-  Inject,
-  PLATFORM_ID,
-  Optional,
-} from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { isPlatformServer } from '@angular/common';
-import { SeoService } from 'src/app/shared/services/seo.service';
+import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Inject, Injector, Input, OnChanges, OnDestroy, OnInit, Optional, Output, PLATFORM_ID } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { faAngleLeft, faAngleRight, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { Subscription } from 'rxjs';
 import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-blog-list',

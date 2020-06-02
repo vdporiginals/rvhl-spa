@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-transfer',

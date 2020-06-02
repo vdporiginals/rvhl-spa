@@ -1,22 +1,18 @@
-import { Component, OnInit, Optional, Inject, PLATFORM_ID, LOCALE_ID, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { SeoService } from 'src/app/shared/services/seo.service';
-import { MatDialog } from '@angular/material/dialog';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { faPhone, faPlay, faUser, faDollarSign, faClock, faCamera } from '@fortawesome/free-solid-svg-icons';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {
-  MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-} from '@angular/material-moment-adapter';
+import { Component, Inject, OnInit, Optional, PLATFORM_ID, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { faCamera, faClock, faDollarSign, faPhone, faPlay, faUser } from '@fortawesome/free-solid-svg-icons';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { GALLERY_CONF, NgxImageGalleryComponent } from 'ngx-image-gallery';
 import { LoginComponent } from 'src/app/layout/user/login/login.component';
-import { NotificationService } from 'src/app/shared/services/notification.service';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
 
 @Component({
   selector: 'app-hotel-detail',

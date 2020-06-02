@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProfileComponent } from './layout/user/profile/profile.component';
 import { AuthGuard } from './shared/guard/auth.guard';
@@ -24,7 +24,8 @@ const routes: Routes = [
   {
     path: 'an-gi', loadChildren: () => import('./restaurant/restaurant.module').then(m => m.RestaurantModule),
     data: {
-      breadcrumb: 'Ăn gì ngon'
+      breadcrumb: 'Ăn gì ngon',
+      queryBanner: 'FoodPage',
     }
   },
   {

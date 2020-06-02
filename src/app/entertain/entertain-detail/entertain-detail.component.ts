@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild, Optional, Inject, PLATFORM_ID } from '@angular/core';
-import { faPhone, faPlay, faMapMarked, faDollarSign, faClock, faCamera } from '@fortawesome/free-solid-svg-icons';
-import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { SeoService } from 'src/app/shared/services/seo.service';
-import { MatDialog } from '@angular/material/dialog';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, Inject, OnInit, Optional, PLATFORM_ID, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { faCamera, faDollarSign, faMapMarked, faPhone, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { GALLERY_CONF, NgxImageGalleryComponent } from 'ngx-image-gallery';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
 import { EntertainVideoComponent } from './entertain-video/entertain-video.component';
 
 @Component({

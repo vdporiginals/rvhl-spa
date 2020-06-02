@@ -1,15 +1,6 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Inject,
-  PLATFORM_ID,
-  Output,
-  EventEmitter
-} from '@angular/core';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { isPlatformBrowser } from '@angular/common';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID } from '@angular/core';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-slider-area',

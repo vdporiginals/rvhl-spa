@@ -1,11 +1,11 @@
-import { Injectable, Inject, OnInit, Injector, ComponentRef } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
-
-import { ImageOverlayComponent } from './image-overlay.component';
-
+import { ComponentRef, Injectable, Injector } from '@angular/core';
 import { ImageOverlayRef } from './image-overlay-ref';
+import { ImageOverlayComponent } from './image-overlay.component';
 import { IMAGE_DIALOG_DATA } from './image-overlay.token';
+
+
 
 export interface Image {
     name: string;

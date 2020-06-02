@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { UserReviewComponent } from './user-review.component';
-import { UserReviewListComponent } from './user-review-list/user-review-list.component';
+import { RouterModule, Routes } from '@angular/router';
 import { UserReviewDetailComponent } from './user-review-detail/user-review-detail.component';
-import { UserResolve } from './user-review.resolver';
+import { UserReviewListComponent } from './user-review-list/user-review-list.component';
 import { UserPostResolve } from './user-review-post.resolver';
+import { UserReviewComponent } from './user-review.component';
+import { UserResolve } from './user-review.resolver';
 const routes: Routes = [
     {
         path: '',

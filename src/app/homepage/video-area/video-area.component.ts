@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { VideoDialogComponent } from './video-dialog/video-dialog.component';
 @Component({
   selector: 'app-video-area',

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-popular-schedule',

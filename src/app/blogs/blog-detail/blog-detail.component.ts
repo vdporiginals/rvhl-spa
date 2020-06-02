@@ -1,22 +1,14 @@
-import {
-  Component, OnInit, OnDestroy,
-  Inject,
-  PLATFORM_ID,
-  Injector,
-  Optional
-} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
-import { faHeart, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { SeoService } from 'src/app/shared/services/seo.service';
+import { HttpClient } from '@angular/common/http';
+import { Component, Inject, OnDestroy, OnInit, Optional, PLATFORM_ID } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { faFacebook, faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
+import { faComment, faHeart, faUser } from '@fortawesome/free-solid-svg-icons';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { ApiService } from 'src/app/shared/services/api.service';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
 
 @Component({
   selector: 'app-blog-detail',

@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { EstateDetailResolve } from './estate-detail.resolver';
 import { EstateListResolve } from './estate-list.resolver';
-import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
-import { HomestayDetailComponent } from './homestay-detail/homestay-detail.component';
-import { VillaDetailComponent } from './villa-detail/villa-detail.component';
-import { HotelComponent } from './hotel/hotel.component';
-import { HomestayComponent } from './homestay/homestay.component';
-import { VillaComponent } from './villa/villa.component';
 import { EstateComponent } from './estate.component';
+import { HomestayDetailComponent } from './homestay-detail/homestay-detail.component';
+import { HomestayComponent } from './homestay/homestay.component';
+import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
+import { HotelComponent } from './hotel/hotel.component';
+import { VillaDetailComponent } from './villa-detail/villa-detail.component';
+import { VillaComponent } from './villa/villa.component';
 
 
 const routes: Routes = [

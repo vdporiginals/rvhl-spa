@@ -1,5 +1,5 @@
-import { Directive, OnInit, ViewContainerRef, TemplateRef, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformServer } from '@angular/common';
+import { Directive, Inject, OnInit, PLATFORM_ID, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
     selector: '[appShellRender]'

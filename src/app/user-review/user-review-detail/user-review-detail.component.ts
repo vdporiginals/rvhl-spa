@@ -1,14 +1,14 @@
-import { Component, OnInit, OnDestroy, Optional, Inject, PLATFORM_ID } from '@angular/core';
-import { faFacebookMessenger, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faHeart, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Subscription } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { SeoService } from 'src/app/shared/services/seo.service';
-import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, Inject, OnDestroy, OnInit, Optional, PLATFORM_ID } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { faFacebook, faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
+import { faComment, faHeart, faUser } from '@fortawesome/free-solid-svg-icons';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
 
 @Component({
   selector: 'app-user-review-detail',

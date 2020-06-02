@@ -1,10 +1,9 @@
-import { Component, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
-import { AuthClientService } from './shared/services/auth-client.service';
-import { Meta } from '@angular/platform-browser';
-import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { Meta } from '@angular/platform-browser';
+import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { AuthClientService } from './shared/services/auth-client.service';
 import { LoaderService } from './shared/services/loader.service';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',

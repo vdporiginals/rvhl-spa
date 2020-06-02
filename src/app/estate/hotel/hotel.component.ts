@@ -1,20 +1,19 @@
-import { Component, OnInit, Optional, Inject, PLATFORM_ID, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { faEye, faImage } from '@fortawesome/free-regular-svg-icons';
-import { faHotel, faPhone, faLongArrowAltRight, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { SeoService } from 'src/app/shared/services/seo.service';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
-import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { SharedDataService } from 'src/app/shared/services/shared-data.service';
-import { Subscription } from 'rxjs';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { isPlatformServer } from '@angular/common';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Inject, Input, OnInit, Optional, Output, PLATFORM_ID, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { faEye, faImage } from '@fortawesome/free-regular-svg-icons';
+import { faAngleLeft, faAngleRight, faHotel, faLongArrowAltRight, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { GALLERY_CONF, NgxImageGalleryComponent } from 'ngx-image-gallery';
+import { map } from 'rxjs/operators';
 import { ImageOverlayRef } from 'src/app/shared/image-overlay/image-overlay-ref';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { ImageOverlayService } from 'src/app/shared/image-overlay/image-overlay.service';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-hotel',
   templateUrl: './hotel.component.html',

@@ -1,17 +1,16 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy, Input, Injector, Inject, PLATFORM_ID, Optional } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SeoService } from 'src/app/shared/services/seo.service';
-import { Subscription } from 'rxjs';
-import { faAngleLeft, faAngleRight, faPhone, faClock } from '@fortawesome/free-solid-svg-icons';
-import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
-import { ApiService } from 'src/app/shared/services/api.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { isPlatformServer } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Optional, Output, PLATFORM_ID } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { faAngleLeft, faAngleRight, faClock, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { Subscription } from 'rxjs';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-list-single-tour',
   templateUrl: './list-single-tour.component.html',

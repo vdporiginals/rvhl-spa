@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { EntertainResolve } from './entertain.resolver';
+import { RouterModule, Routes } from '@angular/router';
 import { EntertainDetailResolve } from './entertain-detail.resolver';
-import { EntertainListComponent } from './entertain-list/entertain-list.component';
 import { EntertainDetailComponent } from './entertain-detail/entertain-detail.component';
+import { EntertainListComponent } from './entertain-list/entertain-list.component';
 import { EntertainComponent } from './entertain.component';
+import { EntertainResolve } from './entertain.resolver';
+
 const routes: Routes = [
     {
         path: '',

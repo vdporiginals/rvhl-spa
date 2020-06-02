@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy, Injector, Inject, PLATFORM_ID, Optional } from '@angular/core';
-import { ApiService } from '../shared/services/api.service';
-import { Subscription } from 'rxjs';
-import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
-import { SeoService } from '../shared/services/seo.service';
 import { isPlatformServer } from '@angular/common';
+import { Component, Inject, Injector, OnDestroy, OnInit, Optional, PLATFORM_ID } from '@angular/core';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { ScrollToConfigOptions, ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
+import { Subscription } from 'rxjs';
+import { ApiService } from '../shared/services/api.service';
+import { SeoService } from '../shared/services/seo.service';
 
 @Component({
   selector: 'app-homepage',

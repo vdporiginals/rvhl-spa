@@ -18,9 +18,6 @@ const routes: Routes = [
                 resolve: {
                     restaurantList: RestaurantListResolve
                 },
-                data: {
-                    queryBanner: 'FoodPage',
-                },
             },
             {
                 path: ':id/:seo',

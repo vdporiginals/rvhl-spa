@@ -1,13 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { Subscription } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 
 @Component({
   selector: 'app-blog-filter',

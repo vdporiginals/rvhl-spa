@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { SharedDataService } from 'src/app/shared/services/shared-data.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 @Component({
   selector: 'app-estate-search',
   templateUrl: './search-estate.component.html',

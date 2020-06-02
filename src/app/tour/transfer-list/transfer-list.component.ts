@@ -1,16 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter, Optional, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { faAngleLeft, faAngleRight, faPhone, faClock, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
-import { Subscription } from 'rxjs';
-import { FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { SharedDataService } from 'src/app/shared/services/shared-data.service';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { SeoService } from 'src/app/shared/services/seo.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { isPlatformServer } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Optional, Output, PLATFORM_ID } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { faAngleLeft, faAngleRight, faClock, faLongArrowAltRight, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { Subscription } from 'rxjs';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
+import { SharedDataService } from 'src/app/shared/services/shared-data.service';
 import { environment } from 'src/environments/environment';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-transfer-list',

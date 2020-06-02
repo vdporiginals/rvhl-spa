@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { SharedDataService } from 'src/app/shared/services/shared-data.service';
-import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-review-filter',

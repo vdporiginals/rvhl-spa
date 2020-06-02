@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',

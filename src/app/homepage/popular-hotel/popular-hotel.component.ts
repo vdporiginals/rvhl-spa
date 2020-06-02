@@ -1,6 +1,6 @@
-import { Component, OnInit, SimpleChanges, OnChanges, Input } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-popular-hotel',

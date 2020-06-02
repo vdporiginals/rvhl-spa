@@ -3,31 +3,18 @@ import 'zone.js/dist/zone-node';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
 import { join } from 'path';
+const compression = require('compression');
 
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
-// const domino = require('domino');
-// const fs = require('fs');
-// const path = require('path');
-
-// Use the browser index.html as template for the mock window
-// const template = fs.readFileSync(path.join(__dirname, '../', 'browser', 'index.html')).toString();
-
-// Shim for the global window and document objects.
-// const window = domino.createWindow(template);
-// tslint:disable-next-line:no-string-literal
-// global['window'] = window;
-// tslint:disable-next-line:no-string-literal
-// global['document'] = window.document;
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
   const server = express();
-  // const distFolder = join(process.cwd(), './dist/rvhl-spa/browser');
   const distFolder = join(process.cwd(), '../browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
-
+  server.use(compression());
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
     bootstrap: AppServerModule,
@@ -43,9 +30,6 @@ export function app() {
     maxAge: '1y'
   }));
 
-  // Server static files from /browser
-  server.get('*.*', express.static(join(distFolder, 'browser')));
-
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
@@ -55,7 +39,7 @@ export function app() {
 }
 
 function run() {
-  const port = process.env.PORT || 4500;
+  const port = process.env.PORT || 4000;
 
   // Start up the Node server
   const server = app();

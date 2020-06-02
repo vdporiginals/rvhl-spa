@@ -1,16 +1,14 @@
-import { Component, OnInit, Inject, PLATFORM_ID, Injector, AfterContentInit, Optional, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { SeoService } from 'src/app/shared/services/seo.service';
-import { environment } from 'src/environments/environment';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { faPlay, faPhone, faCamera, faUser, faDollarSign, faClock } from '@fortawesome/free-solid-svg-icons';
-import { NgxImageGalleryComponent, GALLERY_CONF } from 'ngx-image-gallery';
-import { TourVideoComponent } from './tour-video/tour-video.component';
+import { HttpClient } from '@angular/common/http';
+import { AfterContentInit, Component, Inject, OnInit, Optional, PLATFORM_ID, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { faCamera, faClock, faDollarSign, faPhone, faPlay, faUser } from '@fortawesome/free-solid-svg-icons';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { GALLERY_CONF, NgxImageGalleryComponent } from 'ngx-image-gallery';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { SeoService } from 'src/app/shared/services/seo.service';
+import { TourVideoComponent } from './tour-video/tour-video.component';
 @Component({
   selector: 'app-tour-detail',
   templateUrl: './tour-detail.component.html',

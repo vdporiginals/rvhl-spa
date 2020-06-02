@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { BlogsComponent } from './blogs.component';
+import { RouterModule, Routes } from '@angular/router';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
-import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogPostResolve } from './blog-detail/blog-post.resolver';
+import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogResolve } from './blog.resolver';
+import { BlogsComponent } from './blogs.component';
 const routes: Routes = [
   {
     path: '',
